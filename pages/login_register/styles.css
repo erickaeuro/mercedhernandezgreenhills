@@ -1,0 +1,9 @@
+#sWrapper
+{
+    width:300px;
+    margin:80xp auto 0px auto;
+    padding:10px;
+    border-radius:5px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+}
