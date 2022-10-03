@@ -9,7 +9,7 @@ if(isset($_POST['addpawn']))
     { 
 
         
-        $customerno = $_POST['customerno'];
+        $customerno = $_POST['customerno1'];
         $transc_type = $_POST['transc_type'];
         $dateloangranted = $_POST['dateloangranted'];
         $maturity_date = $_POST['maturity_date'];
