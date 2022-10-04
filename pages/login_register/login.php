@@ -87,6 +87,7 @@ if(isset($_POST['login_user'])){
 		<option disabled selected value="Select a Method">Select a Method</option>
 		<option value="MFA">MFA</option>
 		<option value="EMAIL">EMAIL</option>
+		<option value="SECUIRTY QUESTIONS">SECUIRTY QUESTIONS</option>
 	</select>
 
   	<div class="input-group">
