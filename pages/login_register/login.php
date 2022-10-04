@@ -1,7 +1,7 @@
 <?php include('server.php') ?>
 <?php 
 error_reporting(0);
-$conn = new mysqli("localhost","root","","mydb");
+$conn = new mysqli("localhost","root","","mercedhernandezgreenhills");
 
 $msg="";
 

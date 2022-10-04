@@ -4,11 +4,13 @@
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../dashboard/dashboard.php">
       <div id="banner">
         <?php 
-           echo "<img src='logo.png'/>"; 
+         //  echo "<img src='logo.png'/>"; 
+         echo "<img src= logo.png  />"; 
          ?> 
      </div>
-        <div class="sidebar-brand-text mx-3">Merced Hernandez Greenhills </div>
+        <div class="sidebar-brand-text mx-3">Merced Hernandez</div>
       </a>
+      
 
       <!-- Divider -->
       <hr class="sidebar-divider my-2">
