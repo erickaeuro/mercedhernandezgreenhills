@@ -26,7 +26,7 @@ if(isset($_POST['addrenewal']))
         $query1 = "UPDATE pawntickettbl SET dateloangranted='$dateloangranted', maturity_date='$maturity_date', expiry_date='$expiry_date', description = '$description', appraised_value='$appraised_value',principal='$principal', interest='$interest', penalty ='$penalty', transactiontype='Renewal' WHERE pawnticketno='$pawnticketno'";
         $query_run1 = mysqli_query($con, $query1);
         //INSERT TO RENEWAL TABLE
-        $query = "INSERT INTO renewaltbl (renewalid, pawnticketno, service_charge, total_amount_due, renewal_amnt) VALUES (NULL, '$pawnticketno','$service_charge','$total_amount_due','$renewal_amnt')";
+        $query = "INSERT INTO renewaltbl (renewalid, pawnticketno, service_charge, total_amount_due, renewal_amnt, status) VALUES (NULL, '$pawnticketno','$service_charge','$total_amount_due','$renewal_amnt','1')";
         $query_run = mysqli_query($con, $query);
     
         if($query_run)
