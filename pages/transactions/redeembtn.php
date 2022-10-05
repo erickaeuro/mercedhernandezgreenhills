@@ -61,7 +61,7 @@
                         echo '<select class="custom-select" name="pawnticketno" style="width:410px; position: relative; left:10px; top:-1px">';
 
                         $cser=mysqli_connect("localhost","root","","mercedhernandezgreenhills") or die("connection failed:".mysqli_error());
-                        $result = mysqli_query($cser,"SELECT pawnticketno FROM pawntickettbl") or die(mysql_error());
+                        $result = mysqli_query($cser,"SELECT pawnticketno, transactiontype FROM pawntickettbl") or die(mysql_error());
 
 
                         if (mysqli_num_rows($result)!=0)
@@ -71,7 +71,9 @@
 
                         while($drop_2 = mysqli_fetch_array( $result ))
                         {
-                        echo '<option value="'.$drop_2['pawnticketno'].'">'.$drop_2['pawnticketno'].'</option>';
+                            if(in_array($drop_2['transactiontype'] , array(''))){
+                                echo '<option value="'.$drop_2['pawnticketno'].'">'.$drop_2['pawnticketno'].'</option>';
+                                }
 
                         }
 
