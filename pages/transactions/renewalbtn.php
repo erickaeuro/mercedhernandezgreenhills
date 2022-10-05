@@ -145,7 +145,7 @@
                             <div class="mb-4">
                             <center> 
                             <a href="renewal.php" class="btn btn-danger float-end">Back</a>
-                            <button type="submit" name="addrenewal" class="btn btn-success editbtn">Add Redeem Loan</button> 
+                            <button type="submit" name="addrenewal" class="btn btn-success editbtn">Add Renewal Loan</button> 
                             </center>
                             </div>
                         </form>

@@ -96,7 +96,7 @@ require '../connection.php';
                             </div>  
 
                             <div class="form-group col-md-12">
-                                <label for="customername"><b>Transaction Type </b></label><br/>
+                                <label for="customername"><b><?= $row2['transactiontype']?> </b></label><br/>
                                 <select class="custom-select" name="" style="width:410px; position: relative; left:10px; top:-1px" disabled>
                                     <option value=" " selected="selected">Transaction Type</option>
                                     <option value="Jewelry Loan" selected="selected">Jewelry Loan</option>

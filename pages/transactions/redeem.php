@@ -62,7 +62,7 @@
                             //Return data from pawnticket Table
                             $query = "SELECT * FROM pawntickettbl WHERE transactiontype='Redeem'";
                             $query_run = mysqli_query($con, $query);
-                            $row = mysqli_fetch_array($query_run);
+                            
 
                             //Return data from Redeem Table
                             $query2 = "SELECT * FROM redeemtbl";
@@ -87,17 +87,15 @@
                                       </tr>
                                   </thead>
             <?php
-                if($query_run)
+              
+                foreach($query_run2 as $row2)
                 {
-                    foreach($query_run2 as $row2)
-                    {
-
-                      
-                      
+                    foreach ($query_run as $row)
+                    {        
             ?>
                                   <tbody>
                                       <tr>
-                                      <td> <?php echo $row['pawnticketno']; ?> </td>
+                                      <td> <?php echo $row2['pawnticketno']; ?> </td>
                                         <td> <?php echo $row['customerno']; ?> </td>
                                         <td> <?php echo $row['dateloangranted']; ?> </td>
                                         <td> <?php echo $row['maturity_date']; ?> </td>
@@ -118,10 +116,10 @@
                     
                   }
                 }
-                else 
+               /* else 
                 {
                     echo "No Record Found";
-                }
+                }*/
           ?>      
                               </table>
                           </div>

@@ -25,9 +25,9 @@ if(isset($_POST['addredeem']))
     $query2 = "INSERT INTO redeemtbl (redeemid, pawnticketno, redemption_amnt) VALUES (NULL, '$pawnticketno', '$redemption_amnt')";
     $query_run2 = mysqli_query($con, $query2);
 
-    if($query_run)
+    if($query_run2)
     {
-       if($query_run2){ 
+       if($query_run){ 
         echo '<script> alert("Data Saved"); </script>';
         header('Location: redeem.php');
        }
