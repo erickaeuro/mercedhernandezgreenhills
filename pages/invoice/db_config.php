@@ -7,5 +7,5 @@
     */
     
     //$db_con = new PDO('mysql:host=localhost;dbname=billinginvoice','root', '');
-    $connect = new PDO('mysql:host=localhost;dbname=billinginvoice','root', '');
+    $connect = new PDO('mysql:host=localhost;dbname=mercedhernandezgreenhills','root', '');
 ?>
