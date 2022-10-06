@@ -59,15 +59,9 @@
 
                       <?php 
                              //Return data from Renewal Table
-                            $query = "SELECT * FROM renewaltbl WHERE status = 1";
+                            $query = "SELECT * FROM renewaltbl INNER JOIN pawntickettbl ON renewaltbl.pawnticketno=pawntickettbl.pawnticketno WHERE renewaltbl.status=1";
                             $query_run = mysqli_query($con, $query);
                             
-
-
-                             //Return data from Pawnticket Table
-                            $query1 = "SELECT * FROM pawntickettbl WHERE transactiontype='Renewal' ";
-                            $query_run1 = mysqli_query($con, $query1);
-                            $row1 = mysqli_fetch_array($query_run1);
                       ?> 
 
                           <div class="table-responsive">
@@ -91,7 +85,7 @@
                                   </thead>
 
             <?php
-                if($query_run1)
+                if($query_run)
                 { 
                     foreach($query_run as $row)
                     {
@@ -99,23 +93,23 @@
                                   <tbody>
 
                                   <tr>
-                                        <td> <?php echo $row1['pawnticketno']; ?> </td>
-                                        <td> <?php echo $row1['customerno']; ?> </td>
-                                        <td> <?php echo $row1['dateloangranted']; ?> </td>
-                                        <td> <?php echo $row1['maturity_date']; ?> </td>
-                                        <td> <?php echo $row1['expiry_date']; ?> </td>
-                                        <td> <?php echo $row1['principal']; ?> </td>
-                                        <td> <?php echo $row1['interest']; ?> </td>
-                                        <td> <?php echo $row1['penalty']; ?> </td>
+                                        <td> <?php echo $row['pawnticketno']; ?> </td>
+                                        <td> <?php echo $row['customerno']; ?> </td>
+                                        <td> <?php echo $row['dateloangranted']; ?> </td>
+                                        <td> <?php echo $row['maturity_date']; ?> </td>
+                                        <td> <?php echo $row['expiry_date']; ?> </td>
+                                        <td> <?php echo $row['principal']; ?> </td>
+                                        <td> <?php echo $row['interest']; ?> </td>
+                                        <td> <?php echo $row['penalty']; ?> </td>
                                         <td> <?php echo $row['service_charge']; ?> </td>
                                         <td> <?php echo $row['total_amount_due']; ?> </td>
                                         <td> <?php echo $row['renewal_amnt']; ?> </td>
                                         <td>
-                                        <a href="renewalview.php?id=<?= $row1['pawnticketno'];?>&redid=<?=$row['renewalid'];?>" class="btn btn-info viewbtn">VIEW</a>
-                                        <a href="editrenewal.php?id=<?= $row1['pawnticketno'];?>&redid=<?=$row['renewalid'];?>" class="btn btn-success editbtn">EDIT</a>
-                                        <a href="moverenewal.php?id=<?= $row1['pawnticketno'];?>&redid=<?=$row['renewalid'];?>" class="btn btn-warning editbtn">MOVE</a>
+                                        <a href="renewalview.php?id=<?= $row['pawnticketno'];?>&redid=<?=$row['renewalid'];?>" class="btn btn-info viewbtn">VIEW</a>
+                                        <a href="editrenewal.php?id=<?= $row['pawnticketno'];?>&redid=<?=$row['renewalid'];?>" class="btn btn-success editbtn">EDIT</a>
+                                        <a href="moverenewal.php?id=<?= $row['pawnticketno'];?>&redid=<?=$row['renewalid'];?>" class="btn btn-warning editbtn">MOVE</a>
 
-                                        <a href="deleterenewal.php?id=<?= $row1['pawnticketno']; ?>&redid=<?=$row['renewalid'];?>" name="deletedata" class="btn btn-danger deletebtn">DELETE</a>
+                                        <a href="deleterenewal.php?id=<?= $row['pawnticketno']; ?>&redid=<?=$row['renewalid'];?>" name="deletedata" class="btn btn-danger deletebtn">DELETE</a>
                                         </td>
                                       </tr>
                                     

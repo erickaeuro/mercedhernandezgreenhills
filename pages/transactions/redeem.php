@@ -59,14 +59,9 @@
 
                       <?php 
 
-                            //Return data from pawnticket Table
-                            $query = "SELECT * FROM pawntickettbl WHERE transactiontype='Redeem'";
-                            $query_run = mysqli_query($con, $query);
-                            
-
                             //Return data from Redeem Table
-                            $query2 = "SELECT * FROM redeemtbl";
-                            $query_run2 = mysqli_query($con, $query2);
+                            $query = "SELECT * FROM redeemtbl INNER JOIN pawntickettbl ON redeemtbl.pawnticketno=pawntickettbl.pawnticketno";
+                            $query_run = mysqli_query($con, $query);
                             
                       ?> 
 
@@ -88,14 +83,13 @@
                                   </thead>
             <?php
               
-                foreach($query_run2 as $row2)
+                foreach($query_run as $row)
                 {
-                    foreach ($query_run as $row)
-                    {        
+                        
             ?>
                                   <tbody>
                                       <tr>
-                                      <td> <?php echo $row2['pawnticketno']; ?> </td>
+                                      <td> <?php echo $row['pawnticketno']; ?> </td>
                                         <td> <?php echo $row['customerno']; ?> </td>
                                         <td> <?php echo $row['dateloangranted']; ?> </td>
                                         <td> <?php echo $row['maturity_date']; ?> </td>
@@ -103,18 +97,18 @@
                                         <td> <?php echo $row['principal']; ?> </td>
                                         <td> <?php echo $row['interest']; ?> </td>
                                         <td> <?php echo $row['penalty']; ?> </td>
-                                        <td> <?php echo $row2['redemption_amnt']; ?> </td>
+                                        <td> <?php echo $row['redemption_amnt']; ?> </td>
                                         <td>
-                                            <a href="redeemview.php?id=<?= $row['pawnticketno'];?>&redid=<?=$row2['redeemid'];?>" class="btn btn-info viewbtn">VIEW</a>
-                                            <a href="editredeem.php?id=<?= $row['pawnticketno'];?>&redid=<?=$row2['redeemid'];?>" class="btn btn-success editbtn">EDIT</a>
-                                            <a href="deleteredeem.php?id=<?= $row['pawnticketno'];?>&redid=<?=$row2['redeemid'];?>" name="deletedata" class="btn btn-danger deletebtn">DELETE</a>
+                                            <a href="redeemview.php?id=<?= $row['pawnticketno'];?>&redid=<?=$row['redeemid'];?>" class="btn btn-info viewbtn">VIEW</a>
+                                            <a href="editredeem.php?id=<?= $row['pawnticketno'];?>&redid=<?=$row['redeemid'];?>" class="btn btn-success editbtn">EDIT</a>
+                                            <a href="deleteredeem.php?id=<?= $row['pawnticketno'];?>&redid=<?=$row['redeemid'];?>" name="deletedata" class="btn btn-danger deletebtn">DELETE</a>
                                         </td>
                                       </tr>
                                   </tbody>
 
           <?php           
                     
-                  }
+                  
                 }
                /* else 
                 {
