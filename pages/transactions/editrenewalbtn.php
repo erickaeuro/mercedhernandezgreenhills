@@ -20,7 +20,7 @@
 
         $query = "UPDATE pawntickettbl SET dateloangranted='$dateloangranted', maturity_date='$maturity_date', principal='$principal', interest='$interest', penalty ='$penalty' WHERE pawnticketno='$pawnticketno'";
         $query_run = mysqli_query($con, $query);
-        $query2 = "UPDATE renewaltbl SET pawnticketno='$pawnticketno', service_charge='$service_charge',  renewal_amnt='$renewal_amnt' WHERE renewalid=$renewalid";
+        $query2 = "UPDATE renewaltbl SET pawnticketno='$pawnticketno', service_charge='$service_charge', renewal_amnt='$renewal_amnt', total_amount_due ='$total_amount_due' WHERE renewalid=$renewalid";
         $query_run2 = mysqli_query($con, $query2);
     
         if($query_run)

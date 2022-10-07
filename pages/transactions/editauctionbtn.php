@@ -12,7 +12,7 @@
         $status = $_POST['status'];
         
 
-        $query = "UPDATE auctiontbl SET auctionid='$auctionid', pawnticketno='$pawnticketno', principal='$principal', expiry_date='$expiry_date', payments_made ='$payments', status='status' WHERE auctionid='$auctionid'";
+        $query = "UPDATE auctiontbl SET auctionid='$auctionid', pawnticketno='$pawnticketno', principal='$principal', expiry_date='$expiry_date', payments_made ='$payments', status='$status' WHERE auctionid='$auctionid'";
         $query_run = mysqli_query($con, $query);
         if($query_run)
         {
