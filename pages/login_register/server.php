@@ -15,12 +15,15 @@ if (isset($_POST['reg_user'])) {
   $email = mysqli_real_escape_string($db, $_POST['email']);
   $password_1 = mysqli_real_escape_string($db, $_POST['password_1']);
   $password_2 = mysqli_real_escape_string($db, $_POST['password_2']);
+  $security_qstn = mysqli_real_escape_string($db, $_POST['security_qstn']);
+  $security_ans = mysqli_real_escape_string($db, $_POST['security_ans']);
 
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $errors array
   if (empty($username)) { array_push($errors, "Username is required"); }
   if (empty($email)) { array_push($errors, "Email is required"); }
   if (empty($password_1)) { array_push($errors, "Password is required"); }
+  if (empty($security_ans)) { array_push($errors, "Security question is required"); }
   if ($password_1 != $password_2) {
 	array_push($errors, "The two passwords do not match");
   }
@@ -45,8 +48,8 @@ if (isset($_POST['reg_user'])) {
   if (count($errors) == 0) {
   	$password = md5($password_1);//encrypt the password before saving in the database
 
-  	$query = "INSERT INTO users (username, email, password) 
-  			  VALUES('$username', '$email', '$password')";
+  	$query = "INSERT INTO users (username, email, password, security_qstn, security_ans) 
+  			  VALUES('$username', '$email', '$password', '$security_qstn', '$security_ans')";
   	mysqli_query($db, $query);
   	$_SESSION['username'] = $username;
   	$_SESSION['success'] = "Successfuly Registered";
