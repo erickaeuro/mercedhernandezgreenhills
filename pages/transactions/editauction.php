@@ -97,7 +97,11 @@ require '../connection.php';
 
                             <div class="form-group col-md-12">
                                 <label for="status"><b>Status</b></label>
-                                <input type="text" class="form-control" name="status" value="<?= $row['status']; ?>">
+                                <select class="custom-select" name="status" style="width:410px; position: relative; left:10px; top:-1px">
+                                    <option value=" " selected="selected">status</option>
+                                    <option value="Available" selected="selected">Available</option>
+                                    <option value="Unavailable" selected="selected">Unavailable</option>
+                                </select>
                             </div>
                             <div class="mb-4">
                             <center> 
