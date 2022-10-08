@@ -43,10 +43,10 @@ if(isset($_GET["pdf"]) && isset($_GET["id"]))
         <th>Item Name</th>
         <th>Quantity</th>
         <th>Price</th>
-        <th>Actual Amount</th>
-        <th colspan="2">Tax1 (%)</th>
-        <th colspan="2">Tax2 (%)</th>
-        <th colspan="2">Tax3 (%)</th>
+        <th>Total Sales</th>
+        <th colspan="2">Interest (%)</th>
+        <th colspan="2">Principal (%)</th>
+        <th colspan="2">Total Payment Due (%)</th>
         <th rowspan="2">Total</th>
        </tr>
        <tr>
