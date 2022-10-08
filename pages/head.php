@@ -15,6 +15,7 @@
   <!-- Custom styles for this template-->
   <link href="../../css/sb-admin-2.css" rel="stylesheet">
   <link href="../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- Connection Database --> 
   <?php include ("connection.php"); 

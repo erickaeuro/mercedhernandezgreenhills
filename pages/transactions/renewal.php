@@ -107,7 +107,9 @@
                                         <td>
                                         <a href="renewalview.php?id=<?= $row['pawnticketno'];?>&redid=<?=$row['renewalid'];?>" class="btn btn-info viewbtn">VIEW</a>
                                         <a href="editrenewal.php?id=<?= $row['pawnticketno'];?>&redid=<?=$row['renewalid'];?>" class="btn btn-success editbtn">EDIT</a>
-                                        <a href="moverenewal.php?id=<?= $row['pawnticketno'];?>&redid=<?=$row['renewalid'];?>" class="btn btn-warning editbtn">MOVE</a>
+                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#myModal">
+                                          MOVE
+                                        </button>
 
                                         <a href="deleterenewal.php?id=<?= $row['pawnticketno']; ?>&redid=<?=$row['renewalid'];?>" name="deletedata" class="btn btn-danger deletebtn">DELETE</a>
                                         </td>
@@ -121,7 +123,35 @@
                 {
                     echo "No Record Found";
                 }
+
+
+                //CONFIRMATION MODAL FOR DELETE OR MOVE
+                
           ?>     
+          <div class="modal" id="myModal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Modal Heading</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal">X</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                  Modal body..
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
                               </table>
                           </div>
                       </div>
