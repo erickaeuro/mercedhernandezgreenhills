@@ -180,7 +180,7 @@
             
             </div>
         </div>
-        <form action = "movestock.php" method = "POST">
+        <form action = "stocks.php" method = "POST">
                  <!--MODAL FOR Delete-->
                  <div class="modal" id="DeleteModal">
             <div class="modal-dialog">
@@ -198,7 +198,7 @@
                 </div>
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                <a href="deletecode.php?id=<?= $row['stock_no']; ?>" name="deletedata" class="btn btn-danger deletebtn">Yes</a>
+                <a href="deletecode.php?id=<?= $row['stock_no']; ?>" name="deletedata" class="btn btn-success deletebtn">Yes</a>
                   <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                 </div>
               </div>
@@ -220,14 +220,13 @@
                 </div>
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                <a href="movestock.php?id=<?= $row['stock_no'];?>" name="move" class="btn btn-success editbtn">Yes</a>
-                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                <a href="movestock.php?id=<?= $row['stock_no']; ?>" name="movedata" class="btn btn-success">Yes</a>
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
                 </div>
               </div>
             </div>
           </div>
               </form>
-  
       </div>
       <!-- End of Main Content -->
 
