@@ -6,7 +6,7 @@ $columns = array('stock_no', 'item_type', 'karat_gold', 'kindofstone', 'weight',
 $query = "SELECT * FROM inventorytbl WHERE ";
 if($_POST["is_date_search"] == "yes")
 {
- $query .= 'date_sold BETWEEN "'.$_POST["start_date"].'" AND "'.$_POST["end_date"].'" AND ';
+ $query .= 'date_created BETWEEN "'.$_POST["start_date"].'" AND "'.$_POST["end_date"].'" AND ';
 }
 if(isset($_POST["search"]["value"]))
 {
