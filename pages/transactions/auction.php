@@ -43,18 +43,24 @@
       <div id="content">
 
         <!-- Topbar -->
-        <?php include '../navbar.php'; ?>
+        <?php include '../navbar.php'; 
+        if(isset($_SESSION['addstatus']))
+        {
+            ?>
+                <div class="alert alert-success" role="alert" role="alert">
+                    <?= $_SESSION['addstatus']; ?>
+                    <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">x</button>
+                </div>
+            <?php 
+            unset($_SESSION['addstatus']);
+        }?>
+        ?>
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
           <!-- Page Heading -->
-         <!--  <div class="d-sm-flex align-items-center justify-content-between mb-4"> 
-              <button type="button" class="btn btn-info btn-icon-text btn-md" data-toggle="modal" data-target="#add-sales">
-                  <i class="fas fa-plus"></i> Add Auction
-              </button>
-          </div> -->
           <!-- Content Row -->
 
             <div class="row">

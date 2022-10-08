@@ -1,4 +1,5 @@
 <?php
+ session_start();
  $con = mysqli_connect("localhost","root","","mercedhernandezgreenhills");
  if(mysqli_connect_errno()) {echo "Error: " . mysqli_connect_errno();}
 
@@ -16,7 +17,7 @@
         $query_run = mysqli_query($con, $query);
         if($query_run)
         {
-            echo '<script> alert("Data Saved"); </script>';
+            $_SESSION['addstatus'] = "Ticket Edited Successfully!";
             header('Location: auction.php');
            
         }
