@@ -19,7 +19,7 @@
 
         if($query_run)
         {
-            echo '<script> alert("Data Updated"); </script>';
+            $_SESSION['status'] = "Stock Updated Successfully!";
             header("Location:stocks.php");
         }
         else

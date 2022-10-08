@@ -55,6 +55,21 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
+        <?php 
+
+              if(isset($_SESSION['status']))
+              {
+                  ?>
+                      <div class="alert alert-success" role="alert" role="alert">
+                          <strong>Hey!</strong> <?= $_SESSION['status']; ?>
+                          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>
+                  <?php 
+                  unset($_SESSION['status']);
+              }
+
+        ?>
+
         <div class="d-sm-flex align-items-center justify-content-between mb-4"> 
                         <h4>
                             <a href="stockadd.php" class="btn btn-info btn-icon-text btn-md"> <i class="fas fa-plus"></i>Add Jewelry Stocks</a>
@@ -151,7 +166,7 @@
                         
                         $move = "Update inventorytbl set move = '1' where stock_no = '$stock'";
                         $insert_row = $con->query($move) or die ($con->error.__LINE__);
-                       // echo '<script>alert("Moved")</script>';
+                        //echo '<script>alert("Moved")</script>';
 
                         
                     }
@@ -250,6 +265,7 @@
 
         });
     </script>
+
 
 </body>
 </html>
