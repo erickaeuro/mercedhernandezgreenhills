@@ -115,12 +115,34 @@ require '../connection.php';
                                 <input type="date" class="form-control" name="date_sold" value="<?= $row['date_sold']; ?>" >
                             </div>
                         </div>
-                            <div class="mb-4">
+                        <div class="mb-4">
                             <center> 
                             <a href="stocks.php" class="btn btn-danger float-end">Back</a>
-                            <button type="submit" name="editjewelry" class="btn btn-success editbtn">Edit Stock</button> 
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#EditModal">Edit Stocks</button> 
                             </center>
-                            </div>
+                            </div>  
+                            
+                            <!--MODAL FOR EDIT-->
+                            <div class="modal" id="EditModal">
+                                    <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                        <h4 class="modal-title">Confirm Edit?</h4>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal">X</button>
+                                        </div>
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                        Do you want to save the changes?
+                                        </div>
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                        <button type="submit" name="editjewelry" class="btn btn-success">Yes</button> 
+                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
                         </form>
 
                         <?php

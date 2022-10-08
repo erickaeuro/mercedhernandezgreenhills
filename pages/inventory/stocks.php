@@ -60,7 +60,7 @@
                           <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">x</button>
                       </div>
                   <?php 
-                  unset($_SESSION['status'])
+                  unset($_SESSION['status']);
               }
 
         ?>
