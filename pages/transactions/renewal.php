@@ -3,11 +3,6 @@
 
     <?php include '../head.php'; 
     error_reporting(0);
-    if($_GET['del'] == 1){
-      echo"<div class='alert alert-success' role='alert'>Successfully Deleted
-      <button type='button' class='close' data-dismiss='alert'>x</button>
-      </div>";
-  }
     ?>
 
 <body id="page-top" class=" bg-gray-800">
@@ -26,7 +21,13 @@
       <div id="content">
 
         <!-- Topbar -->
-        <?php include '../navbar.php'; ?>
+        <?php include '../navbar.php'; 
+          if($_GET['del'] == 1){
+            echo"<div class='alert alert-success' role='alert'>Successfully Deleted
+            <button type='button' class='close' data-dismiss='alert'>x</button>
+            </div>";
+          }
+        ?>
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
@@ -107,11 +108,11 @@
                                         <td>
                                         <a href="renewalview.php?id=<?= $row['pawnticketno'];?>&redid=<?=$row['renewalid'];?>" class="btn btn-info viewbtn">VIEW</a>
                                         <a href="editrenewal.php?id=<?= $row['pawnticketno'];?>&redid=<?=$row['renewalid'];?>" class="btn btn-success editbtn">EDIT</a>
-                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#myModal">
-                                          MOVE
-                                        </button>
+                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#MoveModal">MOVE</button>
+                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteModal">DELETE</button>
+                                         
 
-                                        <a href="deleterenewal.php?id=<?= $row['pawnticketno']; ?>&redid=<?=$row['renewalid'];?>" name="deletedata" class="btn btn-danger deletebtn">DELETE</a>
+                                        
                                         </td>
                                       </tr>
                                     
@@ -125,32 +126,11 @@
                 }
 
 
-                //CONFIRMATION MODAL FOR DELETE OR MOVE
                 
-          ?>     
-          <div class="modal" id="myModal">
-            <div class="modal-dialog">
-              <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                  <h4 class="modal-title">Modal Heading</h4>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal">X</button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                  Modal body..
-                </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                </div>
-
-              </div>
-            </div>
-          </div>
+                
+          ?> 
+          
+          
 
                               </table>
                           </div>
@@ -164,6 +144,57 @@
         <!-- /.container-fluid -->
 
       </div>
+
+      <!--MODAL FOR Delete-->
+      <div class="modal" id="DeleteModal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Confirm Deletion?</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal">X</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <h5>WARNING!!</h5>
+                  You are about to delete the selected Ticket
+                  Are you sure you want to continue?
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                <a href="deleterenewal.php?id=<?= $row['pawnticketno']; ?>&redid=<?=$row['renewalid'];?>" name="deletedata" class="btn btn-success">Yes</a>
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--MODAL FOR MOVE-->
+      <div class="modal" id="MoveModal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Confirm Move Ticket?</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal">X</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                  Are you sure you want to move this ticket?
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                  <a href="moverenewal.php?id=<?= $row['pawnticketno'];?>&redid=<?=$row['renewalid'];?>" class="btn btn-success">Yes</a>
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
       <!-- End of Main Content -->
 
       <!-- Footer -->

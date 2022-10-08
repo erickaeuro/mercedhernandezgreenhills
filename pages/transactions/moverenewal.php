@@ -37,6 +37,10 @@ if(isset($_GET['id']) && isset($_GET['redid']))
     $renewquery = "UPDATE renewaltbl SET status='0' WHERE renewalid='$renid'";
     $renewquery_run = mysqli_query($con, $renewquery);
 
+    $renewquery = "UPDATE pawntickettbl SET transactiontype='Auction' WHERE pawnticketno='$pawnticketno'";
+    $renewquery_run = mysqli_query($con, $renewquery);
+
+
 
 
 
