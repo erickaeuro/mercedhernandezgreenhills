@@ -147,15 +147,14 @@
                             <td>
                                 <a href="stockview.php?id=<?= $row['stock_no'];?>" class="btn btn-info viewbtn">VIEW</a>
                                 <a href="stockedit.php?id=<?= $row['stock_no'];?>" class="btn btn-success editbtn">EDIT</a>
-                                <input type = "submit" class="btn btn-warning" name="move" value="MOVE">
-
-                                <a href="deletecode.php?id=<?= $row['stock_no']; ?>" name="deletedata" class="btn btn-danger deletebtn">DELETE</a>
-                                  
+                                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#MoveModal">MOVE</button>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteModal">DELETE</button>
+                                         
                                 
                             </td> 
                     </div> 
                         </tr>
-                    </tbody>        
+                    </tbody>      
                     
                 </form>
                 
@@ -181,6 +180,53 @@
             
             </div>
         </div>
+        <form action = "movestock.php" method = "POST">
+                 <!--MODAL FOR Delete-->
+                 <div class="modal" id="DeleteModal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Confirm Deletion?</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal">X</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <strong>WARNING!!</strong><br/>
+                  You are about to delete the stock item
+                  are you sure you want to continue?
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                <a href="deletecode.php?id=<?= $row['stock_no']; ?>" name="deletedata" class="btn btn-danger deletebtn">Yes</a>
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--MODAL FOR MOVE-->
+          <div class="modal" id="MoveModal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Confirm Move Stock?</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal">X</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                  Are you sure you want to move this Stock?
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                <a href="movestock.php?id=<?= $row['stock_no'];?>" name="move" class="btn btn-success editbtn">Yes</a>
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+              </form>
   
       </div>
       <!-- End of Main Content -->
