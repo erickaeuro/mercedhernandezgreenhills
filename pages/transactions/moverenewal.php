@@ -1,5 +1,5 @@
 <?php
- 
+session_start();
 $con = mysqli_connect("localhost","root","","mercedhernandezgreenhills");
 if(mysqli_connect_errno()) {echo "Error: " . mysqli_connect_errno();}
 
@@ -46,7 +46,7 @@ if(isset($_GET['id']) && isset($_GET['redid']))
 
     if($renewquery_run)
     {
-        echo '<script> alert("Ticket Moved for Auction") </script>';
+        $_SESSION['addstatus'] = "Ticket Moved Successfully";
         header("Location:renewal.php");
     }
     else

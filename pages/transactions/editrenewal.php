@@ -82,17 +82,17 @@ require '../connection.php';
 
                             <div class="form-group col-md-12">
                                 <label for="renewalid"><b>Renewal ID</b></label>
-                                <input type="text" class="form-control" name="renewalid" value="<?= $row3['renewalid']; ?>" >
+                                <input type="text" class="form-control" name="renewalid" value="<?= $row3['renewalid']; ?>" readonly>
                             </div> 
 
                             <div class="form-group col-md-12">
                                 <label for="pawnticketno"><b>Pawn Ticket Number</b></label>
-                                <input type="text" class="form-control" name="pawnticketno" value="<?= $row['pawnticketno']; ?>" >
+                                <input type="text" class="form-control" name="pawnticketno" value="<?= $row['pawnticketno']; ?>" readonly>
                             </div>  
 
                             <div class="form-group col-md-12">
                                 <label for="customername"><b>Customer Name </b></label>
-                                <input type="text" class="form-control" name="customername" value="<?= $row2['name']; ?>" disabled>
+                                <input type="text" class="form-control" name="customername" value="<?= $row2['name']; ?>" readonly>
                             </div>  
 
                             <div class="form-group col-md-12">

@@ -2,13 +2,9 @@
 <html lang="en">
 
     <?php include '../head.php'; 
-
     error_reporting(0);
-    if($_GET['del'] == 1){
-      echo"<div class='alert alert-success' role='alert'>Successfully Deleted
-      <button type='button' class='close' data-dismiss='alert'>x</button>
-      </div>";
-  }
+    session_start();
+    
     ?>
 
 <body id="page-top" class=" bg-gray-800">
@@ -27,7 +23,25 @@
       <div id="content">
 
         <!-- Topbar -->
-        <?php include '../navbar.php'; ?>
+        <?php include '../navbar.php'; 
+        //DELETE ALERT//   
+        if($_GET['del'] == 1){
+          echo"<div class='alert alert-success' role='alert'>Successfully Deleted
+          <button type='button' class='close' data-dismiss='alert'>x</button>
+          </div>";
+        }
+        //EDIT & ADD ALERT//        
+        if(isset($_SESSION['addstatus']))
+        {
+            ?>
+                <div class="alert alert-success" role="alert" role="alert">
+                    <?= $_SESSION['addstatus']; ?>
+                    <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">x</button>
+                </div>
+            <?php 
+            unset($_SESSION['addstatus']);
+        }?>
+
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->

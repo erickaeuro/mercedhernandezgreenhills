@@ -1,4 +1,5 @@
 <?php
+ session_start();
  $con = mysqli_connect("localhost","root","","mercedhernandezgreenhills");
  if(mysqli_connect_errno()) {echo "Error: " . mysqli_connect_errno();}
 
@@ -26,7 +27,7 @@
         if($query_run)
         {
            if($query_run2){ 
-            echo '<script> alert("Data Saved"); </script>';
+            $_SESSION['addstatus'] = "Ticket Edited Successfully";
             header('Location: renewal.php');
            }
         }

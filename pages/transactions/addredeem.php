@@ -29,7 +29,7 @@ if(isset($_POST['addredeem']))
     if($query_run2)
     {
        if($query_run){ 
-        echo '<script> alert("Data Saved"); </script>';
+        $_SESSION['addstatus'] = "Transaction Added Successfully";
         header('Location: redeem.php');
        }
     }

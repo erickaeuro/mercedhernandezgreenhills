@@ -26,9 +26,8 @@ if(isset($_POST['addpawn']))
     
         if($query_run)
         {
+        $_SESSION['addstatus'] = "Ticket Added Successfully";
         header('Location: pawnticket.php');
-
-        echo '<script> alert("Data Saved"); </script>';
         }
         else
         {

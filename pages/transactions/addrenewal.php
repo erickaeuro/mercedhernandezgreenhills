@@ -33,7 +33,7 @@ if(isset($_POST['addrenewal']))
         if($query_run)
         {
             if($query_run1){ 
-                echo '<script> alert("Data Saved"); </script>';
+                $_SESSION['addstatus'] = "Transaction Added Successfully";
                 header('Location: renewal.php');
                }
         }

@@ -3,6 +3,7 @@
 
     <?php include '../head.php'; 
     error_reporting(0);
+    session_start();
     ?>
 
 <body id="page-top" class=" bg-gray-800">
@@ -27,7 +28,18 @@
             <button type='button' class='close' data-dismiss='alert'>x</button>
             </div>";
           }
-        ?>
+
+          if(isset($_SESSION['addstatus']))
+          {
+              ?>
+                  <div class="alert alert-success" role="alert" role="alert">
+                      <?= $_SESSION['addstatus']; ?>
+                      <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">x</button>
+                  </div>
+              <?php 
+              unset($_SESSION['addstatus']);
+          }?>
+
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
