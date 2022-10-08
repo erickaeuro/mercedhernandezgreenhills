@@ -1,6 +1,7 @@
 <?php 
-     $con = mysqli_connect("localhost","root","","mercedhernandezgreenhills");
-     if(mysqli_connect_errno()) {echo "Error: " . mysqli_connect_errno();}
+    session_start();
+    $con = mysqli_connect("localhost","root","","mercedhernandezgreenhills");
+    if(mysqli_connect_errno()) {echo "Error: " . mysqli_connect_errno();}
 ?> 
 
 
@@ -34,7 +35,8 @@ if(isset($_POST['addredeem']))
     }
     else
     {
-        echo '<script> alert("Data Not Saved"); </script>';
+        $_SESSION['addstatus'] = "DATA NOT SAVED";
+            header('Location: redeembtn.php');
     }
 }
 

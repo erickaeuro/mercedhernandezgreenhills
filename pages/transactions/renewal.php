@@ -156,9 +156,9 @@
                 </div>
                 <!-- Modal body -->
                 <div class="modal-body">
-                  <h5>WARNING!!</h5>
-                  You are about to delete the selected Ticket
-                  Are you sure you want to continue?
+                  <strong>WARNING!!</strong><br/>
+                  You are about to delete the selected ticket
+                  are you sure you want to continue?
                 </div>
                 <!-- Modal footer -->
                 <div class="modal-footer">
@@ -170,7 +170,7 @@
           </div>
 
           <!--MODAL FOR MOVE-->
-      <div class="modal" id="MoveModal">
+          <div class="modal" id="MoveModal">
             <div class="modal-dialog">
               <div class="modal-content">
                 <!-- Modal Header -->

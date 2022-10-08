@@ -42,7 +42,18 @@
       <div id="content">
 
         <!-- Topbar -->
-        <?php include '../navbar.php'; ?>
+        <?php include '../navbar.php';
+        if(isset($_SESSION['addstatus']))
+        {
+            ?>
+                <div class="alert alert-danger" role="alert" role="alert">
+                    <?= $_SESSION['addstatus']; ?>
+                    <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">x</button>
+                </div>
+            <?php 
+            unset($_SESSION['addstatus']);
+        }
+        ?>
         <!-- End of Topbar -->
 
         <div class="row">

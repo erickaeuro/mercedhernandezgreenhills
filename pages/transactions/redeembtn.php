@@ -42,7 +42,18 @@
       <div id="content">
 
         <!-- Topbar -->
-        <?php include '../navbar.php'; ?>
+        <?php include '../navbar.php'; 
+        if(isset($_SESSION['addstatus']))
+        {
+            ?>
+                <div class="alert alert-danger" role="alert" role="alert">
+                    <?= $_SESSION['addstatus']; ?>
+                    <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">x</button>
+                </div>
+            <?php 
+            unset($_SESSION['addstatus']);
+        }
+        ?>
         <!-- End of Topbar -->
 
         <div class="row">
@@ -133,9 +144,37 @@
                             <div class="mb-4">
                             <center> 
                             <a href="redeem.php" class="btn btn-danger float-end">Back</a>
-                            <button type="submit" name="addredeem" class="btn btn-success editbtn">Add Redeem Loan</button> 
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#AddModal">Add Redeem Loan</button>
+                            
                             </center>
                             </div>
+
+                            <!--MODAL FOR MOVE-->
+                            <div class="modal" id="AddModal">
+                                    <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                        <h4 class="modal-title">Confirm Transaction?</h4>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal">X</button>
+                                        </div>
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                        Do you want to finish the transaction?
+                                        </div>
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                        <button type="submit" name="addredeem" class="btn btn-success editbtn">Yes</button> 
+                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+
+
+
+
+
                         </form>
                     </div>
                 </div>

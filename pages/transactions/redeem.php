@@ -101,7 +101,7 @@
                                         <td>
                                             <a href="redeemview.php?id=<?= $row['pawnticketno'];?>&redid=<?=$row['redeemid'];?>" class="btn btn-info viewbtn">VIEW</a>
                                             <a href="editredeem.php?id=<?= $row['pawnticketno'];?>&redid=<?=$row['redeemid'];?>" class="btn btn-success editbtn">EDIT</a>
-                                            <a href="deleteredeem.php?id=<?= $row['pawnticketno'];?>&redid=<?=$row['redeemid'];?>" name="deletedata" class="btn btn-danger deletebtn">DELETE</a>
+                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteModal">DELETE</button>
                                         </td>
                                       </tr>
                                   </tbody>
@@ -125,6 +125,30 @@
             </div>
         </div>
         <!-- /.container-fluid -->
+
+        <!--MODAL FOR Delete-->
+        <div class="modal" id="DeleteModal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Confirm Deletion?</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal">X</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <strong>WARNING!!</strong><br/>
+                  You are about to delete the selected ticket
+                  are you sure you want to continue?
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                <a href="deleteredeem.php?id=<?= $row['pawnticketno'];?>&redid=<?=$row['redeemid'];?>" name="deletedata" class="btn btn-success">Yes</a>
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
 
       </div>
       <!-- End of Main Content -->
