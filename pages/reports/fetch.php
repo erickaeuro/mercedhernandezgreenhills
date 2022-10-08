@@ -2,7 +2,7 @@
 //fetch.php
 $con = mysqli_connect("localhost","root","","mercedhernandezgreenhills");
 if(mysqli_connect_errno()) {echo "Error: " . mysqli_connect_errno();}
-$columns = array('stock_no', 'item_type', 'karat_gold', 'kindofstone', 'weight','itemqty','tagprice','date_sold');
+$columns = array('stock_no', 'item_type', 'karat_gold', 'kindofstone', 'weight','itemqty','tagprice','date_created');
 $query = "SELECT * FROM inventorytbl WHERE ";
 if($_POST["is_date_search"] == "yes")
 {
@@ -14,7 +14,7 @@ if(isset($_POST["search"]["value"]))
   (stock_no LIKE "%'.$_POST["search"]["value"].'%"
   OR item_type LIKE "%'.$_POST["search"]["value"].'%"
   OR karat_gold LIKE "%'.$_POST["search"]["value"].'%"
-  OR date_sold LIKE "%'.$_POST["search"]["value"].'%")
+  OR date_created LIKE "%'.$_POST["search"]["value"].'%")
  ';
 }
 if(isset($_POST["order"]))
@@ -44,7 +44,7 @@ while($row = mysqli_fetch_array($result))
  $sub_array[] = $row["weight"];
  $sub_array[] = $row["itemqty"];
  $sub_array[] = $row["tagprice"];
- $sub_array[] = $row["date_sold"];
+ $sub_array[] = $row["date_created"];
  $data[] = $sub_array;
 }
 function get_all_data($con)

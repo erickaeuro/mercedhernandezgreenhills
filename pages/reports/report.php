@@ -1,6 +1,6 @@
 <html>
  <head>
- <title>Merced Hernandez Green Hills Report</title>
+ <title>Merced Hernandez Greenhills Inventory Reports</title>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
   <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
@@ -62,7 +62,7 @@
        <th style="text-align:center;">Weight</th>
        <th style="text-align:center;">Item Quantity</th>
        <th style="text-align:center;">Tag Price</th>
-       <th style="text-align:center;">Date Sold</th>
+       <th style="text-align:center;">Date Created</th>
       </tr>
      </thead>
     </table>
