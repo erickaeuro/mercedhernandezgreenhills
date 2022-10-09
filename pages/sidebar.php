@@ -3,11 +3,7 @@
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../dashboard/dashboard.php">
       <div id="banner">
-      <img src="img/bg.png" width="255" height="90">
-        <?php 
-         //  echo "<img src='logo.png'/>"; 
-         //echo "<img src= logobg.png  />"; 
-         ?>      
+      <img class="img-profile rounded-circle" src="../../pages/logobg.png" width="170%"> 
       </div>    
 
       <!-- Divider -->
