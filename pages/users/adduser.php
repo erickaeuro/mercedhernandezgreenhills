@@ -25,7 +25,7 @@ if(isset($_POST['adduser']))
         $userstatus = $_POST['userstatus'];
 
 
-    $equery = "SELECT * FROM users WHERE emailadd='$emailadd' ";
+    $equery = "SELECT * FROM users WHERE email='$emailadd' ";
     $equery_run = mysqli_query($con, $equery);
     if(mysqli_num_rows($equery_run) > 0)
     {
@@ -37,7 +37,7 @@ if(isset($_POST['adduser']))
     {
         if($password === $cpassword)
         {
-            $query = "INSERT INTO users (username, password, email, name, contactno, address, usertype, userstatus) VALUES ('$uname','$pass','$emailadd','$name','$contactno','$address','$usertype','$userstatus')";
+            $query = "INSERT INTO users (username, password, email, name, contactno, address, usertype, userstatus) VALUES ('$uname','$pass','$emailadd','$name','$contactno','$address','$usertype','Active')";
             $query_run = mysqli_query($con, $query);
             
 

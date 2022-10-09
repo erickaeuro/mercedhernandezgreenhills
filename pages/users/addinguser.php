@@ -63,12 +63,12 @@
 
                     <div class="form-group col-md-12">
                         <label for="uname">Username</label>
-                        <input type="text" class="form-control" name="uname" placeholder="Enter Username" required>
+                        <input type="text" class="form-control" name="username" placeholder="Enter Username" required>
                     </div>
 
                     <div class="form-group col-md-12">
                         <label for="pass">Password</label>
-                        <input type="password" class="form-control" name="pass" placeholder="Enter Password" required>
+                        <input type="password" class="form-control" name="password" placeholder="Enter Password" required>
                     </div>
 
                     <div class="form-group col-md-12">
@@ -78,7 +78,7 @@
 
                     <div class="form-group col-md-12">
                         <label for="emailadd">Email Address</label>
-                        <input type="email" class="form-control" name="emailadd" placeholder="Enter Email Address" required>
+                        <input type="email" class="form-control" name="email" placeholder="Enter Email Address" required>
                     </div>
 
                     <div class="form-group col-md-12">
@@ -109,7 +109,7 @@
 
                             <div class="mb-4">
                             <center> 
-                            <a href="stocks.php" class="btn btn-danger float-end">Back</a>
+                            <a href="users.php" class="btn btn-danger float-end">Back</a>
                             <button type="submit" name="adduser" class="btn btn-success editbtn">Add New Users</button> 
                             </center>
                             </div>
