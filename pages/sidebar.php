@@ -3,11 +3,8 @@
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../dashboard/dashboard.php">
       <div id="banner">
-      <img class="img-profile rounded-circle" src="../../pages/logobg.png" width="170%"> 
+      <img class="img-profile rounded-circle" src="../../pages/logobg.png" width="110%"> 
       </div>    
-
-      <!-- Divider -->
-      <hr class="sidebar-divider my-5">
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
