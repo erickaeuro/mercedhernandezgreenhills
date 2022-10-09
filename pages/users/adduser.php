@@ -1,4 +1,3 @@
-
 <?php
  $con = mysqli_connect("localhost","root","","mercedhernandezgreenhills");
  if(mysqli_connect_errno()) {echo "Error: " . mysqli_connect_errno();}
@@ -15,10 +14,10 @@ function encrypthis($data,$key){
 
 if(isset($_POST['adduser']))
 {
-        $uname = $_POST['uname'];
-        $pass = $_POST['pass'];
+        $uname = $_POST['username'];
+        $pass = $_POST['password'];
         $pass = encrypthis($pass, $key);
-        $emailadd = $_POST['emailadd'];
+        $emailadd = $_POST['email'];
         $name = $_POST['name'];
         $contactno = $_POST['contactno'];
         $address = $_POST['address'];
@@ -26,7 +25,7 @@ if(isset($_POST['adduser']))
         $userstatus = $_POST['userstatus'];
 
 
-    $equery = "SELECT * FROM userstbl WHERE emailadd='$emailadd' ";
+    $equery = "SELECT * FROM users WHERE emailadd='$emailadd' ";
     $equery_run = mysqli_query($con, $equery);
     if(mysqli_num_rows($equery_run) > 0)
     {
@@ -38,8 +37,10 @@ if(isset($_POST['adduser']))
     {
         if($password === $cpassword)
         {
-            $query = "INSERT INTO userstbl (uname, pass, emailadd, name, contactno, address, usertype, userstatus) VALUES ('$uname','$pass','$emailadd','$name','$contactno','$address','$usertype','$userstatus')";
+            $query = "INSERT INTO users (username, password, email, name, contactno, address, usertype, userstatus) VALUES ('$uname','$pass','$emailadd','$name','$contactno','$address','$usertype','$userstatus')";
             $query_run = mysqli_query($con, $query);
+            
+
 
             if($query_run)
             {
@@ -64,4 +65,5 @@ if(isset($_POST['adduser']))
     }
 
 }
+
 ?>

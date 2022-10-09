@@ -1,4 +1,5 @@
 <?php 
+    session_start();
      $con = mysqli_connect("localhost","root","","mercedhernandezgreenhills");
      if(mysqli_connect_errno()) {echo "Error: " . mysqli_connect_errno();}
 ?> 
@@ -14,19 +15,6 @@ function encrypthis($data,$key){
     $encrypted = openssl_encrypt($data, 'aes-256-cbc', $encryption_key, 0, $iv);
     return base64_encode($encrypted. '::'. $iv);
  }
-
- //Validate for users over 18 only
-function validateBirthDate($then, $min)
-{
-    // $then will first be a string-date
-    $then = strtotime($then);
-    //The age to be over, over +18
-    $min = strtotime('+18 years', $then);
-    echo $min;
-    if(time() < $min)  {
-        die('Not 18'); 
-    }
-}
 
 if(isset($_POST['addcustomer']))
 {
@@ -46,7 +34,7 @@ if(isset($_POST['addcustomer']))
 
     if($query_run)
     {
-        echo '<script> alert("Data Saved"); </script>';
+        $_SESSION['status'] = "Customer Added Successfully!";
         header('Location: customer.php');
     }
     else

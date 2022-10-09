@@ -1,12 +1,13 @@
 <?php
-session_start();
+//session_start();
 // initializing variables
 $username = "";
 $email    = "";
-$errors = array(); 
+$errors = array();
+session_start();
 
 // connect to the database
-$db = mysqli_connect('localhost', 'root', '', 'project');
+$db = mysqli_connect('localhost', 'root', '', 'mercedhernandezgreenhills');
 
 // REGISTER USER
 if (isset($_POST['reg_user'])) {
@@ -17,6 +18,10 @@ if (isset($_POST['reg_user'])) {
   $password_2 = mysqli_real_escape_string($db, $_POST['password_2']);
   $security_qstn = mysqli_real_escape_string($db, $_POST['security_qstn']);
   $security_ans = mysqli_real_escape_string($db, $_POST['security_ans']);
+
+  /*while($row = mysqli_fetch_array($result)){
+    $user_status=$row['user_status'];		
+  }*/
 
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $errors array
@@ -47,9 +52,9 @@ if (isset($_POST['reg_user'])) {
   // Finally, register user if there are no errors in the form
   if (count($errors) == 0) {
   	$password = md5($password_1);//encrypt the password before saving in the database
-
-  	$query = "INSERT INTO users (username, email, password, security_qstn, security_ans) 
-  			  VALUES('$username','$email','$password','$security_qstn','$security_ans')";
+  
+  	$query = "INSERT INTO users (username, email, password, security_qstn, security_ans, userstatus) 
+  			  VALUES('$username', '$email', '$password', '$security_qstn', '$security_ans', 'Active')";
   	mysqli_query($db, $query);
   	$_SESSION['username'] = $username;
   	$_SESSION['success'] = "Successfuly Registered";

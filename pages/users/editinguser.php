@@ -52,51 +52,55 @@ require '../connection.php';
                     </div>
                     <div class="card-body">
 
+                    
                     <?php
                         if(isset($_GET['id']))
                         {
                             $id = mysqli_real_escape_string($con, $_GET['id']);
-                            $query = "SELECT * FROM userstbl WHERE userid ='$id' ";
+                            $query = "SELECT * FROM users WHERE id ='$id' ";
                             $query_run = mysqli_query($con, $query);
 
                             if(mysqli_num_rows($query_run) > 0)
                             {
                                 $row = mysqli_fetch_array($query_run);
-                                ?>
 
-                            <form action="edituser.php" method="POST">
-
+                            }
                         
-                            <input type="hidden" name="id" value='<?= $row['userid']; ?>'>
+                    ?>
+
+            <form action="edituser.php" method="POST">
+        
+                <input type="hidden" name="id" value='<?= $row['id']; ?>'>
+                <input type="hidden" name="userstatus" value='<?= $row['userstatus']; ?>'>
 
                     <div class="form-group col-md-12">
                         <label for="userid">User ID</label>
-                        <input type="text" class="form-control" name="userid" value="<?= $row['userid']; ?>" disable>
+                        <input type="text" class="form-control" name="id" value="<?= $row['id']; ?>" disable>
                     </div>
 
                     <div class="form-group col-md-12">
                         <label for="uname">Username</label>
-                        <input type="text" class="form-control" name="uname" value="<?= $row['uname']; ?>">
+                        <input type="text" class="form-control" name="uname" value="<?= $row['username']; ?>">
                     </div>
 
                     <div class="form-group col-md-12">
                         <label for="pass">Password</label>
-                        <input type="password" class="form-control" name="pass" value="<?= $row['pass']; ?>">
+                        <input type="password" class="form-control" name="pass" value="<?= $row['password']; ?>">
                     </div>
 
                     <div class="form-group col-md-12">
                         <label for="cpass">Confirm Password</label>
-                        <input type="password" class="form-control" name="cpass" value="<?= $row['pass']; ?>">
+                        <input type="password" class="form-control" name="cpass" value="<?= $row['password']; ?>">
                     </div>
 
                     <div class="form-group col-md-12">
                         <label for="emailadd">Email Address</label>
-                        <input type="email" class="form-control" name="emailadd" value="<?= $row['emailadd']; ?>">
+                        <input type="email" class="form-control" name="emailadd" value="<?= $row['email']; ?>">
                     </div>
 
                     <div class="form-group col-md-12">
                         <label for="name">Complete Name</label>
-                        <input type="text" class="form-control" name="name" value="<?= $row['name']; ?>">
+                        <input type="text" class="form-control" name="cname" value="<?= $row['cname']; ?>">
                     </div>
 
                     <div class="form-group col-md-12">
@@ -104,29 +108,29 @@ require '../connection.php';
                         <input type="text" class="form-control" name="contactno" value="<?= $row['contactno']; ?>">
                     </div>
 
-
                     <div class="form-group col-md-12">
                         <label for="address">Address</label>
                         <input type="text" class="form-control" name="address" value="<?= $row['address']; ?>">
                     </div>
 
                     <div class="form-group col-md-12">
-                                <label for="usertype"><b>User Type </b></label><br/>
-                                <select class="custom-select" name="usertype" style="width:1162px; position: relative; left:2px; top:-1px">
-                                    <option value=" " selected="selected">User Type</option>
-                                    <option value="Admin" selected="selected">Admin</option>
-                                    <option value="Appraiser" selected="selected">Appraiser</option>
-                                    <option value="Inventory Clerk" selected="selected">Inventory Clerk</option>
-                                </select>
-                            </div>  
+                        <label for="usertype"><b>User Type </b></label><br/>
+                        <select class="custom-select" name="usertype" style="width:1162px; position: relative; left:2px; top:-1px">
+                            <option value=" " selected="selected">User Type</option>
+                            <option value="Admin" selected="selected">Admin</option>
+                            <option value="Appraiser" selected="selected">Appraiser</option>
+                            <option value="Inventory Clerk" selected="selected">Inventory Clerk</option>
+                        </select>
+                    </div>  
 
                         </div>
                             <div class="mb-4">
                             <center> 
                             <a href="users.php" class="btn btn-danger float-end">Back</a>
-                            <button type="submit" name="edituser" class="btn btn-success editbtn">Edit User</button> 
+                            <input type="submit" class="btn btn-success editbtn" name="edituser" value="Edit User">
                             </center>
                             </div>
+
                         </form>
 
                         <?php
@@ -135,7 +139,7 @@ require '../connection.php';
                             {
                                 echo "<h4>No Such Id Found</h4>";
                             }
-                        }
+                        {}
                         ?>
                         
                     </div>
