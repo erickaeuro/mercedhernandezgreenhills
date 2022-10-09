@@ -13,7 +13,6 @@ if(isset($_GET['id']))
 
     if(mysqli_query($con, $query))
     {
-        echo '<script> alert("Ticket Deleted") </script>';
         header("Location:redeem.php?del=1");
     }
     else

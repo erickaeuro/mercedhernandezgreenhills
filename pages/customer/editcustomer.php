@@ -1,4 +1,5 @@
 <?php
+ session_start();
  $con = mysqli_connect("localhost","root","","mercedhernandezgreenhills");
  if(mysqli_connect_errno()) {echo "Error: " . mysqli_connect_errno();}
 
@@ -16,7 +17,7 @@
 
         if($query_run)
         {
-            echo '<script> alert("Data Updated"); </script>';
+            $_SESSION['custstatus'] = "Successfully Edited";
             header("Location:customer.php");
         }
         else
