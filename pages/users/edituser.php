@@ -2,20 +2,20 @@
  $con = mysqli_connect("localhost","root","","mercedhernandezgreenhills");
  if(mysqli_connect_errno()) {echo "Error: " . mysqli_connect_errno();}
 
-    if(isset($_POST['edituser']))
-    {   
-        $userid = $_POST['userid'];
+     if(isset($_POST['edituser']))
+        {
+        $userid = $_POST['id'];
         $uname = $_POST['uname'];
         $pass = $_POST['pass'];
         $emailadd = $_POST['emailadd'];
-        $name = $_POST['name'];
         $contactno = $_POST['contactno'];
         $address = $_POST['address'];
         $usertype = $_POST['usertype'];
-
-        
-
-        $query = "UPDATE userstbl SET uname='$uname', pass='$pass', emailadd='$emailadd', name='$name', contactno='$contactno', address='$address', usertype='$usertype' WHERE userid='$userid'";
+        $fullname = $_POST['cname'];
+        $userstatus = $_POST['userstatus'];
+        //$name = $_POST['name'];
+   
+        $query = "UPDATE users SET username='$uname', password='$pass', email='$emailadd', name='$name', contactno='$contactno', address='$address', usertype='$usertype', cname = '$fullname', userstatus = '$userstatus' WHERE id='$userid'";
         $query_run = mysqli_query($con, $query);
 
         if($query_run)

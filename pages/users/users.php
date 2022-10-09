@@ -19,10 +19,13 @@
   <link href="../../css/sb-admin-2.css" rel="stylesheet">
   <link href="../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+  
+
 <!-- Connection Database --> 
   <?php include ("../connection.php"); 
   
   session_start();
+  error_reporting(0);
 ?>
 
 </head>
@@ -56,25 +59,33 @@
                         </h4>
                     </div>
           <!-- Content Row -->
+          
 
             <div class="row">
                 
                 <div class="col-xl-12 col-lg-12">
                   <div class="card shadow mb-4 border-left-info border-bottom-info">
                       <!-- Card Header - Dropdown -->
+                      <!-- <div class="alert alert-success">
+                          hello
+                        </div> -->
                       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        
                           <h6 class="m-0 font-weight-bold text-info">Users</h6>
                       </div>
-                      
+
                       <?php 
+                  
                             $con = mysqli_connect("localhost","root","","mercedhernandezgreenhills");
                             if(mysqli_connect_errno()) {echo "Error: " . mysqli_connect_errno();}
+       
+                    
                         ?> 
                 <?php 
 
-                      $query = "SELECT * FROM userstbl";
+                      $query = "SELECT * FROM users";
                       $query_run = mysqli_query($con, $query);
-
+                     
                 ?> 
                       <!-- Card Body -->
                       <div class="card-body">
@@ -89,6 +100,7 @@
                                           <th>Contact Number</th>
                                           <th>Address</th>
                                           <th>User Type</th>
+                                          <th>User Status</th>
                                           <th>Action</th>
                                           <th></th>
                                       </tr>
@@ -100,23 +112,70 @@
                     foreach($query_run as $row)
                     {
             ?>
-                     
-                                  <tbody>
-                                  <tr>
-                                      <td> <?php echo $row['userid']; ?> </td>
-                                      <td> <?php echo $row['uname']; ?> </td>
-                                      <td> <?php echo $row['emailadd']; ?> </td>
-                                      <td> <?php echo $row['name']; ?> </td>
-                                      <td> <?php echo $row['contactno']; ?> </td>
-                                      <td> <?php echo $row['address']; ?> </td>
-                                      <td> <?php echo $row['usertype']; ?> </td>
-                                      <td>
-                                          <a href="editinguser.php?id=<?= $row['userid'];?>" class="btn btn-success editbtn">EDIT</a>
-                                          <a href="deleteuser.php?id=<?= $row['userid']; ?>" name="deletedata" class="btn btn-danger deletebtn">DELETE</a>
-                                      </td>
-                                   </tr>
-                                      
-                                  </tbody>
+      
+                  <tbody>
+                  <tr>
+                      <td> <?php echo $row['id']; ?> </td>
+                      <td> <?php echo $row['username']; ?> </td>
+                      <td> <?php echo $row['email']; ?> </td>
+                      <td> <?php echo $row['cname']; ?> </td>
+                      <td> <?php echo $row['contactno']; ?> </td>
+                      <td> <?php echo $row['address']; ?> </td>
+                      <td> <?php echo $row['usertype']; ?> </td>
+                      <td> <a href="users.php?id=<?= $row['id'];?>" name="userstatus" class="btn btn-success editbtn"><?php echo $row['userstatus']; ?></a> </td>
+                      <td>
+                          <a href="editinguser.php?id=<?= $row['id'];?>" class="btn btn-success editbtn">EDIT</a>
+                          <a href="deleteuser.php?id=<?= $row['id']; ?>" name="deletedata" class="btn btn-danger deletebtn">DELETE</a>
+                      </td>
+                    </tr>
+                      
+                  </tbody>
+
+                  <?php
+
+                    if(isset($_GET['id']))
+                    {
+                        $redid = mysqli_real_escape_string ($con, $_GET['id']);
+
+                        //$query = "DELETE FROM users WHERE id='$redid'";
+                    
+                        $userstatus = $row['userstatus'];
+
+                        if($userstatus == "Active"){
+
+                        $query = "UPDATE users set userstatus = 'Inactive' WHERE id='$redid'";
+
+                        if(mysqli_query($con, $query))
+                        {
+                            //echo "<div class='alert alert-danger'>";
+                            //header("Location:users.php");
+                            header("Refresh:0");
+                        }
+                        else
+                        {
+                            echo '<script> alert("User not Updated"); </script>';
+                        }
+
+                        }
+
+                        //ELSE
+                        else if($userstatus == "Inactive"){
+                        $query = "UPDATE users set userstatus = 'Active' WHERE id='$redid'";
+
+                        if(mysqli_query($con, $query))
+                        {
+                            //echo "<div class='alert alert-danger'>";
+                            //header("Location:users.php");
+                            header("Refresh:0");
+                        }
+                        else
+                        {
+                            echo '<script> alert("User not Updated"); </script>';
+                        }
+                        }                     
+                    }
+
+?>
 
          <?php           
                     }
@@ -183,3 +242,4 @@
 </body>
 
 </html>
+

@@ -1,14 +1,21 @@
 <?php include('server.php') ?>
 <?php 
 error_reporting(0);
+session_start();
 $conn = new mysqli("localhost","root","","mercedhernandezgreenhills");
+include('server.php');
+// $conn = new mysqli("localhost","root","","mercedhernandezgreenhills");
+// error_reporting(0);
+// $conn = new mysqli("localhost","root","","mercedhernandezgreenhills");
 
 $msg="";
 
 if(isset($_POST['login_user'])){
+
 	$username = $_POST['username'];
 	$password = $_POST['password'];
-	$passwordd = sha1($password);
+	
+	//$passwordd = sha1($password);
 	$authentication = $_POST['authentication'];
 
 	$username = mysqli_real_escape_string($db, $_POST['username']);
@@ -24,15 +31,28 @@ if(isset($_POST['login_user'])){
 	if (empty($authentication)) {
 		array_push($errors, "Authentication is required");
 	}
-  
-	if (count($errors) == 0) {
-		$password = md5($password);
-		$query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+
+	$enc_pass = md5($password);
+
+	$query = "SELECT * FROM users WHERE username='$username' AND password='$enc_pass'";
 	  $results = mysqli_query($db, $query);
-  
+
+	while($row = mysqli_fetch_array($results)){
+		$user_status=$row['userstatus'];
+		$user=$row['username'];
+    	$pass=$row['password'];		
+	}	
+
+	if($user_status == "Inactive"){array_push($errors, "User Deactivated");}
+
+	if (($user == $username) && ($pass == $enc_pass)){
+
+	if (count($errors) == 0) {
+
 		if (mysqli_num_rows($results) == 1) {
-		$_SESSION['username'] = $username;
-		$_SESSION['success'] = "Successfuly Registered";
+			
+			$_SESSION['username'] = $username;
+			$_SESSION['success'] = "Successfuly Login";
 
 			if($authentication == "EMAIL"){
 				header("location:otp.php");
@@ -45,16 +65,14 @@ if(isset($_POST['login_user'])){
 			if($authentication == "SECURITY QUESTIONS"){
 				header("location:security_qstn.php");
 			}
-
-	 	}
-
-		 else {
-			array_push($errors, "Wrong username/password combination");
 		}
-  
 	}
-		
+}
+
+	else {
+		array_push($errors, "Wrong Username / Password Combination");
 	}
+}
 
 ?>
 
@@ -87,11 +105,11 @@ if(isset($_POST['login_user'])){
 		<option disabled selected value="Select a Method">Select a Method</option>
 		<option value="MFA">MFA</option>
 		<option value="EMAIL">EMAIL</option>
-		<option value="SECUIRTY QUESTIONS">SECUIRTY QUESTIONS</option>
+		<!-- <option value="SECUIRTY QUESTIONS">SECUIRTY QUESTIONS</option> -->
 	</select>
 
-  	<div class="input-group">
-  		<button type="submit" class="btn" name="login_user">Login</button>
+  	<div class="input-group">  		
+		  <input type="submit" class="btn" name="login_user" value="Login">
   	</div> 
 	  
 	  <p>

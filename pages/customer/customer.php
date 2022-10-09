@@ -20,8 +20,9 @@
   <link href="../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 <!-- Connection Database --> 
-  <?php include ("../connection.php"); 
-  
+  <?php 
+  include '../head.php'; 
+  error_reporting(0);
   session_start();
 ?>
 
@@ -43,11 +44,52 @@
       <div id="content">
 
         <!-- Topbar -->
-        <?php include '../navbar.php'; ?>
+        <?php include '../navbar.php'; 
+        if($_GET['del'] == 1){
+          echo"<div class='alert alert-success' role='alert'>Successfully Deleted
+          <button type='button' class='close' data-dismiss='alert'>x</button>
+          </div>";
+        }
+
+        if(isset($_SESSION['custstatus']))
+        {
+            ?>
+                <div class="alert alert-success" role="alert" role="alert">
+                    <?= $_SESSION['custstatus']; ?>
+                    <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">x</button>
+                </div>
+            <?php 
+            unset($_SESSION['custstatus']);
+        }?>
+        
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
+
+        
+        <?php 
+        
+        if($_GET['del'] == 1){
+          echo"<div class='alert alert-success' role='alert'>Successfully Deleted
+          <button type='button' class='close' data-dismiss='alert'>x</button>
+          </div>";
+        }
+
+
+              if(isset($_SESSION['status']))
+              {
+                  ?>
+                      <div class="alert alert-success" role="alert" role="alert">
+                          <?= $_SESSION['status']; ?>
+                          <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">x</button>
+                      </div>
+                  <?php 
+                  unset($_SESSION['status']);
+              }
+
+        ?>
+
 
           
         <div class="d-sm-flex align-items-center justify-content-between mb-4"> 
@@ -95,8 +137,7 @@
 
                                   </thead>
             <?php
-                if($query_run)
-                {
+              
                     foreach($query_run as $row)
                     {
             ?>
@@ -115,14 +156,15 @@
                                         </td>
                                       </tr>
                                   </tbody>
+
+                                  
               <?php           
                     }
-                }
-                else 
-                {
-                    echo "No Record Found";
-                }
+                    
+         
              ?>   
+             
+
                               </table>
                           </div>
                       </div>

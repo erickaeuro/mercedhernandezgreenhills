@@ -149,7 +149,19 @@
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                                 Employees </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                            3
+                                            <?php 
+                                                        $cser=mysqli_connect("localhost","root","","mercedhernandezgreenhills") or die("connection failed:".mysqli_error());
+                                                        $result = mysqli_query($cser,"SELECT * FROM users") or die(mysql_error());
+
+                                                        if($userstotal = mysqli_num_rows($result))
+                                                        {
+                                                            echo '<h5 class="mb-0"> '.$userstotal.'</h5>';
+                                                        }
+                                                        else
+                                                        {
+                                                            echo '<h5="mb-0"> No Data </h5>';
+                                                        }
+                                                    ?>
                                             </div>
                                         </div>
                                         <div class="col-auto">
