@@ -3,17 +3,15 @@
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../dashboard/dashboard.php">
       <div id="banner">
+      <img src="img/bg.png" width="255" height="90">
         <?php 
          //  echo "<img src='logo.png'/>"; 
-         echo "<img src= logo.png  />"; 
-         ?> 
-     </div>
-        <div class="sidebar-brand-text mx-3">Merced Hernandez</div>
-      </a>
-      
+         //echo "<img src= logobg.png  />"; 
+         ?>      
+      </div>    
 
       <!-- Divider -->
-      <hr class="sidebar-divider my-2">
+      <hr class="sidebar-divider my-5">
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">

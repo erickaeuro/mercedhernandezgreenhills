@@ -71,7 +71,7 @@
 
                             <div class="form-group col-md-12">
                                 <label for="birthdate">Birthdate</label>
-                                <input type="date" class="form-control" max="2004-12-31" name="birthdate" placeholder="Birthdate" required>
+                                <input type="date" class="form-control" name="BirthDate" placeholder="Birthdate" required>
                             </div>
 
                             <div class="form-group col-md-12">

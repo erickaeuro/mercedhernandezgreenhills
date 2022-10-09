@@ -15,6 +15,19 @@ function encrypthis($data,$key){
     return base64_encode($encrypted. '::'. $iv);
  }
 
+ //Validate for users over 18 only
+function validateBirthDate($then, $min)
+{
+    // $then will first be a string-date
+    $then = strtotime($then);
+    //The age to be over, over +18
+    $min = strtotime('+18 years', $then);
+    echo $min;
+    if(time() < $min)  {
+        die('Not 18'); 
+    }
+}
+
 if(isset($_POST['addcustomer']))
 {
     $customer_no = $_POST['customerno'];
@@ -23,12 +36,12 @@ if(isset($_POST['addcustomer']))
     $address = encrypthis($address, $key);
     $cpnum = $_POST['cpnum'];
     $cpnum = encrypthis($cpnum, $key);
-    $birthdate = $_POST['birthdate'];
+    $BirthDate = $_POST['birthdate'];
     $valid_id = $_POST['valid_id'];
     $valid_id = encrypthis($valid_id, $key);
 
 
-    $query = "INSERT INTO customertbl (`customerno`,`name`,`address`,`cpnum`,`birthdate`,`valid_id`) VALUES ('$customerno','$name','$address','$cpnum','$birthdate','$valid_id')";
+    $query = "INSERT INTO customertbl (`customerno`,`name`,`address`,`cpnum`,`birthdate`,`valid_id`) VALUES ('$customerno','$name','$address','$cpnum','$BirthDate','$valid_id')";
     $query_run = mysqli_query($con, $query);
 
     if($query_run)
