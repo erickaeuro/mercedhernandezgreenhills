@@ -16,7 +16,7 @@
   <link href="../../css/sb-admin-2.css" rel="stylesheet">
   <link href="../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css">
-  
+
 
 <!-- Connection Database --> 
   <?php include ("../connection.php"); 
@@ -149,17 +149,11 @@
                                 <a href="stockedit.php?id=<?= $row['stock_no'];?>" class="btn btn-success editbtn">EDIT</a>
                                 <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#MoveModal">MOVE</button>
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteModal">DELETE</button>
-                                         
-                                
                             </td> 
                     </div> 
                         </tr>
-                    </tbody>      
-                    
-                </form>
-                
-               
-         <?php           
+
+                        <?php           
                     }
                     
               
@@ -171,6 +165,11 @@
 
                 
           ?>      
+                    </tbody>      
+                    
+                </form>
+                
+               
                               </table>
                           </div>
                       </div>
@@ -193,7 +192,7 @@
                 <!-- Modal body -->
                 <div class="modal-body">
                   <strong>WARNING!!</strong><br/>
-                  You are about to delete the stock item
+                  You are about to delete the stock item that you choose
                   are you sure you want to continue?
                 </div>
                 <!-- Modal footer -->
@@ -211,7 +210,7 @@
               <div class="modal-content">
                 <!-- Modal Header -->
                 <div class="modal-header">
-                  <h4 class="modal-title">Confirm Move Stock?</h4>
+                  <h4 class="modal-title">Confirm to Move Stock?</h4>
                   <button type="button" class="btn-close" data-bs-dismiss="modal">X</button>
                 </div>
                 <!-- Modal body -->
@@ -280,31 +279,13 @@
 
 <?php include '../scripts.php'; ?>   
 
-    <script>
-    $(document).ready(function() {
-    $('dtid').DataTable();
-    } );
-    </script>
+<script>
+$(document).ready(function () {
+  $('#dtid').DataTable();
+  $('.dataTables_length').addClass('bs-select');
+});
 
-    <script>
-        $(document).ready(function () {
-
-            $('#dtid').DataTable({
-                "pagingType": "full_numbers",
-                "lengthMenu": [
-                    [10, 25, 50, -1],
-                    [10, 25, 50, "All"]
-                ],
-                responsive: true,
-                language: {
-                    search: "_INPUT_",
-                    searchPlaceholder: "Search Records",
-                }
-            });
-
-        });
-    </script>
-
+</script>
 
 </body>
 </html>
