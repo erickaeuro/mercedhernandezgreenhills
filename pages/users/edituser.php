@@ -1,4 +1,5 @@
 <?php
+session_start();
  $con = mysqli_connect("localhost","root","","mercedhernandezgreenhills");
  if(mysqli_connect_errno()) {echo "Error: " . mysqli_connect_errno();}
 
@@ -20,12 +21,12 @@
 
         if($query_run)
         {
-            echo '<script> alert("Data Updated"); </script>';
+            $_SESSION['status'] = "User Updated Successfully!";
             header("Location:users.php");
         }
         else
         {
-            echo '<script> alert("Data Not Updated"); </script>';
+            echo '<script> alert("User Not Updated"); </script>';
         }
     }
 

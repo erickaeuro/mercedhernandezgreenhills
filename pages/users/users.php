@@ -46,7 +46,25 @@
       <div id="content">
 
         <!-- Topbar -->
-        <?php include '../navbar.php'; ?>
+        <?php include '../navbar.php'; 
+
+        //DELETE ALERT//   
+        if($_GET['del'] == 1){
+          echo"<div class='alert alert-success' role='alert'>Successfully Deleted
+          <button type='button' class='close' data-dismiss='alert'>x</button>
+          </div>";
+        }
+        //EDIT & ADD ALERT//        
+        if(isset($_SESSION['status']))
+        {
+            ?>
+                <div class="alert alert-success" role="alert" role="alert">
+                    <?= $_SESSION['status']; ?>
+                    <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">x</button>
+                </div>
+            <?php 
+            unset($_SESSION['status']);
+        }?>
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
@@ -128,8 +146,34 @@
                           <a href="deleteuser.php?id=<?= $row['id']; ?>" name="deletedata" class="btn btn-danger deletebtn">DELETE</a>
                       </td>
                     </tr>
+
+                    
                       
                   </tbody>
+
+                  <!--MODAL FOR Delete-->
+                  <div class="modal" id="DeleteModal">
+                                      <div class="modal-dialog">
+                                        <div class="modal-content">
+                                          <!-- Modal Header -->
+                                          <div class="modal-header">
+                                            <h4 class="modal-title">Confirm Deletion?</h4>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal">X</button>
+                                          </div>
+                                          <!-- Modal body -->
+                                          <div class="modal-body">
+                                            <strong>WARNING!!</strong><br/>
+                                            You are about to delete the selected ticket
+                                            are you sure you want to continue?
+                                          </div>
+                                          <!-- Modal footer -->
+                                          <div class="modal-footer">
+                                          <a href="deleteuser.php?id=<?= $row['id']; ?>" name="del" class="btn btn-danger deletebtn">Yes</a>
+                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
 
                   <?php
 

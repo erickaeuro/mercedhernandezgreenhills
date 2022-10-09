@@ -1,4 +1,5 @@
 <?php
+session_start();
  $con = mysqli_connect("localhost","root","","mercedhernandezgreenhills");
  if(mysqli_connect_errno()) {echo "Error: " . mysqli_connect_errno();}
 
@@ -45,13 +46,13 @@ if(isset($_POST['adduser']))
             if($query_run)
             {
                 // echo "Saved";
-                $_SESSION['status'] = "Admin Profile Added";
+                $_SESSION['status'] = "User Added Successfully";
                 $_SESSION['status_code'] = "success";
                 header('Location: users.php');
             }
             else 
             {
-                $_SESSION['status'] = "Admin Profile Not Added";
+                $_SESSION['status'] = "User Not Added";
                 $_SESSION['status_code'] = "error";
                 header('Location: users.php');  
             }

@@ -3,7 +3,7 @@
 $connect = new PDO('mysql:host=localhost;dbname=mercedhernandezgreenhills','root', '');
 
   session_start();  
-  if(!isset($_SESSION["username"]))  
+  if(isset($_SESSION["username"]))  
   {  
       
 

@@ -11,7 +11,7 @@ if (isset($_GET['id'])) {
 	header('Location:customer.php?del=1');
 	}
 	else{
-        echo '<script> alert("Ticket not Deleted"); </script>';
+        echo '<script> alert("Customer not Deleted"); </script>';
     }
 }
 
