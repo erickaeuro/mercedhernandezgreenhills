@@ -67,6 +67,30 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
+        
+        <?php 
+        
+        if($_GET['del'] == 1){
+          echo"<div class='alert alert-success' role='alert'>Successfully Deleted
+          <button type='button' class='close' data-dismiss='alert'>x</button>
+          </div>";
+        }
+
+
+              if(isset($_SESSION['status']))
+              {
+                  ?>
+                      <div class="alert alert-success" role="alert" role="alert">
+                          <?= $_SESSION['status']; ?>
+                          <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">x</button>
+                      </div>
+                  <?php 
+                  unset($_SESSION['status']);
+              }
+
+        ?>
+
+
           
         <div class="d-sm-flex align-items-center justify-content-between mb-4"> 
             <h4>

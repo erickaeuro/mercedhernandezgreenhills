@@ -1,113 +1,220 @@
+<?php
+
+$connect = new PDO("mysql:host=localhost;dbname=mercedhernandezgreenhills", "root", "");
+
+$start_date_error = '';
+$end_date_error = '';
+
+if(isset($_POST["export"]))
+{
+ if(empty($_POST["start_date"]))
+ {
+  $start_date_error = '<label class="text-danger">Start Date is required</label>';
+ }
+ else if(empty($_POST["end_date"]))
+ {
+  $end_date_error = '<label class="text-danger">End Date is required</label>';
+ }
+ else
+ {
+  $file_name = 'Order Data.csv';
+  header("Content-Description: File Transfer");
+  header("Content-Disposition: attachment; filename=$file_name");
+  header("Content-Type: application/csv;");
+
+  $file = fopen('php://output', 'w');
+
+  $header = array("stock_no", "item_type", "itemdescription", "karat_gold", "kindofstone", "weight", "itemqty", "tagprice","date_sold", "date_created");
+
+  fputcsv($file, $header);
+
+  $query = "
+  SELECT * FROM inventorytbl
+  WHERE date_created >= '".$_POST["start_date"]."' 
+  AND date_created <= '".$_POST["end_date"]."' 
+  ORDER BY date_created ASC
+  ";
+  $statement = $connect->prepare($query);
+  $statement->execute();
+  $result = $statement->fetchAll();
+  foreach($result as $row)
+  {
+   $data = array();
+   $data[] = $row["stock_no"];
+   $data[] = $row["item_type"];
+   $data[] = $row["itemdescription"];
+   $data[] = $row["karat_gold"];
+   $data[] = $row["kindofstone"];
+   $data[] = $row["weight"];
+   $data[] = $row["itemqty"];
+   $data[] = $row["tagprice"];
+   $data[] = $row["date_sold"];
+   $data[] = $row["date_created"];
+   fputcsv($file, $data);
+  }
+  fclose($file);
+  exit;
+ }
+}
+
+$query = "
+SELECT * FROM inventorytbl 
+ORDER BY stock_no ASC;
+";
+
+$statement = $connect->prepare($query);
+$statement->execute();
+$result = $statement->fetchAll();
+
+?>
+<?php include '../head.php'; ?>
+<?php include '../sidebar.php'; ?>
+<?php include '../navbar.php'; ?>
 <html>
  <head>
- <title>Merced Hernandez Greenhills Inventory Reports</title>
+ <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Inventory Reports</title>
+  <!-- Custom fonts for this template-->
+  <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="../../css/sb-admin-2.css" rel="stylesheet">
+  <link href="../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-  <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-  <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
-  <style>
-   body
-   {
-    margin:0;
-    padding:0;
-    background-color:#f1f1f1;
-   }
-   .box
-   {
-    width:1270px;
-    padding:20px;
-    background-color:#fff;
-    border:1px solid #ccc;
-    border-radius:5px;
-    margin-top:25px;
-   }
-  </style>
  </head>
  <body>
   <div class="container box">
-  <button onclick = "window.history.back()">BACK</button>
-   <h1 align="center">Inventory Reports</h1>
+   <h1 align="center">Merced Hernandez Greenhills Reports</h1>
    <br />
-   <div class="table-responsive">
     <br />
     <div class="row">
-     <div class="input-daterange">
-     <div class="col-md-2">
-</div>
-     <div class="col-md-3">
-       <input type="text" name="start_date" id="start_date" class="form-control" />
+     <form method="post">
+      <div class="input-daterange">
+       <div class="col-md-5">
+        <input type="text" name="start_date" class="form-control" readonly />
+        <?php echo $start_date_error; ?>
+       </div>
+       <div class="col-md-5">
+        <input type="text" name="end_date" class="form-control" readonly />
+        <?php echo $end_date_error; ?>
+       </div>
       </div>
-      <div class="col-md-3">
-       <input type="text" name="end_date" id="end_date" class="form-control" />
-      </div>      
-     </div>
-     <div class="col-md-2">
-      <input type="button" name="search" id="search" value="Search" class="btn btn-info" />
-     </div>
-     <div class="col-md-2">
-  </div>
-     <div class="col-md-2">
-</div>
+      <div class="col-md-2">
+       <input type="submit" name="export" value="Export" class="btn btn-info" />
+      </div>
+     </form>
     </div>
+           <form action="" method="GET">
+                  <div class="input-group mb-2">
+                 <input type="text" name="search" required value="<?php if(isset($_GET['search'])){echo $_GET['search']; } ?>" class="form-control" placeholder="Search data">
+                  <button type="submit" class="btn btn-primary">Search</button>
+                 </div>
+                 </form>
     <br />
-    <table id="order_data" class="table table-bordered">
-     <thead>
-      <tr>
-       <th style="text-align:center;">Stock No</th>
-       <th style="text-align:center;">Item Type</th>
-       <th style="text-align:center;">Karat Gold</th>
-       <th style="text-align:center;">Kind of Stone</th>
-       <th style="text-align:center;">Weight</th>
-       <th style="text-align:center;">Item Quantity</th>
-       <th style="text-align:center;">Tag Price</th>
-       <th style="text-align:center;">Date Created</th>
-      </tr>
-     </thead>
+                            <table class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                            <th>Stock No</th>
+                            <th>Item Type</th>
+                            <th>Item Description</th>
+                            <th>Karat Gold</th>
+                            <th>Kind of Stone</th>
+                            <th>Weight</th>
+                            <th>Item Qty</th>
+                            <th>Tag Price</th>
+                            <th>Date Created</th>
+                            </tr>
+                            </thead>
+     <tbody>
+     <?php 
+                                    $con = mysqli_connect("localhost","root","","mercedhernandezgreenhills");
+
+                                    if(isset($_GET['search']))
+                                    {
+                                        $filtervalues = $_GET['search'];
+                                        $query = "SELECT * FROM inventorytbl WHERE CONCAT(stock_no,item_type,itemdescription,karat_gold,kindofstone,weight,itemqty,tagprice,date_created) LIKE '%$filtervalues%' ";
+                                        $query_run = mysqli_query($con, $query);
+
+                                        if(mysqli_num_rows($query_run) > 0)
+                                        {
+                                            foreach($query_run as $items)
+                                            {
+                                                ?>
+                                                <tr>
+                                                    <td><?= $items['stock_no']; ?></td>
+                                                    <td><?= $items['item_type']; ?></td>
+                                                    <td><?= $items['itemdescription']; ?></td>
+                                                    <td><?= $items['karat_gold']; ?></td>
+                                                    <td><?= $items['kindofstone']; ?></td>
+                                                    <td><?= $items['weight']; ?></td>
+                                                    <td><?= $items['itemqty']; ?></td>
+                                                    <td><?= $items['tagprice']; ?></td>
+                                                    <td><?= $items['date_created']; ?></td>
+                                                </tr>
+                                                <?php
+                                            }
+                                        }
+                                        else
+                                        {
+                                            ?>
+                                                <tr>
+                                                    <td colspan="4">No Record Found</td>
+                                                </tr>
+                                            <?php
+                                        }
+                                    }
+                                ?>
+     </tbody>
     </table>
+    <br />
+    <br />
    </div>
   </div>
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="../login_register/login.php">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
  </body>
 </html>
-<script type="text/javascript" language="javascript" >
+
+<script>
+
 $(document).ready(function(){
  $('.input-daterange').datepicker({
   todayBtn:'linked',
   format: "yyyy-mm-dd",
   autoclose: true
  });
- fetch_data('no');
- function fetch_data(is_date_search, start_date='', end_date='')
- {
-  var dataTable = $('#order_data').DataTable({
-   "processing" : true,
-   "serverSide" : true,
-   "order" : [],
-   "ajax" : {
-    url:"fetch.php",
-    type:"POST",
-    data:{
-     is_date_search:is_date_search, start_date:start_date, end_date:end_date
-    }
-   }
-
- });
- }
- $('#search').click(function(){
-  var start_date = $('#start_date').val();
-  var end_date = $('#end_date').val();
-  if(start_date != '' && end_date !='')
-  {
-   $('#order_data').DataTable().destroy();
-   fetch_data('yes', start_date, end_date);
-  }
-  else
-  {
-   alert("Both Date is Required");
-  }
-
 });
-});
+
 </script>
 <?php include '../footer.php'; ?>
