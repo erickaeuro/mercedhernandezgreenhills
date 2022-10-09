@@ -99,12 +99,6 @@ $result = $statement->fetchAll();
       </div>
      </form>
     </div>
-           <form action="" method="GET">
-                  <div class="input-group mb-2">
-                 <input type="text" name="search" required value="<?php if(isset($_GET['search'])){echo $_GET['search']; } ?>" class="form-control" placeholder="Search data">
-                  <button type="submit" class="btn btn-primary">Search</button>
-                 </div>
-                 </form>
     <br />
     <table class="table table-bordered table-striped">
      <thead>
@@ -121,44 +115,24 @@ $result = $statement->fetchAll();
       </tr>
      </thead>
      <tbody>
-     <?php 
-                                    $con = mysqli_connect("localhost","root","","mercedhernandezgreenhills");
-
-                                    if(isset($_GET['search']))
-                                    {
-                                        $filtervalues = $_GET['search'];
-                                        $query = "SELECT * FROM inventorytbl WHERE CONCAT(stock_no,item_type,itemdescription,karat_gold,kindofstone,weight,itemqty,tagprice,date_created) LIKE '%$filtervalues%' ";
-                                        $query_run = mysqli_query($con, $query);
-
-                                        if(mysqli_num_rows($query_run) > 0)
-                                        {
-                                            foreach($query_run as $items)
-                                            {
-                                                ?>
-                                                <tr>
-                                                    <td><?= $items['stock_no']; ?></td>
-                                                    <td><?= $items['item_type']; ?></td>
-                                                    <td><?= $items['itemdescription']; ?></td>
-                                                    <td><?= $items['karat_gold']; ?></td>
-                                                    <td><?= $items['kindofstone']; ?></td>
-                                                    <td><?= $items['weight']; ?></td>
-                                                    <td><?= $items['itemqty']; ?></td>
-                                                    <td><?= $items['tagprice']; ?></td>
-                                                    <td><?= $items['date_created']; ?></td>
-                                                </tr>
-                                                <?php
-                                            }
-                                        }
-                                        else
-                                        {
-                                            ?>
-                                                <tr>
-                                                    <td colspan="4">No Record Found</td>
-                                                </tr>
-                                            <?php
-                                        }
-                                    }
-                                ?>
+      <?php
+      foreach($result as $row)
+      {
+       echo '
+       <tr>
+        <td>'.$row["stock_no"].'</td>
+        <td>'.$row["item_type"].'</td>
+        <td>'.$row["itemdescription"].'</td>
+        <td>'.$row["karat_gold"].'</td>
+        <td>'.$row["kindofstone"].'</td>
+        <td>'.$row["weight"].'</td>
+        <td>'.$row["itemqty"].'</td>
+        <td>₱'.$row["tagprice"].'</td>
+        <td>'.$row["date_created"].'</td>
+       </tr>
+       ';
+      }
+      ?>
      </tbody>
     </table>
     <br />
