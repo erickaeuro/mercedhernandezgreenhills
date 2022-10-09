@@ -2,9 +2,12 @@
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../dashboard/dashboard.php">
+      <img class="img-profile rounded-circle" src="../../pages/logo.png" width="30%">
       <div id="banner">
-      <img class="img-profile rounded-circle" src="../../pages/logobg.png" width="110%"> 
+
       </div>    
+      <div class="sidebar-brand-text mx-3"> Merced Hernandez Greenhills</div>
+      </a>
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
