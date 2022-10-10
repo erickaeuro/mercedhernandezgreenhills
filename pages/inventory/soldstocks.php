@@ -48,6 +48,21 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
+        <?php 
+      
+
+              if(isset($_SESSION['status']))
+              {
+                  ?>
+                      <div class="alert alert-success" role="alert" role="alert">
+                          <?= $_SESSION['status']; ?>
+                          <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">x</button>
+                      </div>
+                  <?php 
+                  unset($_SESSION['status']);
+              }
+
+        ?>
         
 <body>
 
