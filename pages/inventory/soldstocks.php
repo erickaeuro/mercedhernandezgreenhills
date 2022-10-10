@@ -111,7 +111,7 @@
                                 <td> <?php echo $row['date_sold']; ?> </td>
                                 <td>
                                 <a href="stockview.php?id=<?= $row['stock_no'];?>" class="btn btn-info viewbtn">VIEW</a>
-                                <a href="stockedit.php?id=<?= $row['stock_no'];?>" class="btn btn-success editbtn">EDIT</a>
+                                <a href="soldstockedit.php?id=<?= $row['stock_no'];?>" class="btn btn-success editbtn">EDIT</a>
                                 </td>
                             </tr>
                         </tbody>          <?php           
