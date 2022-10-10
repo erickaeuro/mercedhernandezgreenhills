@@ -2,6 +2,7 @@
 <html lang="en">
 
     <?php include '../head.php'; ?>
+    
 
 <body id="page-top" class=" bg-gray-800">
 

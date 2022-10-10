@@ -104,7 +104,7 @@ if(isset($_POST['login_user'])){
 	<select name="authentication" id="authentication" class="authen">
 		<option disabled selected value="Select a Method">Select a Method</option>
 		<option value="MFA">MFA</option>
-		<option value="EMAIL">EMAIL</option>
+		<!-- <option value="EMAIL">EMAIL</option> -->
 		<!-- <option value="SECUIRTY QUESTIONS">SECUIRTY QUESTIONS</option> -->
 	</select>
 
