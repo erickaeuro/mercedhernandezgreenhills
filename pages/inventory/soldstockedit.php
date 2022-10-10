@@ -64,7 +64,6 @@ require '../connection.php';
                                 $row = mysqli_fetch_array($query_run);
                                 ?>
 
-                            <form action="editcode.php" method="POST">
                             <form action="editsoldstock.php" method="POST">
 
                             
