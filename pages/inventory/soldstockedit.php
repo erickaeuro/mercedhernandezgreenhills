@@ -65,6 +65,7 @@ require '../connection.php';
                                 ?>
 
                             <form action="editcode.php" method="POST">
+                            <form action="editsoldstock.php" method="POST">
 
                             
                             <input type="hidden" name="id" value='<?= $row['id']; ?>'>
