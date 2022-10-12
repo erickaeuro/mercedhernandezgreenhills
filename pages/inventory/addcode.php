@@ -19,8 +19,9 @@ if(isset($_POST['addjewelry']))
     $itemqty = $_POST['itemqty'];
     $tagprice = $_POST['tagprice'];
     $date_sold = $_POST['date_sold'];
+    $date_created = $_POST['date_created']
 
-    $query = "INSERT INTO inventorytbl (`stock_no`,`item_type`,`itemdescription`,`karat_gold`,`kindofstone`,`weight`,`itemqty`,`tagprice`,`date_sold`) VALUES ('$stock_no','$item_type','$itemdescription','$karat_gold','$kindofstone','$weight','$itemqty','$tagprice','$date_sold')";
+    $query = "INSERT INTO inventorytbl (`stock_no`,`item_type`,`itemdescription`,`karat_gold`,`kindofstone`,`weight`,`itemqty`,`tagprice`,`date_sold`,`date_created`) VALUES ('$stock_no','$item_type','$itemdescription','$karat_gold','$kindofstone','$weight','$itemqty','$tagprice','$date_sold','$date_created")";
     $query_run = mysqli_query($con, $query);
 
     if($query_run)
