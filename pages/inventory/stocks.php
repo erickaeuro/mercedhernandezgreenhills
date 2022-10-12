@@ -119,6 +119,7 @@
                                           <th>Item Quantity</th>
                                           <th>Tag Price</th>
                                           <th>Date Sold</th>
+                                          <th>Date Created</th>
                                           <th>Action</th>
                                       </tr>
                                   </thead>
@@ -144,6 +145,7 @@
                             <td> <?php echo $row['itemqty']; ?> </td>
                             <td> <?php echo $row['tagprice']; ?> </td>
                             <td> <?php echo $row['date_sold']; ?> </td>
+                            <td> <?php echo $row['date_created']; ?> </td>
                             <td>
                                 <a href="stockview.php?id=<?= $row['stock_no'];?>" class="btn btn-info viewbtn">VIEW</a>
                                 <a href="stockedit.php?id=<?= $row['stock_no'];?>" class="btn btn-success editbtn">EDIT</a>
