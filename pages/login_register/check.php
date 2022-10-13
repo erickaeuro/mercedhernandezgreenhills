@@ -62,7 +62,7 @@ if (!$checkResult) {
                     </div>
                 <hr>   
                 <p>
-                     <a href="dashboard.php"><p style="text-align: center;;"></p>Continue</a>
+                     <a href="../dashboard/dashboard.php"><p style="text-align: center;;"></p>Continue</a>
                 </p>
             </div>
     
