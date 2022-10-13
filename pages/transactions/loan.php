@@ -20,9 +20,10 @@
   <link href="../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 <?php include ("../connection.php"); 
+  include '../head.php';
+  error_reporting(0);
   
-  session_start();
-  error_reporting();
+  
 ?>
 
 </head>
@@ -62,8 +63,8 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4"> 
       <h4>
-       <a href="pawnticketbtn.php" class="btn btn-info btn-icon-text btn-md"> 
-       <i class="fas fa-plus"></i>New Transaction</a>
+       <a href="loanbtn.php" class="btn btn-info btn-icon-text btn-md"> 
+       <i class="fas fa-plus"></i> New Transaction</a>
     </div>
 
     <!-- Content Row -->
@@ -82,7 +83,7 @@
 
                       <?php 
 
-                          $query = "SELECT * FROM pawntickettbl";
+                          $query = "SELECT * FROM loantbl INNER JOIN customertbl ON loantbl.customer_no = customertbl.customer_no";
                           $query_run = mysqli_query($con, $query);
 
                       ?> 
@@ -92,11 +93,19 @@
                               <table class="table table-hover display" id="" width="100%" cellspacing="0">
                                   <thead>
                                       <tr style="font-size:13px;font-family:sans-serif;">
-                                          <th>Pawn Ticket No.</th>
                                           <th>Loan ID</th>
-                                          <th>Amount Paid</th>
-                                          <th>Date Paid</th>
-                                          <th>Transaction Type</th>
+                                          <th>Customer Number</th>
+                                          <th>Customer Name</th>
+                                          <th>Item Type</th>
+                                          <th>Item Description</th>
+                                          <th>Appraised Value</th>
+                                          <th>Principal</th>
+                                          <th>interest</th>
+                                          <th>Date Loan Granted</th>
+                                          <th>Maturity Date</th>
+                                          <th>Expiry Date</th>
+                                          <th>Total Amount Paid</th>
+                                          <th>Loan Status</th>
                                           <th>action</th>
                         
                                       </tr>
@@ -106,17 +115,26 @@
           
                     foreach($query_run as $row)
                     {
+                        $interest = $row['interest']*100;
               ?>
                         <tbody>
-                            <tr>
-                                <td> <?php echo $row['pawnticketno']; ?> </td>
+                            <tr>                                
                                 <td> <?php echo $row['loan_id']; ?> </td>
-                                <td> <?php echo $row['amount_paid']; ?> </td>
-                                <td> <?php echo $row['date_paid']; ?> </td>
-                                <td> <?php echo $row['transactiontype']; ?> </td>
+                                <td> <?php echo $row['customer_no']; ?> </td>
+                                <td> <?php echo $row['name']; ?> </td>
+                                <td> <?php echo $row['item_type']; ?> </td>
+                                <td> <?php echo $row['item_desc']; ?> </td>
+                                <td> <?php echo $row['appraised_value']; ?> </td>
+                                <td> <?php echo $row['principal']; ?> </td>
+                                <td> <?php echo $interest ?>%</td>
+                                <td> <?php echo $row['date_loan_granted']; ?> </td>
+                                <td> <?php echo $row['maturity_date']; ?> </td>
+                                <td> <?php echo $row['expiry_date']; ?> </td>
+                                <td> <?php echo $row['total_amt_paid']; ?> </td>
+                                <td> <?php echo $row['loan_status']; ?> </td>
                                 <td>
-                                    <a href="pawnview.php?id=<?= $row['pawnticketno'];?>" class="btn btn-info viewbtn">VIEW</a>
-                                    <a href="editpawn.php?id=<?= $row['pawnticketno']?>" class="btn btn-success editbtn"> EDIT </button>
+                                    <a href="loanview.php?id=<?= $row['loan_id'];?>" class="btn btn-info viewbtn">VIEW</a>
+                                    <a href="editloan.php?id=<?= $row['loan_id']?>" class="btn btn-success editbtn"> EDIT </a>
                                 </td>
                             </tr>
                         </tbody>

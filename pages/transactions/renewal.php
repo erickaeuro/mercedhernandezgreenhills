@@ -71,9 +71,10 @@
                         ?> 
 
                       <?php 
-                             //Return data from Renewal Table
+                             /*!!!!FOR CHANGING!!!!
                             $query = "SELECT * FROM renewaltbl INNER JOIN pawntickettbl ON renewaltbl.pawnticketno=pawntickettbl.pawnticketno WHERE renewaltbl.status=1";
                             $query_run = mysqli_query($con, $query);
+                            */
                             
                       ?> 
 
@@ -98,6 +99,8 @@
                                   </thead>
 
             <?php
+
+            /*
                 if($query_run)
                 { 
                     foreach($query_run as $row)
@@ -186,7 +189,7 @@
                     echo "No Record Found";
                 }
 
-
+                */
                 
                 
           ?> 

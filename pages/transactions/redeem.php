@@ -73,10 +73,12 @@
 
                       <?php 
 
-                            //Return data from Redeem Table
+                            /*
+                            !!!!!FOR CHANGE!!!!!
+
                             $query = "SELECT * FROM redeemtbl INNER JOIN pawntickettbl ON redeemtbl.pawnticketno=pawntickettbl.pawnticketno";
                             $query_run = mysqli_query($con, $query);
-                            
+                            */
                       ?> 
 
                           <div class="table-responsive">
@@ -96,7 +98,7 @@
                                       </tr>
                                   </thead>
             <?php
-              
+              /*
                 foreach($query_run as $row)
                 {
                         
@@ -147,7 +149,7 @@
           <?php 
  
                 }
-            
+            */
           ?>      
                               </table>
                           </div>

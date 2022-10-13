@@ -103,7 +103,7 @@
                                             <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                                             <?php 
                                                         $cser=mysqli_connect("localhost","root","","mercedhernandezgreenhills") or die("connection failed:".mysqli_error());
-                                                        $result = mysqli_query($cser,"SELECT * FROM redeemtbl") or die(mysql_error());
+                                                        $result = mysqli_query($cser,"SELECT * FROM loantbl WHERE loan_status='Redeemed'") or die(mysql_error());
 
                                                         if($redeemtotal = mysqli_num_rows($result))
                                                         {
@@ -111,7 +111,7 @@
                                                         }
                                                         else
                                                         {
-                                                            echo '<h5="mb-0"> No Data </h5>';
+                                                            echo '<h5="mb-0"> No Redeems </h5>';
                                                         }
                                                     ?>
                                         </div>

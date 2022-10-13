@@ -44,7 +44,7 @@ require '../connection.php';
         <?php include '../navbar.php'; ?>
         <!-- End of Topbar -->
 
-        <div class="row">
+        <div class=//"row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
@@ -53,6 +53,8 @@ require '../connection.php';
                     <div class="card-body">
 
                     <?php
+                    /* 
+                    !!!!! FOR CHANGE !!!!!
                         if(isset($_GET['id']))
                         {
                             $id = mysqli_real_escape_string($con, $_GET['id']);
@@ -61,9 +63,9 @@ require '../connection.php';
 
                             if(mysqli_num_rows($query_run) > 0)
                             {
-                                $row = mysqli_fetch_array($query_run);
+                                //$row = mysqli_fetch_array($query_run);
 
-                                $namequery = "SELECT * FROM customertbl WHERE customerno='".$row['customerno']."'" ;
+                                $namequery = "SELECT * FROM customertbl WHERE customerno='".//$row['customerno']."'" ;
                                 $namequery_run = mysqli_query($con, $namequery);
                                 $row2 = mysqli_fetch_array($namequery_run);
 
@@ -72,13 +74,13 @@ require '../connection.php';
                                 $query2 = "SELECT * FROM redeemtbl WHERE redeemid='$redid'" ;
                                 $query_run2 = mysqli_query($con, $query2);
                                 $row3 = mysqli_fetch_array($query_run2);
-
+                                */
                                 ?>
 
                             <form action="editredeembtn.php" method="POST">
 
                             
-                            <input type="hidden" name="id" value='<?= $row['id']; ?>'>
+                            <input type="hidden" name="id" value='<?= //$row['id']; ?>'>
 
                             <div class="form-group col-md-12">
                                 <label for="redeemid"><b>Redeem ID</b></label>
@@ -87,7 +89,7 @@ require '../connection.php';
 
                             <div class="form-group col-md-12">
                                 <label for="pawnticketno"><b>Pawn Ticket Number</b></label>
-                                <input type="text" class="form-control" name="pawnticketno" value="<?= $row['pawnticketno']; ?>" disabled>
+                                <input type="text" class="form-control" name="pawnticketno" value="<?= //$row['pawnticketno']; ?>" disabled>
                             </div>  
 
                             <div class="form-group col-md-12">
@@ -96,7 +98,7 @@ require '../connection.php';
                             </div>  
 
                             <div class="form-group col-md-12">
-                                <label for="customername"><b><?= $row['transactiontype']?> </b></label><br/>
+                                <label for="customername"><b><?= //$row['transactiontype']?> </b></label><br/>
                                 <select class="custom-select" name="" style="width:410px; position: relative; left:10px; top:-1px" disabled>
                                     <option value=" " selected="selected">Transaction Type</option>
                                     <option value="Jewelry Loan" selected="selected">Jewelry Loan</option>
@@ -107,37 +109,37 @@ require '../connection.php';
 
                             <div class="form-group col-md-12">
                                 <label for="Date Loan"><b>Date Loan Granted</b></label>
-                                <input type="date" class="form-control" name="dateloangranted" value="<?= $row['dateloangranted']; ?>" disabled>
+                                <input type="date" class="form-control" name="dateloangranted" value="<?= //$row['dateloangranted']; ?>" disabled>
                             </div>
 
                             <div class="form-group col-md-12">
                                 <label for="Mat Date"><b>Maturity Date </b></label>
-                                <input type="date" class="form-control" name="maturity_date" value="<?= $row['maturity_date']; ?>" disabled>
+                                <input type="date" class="form-control" name="maturity_date" value="<?= //$row['maturity_date']; ?>" disabled>
                             </div>
 
                             <div class="form-group col-md-12">
                                 <label for="Expire Date"><b>Expiry Date</b></label>
-                                <input type="date" class="form-control" name="expiry_date" value="<?= $row['expiry_date']; ?>" disabled>
+                                <input type="date" class="form-control" name="expiry_date" value="<?= //$row['expiry_date']; ?>" disabled>
                             </div>
 
                             <div class="form-group col-md-12">
                                 <label for="principal"><b>Principal </b></label>
-                                <input type="text" class="form-control" name="principal" value="<?= $row['principal']; ?>" disabled>
+                                <input type="text" class="form-control" name="principal" value="<?= //$row['principal']; ?>" disabled>
                             </div>
 
                             <div class="form-group col-md-12">
                                 <label for="interest"><b>Interest </b></label>
-                                <input type="text" class="form-control" name="interest" value="<?= $row['interest']; ?>" disabled>
+                                <input type="text" class="form-control" name="interest" value="<?= //$row['interest']; ?>" disabled>
                             </div>
 
                             <div class="form-group col-md-12">
                                 <label for="penalty"><b>Penalty</b></label>
-                                <input type="text" class="form-control" name="penalty" value="<?= $row['penalty']; ?>" disabled>
+                                <input type="text" class="form-control" name="penalty" value="<?= //$row['penalty']; ?>" disabled>
                             </div>
 
                             <div class="form-group col-md-12">
                                 <label for="redemption_amnt"><b>Redemption Amount</b></label>
-                                <input type="text" class="form-control" name="redemption_amnt" value="<?= $row3['redemption_amnt']; ?>" disabled>
+                                <input type="text" class="form-control" name="redemption_amnt" value="<?= //$row3['redemption_amnt']; ?>" disabled>
                             </div>
                         </div>
                             <div class="mb-4">
@@ -148,12 +150,13 @@ require '../connection.php';
                         </form>
 
                         <?php
+                        /*
                             }
                             else
                             {
                                 echo "<h4>No Such Id Found</h4>";
                             }
-                        }
+                        }*/
                         ?>
                         
                     </div>

@@ -48,7 +48,7 @@ require '../connection.php';
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4><b>Edit Pawn Ticket</b>                      
+                        <h4><b>Edit Loan</b>                      
                     </div>
                     <div class="card-body">
 
@@ -56,45 +56,62 @@ require '../connection.php';
                         if(isset($_GET['id']))
                         {
                             $id = mysqli_real_escape_string($con, $_GET['id']);
-                            $query = "SELECT * FROM pawntickettbl WHERE pawnticketno='$id' ";
+                            $query = "SELECT * FROM loantbl INNER JOIN customertbl ON loantbl.customer_no = customertbl.customer_no WHERE loantbl.loan_id='$id' ";
                             $query_run = mysqli_query($con, $query);
 
                             if(mysqli_num_rows($query_run) > 0)
                             {
-                                $row = mysqli_fetch_array($query_run);
-                                $namequery = "SELECT * FROM customertbl WHERE customerno='".$row['customerno']."'" ;
-                                $namequery_run = mysqli_query($con, $namequery);
-                                $row2 = mysqli_fetch_array($namequery_run);
+                                $row = mysqli_fetch_array($query_run);                                
                                 ?>
 
-                            <form action="pawneditbtn.php" method="POST">
+                            <form action="loaneditbtn.php" method="POST">
 
                             
                             <input type="hidden" name="id" value='<?= $row['id']; ?>'>
 
                             <div class="form-group col-md-12">
-                                <label for="pawnticketno"><b>Pawn Ticket Number</b></label>
-                                <input type="text" class="form-control" name="pawnticketno" value="<?= $row['pawnticketno']; ?>" >
+                                <label for="loan_id"><b>Loan ID</b></label>
+                                <input type="text" class="form-control" name="loan_id" value="<?= $row['loan_id']; ?>" readonly>
                             </div>  
+
+                            <div class="form-group col-md-12">
+                                <label for="customerno"><b>Customer No. </b></label>
+                                <input type="text" class="form-control" name="customerno" value="<?= $row['customer_no']; ?>" readonly>
+                            </div> 
 
                             <div class="form-group col-md-12">
                                 <label for="customername"><b>Customer Name </b></label>
-                                <input type="text" class="form-control" name="customername" value="<?= $row2['name']; ?>" disabled>
-                            </div>  
+                                <input type="text" class="form-control" name="customername" value="<?= $row['name']; ?>" readonly>
+                            </div>   
 
                             <div class="form-group col-md-12">
-                                <label for="customername"><b>Transaction Type </b></label><br/>
-                                <select class="custom-select" name="transactiontype" style="width:410px; position: relative; left:10px; top:-1px">
-                                    <option value=" " selected="selected">Transaction Type</option>
-                                    <option value="Jewelry Loan" selected="selected">Jewelry Loan</option>
-                                    <option value="Redeem" selected="selected">Redeem</option>
-                                    <option value="Renewal" selected="selected">Renewal</option>
-                                </select>
-                            </div>  
+                                <label for="ItemType"><b>Item Type </b></label>
+                                <input type="text" class="form-control" name="item_type" value="<?= $row['item_type']; ?>">
+                            </div> 
+
+                            <div class="form-group col-md-12">
+                                <label for="ItemDesc"><b>Item Description </b></label>
+                                <textarea class="form-control" rows="3" name="item_desc" placeholder="<?= $row['item_desc']; ?>"><?= $row['item_desc']; ?></textarea>
+                            </div> 
+
+                            <div class="form-group col-md-12">
+                                <label for="AppraisedVal"><b>Appraised Value </b></label>
+                                <input type="text" class="form-control" name="appraisal" value="<?= $row['appraised_value']; ?>">
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <label for="principal"><b>Principal </b></label>
+                                <input type="text" class="form-control" name="principal" value="<?= $row['principal']; ?>">
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <label for="interest"><b>Interest </b></label>
+                                <input type="text" class="form-control" name="interest" value="<?= $row['interest']*100; ?>">
+                            </div>
 
                             <div class="form-group col-md-12">
                                 <label for="Date Loan"><b>Date Loan Granted</b></label>
-                                <input type="date" class="form-control" name="date_loan" value="<?= $row['dateloangranted']; ?>" >
+                                <input type="date" class="form-control" name="date_loan" value="<?= $row['date_loan_granted']; ?>" >
                             </div>
 
                             <div class="form-group col-md-12">
@@ -108,23 +125,23 @@ require '../connection.php';
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label for="principal"><b>Principal </b></label>
-                                <input type="text" class="form-control" name="principal" value="<?= $row['principal']; ?>">
+                                <label for="total_amt_paid"><b>Total Amount Paid</b></label>
+                                <input type="text" class="form-control" name="total_amt_paid" value="<?= $row['total_amt_paid']; ?>">
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label for="interest"><b>Interest </b></label>
-                                <input type="text" class="form-control" name="interest" value="<?= $row['interest']; ?>">
-                            </div>
-
-                            <div class="form-group col-md-12">
-                                <label for="penalty"><b>Penalty</b></label>
-                                <input type="text" class="form-control" name="penalty" value="<?= $row['penalty']; ?>">
-                            </div>
+                                <label for="loanstatus"><b>Loan Status </b></label><br>
+                                <select class="custom-select" name="loan_status" style="width:410px; position: relative; left:10px; top:-1px">
+                                    <option value="<?= $row['loan_status']; ?>" selected="selected"><?= $row['loan_status']; ?></option>
+                                    <option value="Active Loan">Active Loan</option>
+                                    <option value="Redeemed">Redeemed</option>
+                                    <option value="For Auction">For Auction</option>
+                                </select>
+                            </div> 
                         </div>
                             <div class="mb-4">
                             <center> 
-                            <a href="pawnticket.php" class="btn btn-danger float-end">Back</a>
+                            <a href="loan.php" class="btn btn-danger float-end">Back</a>
                             <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#EditModal">Edit Ticket</button> 
                             </center>
                             </div>  

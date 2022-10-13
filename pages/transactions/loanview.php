@@ -9,7 +9,7 @@ require '../connection.php';
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
+  <meta name="item_desc" content="">
   <meta name="author" content="">
 
   <title>Merced Hernandez Greenhills</title>
@@ -44,7 +44,7 @@ require '../connection.php';
         <?php include '../navbar.php'; ?>
         <!-- End of Topbar -->
 
-        <div class="row">
+        <div clas"row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
@@ -53,46 +53,33 @@ require '../connection.php';
                     <div class="card-body">
 
                     <?php
+                    
                         if(isset($_GET['id']))
                         {
                             $id = mysqli_real_escape_string($con, $_GET['id']);
-                            $query = "SELECT * FROM pawntickettbl WHERE pawnticketno='$id' ";
+                            $query = "SELECT * FROM loantbl WHERE loan_id='$id' ";
                             $query_run = mysqli_query($con, $query);
 
                             if(mysqli_num_rows($query_run) > 0)
                             {
                                 $row = mysqli_fetch_array($query_run);
+                                $interest = $row['interest']*100;
                                 ?>
 
                             <div class="form-group col-md-12">
-                                <label for="pawnticketno"><b>Pawn Ticket Number</b></label>
-                                <p class="form-control"> <?= $row['pawnticketno']; ?>
+                                <label for="loan_id"><b>Loan ID</b></label>
+                                <p class="form-control"> <?= $row['loan_id']; ?>
                             </div>  
 
 
                             <div class="form-group col-md-12">
-                                <label for="customerno"><b>Customer No</b></label>
-                                <p class="form-control"> <?= $row['customerno']; ?> </p>
+                                <label for="customer_no"><b>Customer No</b></label>
+                                <p class="form-control"> <?= $row['customer_no']; ?> </p>
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label for="dateloangranted"><b>Date Loan Granted</b></label>
-                                <p class="form-control"> <?= $row['dateloangranted']; ?> </p>
-                            </div>
-
-                            <div class="form-group col-md-12">
-                                <label for="maturity_date"><b>Maturity Date</b></label>
-                                <p class="form-control"> <?= $row['maturity_date']; ?> </p>
-                            </div>
-
-                            <div class="form-group col-md-12">
-                                <label for="expiry_date"><b>Expiry Date</b></label>
-                                <p class="form-control"> <?= $row['expiry_date']; ?> </p>
-                            </div>
-
-                            <div class="form-group col-md-12">
-                                <label for="description"><b>Description</b></label>
-                                <p class="form-control"> <?= $row['description']; ?> </p>
+                                <label for="item_desc"><b>Description</b></label>
+                                <p class="form-control"> <?= $row['item_desc']; ?> </p>
                             </div>
 
                             <div class="form-group col-md-12">
@@ -107,17 +94,32 @@ require '../connection.php';
 
                             <div class="form-group col-md-12">
                                 <label for="interest"><b>Interest</b></label>
-                                <p class="form-control"> <?= $row['interest']; ?> </p>
+                                <p class="form-control"> <?= $interest?>% </p>
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label for="penalty"><b>Penalty</b></label>
-                                <p class="form-control"> <?= $row['penalty']; ?> </p>
+                                <label for="date_loan_granted"><b>Date Loan Granted</b></label>
+                                <p class="form-control"> <?= $row['date_loan_granted']; ?> </p>
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label for="transactiontype"><b>Transaction Type</b></label>
-                                <p class="form-control"> <?= $row['transactiontype']; ?> </p>
+                                <label for="maturity_date"><b>Maturity Date</b></label>
+                                <p class="form-control"> <?= $row['maturity_date']; ?></p>
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <label for="expiry_date"><b>Expiry Date</b></label>
+                                <p class="form-control"> <?= $row['expiry_date']; ?> </p>
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <label for="total_amt_paid"><b>Total Amount Paid</b></label>
+                                <p class="form-control"> <?= $row['total_amt_paid']; ?> </p>
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <label for="loan_status"><b>Loan Status</b></label>
+                                <p class="form-control"> <?= $row['loan_status']; ?> </p>
                             </div>
 
                         </div>
@@ -129,6 +131,7 @@ require '../connection.php';
                         </form>
 
                         <?php
+                       
                             }
                             else
                             {
@@ -136,6 +139,7 @@ require '../connection.php';
                             }
                         }
                         ?>
+                        
                         
                     </div>
                 </div>
