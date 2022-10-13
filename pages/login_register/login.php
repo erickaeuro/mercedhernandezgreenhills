@@ -50,9 +50,8 @@ if(isset($_POST['login_user'])){
 	if (count($errors) == 0) {
 
 		if (mysqli_num_rows($results) == 1) {
-			
 			$_SESSION['username'] = $username;
-			$_SESSION['success'] = "Successfuly Login";
+			$_SESSION['success'] = "Successfully Login";
 
 			if($authentication == "EMAIL"){
 				header("location:otp.php");
