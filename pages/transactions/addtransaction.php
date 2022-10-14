@@ -12,7 +12,7 @@ if(isset($_POST['addtransc']))
         $custfname = $_POST['cust_fname'];
         $custlname = $_POST['cust_lname'];
         $transc_type = $_POST['transctype'];
-        $datepaid = $_POST['date_paid'];
+        $amt_paid = $_POST['amount_paid'];
         $loanid = $_POST['loan_id'];
         $date = date("Y-m-d");
 
@@ -21,26 +21,47 @@ if(isset($_POST['addtransc']))
         $validqueres = mysqli_query($con, $validque);
         $row = mysqli_fetch_array($validqueres);
 
-        $fullnameval1 = "$row\['first_name'\] $row\['last_name'\]";
-        $nameval1 = strtolower()
+        $fname1 = $row['first_name'];
+        $lname1 = $row['last_name'];
+        $fullnameval1 = "$fname1 $lname1";
+        $fullnameval2 = "$custfname $custlname";
+        $nameval1 = strtolower($fullnameval1);
+        $nameval2 = strtolower($fullnameval2);
+        //END OF VALIDATION VARS
 
-        if()
+        //NAME VALIDATION
+        if($nameval2 == $nameval1){
+            
+            $query = "INSERT INTO pawntickettbl (pawnticketno, loan_id, date_paid, amount_paid, transactiontype) VALUES (NULL, '$loanid', '$date', '$amt_paid', '$transc_type')";
+            $query_run = mysqli_query($con, $query);
+
+            //UPDATE PAYMENT
+            $payupdate = $row['total_amount_paid'] + $amt_paid;
+            $query2 = "UPDATE loantbl SET total_amt_paid='$payupdate' WHERE loan_id='$loanid'";
+            $query_run2 = mysqli_query($con, $query2);
+
+            if($transc_type = "Redemption"){
+                $updateque = "UPDATE loantbl SET loan_status='Redeemed' WHERE loan_id='$loanid'";
+            }
+            
+
+        
+            if($query_run && $query_run2){
+                $_SESSION['addstatus'] = "Ticket Added Successfully";
+                header('Location: transaction.php');
+            }else{
+                $_SESSION['addstatus'] = "DATA NOT SAVED";
+                header('Location: transactionbtn.php');
+            }
+
+        }else{
+            $_SESSION['addstatus'] = "Customer Name Invalidated";
+                header('Location: transactionbtn.php');
+        }
 
 
         
 
-        $query = ;
-        $query_run = mysqli_query($con, $query);
-    
-        if($query_run)
-        {
-        $_SESSION['addstatus'] = "Ticket Added Successfully";
-        header('Location: pawnticket.php');
-        }
-        else
-        {
-            $_SESSION['addstatus'] = "DATA NOT SAVED";
-            header('Location: pawnticketbtn.php');
-        }
+        
     }
 ?>

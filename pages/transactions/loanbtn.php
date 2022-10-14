@@ -75,7 +75,7 @@
                         echo '<select class="custom-select" name="customerno" style="width:410px; position: relative; left:10px; top:-1px">';
 
                         $cser=mysqli_connect("localhost","root","","mercedhernandezgreenhills") or die("connection failed:".mysqli_error());
-                        $result = mysqli_query($cser,"SELECT customer_no, name FROM customertbl") or die(mysql_error());
+                        $result = mysqli_query($cser,"SELECT customer_no, first_name FROM customertbl") or die(mysql_error());
 
 
                         if (mysqli_num_rows($result)!=0)
@@ -86,7 +86,7 @@
                         while($drop_2 = mysqli_fetch_array( $result ))
                         {
                             if(in_array($drop_2['transactiontype'] , array(''))){
-                                echo '<option value="'.$drop_2['customer_no'].'">'.$drop_2['customer_no'].'-'.$drop_2['name'].'</option>';
+                                echo '<option value="'.$drop_2['customer_no'].'">'.$drop_2['customer_no'].'-'.$drop_2['first_name'].'</option>';
                                 }
 
                         }

@@ -125,7 +125,7 @@ require '../connection.php';
                         </div>
                             <div class="mb-4">
                             <center> 
-                            <a href="pawnticket.php" class="btn btn-danger float-end">Back</a>
+                            <a href="loan.php" class="btn btn-danger float-end">Back</a>
                             </center>
                             </div>
                         </form>
