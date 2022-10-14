@@ -65,8 +65,8 @@ require '../connection.php';
                                 ?>
 
                             <div class="form-group col-md-12">
-                                <label for="customerno"><b>Customer No.</b></label>
-                                <p class="form-control"> <?= $row['customerno']; ?> </p>
+                                <label for="customer_no"><b>Customer No.</b></label>
+                                <p class="form-control"> <?= $row['customer_no']; ?> </p>
                             </div>  
 
 

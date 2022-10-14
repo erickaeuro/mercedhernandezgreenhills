@@ -121,11 +121,11 @@
                                   <tbody>
                                       <tr>
                                       <td>
-                                        <a href="custview.php?id=<?= $row['customerno'];?>" class="btn btn-info viewbtn">VIEW</a>
-                                        <a href="custedit.php?id=<?= $row['customerno'];?>" class="btn btn-success editbtn">EDIT</a>
-                                        <a href="custdelete.php?id=<?= $row['customerno']; ?>" name="deletedata" class="btn btn-danger deletebtn">DELETE</a>
+                                        <a href="custview.php?id=<?= $row['customer_no'];?>" class="btn btn-info viewbtn">VIEW</a>
+                                        <a href="custedit.php?id=<?= $row['customer_no'];?>" class="btn btn-success editbtn">EDIT</a>
+                                        <a href="custdelete.php?id=<?= $row['customer_no']; ?>" name="deletedata" class="btn btn-danger deletebtn">DELETE</a>
                                         </td>
-                                        <td> <?php echo $row['customerno']; ?> </td>
+                                        <td> <?php echo $row['customer_no']; ?> </td>
                                         <td> <?php echo $row['name']; ?> </td>
                                         <td> <?php echo $row['address']; ?> </td>
                                         <td> <?php echo $row['cpnum']; ?> </td>

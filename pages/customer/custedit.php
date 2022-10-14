@@ -73,7 +73,7 @@ require '../connection.php';
 
                             <div class="form-group col-md-12">
                                 <label for="customerno"><b>Customer No.</b></label>
-                                <input type="text" class="form-control" name="customerno" value="<?= $row['customerno']; ?>">
+                                <input type="text" class="form-control" name="customer_no" value="<?= $row['customer_no']; ?>">
                             </div>  
 
 

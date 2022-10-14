@@ -138,7 +138,7 @@
                                         $query_run2 = mysqli_query($con, $query);
 
           
-                if($query_run && $query_run2)
+                if($query_run)
                 {
                     foreach($query_run as $row)
                     {

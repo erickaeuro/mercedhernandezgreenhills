@@ -66,7 +66,7 @@
                         <form action="addloan.php" method="POST">
                             
                         <div class="form-group col-md-12">
-                                <label for="CustomerNo"><b>Cutomer No.</b></label><br>
+                                <label for="CustomerNo"><b>Customer No.</b></label><br>
 
                         <?php 
 
@@ -101,32 +101,32 @@
 
                             <div class="form-group col-md-12">
                                 <label for="itemtype"><b>Item Type </b></label>
-                                <input type="text" class="form-control" name="item_type">
+                                <input type="text" class="form-control" name="item_type" placeholder="Enter Jewelry Type">
                             </div>
 
                             <div class="form-group col-md-12">
                                 <label for="description"><b>Item Description </b></label>
-                                <textarea class="form-control" rows="3" name="item_desc" placeholder="Put item description"></textarea>
+                                <textarea class="form-control" rows="3" name="item_desc" placeholder="Enter Jewelry description"></textarea>
                             </div>
 
                             <div class="form-group col-md-12">
                                 <label for="appraised_value"><b>Appraised Value </b></label>
-                                <input type="text" class="form-control" name="appraised_value">
+                                <input type="text" class="form-control" name="appraised_value" placeholder="Enter Jewelry Appraised Value">
                             </div>
 
                             <div class="form-group col-md-12">
                                 <label for="principal"><b>Principal </b></label>
-                                <input type="text" class="form-control" name="principal">
+                                <input type="text" class="form-control" name="principal" placeholder="Enter Principal">
                             </div>
 
                             <div class="form-group col-md-12">
                                 <label for="interest"><b>Interest </b></label>
-                                <input type="text" class="form-control" name="interest">
+                                <input type="text" class="form-control" name="interest" placeholder="Enter Interest">
                             </div>
                         
                             <div class="form-group col-md-12">
                                 <label for="Date Loan"><b>Date Loan Granted</b></label>
-                                <input type="date" class="form-control" name="dateloangranted" >
+                                <input type="date" class="form-control" name="dateloangranted">
                             </div>
 
                             <div class="form-group col-md-12">
