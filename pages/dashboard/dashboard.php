@@ -22,8 +22,8 @@
 
 <!-- Connection Database --> 
   <?php include ("../connection.php"); 
-  
-  session_start();
+  include '../head.php';
+  error_reporting(0);
 ?>
 
 </head>

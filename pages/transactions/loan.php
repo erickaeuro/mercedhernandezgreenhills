@@ -77,7 +77,7 @@
                   <div class="card shadow mb-4 border-left-info border-bottom-info">
                       <!-- Card Header - Dropdown -->
                       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                          <h6 class="m-0 font-weight-bold text-info">Pawn Ticket</h6>
+                          <h6 class="m-0 font-weight-bold text-info">Loan Table</h6>
                       </div>
                       <!-- Card Body -->
 
@@ -98,13 +98,10 @@
                                           <th>Customer Name</th>
                                           <th>Item Type</th>
                                           <th>Item Description</th>
-                                          <th>Appraised Value</th>
                                           <th>Principal</th>
                                           <th>interest</th>
-                                          <th>Date Loan Granted</th>
-                                          <th>Maturity Date</th>
-                                          <th>Expiry Date</th>
                                           <th>Total Amount Paid</th>
+                                          <th>Total Amount Due</th>
                                           <th>Loan Status</th>
                                           <th>Action</th>
                         
@@ -115,7 +112,7 @@
           
                     foreach($query_run as $row)
                     {
-                        $interest = $row['interest']*100;
+                       
                         $firstn = $row['first_name'];
                         $middlen = $row['middle_name'];
                         $lastn = $row['last_name'];
@@ -128,13 +125,10 @@
                                 <td> <?php echo $fulln ; ?> </td>
                                 <td> <?php echo $row['item_type']; ?> </td>
                                 <td> <?php echo $row['item_desc']; ?> </td>
-                                <td> <?php echo $row['appraised_value']; ?> </td>
                                 <td> <?php echo $row['principal']; ?> </td>
-                                <td> <?php echo $interest ?>%</td>
-                                <td> <?php echo $row['date_loan_granted']; ?> </td>
-                                <td> <?php echo $row['maturity_date']; ?> </td>
-                                <td> <?php echo $row['expiry_date']; ?> </td>
+                                <td> <?php echo $row['interest'];?>%</td>
                                 <td> <?php echo $row['total_amt_paid']; ?> </td>
+                                <td> <?php echo $row['total_amt_due']; ?> </td>
                                 <td> <?php echo $row['loan_status']; ?> </td>
                                 <td>
                                     <a href="loanview.php?id=<?= $row['loan_id'];?>" class="btn btn-info viewbtn">VIEW</a>

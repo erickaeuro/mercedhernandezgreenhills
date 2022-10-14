@@ -119,26 +119,6 @@
                                 <input type="text" class="form-control" name="principal" placeholder="Enter Principal">
                             </div>
 
-                            <div class="form-group col-md-12">
-                                <label for="interest"><b>Interest </b></label>
-                                <input type="text" class="form-control" name="interest" placeholder="Enter Interest">
-                            </div>
-                        
-                            <div class="form-group col-md-12">
-                                <label for="Date Loan"><b>Date Loan Granted</b></label>
-                                <input type="date" class="form-control" name="dateloangranted">
-                            </div>
-
-                            <div class="form-group col-md-12">
-                                <label for="Mat Date"><b>Maturity Date </b></label>
-                                <input type="date" class="form-control" name="maturity_date" >
-                            </div>
-
-                            <div class="form-group col-md-12">
-                                <label for="Expire Date"><b>Expiry Date</b></label>
-                                <input type="date" class="form-control" name="expiry_date" >
-                            </div>
-
                         </div>
                             <div class="mb-4">
                             <center> 

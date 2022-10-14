@@ -81,7 +81,7 @@ require '../connection.php';
 
                             <div class="form-group col-md-12">
                                 <label for="customername"><b>Customer Name </b></label>
-                                <input type="text" class="form-control" name="customername" value="<?= $row['name']; ?>" readonly>
+                                <input type="text" class="form-control" name="customername" value="<?= $row['first_name']; ?>" readonly>
                             </div>   
 
                             <div class="form-group col-md-12">

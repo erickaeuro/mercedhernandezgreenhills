@@ -63,7 +63,6 @@ require '../connection.php';
                             if(mysqli_num_rows($query_run) > 0)
                             {
                                 $row = mysqli_fetch_array($query_run);
-                                $interest = $row['interest']*100;
                                 ?>
 
                             <div class="form-group col-md-12">
@@ -94,7 +93,7 @@ require '../connection.php';
 
                             <div class="form-group col-md-12">
                                 <label for="interest"><b>Interest</b></label>
-                                <p class="form-control"> <?= $interest?>% </p>
+                                <p class="form-control"> <?= $row['interest']?>%</p>
                             </div>
 
                             <div class="form-group col-md-12">
@@ -115,6 +114,11 @@ require '../connection.php';
                             <div class="form-group col-md-12">
                                 <label for="total_amt_paid"><b>Total Amount Paid</b></label>
                                 <p class="form-control"> <?= $row['total_amt_paid']; ?> </p>
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <label for="total_amt_due"><b>Total Amount Due</b></label>
+                                <p class="form-control"> <?= $row['total_amt_due']; ?> </p>
                             </div>
 
                             <div class="form-group col-md-12">

@@ -9,18 +9,25 @@
 
 if(isset($_POST['addloan']))
 {
+    //DATE VARIABLES
+    date_default_timezone_set('Asia/Manila');
+    $one = strtotime(date("Y-m-d"). "+1 month");
+    $three = strtotime(date("Y-m-d"). "+3 month");
+
+    //INPUT VARIABLES
     $customerno = $_POST['customerno'];
     $description = $_POST['item_desc'];
     $type = $_POST['item_type'];
     $appraised_value = $_POST['appraised_value'];
     $principal =$_POST['principal'];
-    $interest = $_POST['interest']/100;    
-    $dateloangranted = $_POST['dateloangranted'];
-    $maturity_date = $_POST['maturity_date'];
-    $expiry_date = $_POST['expiry_date'];
+    $interest = 5;    
+    $dateloangranted = date("Y-m-d");
+    $maturity_date = date("Y-m-d", $one);
+    $expiry_date = date("Y-m-d", $three);
+    $amtdue = $principal+($principal * 0.05);
 
-
-    $query = "INSERT INTO loantbl (loan_id, customer_no, item_type, item_desc, appraised_value, principal,  interest,  date_loan_granted, maturity_date, expiry_date, loan_status ) VALUES (NULL, '$customerno','$type','$description','$appraised_value','$principal','$interest','$dateloangranted','$maturity_date','$expiry_date','Active Loan')";
+    $query = "INSERT INTO loantbl (loan_id, customer_no, item_type, item_desc, appraised_value, principal,  interest,  date_loan_granted, maturity_date, expiry_date, total_amt_due, loan_status ) 
+    VALUES (NULL, '$customerno','$type','$description','$appraised_value','$principal','$interest','$dateloangranted','$maturity_date','$expiry_date','$amtdue','Active Loan')";
     $query_run = mysqli_query($con, $query);
 
     if($query_run)

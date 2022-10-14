@@ -63,7 +63,7 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4"> 
       <h4>
        <a href="transactionbtn.php" class="btn btn-info btn-icon-text btn-md"> 
-       <i class="fas fa-plus"></i>New Transaction</a>
+       <i class="fas fa-plus"></i> New Transaction</a>
     </div>
 
     <!-- Content Row -->
@@ -82,7 +82,9 @@
 
                       <?php 
 
-                          $query = "SELECT * FROM pawntickettbl";
+                          $query = "SELECT * FROM ((pawntickettbl 
+                          INNER JOIN loantbl ON pawntickettbl.loan_id = loantbl.loan_id)
+                          INNER JOIN customertbl ON loantbl.customer_no = customertbl.customer_no)";
                           $query_run = mysqli_query($con, $query);
 
                       ?> 
@@ -94,6 +96,7 @@
                                       <tr style="font-size:13px;font-family:sans-serif;">
                                           <th>Pawn Ticket No.</th>
                                           <th>Loan ID</th>
+                                          <th>Customer Name</th>
                                           <th>Amount Paid</th>
                                           <th>Date Paid</th>
                                           <th>Transaction Type</th>
@@ -106,11 +109,16 @@
           
                     foreach($query_run as $row)
                     {
+
+                        $firstn = $row['first_name'];
+                        $lastn = $row['last_name'];
+                        $fulln = "$firstn $lastn";
               ?>
                         <tbody>
                             <tr>
                                 <td> <?php echo $row['pawnticketno']; ?> </td>
                                 <td> <?php echo $row['loan_id']; ?> </td>
+                                <td> <?php echo $fulln; ?> </td>
                                 <td> <?php echo $row['amount_paid']; ?> </td>
                                 <td> <?php echo $row['date_paid']; ?> </td>
                                 <td> <?php echo $row['transactiontype']; ?> </td>

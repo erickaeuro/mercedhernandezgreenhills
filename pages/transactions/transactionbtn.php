@@ -63,6 +63,34 @@
                         <h4><b>Generate New Pawn Ticket</b>                      
                     </div>
                     <div class="card-body">
+                    
+                    <form action="" method="GET">
+                    <div class="row">
+                        <div class="col-md-2"> 
+                            <input type="text" class="form-control" name="id" value="<?php if(isset($_GET['id'])){echo $_GET['id'];} ?>" placeholder="Search for Loan ID">
+                        </div>
+                        <div class="col-md-4">
+
+                             <button type="submit" class="btn btn-primary">Search</button>
+                        </div>
+                    </div>
+                    </form>
+
+                        <!--FETCH NAME-->
+                        <?php
+                        if(isset($_GET['id'])){
+                            $id = $_GET['id'];
+
+                            $query = "SELECT * FROM loantbl INNER JOIN customertbl ON loantbl.customer_no = customertbl.customer_no WHERE loantbl.loan_id='$id'";
+                            $query_run = mysqli_query($con, $query);
+                            $row = mysqli_fetch_array($query_run);
+
+                        }
+                        
+            
+                        ?>
+
+
                         <form action="addtransaction.php" method="POST">
 
                         <div class="form-group col-md-12">
@@ -76,18 +104,30 @@
 
                         <div class="form-group col-md-12">
                             <label for="loan_id"><b>Loan ID</b></label>
-                            <input type="text" class="form-control" name="loan_id" placeholder="Input the loan ID of the customer">
+                            <input type="text" class="form-control" name="loan_id" value="<?php if(isset($_GET['id'])){echo $_GET['id'];} ?>" readonly>
                         </div>
+                        
+                        
 
                         <!--FOR VALIDATION PURPOSES-->
                         <div class="form-group col-md-12">
                             <label for="custname"><b>First Name</b></label>
-                            <input type="text" class="form-control" name="cust_fname">
+                            <input type="text" class="form-control" name="cust_fname" value="<?php if(isset($_GET['id'])){ echo $row['first_name'];}?>" readonly>
                         </div>
 
                         <div class="form-group col-md-12">
                             <label for="custname"><b>Last Name</b></label>
-                            <input type="text" class="form-control" name="cust_lname">
+                            <input type="text" class="form-control" name="cust_lname" value="<?php if(isset($_GET['id'])){ echo $row['last_name'];}?>" readonly>
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <label for="custname"><b>Item Type</b></label>
+                            <input type="text" class="form-control" name=" " value="<?php if(isset($_GET['id'])){ echo $row['item_desc'];}?>" readonly>
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <label for="custname"><b>Item Description</b></label>
+                            <input type="text" class="form-control" name=" " value="<?php if(isset($_GET['id'])){ echo $row['item_type'];}?>" readonly>
                         </div>
                                                  
                         <div class="form-group col-md-12">
