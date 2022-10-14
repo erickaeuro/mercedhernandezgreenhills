@@ -54,7 +54,6 @@
             <?php 
             unset($_SESSION['addstatus']);
         }?>
-        ?>
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
