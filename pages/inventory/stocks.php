@@ -107,12 +107,6 @@
 
                           <div class="table-responsive">
                               <table id="dtid" class="table table-hover display" width="100%" cellspacing="0">
-                              <form action="" method="GET">
-                                    <div class="input-group mb-3">
-                                        <input type="text" name="search" required value="<?php if(isset($_GET['search'])){echo $_GET['search']; } ?>" class="form-control" placeholder="Search Records">
-                                        <button type="submit" class="btn btn-primary">Search</button>
-                                    </div>
-                                </form>
                                 
                                   <thead>
                                       <tr style="font-size:13px;font-family:sans-serif;">
@@ -125,27 +119,21 @@
                                           <th>Item Quantity</th>
                                           <th>Tag Price</th>
                                           <th>Date Sold</th>
-                                          <th>Date Created</th>
                                           <th>Action</th>
                                       </tr>
                                   </thead>
-                              <tbody>
-                      <?php 
-                                  if(isset($_GET['search']))
-                                    {
-                                        $filtervalues = $_GET['search'];
-                                        $query2 = "SELECT * FROM inventorytbl WHERE CONCAT(stock_no,item_type) LIKE '%$filtervalues%' ";
-                                        $query_run2 = mysqli_query($con, $query);
-
-          
+          <?php
                 if($query_run)
                 {
                     foreach($query_run as $row)
                     {
             ?>
 
+               
+
                 <form action = "stocks.php" method = "POST">
 
+                    <tbody>
                         <tr>
                             <td> <?php echo $row['stock_no']; ?> </td>
                             <td> <?php echo $row['item_type']; ?> </td>
@@ -156,7 +144,6 @@
                             <td> <?php echo $row['itemqty']; ?> </td>
                             <td> <?php echo $row['tagprice']; ?> </td>
                             <td> <?php echo $row['date_sold']; ?> </td>
-                            <td> <?php echo $row['date_created']; ?> </td>
                             <td>
                                 <a href="stockview.php?id=<?= $row['stock_no'];?>" class="btn btn-info viewbtn">VIEW</a>
                                 <a href="stockedit.php?id=<?= $row['stock_no'];?>" class="btn btn-success editbtn">EDIT</a>
@@ -175,7 +162,7 @@
                 {
                     echo "No Record Found";
                 }
-              }
+
                 
           ?>      
                     </tbody>      
@@ -292,6 +279,11 @@
 
 <?php include '../scripts.php'; ?>   
 
+<script>
+$(document).ready(function () {
+  $('#dtid').DataTable();
+  $('.dataTables_length').addClass('bs-select');
+});
 
 </script>
 
