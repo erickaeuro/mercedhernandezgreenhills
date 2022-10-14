@@ -117,6 +117,10 @@
               
                     foreach($query_run as $row)
                     {
+                      $firstn = $row['first_name'];
+                      $middlen = $row['middle_name'];
+                      $lastn = $row['last_name'];
+                      $fulln = "$firstn $middlen $lastn";
             ?>
                                   <tbody>
                                       <tr>
@@ -126,7 +130,7 @@
                                         <a href="custdelete.php?id=<?= $row['customer_no']; ?>" name="deletedata" class="btn btn-danger deletebtn">DELETE</a>
                                         </td>
                                         <td> <?php echo $row['customer_no']; ?> </td>
-                                        <td> <?php echo $row['name']; ?> </td>
+                                        <td> <?php echo $fulln; ?> </td>
                                         <td> <?php echo $row['address']; ?> </td>
                                         <td> <?php echo $row['cpnum']; ?> </td>
                                         <td> <?php echo $row['birthdate']; ?> </td>

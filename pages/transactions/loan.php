@@ -116,12 +116,13 @@
                     foreach($query_run as $row)
                     {
                         $interest = $row['interest']*100;
+                        $fullnameval1 = ;
               ?>
                         <tbody>
                             <tr>                                
                                 <td> <?php echo $row['loan_id']; ?> </td>
                                 <td> <?php echo $row['customer_no']; ?> </td>
-                                <td> <?php echo $row['name']; ?> </td>
+                                <td> <?php echo $fullnameval1; ?> </td>
                                 <td> <?php echo $row['item_type']; ?> </td>
                                 <td> <?php echo $row['item_desc']; ?> </td>
                                 <td> <?php echo $row['appraised_value']; ?> </td>

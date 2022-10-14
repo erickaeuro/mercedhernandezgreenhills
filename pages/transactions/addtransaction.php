@@ -9,7 +9,8 @@
 if(isset($_POST['addtransc']))
     { 
         //VARIABLES
-        $custname = $_POST['cust_name'];
+        $custfname = $_POST['cust_fname'];
+        $custlname = $_POST['cust_lname'];
         $transc_type = $_POST['transctype'];
         $datepaid = $_POST['date_paid'];
         $loanid = $_POST['loan_id'];
@@ -20,7 +21,10 @@ if(isset($_POST['addtransc']))
         $validqueres = mysqli_query($con, $validque);
         $row = mysqli_fetch_array($validqueres);
 
-        if($row)
+        $fullnameval1 = "$row\['first_name'\] $row\['last_name'\]";
+        $nameval1 = strtolower()
+
+        if()
 
 
         

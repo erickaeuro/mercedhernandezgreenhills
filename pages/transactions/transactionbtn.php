@@ -81,8 +81,13 @@
 
                         <!--FOR VALIDATION PURPOSES-->
                         <div class="form-group col-md-12">
-                            <label for="custname"><b>Name</b></label>
-                            <input type="text" class="form-control" name="cust_name">
+                            <label for="custname"><b>First Name</b></label>
+                            <input type="text" class="form-control" name="cust_fname">
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <label for="custname"><b>Last Name</b></label>
+                            <input type="text" class="form-control" name="cust_lname">
                         </div>
                                                  
                         <div class="form-group col-md-12">
