@@ -106,7 +106,7 @@
                                           <th>Expiry Date</th>
                                           <th>Total Amount Paid</th>
                                           <th>Loan Status</th>
-                                          <th>action</th>
+                                          <th>Action</th>
                         
                                       </tr>
                                   </thead>
