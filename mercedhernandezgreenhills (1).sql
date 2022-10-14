@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 14, 2022 at 08:30 AM
+-- Generation Time: Oct 14, 2022 at 04:26 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -52,7 +52,9 @@ INSERT INTO `auctiontbl` (`auctionid`, `item_type`, `item_desc`, `price`, `date_
 
 CREATE TABLE `customertbl` (
   `customer_no` int(255) NOT NULL,
-  `name` varchar(225) NOT NULL,
+  `first_name` varchar(225) NOT NULL,
+  `middle_name` varchar(255) DEFAULT NULL,
+  `last_name` varchar(255) NOT NULL,
   `address` varchar(225) NOT NULL,
   `cpnum` varchar(11) NOT NULL,
   `birthdate` date NOT NULL,
@@ -63,16 +65,16 @@ CREATE TABLE `customertbl` (
 -- Dumping data for table `customertbl`
 --
 
-INSERT INTO `customertbl` (`customer_no`, `name`, `address`, `cpnum`, `birthdate`, `valid_id`) VALUES
-(1, 'Ericka Euro A. Capistrano', 'Manila', '09123245566', '2004-11-30', 'capistrano.png'),
-(2, 'Jan Earl Benedict D. Tamayo', 'Makati', '0915245533', '2004-12-30', 'R.png'),
-(3, 'Mizzy Capistrano', 'General Trias Cavite', '09123245566', '2004-07-31', '306513605_622713459293437_8413018732872427529_n.jpg'),
-(4, 'Sean Antonio', 'Sampaloc Manila ', '09164637435', '2000-09-25', '305157510_6170927152924171_7857187867609547983_n.jpg'),
-(5, 'Raquel Marasigan', '18B EASTWOOD OLYMPIC HEIGHTS LIBIS, QUEZON CITY', '09234180788', '1970-02-10', 'CzJj4B7UQAAoHzJ.jfif'),
-(6, 'Analie Caindoy', 'WFNTM2xHTS8xQ290cnpMMkJmeEdxUXdoeGp1RTNYdjVoVjE4Wk1KVU1lMnNMOHNndytjckw4cm1PMDBVano5YTo6szr+YcrWxLkoLOLxSt272Q==', 'THZmVUZEY2x', '1977-06-07', 'ZHczNHZMU1ZSeUw3aXdNdWtsNXB6Q0M2UDVnVUJDTnR2Z3ZCNHZZeXNpZDFzWGI2Tm1GT3BNT1FVSXZkS3dWS0VZTEdCUitwUXlTOC9haHB3aDhrVXc9PTo6OOxDia9KWgQPyXD4elQH5Q=='),
-(7, 'Nicole Marie Nicolas', 'VDdZQVlUQUI1NTJLWTJyOFR4NGwvR1F5bzdRWmR1MWRsMWpDR3FzWWZ5ND06OtVynsxDlIv4K8vaQbhTI1M=', 'UXhwNGJ5WTV', '2004-12-01', 'Y0hnSTJjeE1OdmdPQjMzeDJpc2h0a3pFL0pWdUF6cm43NHp0WnFhRnFraz06Or1JNexVHt4sWKqpo7sw1jg='),
-(8, 'Ed Solera', 'ZmVMVnppMVkyTEROWVUwMzd2ckgrZz09OjrZiLuyaN3fbBcLWuAaZAKw', 'MGJPb3hmbk1', '2004-12-08', 'RGsrd3k0T2dJTTA1TmcvWHdaVW1EanNkejJ4Zjl6RWVPNFgvMWxnNkhuZz06Ot06wh6VVPtJBE/i5JWhAS0='),
-(9, 'Charles Abiog', 'YXVydjJWbTBoRjNhSzhnR1M2Z3NQdz09Ojo8OqAQf02EP4F8saqlEOOq', 'QmN1QjJlYUh', '2004-01-06', '');
+INSERT INTO `customertbl` (`customer_no`, `first_name`, `middle_name`, `last_name`, `address`, `cpnum`, `birthdate`, `valid_id`) VALUES
+(1, 'Ericka Euro ', 'Abuan', 'Capistrano', 'Manila', '09123245566', '2004-11-30', 'capistrano.png'),
+(2, 'Jan Earl Benedict', 'DelaCruz', 'Tamayo', 'Makati', '0915245533', '2004-12-30', 'R.png'),
+(3, 'Mizzy', 'Capistrano\r\n', 'Antonio', 'General Trias Cavite', '09123245566', '2004-07-31', '306513605_622713459293437_8413018732872427529_n.jpg'),
+(4, 'Sean Raphael', 'Arellano', 'Antonio', 'Sampaloc Manila ', '09164637435', '2000-09-25', '305157510_6170927152924171_7857187867609547983_n.jpg'),
+(5, 'Raquel', NULL, 'Marasigan', '18B EASTWOOD OLYMPIC HEIGHTS LIBIS, QUEZON CITY', '09234180788', '1970-02-10', 'CzJj4B7UQAAoHzJ.jfif'),
+(6, 'Analie', NULL, 'Caindoy', 'WFNTM2xHTS8xQ290cnpMMkJmeEdxUXdoeGp1RTNYdjVoVjE4Wk1KVU1lMnNMOHNndytjckw4cm1PMDBVano5YTo6szr+YcrWxLkoLOLxSt272Q==', 'THZmVUZEY2x', '1977-06-07', 'ZHczNHZMU1ZSeUw3aXdNdWtsNXB6Q0M2UDVnVUJDTnR2Z3ZCNHZZeXNpZDFzWGI2Tm1GT3BNT1FVSXZkS3dWS0VZTEdCUitwUXlTOC9haHB3aDhrVXc9PTo6OOxDia9KWgQPyXD4elQH5Q=='),
+(7, 'Nicole', 'Marie', 'Nicolas', 'VDdZQVlUQUI1NTJLWTJyOFR4NGwvR1F5bzdRWmR1MWRsMWpDR3FzWWZ5ND06OtVynsxDlIv4K8vaQbhTI1M=', 'UXhwNGJ5WTV', '2004-12-01', 'Y0hnSTJjeE1OdmdPQjMzeDJpc2h0a3pFL0pWdUF6cm43NHp0WnFhRnFraz06Or1JNexVHt4sWKqpo7sw1jg='),
+(8, 'Adrian', 'MIDDLE NAME', 'Solera', 'ZmVMVnppMVkyTEROWVUwMzd2ckgrZz09OjrZiLuyaN3fbBcLWuAaZAKw', 'MGJPb3hmbk1', '2004-12-08', 'RGsrd3k0T2dJTTA1TmcvWHdaVW1EanNkejJ4Zjl6RWVPNFgvMWxnNkhuZz06Ot06wh6VVPtJBE/i5JWhAS0='),
+(9, 'Charles', 'MIDDLE NAME', 'Abiog', 'YXVydjJWbTBoRjNhSzhnR1M2Z3NQdz09Ojo8OqAQf02EP4F8saqlEOOq', 'QmN1QjJlYUh', '2004-01-06', '');
 
 -- --------------------------------------------------------
 
@@ -202,7 +204,8 @@ CREATE TABLE `loantbl` (
 INSERT INTO `loantbl` (`loan_id`, `customer_no`, `item_type`, `item_desc`, `appraised_value`, `principal`, `interest`, `date_loan_granted`, `maturity_date`, `expiry_date`, `total_amt_paid`, `loan_status`) VALUES
 (1, 1, 'Bracelet', 'Gold Bracelets with diamonds', 7000, 1200, '0.05', '2022-10-14', '2022-11-14', '2023-01-14', 0, 'Active Loan'),
 (2, 4, 'Pendant', 'Ruby Pendant w/ brass chain', 10000, 3200, '0.05', '2022-10-14', '2022-11-14', '2023-01-14', 0, 'Active Loan'),
-(3, 8, 'Wrist Watchs', '1920s Bronze Rolex', 5000, 900, '0.05', '2022-10-14', '2022-11-14', '2023-01-14', 0, 'Active Loan');
+(3, 8, 'Wrist Watchs', '1920s Bronze Rolex', 5000, 900, '0.05', '2022-10-14', '2022-11-14', '2023-01-14', 0, 'Active Loan'),
+(4, 7, 'Necklace', 'Silver Necklace', 1000, 250, '0.05', '2022-10-15', '2022-11-15', '2023-01-15', 0, 'Active Loan');
 
 -- --------------------------------------------------------
 
@@ -346,7 +349,7 @@ ALTER TABLE `inv_order_item`
 -- AUTO_INCREMENT for table `loantbl`
 --
 ALTER TABLE `loantbl`
-  MODIFY `loan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `loan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `pawntickettbl`
