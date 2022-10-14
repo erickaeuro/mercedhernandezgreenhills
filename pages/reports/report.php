@@ -67,9 +67,6 @@ $statement->execute();
 $result = $statement->fetchAll();
 
 ?>
-<?php include '../head.php'; ?>
-<?php include '../sidebar.php'; ?>
-<?php include '../navbar.php'; ?>
 <html>
  <head>
  <meta charset="utf-8">
@@ -77,7 +74,7 @@ $result = $statement->fetchAll();
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Inventory Reports</title>
+  <title>Merced Hernandez Greenhills</title>
   <!-- Custom fonts for this template-->
   <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -85,73 +82,138 @@ $result = $statement->fetchAll();
   <!-- Custom styles for this template-->
   <link href="../../css/sb-admin-2.css" rel="stylesheet">
   <link href="../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+
+  
  </head>
- <body>
-  <div class="container box">
-   <h1 align="center">Merced Hernandez Greenhills Reports</h1>
-   <br />
-    <br />
-    <div class="row">
+
+<body id="page-top" class=" bg-gray-800">
+  
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <?php include '../sidebar.php'; ?>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        <?php include '../navbar.php'; ?>
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+        <div class="row">
+                
+                <div class="col-xl-12 col-lg-12">
+                  <div class="card shadow mb-4 border-left-info border-bottom-info">
+                      <!-- Card Header - Dropdown -->
+                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                          <h6 class="m-0 font-weight-bold text-info">Inventory Reports</h6>
+                      </div>
+                      <!-- Card Body -->
+                      <div class="card">
+                        <div class="card-body">
+
      <form method="post">
       <div class="input-daterange">
-       <div class="col-md-5">
+      
+      <center>
+      <div class="form-group col-md-4">
         <input type="text" name="start_date" class="form-control" readonly />
         <?php echo $start_date_error; ?>
-       </div>
-       <div class="col-md-5">
+      </div>
+      </center>
+      
+      <center>
+       <div class="form-group col-md-4">
         <input type="text" name="end_date" class="form-control" readonly />
         <?php echo $end_date_error; ?>
        </div>
+      </center>
+
       </div>
-      <div class="col-md-2">
+
+      <div class="form-group col-md-12">
        <input type="submit" name="export" value="Export" class="btn btn-info" />
       </div>
-     </form>
+
     </div>
-    <br />
-                            <table class="table table-bordered table-striped">
+                            <div class="table-responsive">
+                                <table id="datatableid2" class="table table-hover display" width="100%" cellspacing="0">
+
                             <thead>
-                            <tr>
-                            <th>Stock No</th>
-                            <th>Item Type</th>
-                            <th>Item Description</th>
-                            <th>Karat Gold</th>
-                            <th>Kind of Stone</th>
-                            <th>Weight</th>
-                            <th>Item Qty</th>
-                            <th>Tag Price</th>
-                            <th>Date Created</th>
-                            </tr>
+                                <tr style="font-size:13px;font-family:sans-serif;">
+                                  <th>Stock No</th>
+                                  <th>Item Type</th>
+                                  <th>Item Description</th>
+                                  <th>Karat Gold</th>
+                                  <th>Kind of Stone</th>
+                                  <th>Weight</th>
+                                  <th>Item Qty</th>
+                                  <th>Tag Price</th>
+                                  <th>Date Created</th>
+                                </tr>
                             </thead>
-     <tbody>
-      <?php
-      foreach($result as $row)
-      {
-       echo '
-       <tr>
-        <td>'.$row["stock_no"].'</td>
-        <td>'.$row["item_type"].'</td>
-        <td>'.$row["itemdescription"].'</td>
-        <td>'.$row["karat_gold"].'</td>
-        <td>'.$row["kindofstone"].'</td>
-        <td>'.$row["weight"].'</td>
-        <td>'.$row["itemqty"].'</td>
-        <td>₱'.$row["tagprice"].'</td>
-        <td>'.$row["date_created"].'</td>
-       </tr>
-       ';
-      }
-      ?>
+               <tbody>
+                    <?php
+                if($result)
+                  {
+                    foreach($result as $row)
+                    {
+
+                      ?>
+
+                        <tr>
+                          <td><?php echo $row['stock_no']; ?> </td>
+                          <td><?php echo $row['item_type']; ?> </td>
+                          <td><?php echo $row['itemdescription']; ?> </td>
+                          <td><?php echo $row['karat_gold']; ?> </td>
+                          <td><?php echo $row['kindofstone']; ?> </td>
+                          <td><?php echo $row['weight']; ?> </td>
+                          <td><?php echo $row['itemqty']; ?> </td>
+                          <td><?php echo $row['tagprice']; ?> </td>
+                          <td><?php echo $row['date_created']; ?> </td>
+
+                        </tr>
+                    </div>
+                    <?php           
+                    }
+                    
+              
+                }
+                else 
+                {
+                    echo "No Record Found";
+                }
+
+                
+          ?>   
+
      </tbody>
+     </form>
     </table>
-    <br />
-    <br />
    </div>
   </div>
+
+  </div>
+      <!-- End of Main Content -->
+
+
+    </div>
+    <!-- End of Content Wrapper -->
+        
+  </div>
+  <!-- End of Page Wrapper -->
+  
+  <!-- Footer -->
+  <?php include '../footer.php'; ?>
+  <!-- End of Footer -->
 
   <!-- Scroll to Top Button-->
   <a class="scroll-to-top rounded" href="#page-top">
@@ -177,11 +239,14 @@ $result = $statement->fetchAll();
     </div>
   </div>
 
- </body>
-</html>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" />
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
 
 <script>
-
 $(document).ready(function(){
  $('.input-daterange').datepicker({
   todayBtn:'linked',
@@ -191,4 +256,8 @@ $(document).ready(function(){
 });
 
 </script>
-<?php include '../footer.php'; ?>
+
+
+
+</body>
+</html>

@@ -108,7 +108,7 @@
                       <!-- Card Body -->
                       <div class="card-body">
                           <div class="table-responsive">
-                              <table class="table table-hover display" id="" width="100%" cellspacing="0">
+                            <table id="datatableid3" class="table table-hover display" width="100%" cellspacing="0">
                                   <thead>
                                       <tr style="font-size:13px;font-family:sans-serif;">
                                           <th>User ID</th>
@@ -123,15 +123,18 @@
                                           <th></th>
                                       </tr>
                                   </thead>
-                                  
-            <?php
+                                
+                  <tbody>
+
+                  <?php
                 if($query_run)
                 {
                     foreach($query_run as $row)
                     {
+                        $username = $row['username'];
+                        $usertype = $row['usertype'];
+
             ?>
-      
-                  <tbody>
                   <tr>
                       <td> <?php echo $row['id']; ?> </td>
                       <td> <?php echo $row['username']; ?> </td>
@@ -145,11 +148,18 @@
                           <a href="editinguser.php?id=<?= $row['id'];?>" class="btn btn-success editbtn">EDIT</a>
                           <a href="deleteuser.php?id=<?= $row['id']; ?>" name="deletedata" class="btn btn-danger deletebtn">DELETE</a>
                       </td>
+                    </div>
                     </tr>
 
-                    <?php 
-                    ?>
-                      
+                    <?php           
+                    }
+                }
+                else 
+                {
+                    echo "No Record Found";
+                }
+          ?>  
+ 
                   </tbody>
 
                   <!--MODAL FOR Delete-->
@@ -222,14 +232,6 @@
 
 ?>
 
-         <?php           
-                    }
-                }
-                else 
-                {
-                    echo "No Record Found";
-                }
-          ?>  
                               </table>
                           </div>
                       </div>
@@ -279,10 +281,24 @@
   </div>
 
 <?php include '../scripts.php'; ?>
+
 <script>
-    $(document).ready(function() {
-    $('table.display').DataTable();
-} );
+        $(document).ready(function () {
+
+            $('#datatableid3').DataTable({
+                "pagingType": "full_numbers",
+                "lengthMenu": [
+                    [10, 25, 50, -1],
+                    [10, 25, 50, "All"]
+                ],
+                responsive: true,
+                language: {
+                    search: "_INPUT_",
+                    searchPlaceholder: "Search Data",
+                }
+            });
+
+        });
     </script>
 </body>
 

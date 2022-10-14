@@ -84,9 +84,12 @@
                   <div class="card shadow mb-4 border-left-info border-bottom-info">
                       <!-- Card Header - Dropdown -->
                       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                          <h6 class="m-0 font-weight-bold text-info">Customers</h6>
+                          <h6 class="m-0 font-weight-bold text-info">Customers Table</h6>
                       </div>
                       <!-- Card Body -->
+
+                      <div class="card">
+                      <div class="card-body">
 
                       <?php require '../connection.php'; ?>
 
@@ -96,12 +99,12 @@
                             $query_run = mysqli_query($con, $query);
 
                       ?> 
-                      <div class="card-body">
+                      
                           <div class="table-responsive">
-                              <table class="table table-hover display" id="" width="100%" cellspacing="0">
+                            <table id="datatableid" class="table table-hover display" width="100%" cellspacing="0">
                                   <thead>
                                       <tr style="font-size:13px;font-family:sans-serif;">
-                                      <th>Action</th>
+                                          <th>Action</th>
                                           <th>Customer No.</th>
                                           <th>Name</th>
                                           <th>Address</th>
@@ -111,20 +114,21 @@
                                           
                                           <th></th>
                                       </tr>
-
                                   </thead>
-            <?php
-              
-                    foreach($query_run as $row)
-                    {
-                      $firstn = $row['first_name'];
-                      $middlen = $row['middle_name'];
-                      $lastn = $row['last_name'];
-                      $fulln = "$firstn $middlen $lastn";
-            ?>
+       
                                   <tbody>
+            <?php
+                        if($query_run)
+                          {
+                              foreach($query_run as $row)
+                                {
+                                  $firstn = $row['first_name'];
+                                  $middlen = $row['middle_name'];
+                                  $lastn = $row['last_name'];
+                                  $fulln = "$firstn $middlen $lastn";
+            ?>
                                       <tr>
-                                      <td>
+                                        <td>
                                         <a href="custview.php?id=<?= $row['customer_no'];?>" class="btn btn-info viewbtn">VIEW</a>
                                         <a href="custedit.php?id=<?= $row['customer_no'];?>" class="btn btn-success editbtn">EDIT</a>
                                         <a href="custdelete.php?id=<?= $row['customer_no']; ?>" name="deletedata" class="btn btn-danger deletebtn">DELETE</a>
@@ -135,17 +139,21 @@
                                         <td> <?php echo $row['cpnum']; ?> </td>
                                         <td> <?php echo $row['birthdate']; ?> </td>
                                         <td> <?php echo $row['valid_id']; ?> </td>
-                                        
+                                        </div>  
                                       </tr>
-                                  </tbody>
-
-                                  
+                                          
               <?php           
                     }
-                    
+                  
+                }
+                else 
+                {
+                    echo "No Record Found";
+                }
+  
          
              ?>   
-             
+                              </tbody>
 
                               </table>
                           </div>
@@ -196,11 +204,27 @@
   </div>
 
 <?php include '../scripts.php'; ?>
+
 <script>
-    $(document).ready(function() {
-    $('table.display').DataTable();
-} );
+        $(document).ready(function () {
+
+            $('#datatableid2').DataTable({
+                "pagingType": "full_numbers",
+                "lengthMenu": [
+                    [10, 25, 50, -1],
+                    [10, 25, 50, "All"]
+                ],
+                responsive: true,
+                language: {
+                    search: "_INPUT_",
+                    searchPlaceholder: "Search Data",
+                }
+            });
+
+        });
     </script>
+
+
 </body>
 
 </html>

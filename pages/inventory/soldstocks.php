@@ -107,13 +107,14 @@
                                           <th>Action</th>
                                       </tr>
                                   </thead>
-          <?php
+                        <tbody>
+
+                        <?php
                 if($query_run)
                 {
                     foreach($query_run as $row)
                     {
             ?>
-                        <tbody>
                             <tr>
                                 <td> <?php echo $row['stock_no']; ?> </td>
                                 <td> <?php echo $row['item_type']; ?> </td>
@@ -218,7 +219,7 @@
                 responsive: true,
                 language: {
                     search: "_INPUT_",
-                    searchPlaceholder: "Search Records",
+                    searchPlaceholder: "Search Data",
                 }
             });
 

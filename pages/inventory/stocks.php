@@ -106,7 +106,7 @@
                       ?> 
 
                           <div class="table-responsive">
-                              <table id="datatableid" class="table table-hover display" width="100%" cellspacing="0">
+                              <table id="datatableid2" class="table table-hover display" width="100%" cellspacing="0">
                                 
                                   <thead>
                                       <tr style="font-size:13px;font-family:sans-serif;">
@@ -280,7 +280,7 @@
 
 <?php include '../scripts.php'; ?>   
 
- <script>
+<script>
         $(document).ready(function () {
 
             $('#datatableid').DataTable({
@@ -292,12 +292,13 @@
                 responsive: true,
                 language: {
                     search: "_INPUT_",
-                    searchPlaceholder: "Search Your Data",
+                    searchPlaceholder: "Search Data",
                 }
             });
 
         });
     </script>
+ 
 
 
 
