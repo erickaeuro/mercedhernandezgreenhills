@@ -36,11 +36,12 @@
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="../transactions/pawnticket.php">Transaction</a>
-                <a class="collapse-item" href="../transactions/auction.php">Auction</a>
+                <a class="collapse-item" href="../transactions/loan.php">Loans</a>
+                <a class="collapse-item" href="../transactions/transaction.php">Transaction</a>
                 <a class="collapse-item" href="../transactions/renewal.php">Renewal</a>
                 <a class="collapse-item" href="../transactions/redeem.php">Redeem</a>
-                <a class="collapse-item" href="../transactions/loan.php">Loans</a>
+                <a class="collapse-item" href="../transactions/auction.php">Auction</a>
+                
             </div>
         </div>
     </li>

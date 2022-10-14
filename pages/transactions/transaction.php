@@ -62,13 +62,13 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4"> 
       <h4>
-       <a href="pawnticketbtn.php" class="btn btn-info btn-icon-text btn-md"> 
+       <a href="transactionbtn.php" class="btn btn-info btn-icon-text btn-md"> 
        <i class="fas fa-plus"></i>New Transaction</a>
     </div>
 
     <!-- Content Row -->
 
-    <form action="addpawn.php" method="POST">
+    <form action="addtransaction.php" method="POST">
 
             <div class="row">
                 

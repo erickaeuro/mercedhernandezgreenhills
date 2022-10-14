@@ -143,7 +143,7 @@
                             <div class="mb-4">
                             <center> 
                             <a href="loan.php" class="btn btn-danger float-end">Back</a>
-                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#AddModal">Add Redeem Loan</button>
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#AddModal">Add Loan</button>
                             
                             </center>
                             </div>

@@ -63,37 +63,39 @@
                         <h4><b>Generate New Pawn Ticket</b>                      
                     </div>
                     <div class="card-body">
-                        <form action="addpawnt.php" method="POST">
+                        <form action="addtransaction.php" method="POST">
 
-                                        
-                        <?php 
-                        $cser=mysqli_connect("localhost","root","","mercedhernandezgreenhills") or die("connection failed:".mysqli_error());
-                        $result = mysqli_query($cser,"SELECT customerno, name FROM customertbl") or die(mysql_error());
-                        echo '<select class="custom-select" name="customerno" style="width:410px; position: relative; left:10px; top:-1px">';
+                        <div class="form-group col-md-12">
+                            <label for="loanstatus"><b>Transaction Type </b></label><br>
+                            <select class="custom-select" name="transctype" style="width:410px; position: relative; left:10px; top:-1px">
+                                <option value="" selected="selected">Select Transaction Type </option>
+                                <option value="Renewal">Renewal</option>
+                                <option value="Redeem">Redemption</option>                                
+                            </select>
+                        </div>
 
+                        <div class="form-group col-md-12">
+                            <label for="loan_id"><b>Loan ID</b></label>
+                            <input type="text" class="form-control" name="loan_id" placeholder="Input the loan ID of the customer">
+                        </div>
 
-                        if (mysqli_num_rows($result)!=0)
-                        {
-
-                        echo'<option value=" " selected="selected">Customer Number</option>';
-
-                        while($drop_2 = mysqli_fetch_array( $result ))
-                        {
-                        echo '<option value="'.$drop_2['customerno'].'">'.$drop_2['customerno'].' - '.$drop_2['name'] .'</option>';
-
-                        }
-
-
-                        }
-                        echo '</select>';                      
-                        ?>    
+                        <!--FOR VALIDATION PURPOSES-->
+                        <div class="form-group col-md-12">
+                            <label for="custname"><b>Name</b></label>
+                            <input type="text" class="form-control" name="cust_name">
+                        </div>
+                                                 
+                        <div class="form-group col-md-12">
+                            <label for="amtpaid"><b>Amount Paid</b></label>
+                            <input type="text" class="form-control" name="amount_paid">
+                        </div>  
 
 
                         </div>
                             <div class="mb-4">
                             <center> 
-                            <a href="pawnticket.php" class="btn btn-danger float-end">Back</a>
-                            <button type="submit" name="addpawn" class="btn btn-success editbtn">Generate Pawn Ticket</button> 
+                            <a href="transaction.php" class="btn btn-danger float-end">Back</a>
+                            <button type="submit" name="addtransc" class="btn btn-success editbtn">Generate Pawn Ticket</button> 
                             </center>
                             </div>
                         </form>
