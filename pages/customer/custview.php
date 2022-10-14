@@ -56,7 +56,7 @@ require '../connection.php';
                         if(isset($_GET['id']))
                         {
                             $id = mysqli_real_escape_string($con, $_GET['id']);
-                            $query = "SELECT * FROM customertbl WHERE customerno='$id' ";
+                            $query = "SELECT * FROM customertbl WHERE customer_no='$id' ";
                             $query_run = mysqli_query($con, $query);
 
                             if(mysqli_num_rows($query_run) > 0)
