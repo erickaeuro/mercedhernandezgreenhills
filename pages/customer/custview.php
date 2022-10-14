@@ -64,15 +64,25 @@ require '../connection.php';
                                 $row = mysqli_fetch_array($query_run);
                                 ?>
 
+
                             <div class="form-group col-md-12">
                                 <label for="customer_no"><b>Customer No.</b></label>
                                 <p class="form-control"> <?= $row['customer_no']; ?> </p>
                             </div>  
 
+                            <div class="form-group col-md-12">
+                                <label for="first_name"><b>First Name</b></label>
+                                <p class="form-control"> <?= $row['first_name']; ?> </p>
+                            </div>
 
                             <div class="form-group col-md-12">
-                                <label for="name"><b>Name</b></label>
-                                <p class="form-control"> <?= $row['name']; ?> </p>
+                                <label for="middle_name"><b>Middle Name</b></label>
+                                <p class="form-control"> <?= $row['middle_name']; ?> </p>
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <label for="last_name"><b>Last Name</b></label>
+                                <p class="form-control"> <?= $row['last_name']; ?> </p>
                             </div>
 
                             <div class="form-group col-md-12">
