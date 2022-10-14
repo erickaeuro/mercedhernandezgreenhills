@@ -54,19 +54,30 @@
                     <div class="card-body">
                         <form action="addcustomer.php" method="POST">
 
+                           
                             <div class="form-group col-md-12">
-                                <label for="name">Name</label>
-                                <input type="text" class="form-control" name="name" placeholder="Name" required>
+                                <label for="first_name"><b>First Name</b></label>
+                                <input type="text" class="form-control" name="first_name" placeholder="Enter First Name" required>
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <label for="middle_name"><b>Middle Name</b></label>
+                                <input type="text" class="form-control" name="middle_name" placeholder="Enter Middle Name">
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <label for="last_name"><b>Last Name</b></label>
+                                <input type="text" class="form-control" name="last_name" placeholder="Enter Last Name" required>
                             </div>
 
                             <div class="form-group col-md-12">
                                 <label for="address">Address</label>
-                                <input type="text" class="form-control" name="address" placeholder="Address" required>
+                                <input type="text" class="form-control" name="address" placeholder="Enter Full Address" required>
                             </div>
 
                             <div class="form-group col-md-12">
                                 <label for="cpnum">Contact Number</label>
-                                <input type="text" class="form-control" name="cpnum" placeholder="Contact Number" required>
+                                <input type="text" class="form-control" name="cpnum" placeholder="Enter Contact Number" required>
                             </div>
 
                             <div class="form-group col-md-12">

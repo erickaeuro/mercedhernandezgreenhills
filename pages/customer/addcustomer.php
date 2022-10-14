@@ -19,7 +19,9 @@ function encrypthis($data,$key){
 if(isset($_POST['addcustomer']))
 {
     $customer_no = $_POST['customer_no'];
-    $name = $_POST['name'];
+    $first_name = $_POST['first_name'];
+    $middle_name = $_POST['middle_name'];
+    $last_name = $_POST['last_name'];
     $address = $_POST['address'];
     $address = encrypthis($address, $key);
     $cpnum = $_POST['cpnum'];
@@ -29,7 +31,7 @@ if(isset($_POST['addcustomer']))
     $valid_id = encrypthis($valid_id, $key);
 
 
-    $query = "INSERT INTO customertbl (`customer_no`,`name`,`address`,`cpnum`,`birthdate`,`valid_id`) VALUES ('$customer_no','$name','$address','$cpnum','$BirthDate','$valid_id')";
+    $query = "INSERT INTO customertbl (`customer_no`,`first_name`,`middle_name`,`last_name`,`address`,`cpnum`,`birthdate`,`valid_id`) VALUES ('$customer_no','$first_name','$middle_name','$last_name','$address','$cpnum','$BirthDate','$valid_id')";
     $query_run = mysqli_query($con, $query);
 
         if($query_run)

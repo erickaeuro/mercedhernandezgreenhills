@@ -78,8 +78,18 @@ require '../connection.php';
 
 
                             <div class="form-group col-md-12">
-                                <label for="name"><b>Name</b></label>
-                                <input type="text" class="form-control" name="name" value="<?= $row['name']; ?>">
+                                <label for="first_name"><b>First Name</b></label>
+                                <input type="text" class="form-control" name="first_name" value="<?= $row['first_name']; ?>">
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <label for="middle_name"><b>Middle Name</b></label>
+                                <input type="text" class="form-control" name="middle_name" value="<?= $row['middle_name']; ?>">
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <label for="last_name"><b>Last Name</b></label>
+                                <input type="text" class="form-control" name="last_name" value="<?= $row['last_name']; ?>">
                             </div>
 
                             <div class="form-group col-md-12">
