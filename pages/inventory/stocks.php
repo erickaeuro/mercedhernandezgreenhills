@@ -106,7 +106,7 @@
                       ?> 
 
                           <div class="table-responsive">
-                              <table id="dtid" class="table table-hover display" width="100%" cellspacing="0">
+                              <table id="datatableid" class="table table-hover display" width="100%" cellspacing="0">
                                 
                                   <thead>
                                       <tr style="font-size:13px;font-family:sans-serif;">
@@ -122,19 +122,21 @@
                                           <th>Action</th>
                                       </tr>
                                   </thead>
-          <?php
+    
+                <form action = "stocks.php" method = "POST">
+
+                    <tbody>
+
+            <?php
                 if($query_run)
                 {
                     foreach($query_run as $row)
                     {
+                        $stock_no = $row['stock_no'];
+                        $item_type = $row['item_type'];
+
             ?>
-
-               
-
-                <form action = "stocks.php" method = "POST">
-
-                    <tbody>
-                        <tr>
+                        <tr class="table-active">
                             <td> <?php echo $row['stock_no']; ?> </td>
                             <td> <?php echo $row['item_type']; ?> </td>
                             <td> <?php echo $row['itemdescription']; ?> </td>
@@ -165,11 +167,10 @@
 
                 
           ?>      
-                    </tbody>      
+                              </tbody>      
                     
-                </form>
+                              </form>
                 
-               
                               </table>
                           </div>
                       </div>
@@ -279,13 +280,28 @@
 
 <?php include '../scripts.php'; ?>   
 
-<script>
-$(document).ready(function () {
-  $('#dtid').DataTable();
-  $('.dataTables_length').addClass('bs-select');
-});
+ <script>
+        $(document).ready(function () {
 
-</script>
+            $('#datatableid').DataTable({
+                "pagingType": "full_numbers",
+                "lengthMenu": [
+                    [10, 25, 50, -1],
+                    [10, 25, 50, "All"]
+                ],
+                responsive: true,
+                language: {
+                    search: "_INPUT_",
+                    searchPlaceholder: "Search Your Data",
+                }
+            });
+
+        });
+    </script>
+
+
+
+
 
 </body>
 </html>
