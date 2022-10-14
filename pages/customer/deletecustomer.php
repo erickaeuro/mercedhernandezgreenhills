@@ -5,7 +5,7 @@ if(mysqli_connect_errno()) {echo "Error: " . mysqli_connect_errno();}
 
 if (isset($_GET['id'])) {
 	$id = mysqli_real_escape_string ($con, $_GET['id']);
-	$query = "DELETE FROM customertbl WHERE customerno='$id'";
+	$query = "DELETE FROM customertbl WHERE customer_no='$id'";
 
 	if(mysqli_query($con, $query)){
 	header('location: customer.php?del=1');

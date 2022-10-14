@@ -56,7 +56,7 @@ require '../connection.php';
                         if(isset($_GET['id']))
                         {
                             $id = mysqli_real_escape_string($con, $_GET['id']);
-                            $query = "SELECT * FROM customertbl WHERE customerno='$id' ";
+                            $query = "SELECT * FROM customertbl WHERE customer_no='$id' ";
                             $query_run = mysqli_query($con, $query);
 
                             if(mysqli_num_rows($query_run) > 0)
@@ -65,8 +65,8 @@ require '../connection.php';
                                 ?>
 
                             <div class="form-group col-md-12">
-                                <label for="customerno"><b>Customer No.</b></label>
-                                <p class="form-control"> <?= $row['customerno']; ?> </p>
+                                <label for="customer_no"><b>Customer No.</b></label>
+                                <p class="form-control"> <?= $row['customer_no']; ?> </p>
                             </div>  
 
 
