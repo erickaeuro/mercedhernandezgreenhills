@@ -20,7 +20,6 @@
   <link href="../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 <?php include ("../connection.php"); 
-  include '../head.php';
   error_reporting(0);
   
   

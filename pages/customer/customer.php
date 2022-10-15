@@ -108,8 +108,10 @@
                                           <th>Action</th>
                                           <th>Customer No.</th>
                                           <th>Name</th>
+                                          <th>Address</th>
                                           <th>Contact Number</th>
                                           <th>Birthdate</th>
+                                          <th>Valid ID</th>
                                           
                                           <th></th>
                                       </tr>
@@ -134,8 +136,10 @@
                                         </td>
                                         <td> <?php echo $row['customer_no']; ?> </td>
                                         <td> <?php echo $fulln; ?> </td>
+                                        <td> <?php echo $row['address']; ?> </td>
                                         <td> <?php echo $row['cpnum']; ?> </td>
                                         <td> <?php echo $row['birthdate']; ?> </td>
+                                        <td> <?php echo $row['valid_id']; ?> </td>
                                         </div>  
                                       </tr>
                                           
