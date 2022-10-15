@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
 
   <meta charset="utf-8">
@@ -15,22 +18,20 @@
   <!-- Custom styles for this template-->
   <link href="../../css/sb-admin-2.css" rel="stylesheet">
   <link href="../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css">
-  
 
-<!-- Connection Database --> 
-  <?php include ("../connection.php"); 
+<?php include ("../connection.php"); 
+  include '../head.php';
+  error_reporting(0);
   
-  session_start();
+  
 ?>
 
 </head>
 
 <body id="page-top" class=" bg-gray-800">
 
-
-  <!-- Page Wrapper -->
-  <div id="wrapper">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
 
     <!-- Sidebar -->
     <?php include '../sidebar.php'; ?>
@@ -39,138 +40,144 @@
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
-      <!-- Main Content -->
-      <div id="content">
+    <!-- Main Content -->
+    <div id="content">
 
-        <!-- Topbar -->
-        <?php include '../navbar.php'; ?>
-        <!-- End of Topbar -->
-
-        <!-- Begin Page Content -->
-        <div class="container-fluid">
-        <?php 
-      
-
-              if(isset($_SESSION['status']))
-              {
-                  ?>
-                      <div class="alert alert-success" role="alert" role="alert">
-                          <?= $_SESSION['status']; ?>
-                          <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">x</button>
-                      </div>
-                  <?php 
-                  unset($_SESSION['status']);
-              }
-
+    <!-- Topbar -->
+    <?php include '../navbar.php'; 
+    if(isset($_SESSION['addstatus']))
+    {
         ?>
-        
-<body>
+            <div class="alert alert-success" role="alert" role="alert">
+                <?= $_SESSION['addstatus']; ?>
+                <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">x</button>
+            </div>
+        <?php 
+        unset($_SESSION['addstatus']);
+    }?>
+    <!-- End of Topbar -->
 
-    <div class="row">
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4"> 
+      <h4>
+       <a href="loanbtn.php" class="btn btn-info btn-icon-text btn-md"> 
+       <i class="fas fa-plus"></i> New Transaction</a>
+    </div>
+
+    <!-- Content Row -->
+
+    <form action="addpawn.php" method="POST">
+
+            <div class="row">
                 
                 <div class="col-xl-12 col-lg-12">
                   <div class="card shadow mb-4 border-left-info border-bottom-info">
                       <!-- Card Header - Dropdown -->
                       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                          <h6 class="m-0 font-weight-bold text-info">Sold Jewelry Stocks</h6>
+                          <h6 class="m-0 font-weight-bold text-info">Loan Table</h6>
                       </div>
                       <!-- Card Body -->
 
-                      <div class="card">
-                        <div class="card-body">
-
-                        <?php 
-                            $con = mysqli_connect("localhost","root","","mercedhernandezgreenhills");
-                            if(mysqli_connect_errno()) {echo "Error: " . mysqli_connect_errno();}
-                        ?> 
-
                       <?php 
 
-                            $query = "SELECT * FROM inventorytbl where move='1'";
-                            $query_run = mysqli_query($con, $query);
+                          $query = "SELECT * FROM loantbl INNER JOIN customertbl ON loantbl.customer_no = customertbl.customer_no";
+                          $query_run = mysqli_query($con, $query);
+
                       ?> 
 
+                      <div class="card-body">
                           <div class="table-responsive">
-                              <table id="dtid" class="table table-hover display" width="100%" cellspacing="0">
-                                
+                              <table class="table table-hover display" id="datatableid" width="100%" cellspacing="0">
                                   <thead>
                                       <tr style="font-size:13px;font-family:sans-serif;">
-                                          <th>Stock No.</th>
+                                          <th>Loan ID</th>
+                                          <th>Customer Number</th>
+                                          <th>Customer Name</th>
                                           <th>Item Type</th>
                                           <th>Item Description</th>
-                                          <th>Karat/Gold</th>
-                                          <th>Kind of Stone</th>
-                                          <th>Weight</th>
-                                          <th>Item Quantity</th>
-                                          <th>Tag Price</th>
-                                          <th>Date Sold</th>
+                                          <th>Principal</th>
+                                          <th>interest</th>
+                                          <th>Total Amount Paid</th>
+                                          <th>Total Amount Due</th>
+                                          <th>Loan Status</th>
                                           <th>Action</th>
+                        
                                       </tr>
                                   </thead>
+
                         <tbody>
 
                         <?php
-                if($query_run)
-                {
-                    foreach($query_run as $row)
-                    {
-            ?>
-                            <tr>
-                                <td> <?php echo $row['stock_no']; ?> </td>
+          
+          foreach($query_run as $row)
+          {
+             
+              $firstn = $row['first_name'];
+              $middlen = $row['middle_name'];
+              $lastn = $row['last_name'];
+              $fulln = "$firstn $middlen $lastn";
+    ?>
+                            <tr>                                
+                                <td> <?php echo $row['loan_id']; ?> </td>
+                                <td> <?php echo $row['customer_no']; ?> </td>
+                                <td> <?php echo $fulln ; ?> </td>
                                 <td> <?php echo $row['item_type']; ?> </td>
-                                <td> <?php echo $row['itemdescription']; ?> </td>
-                                <td> <?php echo $row['karat_gold']; ?> </td>
-                                <td> <?php echo $row['kindofstone']; ?> </td>
-                                <td> <?php echo $row['weight']; ?> </td>
-                                <td> <?php echo $row['itemqty']; ?> </td>
-                                <td> <?php echo $row['tagprice']; ?> </td>
-                                <td> <?php echo $row['date_sold']; ?> </td>
+                                <td> <?php echo $row['item_desc']; ?> </td>
+                                <td> <?php echo $row['principal']; ?> </td>
+                                <td> <?php echo $row['interest'];?>%</td>
+                                <td> <?php echo $row['total_amt_paid']; ?> </td>
+                                <td> <?php echo $row['total_amt_due']; ?> </td>
+                                <td> <?php echo $row['loan_status']; ?> </td>
                                 <td>
-                                <a href="stockview.php?id=<?= $row['stock_no'];?>" class="btn btn-info viewbtn">VIEW</a>
-                                <a href="soldstockedit.php?id=<?= $row['stock_no'];?>" class="btn btn-success editbtn">EDIT</a>
+                                    <a href="loanview.php?id=<?= $row['loan_id'];?>" class="btn btn-info viewbtn">VIEW</a>
+                                    <a href="editloan.php?id=<?= $row['loan_id']?>" class="btn btn-success editbtn"> EDIT </a>
                                 </td>
                             </tr>
-
-                            <?php           
-                    }
-                }
-                else 
-                {
-                    echo "No Record Found";
-                }
-          ?>      
-                        </tbody>         
-                              </table>
+                            <?php  
+                             
+                            }
+                        
+        
+                  
+                    ?>             
+                        
+                        </tbody>
+                         </table>
                           </div>
                       </div>
                   </div>
             
-              </div>    
+              </div> 
 
-
+                
             </div>
         </div>
-  
-      </div>
-      <!-- End of Main Content -->
+        <!-- /.container-fluid -->
 
-      <!-- Footer -->
-        <?php include '../footer.php'; ?>
-      <!-- End of Footer -->
+      </div>
+
+                  </form>
+    <!-- End of Main Content -->
+
+<!-- Footer -->
+<?php include '../footer.php'; ?>
+<!-- End of Footer -->
 
     </div>
     <!-- End of Content Wrapper -->
         
-  </div>
-  <!-- End of Page Wrapper -->
+    </div>
+    <!-- End of Page Wrapper -->
 
-  <!-- Scroll to Top Button-->
+<!-- Scroll to Top Button-->
   <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
+     <i class="fas fa-angle-up"></i>
   </a>
 
-  
-  <!-- Logout Modal-->
+<!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -189,8 +196,7 @@
     </div>
   </div>
 
-
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -202,18 +208,13 @@
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js"></script>
 
-<?php include '../scripts.php'; ?>   
+<?php include '../scripts.php'; ?>
 
-    <script>
-    $(document).ready(function() {
-    $('dtid').DataTable();
-    } );
-    </script>
 
-    <script>
+<script>
         $(document).ready(function () {
 
-            $('#dtid').DataTable({
+            $('#datatableid').DataTable({
                 "pagingType": "full_numbers",
                 "lengthMenu": [
                     [10, 25, 50, -1],
@@ -228,8 +229,6 @@
 
         });
     </script>
-
- 
-
 </body>
+
 </html>

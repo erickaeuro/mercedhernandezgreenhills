@@ -18,6 +18,7 @@
   <!-- Custom styles for this template-->
   <link href="../../css/sb-admin-2.css" rel="stylesheet">
   <link href="../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css">
 
 <!-- Connection Database --> 
   <?php 
@@ -101,16 +102,14 @@
                       ?> 
                       
                           <div class="table-responsive">
-                            <table id="datatableid" class="table table-hover display" width="100%" cellspacing="0">
+                            <table id="datatbl" class="table table-hover display" width="100%" cellspacing="0">
                                   <thead>
                                       <tr style="font-size:13px;font-family:sans-serif;">
                                           <th>Action</th>
                                           <th>Customer No.</th>
                                           <th>Name</th>
-                                          <th>Address</th>
                                           <th>Contact Number</th>
                                           <th>Birthdate</th>
-                                          <th>Valid ID</th>
                                           
                                           <th></th>
                                       </tr>
@@ -135,10 +134,8 @@
                                         </td>
                                         <td> <?php echo $row['customer_no']; ?> </td>
                                         <td> <?php echo $fulln; ?> </td>
-                                        <td> <?php echo $row['address']; ?> </td>
                                         <td> <?php echo $row['cpnum']; ?> </td>
                                         <td> <?php echo $row['birthdate']; ?> </td>
-                                        <td> <?php echo $row['valid_id']; ?> </td>
                                         </div>  
                                       </tr>
                                           
@@ -203,12 +200,25 @@
     </div>
   </div>
 
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js"></script>
+
 <?php include '../scripts.php'; ?>
 
 <script>
         $(document).ready(function () {
 
-            $('#datatableid2').DataTable({
+            $('#datatbl').DataTable({
                 "pagingType": "full_numbers",
                 "lengthMenu": [
                     [10, 25, 50, -1],

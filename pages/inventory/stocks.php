@@ -15,7 +15,6 @@
   <!-- Custom styles for this template-->
   <link href="../../css/sb-admin-2.css" rel="stylesheet">
   <link href="../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css">
 
 
 <!-- Connection Database --> 
@@ -106,7 +105,7 @@
                       ?> 
 
                           <div class="table-responsive">
-                              <table id="datatableid2" class="table table-hover display" width="100%" cellspacing="0">
+                              <table id="datatableid" class="table table-hover display" width="100%" cellspacing="0">
                                 
                                   <thead>
                                       <tr style="font-size:13px;font-family:sans-serif;">
@@ -152,36 +151,8 @@
                                 <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#MoveModal">MOVE</button>
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteModal">DELETE</button>
                             </td> 
-                    </div> 
-                        </tr>
 
-                        <?php           
-                    }
-                    
-              
-                }
-                else 
-                {
-                    echo "No Record Found";
-                }
-
-                
-          ?>      
-                              </tbody>      
-                    
-                              </form>
-                
-                              </table>
-                          </div>
-                      </div>
-                  </div>
-            
-              </div>    
-            
-            </div>
-        </div>
-        <form action = "stocks.php" method = "POST">
-                 <!--MODAL FOR Delete-->
+                            <!--MODAL FOR Delete-->
                  <div class="modal" id="DeleteModal">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -226,7 +197,40 @@
               </div>
             </div>
           </div>
-              </form>
+                    </div> 
+                    
+                        </tr>
+
+                        <?php 
+                        
+                        
+                    }
+                    
+              
+                }
+                else 
+                {
+                    echo "No Record Found";
+                }
+
+                
+          ?>      
+                              </tbody>  
+                              
+                    
+                              </form>
+
+                
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+            
+              </div>    
+            
+            </div>
+        </div>
+             
       </div>
       <!-- End of Main Content -->
 
