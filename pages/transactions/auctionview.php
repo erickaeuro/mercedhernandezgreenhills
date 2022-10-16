@@ -48,7 +48,7 @@ require '../connection.php';
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4><b>View Jewelry Stocks</b>                      
+                        <h4><b>View Auctioned Jewelry</b>                      
                     </div>
                     <div class="card-body">
 

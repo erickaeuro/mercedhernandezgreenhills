@@ -79,7 +79,7 @@
                     <form action="" method="GET">
                     <div class="row">
                         <div class="col-md-2"> 
-                            <input type="text" class="form-control" name="id" value="<?php if(isset($_GET['id'])){echo $_GET['id'];} ?>" placeholder="Search for Loan ID">
+                            <input type="text" class="form-control" name="id" value="<?php if(isset($_GET['id'])){echo $_GET['id'];} ?>" placeholder="Search for Loan ID" required>
                         </div>
                         <div class="col-md-4">
 
@@ -154,7 +154,7 @@
                                                  
                         <div class="form-group col-md-12">
                             <label for="amtpaid"><b>Amount Paid</b></label>
-                            <input type="text" class="form-control" name="amount_paid">
+                            <input type="text" class="form-control" name="amount_paid" required>
                         </div>  
 
 

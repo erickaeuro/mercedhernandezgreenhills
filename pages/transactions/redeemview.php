@@ -48,7 +48,7 @@ require '../connection.php';
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4><b>Edit Redeem Ticket</b>                      
+                        <h4><b>View Redeemed Jewelry</b>                      
                     </div>
                     <div class="card-body">
 

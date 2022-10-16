@@ -86,16 +86,17 @@
                                           <th>Action</th>
                                       </tr>
                                   </thead>
-            <?php
-              
-                foreach($query_run as $row)
-                {
-                  $firstn = $row['first_name'];
-                  $middlen = $row['middle_name'];
-                  $lastn = $row['last_name'];
-                  $fulln = "$firstn $middlen $lastn";
-            ?>
+           
                                   <tbody>
+          <?php
+              
+              foreach($query_run as $row)
+              {
+                $firstn = $row['first_name'];
+                $middlen = $row['middle_name'];
+                $lastn = $row['last_name'];
+                $fulln = "$firstn $middlen $lastn";
+          ?>
                                   <td> <?php echo $row['loan_id']; ?> </td>
                                   <td> <?php echo $fulln ; ?> </td>
                                   <td> <?php echo $row['item_type']; ?> </td>
@@ -104,13 +105,14 @@
                                       <a href="redeemview.php?id=<?= $row['loan_id'];?>" class="btn btn-info viewbtn">VIEW</a>                                      
                                   </td>
                             </tr>
-                                  </tbody>                                 
-
+                            
           <?php 
  
-                }
-            
-          ?>      
+            }
+
+            ?>   
+                                  </tbody>                                 
+   
                               </table>
                           </div>
                       </div>

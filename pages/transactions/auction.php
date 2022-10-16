@@ -96,13 +96,13 @@
                                       </tr>
                                   </thead>
                                   
-          <?php
+                                  <tbody>
+            <?php
                 if($query_run)
                 {
                     foreach($query_run as $row)
                     {
             ?>  
-                                  <tbody>
                                   <tr>
                                     <td> <?php echo $row['auctionid']; ?> </td>
                                     <td> <?php echo $row['item_type']; ?> </td>
@@ -115,15 +115,16 @@
                                     <a href="auctionsold.php?id=<?= $row['auctionid'];?>" class="btn btn-success" onclick="return confirm('Are you sure you want to sell this item?')">SELL</a>
                                     </td>
                                   </tr> 
-                                  </tbody>
-             <?php           
+                                  <?php           
                     }
                 }
                 else 
                 {
                     echo "No Record Found";
                 }
-            ?>     
+            ?> 
+                                  </tbody>
+               
                               </table>
                           </div>
                       </div>

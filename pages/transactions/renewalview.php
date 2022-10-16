@@ -48,118 +48,112 @@ require '../connection.php';
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4><b>Edit Redeem Ticket</b>                      
+                        <h4><b>View Renewal Jewelry</b>                      
                     </div>
                     <div class="card-body">
 
                     <?php
-                    /*
-                    !!!!! FOR CHANGE !!!!!
-
+              
                         if(isset($_GET['id']))
                         {
                             $id = mysqli_real_escape_string($con, $_GET['id']);
-                            $query = "SELECT * FROM pawntickettbl WHERE pawnticketno='$id' ";
+                            $query = "SELECT * FROM loantbl INNER JOIN customertbl ON loantbl.customer_no = customertbl.customer_no WHERE loantbl.loan_id ='$id'";
                             $query_run = mysqli_query($con, $query);
 
                             if(mysqli_num_rows($query_run) > 0)
                             {
-                                //$row = mysqli_fetch_array($query_run);
-
-                                $namequery = "SELECT * FROM customertbl WHERE customerno='".//$row['customerno']."'" ;
-                                $namequery_run = mysqli_query($con, $namequery);
-                                $row2 = mysqli_fetch_array($namequery_run);
-
-                                $redid = mysqli_real_escape_string($con, $_GET['redid']);
-
-                                $query2 = "SELECT * FROM renewaltbl WHERE renewalid='$redid'" ;
-                                $query_run2 = mysqli_query($con, $query2);
-                                $row3 = mysqli_fetch_array($query_run2);
-
-                        */
+                                $row = mysqli_fetch_array($query_run);
+                                
+                                $firstn = $row['first_name'];
+                                $middlen = $row['middle_name'];
+                                $lastn = $row['last_name'];
+                                $fulln = "$firstn $middlen $lastn";
                                 ?>
 
-                            <form action="editrenewalbtn.php" method="POST">
-
-                            
-                            <input type="hidden" name="id" value='<?= //$row['id']; ?>'>
+                           
 
                             <div class="form-group col-md-12">
-                                <label for="renewalid"><b>Renewal ID</b></label>
-                                <input type="text" class="form-control" name="renewalid" value="<?= //$row3['renewalid']; ?>" disabled>
-                            </div> 
-
-                            <div class="form-group col-md-12">
-                                <label for="pawnticketno"><b>Pawn Ticket Number</b></label>
-                                <input type="text" class="form-control" name="pawnticketno" value="<?= //$row['pawnticketno']; ?>"disabled >
+                                <label for="loan_id"><b>Loan ID</b></label>
+                                <p class="form-control"> <?= $row['loan_id']; ?>
                             </div>  
 
-                            <div class="form-group col-md-12">
-                                <label for="customername"><b>Customer Name </b></label>
-                                <input type="text" class="form-control" name="customername" value="<?= //$row2['name']; ?>" disabled>
-                            </div>  
 
                             <div class="form-group col-md-12">
-                                <label for="Date Loan"><b>Date Loan Granted</b></label>
-                                <input type="date" class="form-control" name="dateloangranted" value="<?= //$row['dateloangranted']; ?>" disabled>
+                                <label for="customer_no"><b>Customer No</b></label>
+                                <p class="form-control"> <?= $row['customer_no']; ?> </p>
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label for="Mat Date"><b>Maturity Date </b></label>
-                                <input type="date" class="form-control" name="maturity_date" value="<?= //$row['maturity_date']; ?>" disabled>
+                                <label for="item_type"><b>Item type</b></label>
+                                <p class="form-control"> <?= $row['item_type']; ?> </p>
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label for="Expire Date"><b>Expiry Date</b></label>
-                                <input type="date" class="form-control" name="expiry_date" value="<?= //$row['expiry_date']; ?>" disabled>
+                                <label for="item_desc"><b>Description</b></label>
+                                <p class="form-control"> <?= $row['item_desc']; ?> </p>
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label for="principal"><b>Principal </b></label>
-                                <input type="text" class="form-control" name="principal" value="<?= //$row['principal']; ?>"disabled>
+                                <label for="appraised_value"><b>Appraised Value</b></label>
+                                <p class="form-control"> <?= $row['appraised_value'];?> </p>
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label for="interest"><b>Interest </b></label>
-                                <input type="text" class="form-control" name="interest" value="<?= //$row['interest']; ?>"disabled>
+                                <label for="principal"><b>Principal</b></label>
+                                <p class="form-control"> <?= $row['principal'];?> </p>
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label for="penalty"><b>Penalty</b></label>
-                                <input type="text" class="form-control" name="penalty" value="<?= //$row['penalty']; ?>"disabled>
+                                <label for="interest"><b>Interest</b></label>
+                                <p class="form-control"> <?= $row['interest']?>%</p>
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label for="service_charge">Service Charge</label>
-                                <input type="text" class="form-control" name="service_charge" value="<?=//$row3['service_charge'];?>" disabled>
+                                <label for="date_loan_granted"><b>Date Loan Granted</b></label>
+                                <p class="form-control"> <?= $row['date_loan_granted']; ?> </p>
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label for="total_amount_due">Total Amount Due</label>
-                                <input type="text" class="form-control" name="total_amount_due" value="<?=//$row3['total_amount_due'];?>" disabled>
+                                <label for="maturity_date"><b>Maturity Date</b></label>
+                                <p class="form-control"> <?= $row['maturity_date']; ?></p>
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label for="renewal_amnt"><b>Renewal Amount</b></label>
-                                <input type="text" class="form-control" name="renewal_amnt" value="<?= //$row3['renewal_amnt']; ?>">
+                                <label for="expiry_date"><b>Expiry Date</b></label>
+                                <p class="form-control"> <?= $row['expiry_date']; ?> </p>
                             </div>
+
+                            <div class="form-group col-md-12">
+                                <label for="total_amt_paid"><b>Total Amount Paid</b></label>
+                                <p class="form-control"> <?= $row['total_amt_paid']; ?> </p>
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <label for="total_amt_due"><b>Total Amount Due</b></label>
+                                <p class="form-control"> <?= $row['total_amt_due']; ?> </p>
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <label for="loan_status"><b>Loan Status</b></label>
+                                <p class="form-control"> <?= $row['loan_status']; ?> </p>
+                            </div>
+
                         </div>
                             <div class="mb-4">
                             <center> 
                             <a href="renewal.php" class="btn btn-danger float-end">Back</a>
-                            <button type="submit" name="editrenewal" class="btn btn-success">Edit Ticket</button> 
                             </center>
-                            </div>                           
-                        </form>
+                            </div>        
+                       
 
                         <?php
-                        /*
+                        
                             }
                             else
                             {
                                 echo "<h4>No Such Id Found</h4>";
                             }
-                        }*/
+                        }
                         ?>
                         
                     </div>
