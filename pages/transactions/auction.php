@@ -20,7 +20,9 @@
   <link href="../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 <!-- Connection Database --> 
-  <?php include ("../connection.php"); 
+  <?php include ("../connection.php");
+  include("../head.php");
+  error_reporting(0); 
   
   session_start();
 ?>
@@ -77,19 +79,20 @@
                         $query_run = mysqli_query($con, $query);
 
                         ?> 
+                      <form action="auctionsold.php" method="POST">
 
                       <div class="card-body">
                           <div class="table-responsive">
                               <table class="table table-hover display" id="" width="100%" cellspacing="0">
                                   <thead>
                                       <tr style="font-size:13px;font-family:sans-serif;">
-                                          <th>Pawn Ticket</th>
-                                          <th>Expiry Date</th>
-                                          <th>Principal</th>
-                                          <th>Payments Made</th>
+                                          <th>Auction ID</th>
+                                          <th>Item Type</th>
+                                          <th>Item Description</th>
+                                          <th>Price</th>
                                           <th>Status</th>
+                                          <th>Date Sold</th>                                          
                                           <th>Action</th>
-                                          <th></th>
                                       </tr>
                                   </thead>
                                   
@@ -101,13 +104,15 @@
             ?>  
                                   <tbody>
                                   <tr>
-                                    <td> <?php echo $row['pawnticketno']; ?> </td>
-                                    <td> <?php echo $row['expiry_date']; ?> </td>
-                                    <td> <?php echo $row['principal']; ?> </td>
-                                    <td> <?php echo $row['payments_made']; ?> </td>
+                                    <td> <?php echo $row['auctionid']; ?> </td>
+                                    <td> <?php echo $row['item_type']; ?> </td>
+                                    <td> <?php echo $row['item_desc']; ?> </td>
+                                    <td> <?php echo $row['price']; ?> </td>
                                     <td> <?php echo $row['status']; ?> </td>
+                                    <td> <?php echo $row['date_sold']; ?> </td>                                    
                                     <td>
-                                    <a href="editauction.php?id=<?= $row['auctionid'];?>" class="btn btn-success">EDIT</a>
+                                    <a href="auctionview.php?id=<?= $row['auctionid'];?>" class="btn btn-info viewbtn">VIEW</a>
+                                    <a href="auctionsold.php?id=<?= $row['auctionid'];?>" class="btn btn-success" onclick="return confirm('Are you sure you want to sell this item?')">SELL</a>
                                     </td>
                                   </tr> 
                                   </tbody>
@@ -123,7 +128,7 @@
                           </div>
                       </div>
                   </div>
-            
+              </form>
               </div>    
                 
             </div>

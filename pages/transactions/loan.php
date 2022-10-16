@@ -134,14 +134,15 @@
                         $delvalid = 1;
                       }
 
-                      if($matvalid == 1 || $delvalid == 1){
-                        $delsql = 1;
-                        $matsql = 1;
-                        include 'loanautoupdate.php';
-                      }
-  
+                      
 
                       
+                    }
+
+                    if($matvalid == 1 || $delvalid == 1){
+                      $delsql = 1;
+                      $matsql = 1;
+                      include 'loanautoupdate.php';
                     }
 
                     

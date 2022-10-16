@@ -77,6 +77,11 @@ require '../connection.php';
                             </div>
 
                             <div class="form-group col-md-12">
+                                <label for="item_type"><b>Item type</b></label>
+                                <p class="form-control"> <?= $row['item_type']; ?> </p>
+                            </div>
+
+                            <div class="form-group col-md-12">
                                 <label for="item_desc"><b>Description</b></label>
                                 <p class="form-control"> <?= $row['item_desc']; ?> </p>
                             </div>

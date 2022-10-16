@@ -88,11 +88,6 @@
                                 <label for="tagprice"><b>Tag Price</b></label>
                                 <input type="text" class="form-control" name="tagprice" placeholder="P 0.00" required>
                             </div>
-
-                            <div class="form-group col-md-12">
-                                <label for="Date Sold"><b>Date Sold</b></label>
-                                <input type="date" class="form-control" name="date_sold" placeholder="Date Sold" >
-                            </div>
                         </div>
                             <div class="mb-4">
                             <center> 

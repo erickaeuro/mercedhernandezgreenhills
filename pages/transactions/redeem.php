@@ -49,9 +49,8 @@
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4"> 
-            <h4>
-            <a href="redeembtn.php" class="btn btn-info btn-icon-text btn-md"> 
-            <i class="fas fa-plus"></i> Add Redeem Loan</a>
+            <h4 class="m-0 font-weight-bold text-info">
+            REDEEMED LOANS
             </h4>
         </div>
           <!-- Content Row -->
@@ -61,9 +60,7 @@
                 <div class="col-xl-12 col-lg-12">
                   <div class="card shadow mb-4 border-left-info border-bottom-info">
                       <!-- Card Header - Dropdown -->
-                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                          <h6 class="m-0 font-weight-bold text-info">Redeem Loan</h6>
-                      </div>
+
                       <!-- Card Body -->
                       <div class="card-body">
 
@@ -73,84 +70,46 @@
                         ?> 
 
                       <?php 
-
-                            /*
-                            !!!!!FOR CHANGE!!!!!
-
-                            $query = "SELECT * FROM redeemtbl INNER JOIN pawntickettbl ON redeemtbl.pawnticketno=pawntickettbl.pawnticketno";
+                            $query = "SELECT * FROM loantbl INNER JOIN customertbl ON loantbl.customer_no = customertbl.customer_no WHERE loantbl.loan_status ='Redeemed'";
                             $query_run = mysqli_query($con, $query);
-                            */
+
                       ?> 
 
                           <div class="table-responsive">
                               <table class="table table-hover display" id="" width="100%" cellspacing="0">
                                   <thead>
                                       <tr style="font-size:13px;font-family:sans-serif;">
-                                          <th>Pawn Ticket No.</th>
-                                          <th>Customer No.</th>
-                                          <th>Date Loan Granted</th>
-                                          <th>Maturity Date</th>
-                                          <th>Expiry Date</th>
-                                          <th>Principal</th>
-                                          <th>Interest</th>
-                                          <th>Penalty</th>
-                                          <th>Redemption Amount</th>
-                                          <th>Action </th>
+                                      <th>Loan ID</th>
+                                          <th>Customer Name</th>
+                                          <th>Item Type</th>
+                                          <th>Item Description</th>
+                                          <th>Action</th>
                                       </tr>
                                   </thead>
             <?php
-              /*
+              
                 foreach($query_run as $row)
                 {
-                        
+                  $firstn = $row['first_name'];
+                  $middlen = $row['middle_name'];
+                  $lastn = $row['last_name'];
+                  $fulln = "$firstn $middlen $lastn";
             ?>
                                   <tbody>
-                                      <tr>
-                                      <td> <?php echo $row['pawnticketno']; ?> </td>
-                                        <td> <?php echo $row['customerno']; ?> </td>
-                                        <td> <?php echo $row['dateloangranted']; ?> </td>
-                                        <td> <?php echo $row['maturity_date']; ?> </td>
-                                        <td> <?php echo $row['expiry_date']; ?> </td>
-                                        <td> <?php echo $row['principal']; ?> </td>
-                                        <td> <?php echo $row['interest']; ?> </td>
-                                        <td> <?php echo $row['penalty']; ?> </td>
-                                        <td> <?php echo $row['redemption_amnt']; ?> </td>
-                                        <td>
-                                            <a href="redeemview.php?id=<?= $row['pawnticketno'];?>&redid=<?=$row['redeemid'];?>" class="btn btn-info viewbtn">VIEW</a>
-                                            <a href="editredeem.php?id=<?= $row['pawnticketno'];?>&redid=<?=$row['redeemid'];?>" class="btn btn-success editbtn">EDIT</a>
-                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteModal">DELETE</button>
-                                        </td>
-                                      </tr>
-                                  </tbody>
-
-                                  <!--MODAL FOR Delete-->
-                                  <div class="modal" id="DeleteModal">
-                                      <div class="modal-dialog">
-                                        <div class="modal-content">
-                                          <!-- Modal Header -->
-                                          <div class="modal-header">
-                                            <h4 class="modal-title">Confirm Deletion?</h4>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal">X</button>
-                                          </div>
-                                          <!-- Modal body -->
-                                          <div class="modal-body">
-                                            <strong>WARNING!!</strong><br/>
-                                            You are about to delete the selected ticket
-                                            are you sure you want to continue?
-                                          </div>
-                                          <!-- Modal footer -->
-                                          <div class="modal-footer">
-                                          <a href="deleteredeem.php?id=<?= $row['pawnticketno'];?>&redid=<?=$row['redeemid'];?>" name="deletedata" class="btn btn-success">Yes</a>
-                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
+                                  <td> <?php echo $row['loan_id']; ?> </td>
+                                  <td> <?php echo $fulln ; ?> </td>
+                                  <td> <?php echo $row['item_type']; ?> </td>
+                                  <td> <?php echo $row['item_desc']; ?> </td>
+                                  <td>
+                                      <a href="redeemview.php?id=<?= $row['loan_id'];?>" class="btn btn-info viewbtn">VIEW</a>                                      
+                                  </td>
+                            </tr>
+                                  </tbody>                                 
 
           <?php 
  
                 }
-            */
+            
           ?>      
                               </table>
                           </div>
