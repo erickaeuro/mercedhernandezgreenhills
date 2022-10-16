@@ -238,12 +238,25 @@
 
 <?php include '../scripts.php'; ?>
 
-
 <script>
-    $(document).ready(function() {
-    $('table.display').DataTable();
-} );
+        $(document).ready(function () {
+
+            $('#datatableid').DataTable({
+                "pagingType": "full_numbers",
+                "lengthMenu": [
+                    [10, 25, 50, -1],
+                    [10, 25, 50, "All"]
+                ],
+                responsive: true,
+                language: {
+                    search: "_INPUT_",
+                    searchPlaceholder: "Search Data",
+                }
+            });
+
+        });
     </script>
+
 </body>
 
 </html>

@@ -91,7 +91,7 @@
 
                       <div class="card-body">
                           <div class="table-responsive">
-                              <table class="table table-hover display" id="" width="100%" cellspacing="0">
+                              <table class="table table-hover display" id="dtbl" width="100%" cellspacing="0">
                                   <thead>
                                       <tr style="font-size:13px;font-family:sans-serif;">
                                           <th>Pawn Ticket No.</th>
@@ -127,7 +127,7 @@
                                     <a href="transactionedit.php?id=<?= $row['pawnticketno']?>" class="btn btn-success editbtn"> EDIT </button>
                                     
                                 </td>
-                                
+
                                 <?php  
                              
                             }
@@ -193,9 +193,22 @@
 
 
 <script>
-    $(document).ready(function() {
-    $('table.display').DataTable();
-} );
+        $(document).ready(function () {
+
+            $('#dtbl').DataTable({
+                "pagingType": "full_numbers",
+                "lengthMenu": [
+                    [10, 25, 50, -1],
+                    [10, 25, 50, "All"]
+                ],
+                responsive: true,
+                language: {
+                    search: "_INPUT_",
+                    searchPlaceholder: "Search Data",
+                }
+            });
+
+        });
     </script>
 </body>
 
