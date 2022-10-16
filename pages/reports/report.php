@@ -122,20 +122,19 @@ $result = $statement->fetchAll();
 
      <form method="post">
       <div class="input-daterange">
-      
-      <center>
+
       <div class="form-group col-md-4">
-        <input type="text" name="start_date" class="form-control" readonly />
+        <input type="text" name="start_date" class="form-control" placeholder = "Start Date"readonly />
         <?php echo $start_date_error; ?>
       </div>
-      </center>
+
       
-      <center>
+  
        <div class="form-group col-md-4">
-        <input type="text" name="end_date" class="form-control" readonly />
+        <input type="text" name="end_date" class="form-control" placeholder = "End Date"readonly />
         <?php echo $end_date_error; ?>
        </div>
-      </center>
+
 
       </div>
 

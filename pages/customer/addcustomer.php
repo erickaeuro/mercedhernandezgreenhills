@@ -15,7 +15,16 @@ function encrypthis($data,$key){
     $encrypted = openssl_encrypt($data, 'aes-256-cbc', $encryption_key, 0, $iv);
     return base64_encode($encrypted. '::'. $iv);
  }
+ function validateDateOfBirth($BirthDate)
+ {
+// convert user input date to string and +18 years;
+// compare user input date with current date;
 
+     if (time() < strtotime('+18 years', strtotime($BirthDate))) {
+         return 'Not 18';
+     }
+     return "user is older than 18 years old";
+ }
 if(isset($_POST['addcustomer']))
 {
     $customer_no = $_POST['customer_no'];
