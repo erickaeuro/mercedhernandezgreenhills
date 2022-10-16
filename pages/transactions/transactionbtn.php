@@ -54,6 +54,17 @@
             <?php 
             unset($_SESSION['addstatus']);
         }
+
+        if(isset($_SESSION['addstatus1']))
+        {
+            ?>
+                <div class="alert alert-warning" role="alert" role="alert">
+                    <?= $_SESSION['addstatus1']; ?>
+                    <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">x</button>
+                </div>
+            <?php 
+            unset($_SESSION['addstatus1']);
+        }
         ?>
         <!-- End of Topbar -->
 
@@ -82,8 +93,13 @@
                         if(isset($_GET['id'])){
                             $id = $_GET['id'];
 
-                            $query = "SELECT * FROM loantbl INNER JOIN customertbl ON loantbl.customer_no = customertbl.customer_no WHERE loantbl.loan_id='$id'";
+                            $query = "SELECT * FROM loantbl INNER JOIN customertbl ON loantbl.customer_no = customertbl.customer_no WHERE loantbl.loan_id='$id' AND loantbl.loan_status='Active Loan'";
                             $query_run = mysqli_query($con, $query);
+
+                            if(mysqli_affected_rows($con) == 0){
+                                $_SESSION['addstatus1'] = "Loan already Redeemed";
+                                header('Location: transactionbtn.php');
+                            }
                             $row = mysqli_fetch_array($query_run);
 
                         }
@@ -112,23 +128,28 @@
 
                         <!--FOR VALIDATION PURPOSES-->
                         <div class="form-group col-md-12">
-                            <label for="custname"><b>First Name</b></label>
+                            <label for="custfname"><b>First Name</b></label>
                             <input type="text" class="form-control" name="cust_fname" value="<?php if(isset($_GET['id'])){ echo $row['first_name'];}?>" readonly>
                         </div>
 
                         <div class="form-group col-md-12">
-                            <label for="custname"><b>Last Name</b></label>
+                            <label for="custlname"><b>Last Name</b></label>
                             <input type="text" class="form-control" name="cust_lname" value="<?php if(isset($_GET['id'])){ echo $row['last_name'];}?>" readonly>
                         </div>
 
                         <div class="form-group col-md-12">
-                            <label for="custname"><b>Item Type</b></label>
+                            <label for="itemtyoe"><b>Item Type</b></label>
                             <input type="text" class="form-control" name=" " value="<?php if(isset($_GET['id'])){ echo $row['item_desc'];}?>" readonly>
                         </div>
 
                         <div class="form-group col-md-12">
-                            <label for="custname"><b>Item Description</b></label>
+                            <label for="itemdesc"><b>Item Description</b></label>
                             <input type="text" class="form-control" name=" " value="<?php if(isset($_GET['id'])){ echo $row['item_type'];}?>" readonly>
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <label for="amtdue"><b>Amount Due</b></label>
+                            <input type="text" class="form-control" name=" " value="<?php if(isset($_GET['id'])){ echo $row['total_amt_due'];}?>" readonly>
                         </div>
                                                  
                         <div class="form-group col-md-12">
