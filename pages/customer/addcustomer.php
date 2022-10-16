@@ -35,6 +35,19 @@ if(isset($_POST['addcustomer']))
     $cpnum = $_POST['cpnum'];
     $cpnum = encrypthis($cpnum, $key);
     $BirthDate = $_POST['BirthDate'];
+    $age = (date("Y-m-d") - $BirthDate);
+}  //if age if 17 or younger error msg
+if ($age < 17) {
+    echo "Must 18 or older.";
+}
+else{ //if age is 120 or greather error msg
+    if ($age > 120) {
+        echo "Real age please.";
+    }
+    else{
+        echo "$age";
+    }
+
     $valid_id = $_POST['valid_id'];
     $valid_id = encrypthis($valid_id, $key);
 
