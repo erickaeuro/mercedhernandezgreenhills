@@ -16,6 +16,13 @@
   <link href="../../css/sb-admin-2.css" rel="stylesheet">
   <link href="../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css">
+  <!-- Select2 CSS --> 
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" /> 
+
+  <!-- jQuery --> <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+
+  <!-- Select2 JS --> 
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
   
 
 <!-- Connection Database --> 
@@ -72,10 +79,10 @@
 
                         
 
-                        echo '<select class="custom-select" name="customerno" style="width:410px; position: relative; left:10px; top:-1px">';
+                        echo '<select class="custom-select" name="customerno" id="select_box">';
 
                         $cser=mysqli_connect("localhost","root","","mercedhernandezgreenhills") or die("connection failed:".mysqli_error());
-                        $result = mysqli_query($cser,"SELECT customer_no, first_name FROM customertbl") or die(mysql_error());
+                        $result = mysqli_query($cser,"SELECT customer_no, first_name, last_name FROM customertbl") or die(mysql_error());
 
 
                         if (mysqli_num_rows($result)!=0)
@@ -86,7 +93,7 @@
                         while($drop_2 = mysqli_fetch_array( $result ))
                         {
                             if(in_array($drop_2['transactiontype'] , array(''))){
-                                echo '<option value="'.$drop_2['customer_no'].'">'.$drop_2['customer_no'].'-'.$drop_2['first_name'].'</option>';
+                                echo '<option value="'.$drop_2['customer_no'].'">'.$drop_2['first_name'].' '.$drop_2['last_name'].'</option>';
                                 }
 
                         }
@@ -128,7 +135,7 @@
                             </center>
                             </div>
 
-                            <!--MODAL FOR MOVE-->
+                            <!--MODAL FOR Add-->
                             <div class="modal" id="AddModal">
                                     <div class="modal-dialog">
                                     <div class="modal-content">
@@ -170,5 +177,23 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+
+$(document).ready(function(){
+ 
+ // Initialize select2
+ $("#select_box").select2();
+
+ // Read selected option
+ $('#but_read').click(function(){
+   var username = $('#select_box option:selected').text();
+   var userid = $('#select_box').val();
+
+   $('#result').html("id : " + userid + ", name : " + username);
+
+ });
+});
+</script>
+
 </body>
 </html>

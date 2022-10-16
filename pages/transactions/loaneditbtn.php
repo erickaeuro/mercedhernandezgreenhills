@@ -5,12 +5,14 @@
 
     if(isset($_POST['editticket']))
     {   
+        date_default_timezone_set('Asia/Manila');
+        
         $loan_id = $_POST['loan_id'];
         $item_type = $_POST['item_type'];
         $item_desc = $_POST['item_desc'];
         $appraisal = $_POST['appraisal'];
         $principal = $_POST['principal'];
-        $interest = $_POST['interest']/100;
+        $interest = $_POST['interest'];
         $dateloan = $_POST['date_loan'];
         $datemat = $_POST['date_mat'];
         $dateexp = $_POST['date_expire'];        

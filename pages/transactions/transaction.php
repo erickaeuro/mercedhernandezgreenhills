@@ -123,8 +123,9 @@
                                 <td> <?php echo $row['date_paid']; ?> </td>
                                 <td> <?php echo $row['transactiontype']; ?> </td>
                                 <td>
-                                    <a href="pawnview.php?id=<?= $row['pawnticketno'];?>" class="btn btn-info viewbtn">VIEW</a>
-                                    <a href="editpawn.php?id=<?= $row['pawnticketno']?>" class="btn btn-success editbtn"> EDIT </button>
+                                    <a href="transactionview.php?id=<?= $row['pawnticketno'];?>" class="btn btn-info viewbtn">VIEW</a>
+                                    <a href="transactionedit.php?id=<?= $row['pawnticketno']?>" class="btn btn-success editbtn"> EDIT </button>
+                                    
                                 </td>
                             </tr>
                         </tbody>

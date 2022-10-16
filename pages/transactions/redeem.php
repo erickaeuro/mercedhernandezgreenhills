@@ -52,6 +52,7 @@
             <h4>
             <a href="redeembtn.php" class="btn btn-info btn-icon-text btn-md"> 
             <i class="fas fa-plus"></i> Add Redeem Loan</a>
+            </h4>
         </div>
           <!-- Content Row -->
 

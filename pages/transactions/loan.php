@@ -45,6 +45,13 @@
 
     <!-- Topbar -->
     <?php include '../navbar.php'; 
+
+    if($_GET['del'] == 1){
+      echo"<div class='alert alert-success' role='alert'>Successfully Deleted
+      <button type='button' class='close' data-dismiss='alert'>x</button>
+      </div>";
+    }
+
     if(isset($_SESSION['addstatus']))
     {
         ?>
@@ -77,16 +84,9 @@
                   <div class="card shadow mb-4 border-left-info border-bottom-info">
                       <!-- Card Header - Dropdown -->
                       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                          <h6 class="m-0 font-weight-bold text-info">Loan Table</h6>
+                          <h6 class="m-0 font-weight-bold text-info">LOAN RECORDS</h6>
                       </div>
                       <!-- Card Body -->
-
-                      <?php 
-
-                          $query = "SELECT * FROM loantbl INNER JOIN customertbl ON loantbl.customer_no = customertbl.customer_no";
-                          $query_run = mysqli_query($con, $query);
-
-                      ?> 
 
                       <div class="card-body">
                           <div class="table-responsive">
@@ -94,54 +94,96 @@
                                   <thead>
                                       <tr style="font-size:13px;font-family:sans-serif;">
                                           <th>Loan ID</th>
-                                          <th>Customer Number</th>
                                           <th>Customer Name</th>
                                           <th>Item Type</th>
                                           <th>Item Description</th>
+                                          <th>Appraised Value</th>
                                           <th>Principal</th>
                                           <th>interest</th>
                                           <th>Total Amount Paid</th>
                                           <th>Total Amount Due</th>
                                           <th>Loan Status</th>
+                                          <th>Maturity Date</th>
+                                          <th>Expiration Date</th>
                                           <th>Action</th>
                         
                                       </tr>
                                   </thead>
 
           <?php
-          
+            //CALL RECORDS FOR AUTO UPDATE
+            $query = "SELECT * FROM loantbl";
+            $query_run = mysqli_query($con, $query);
+            date_default_timezone_set('Asia/Manila');
+            $today = date("Y-m-d");
+            
+            //FOR MULTIPLE AUTO UPDATES
+            $matrec = array();
+            $exprec = array();
+        
+            
                     foreach($query_run as $row)
                     {
-                       
+                      //AUTO UPDATE OR DELETE RECORDS
+                      if($row['maturity_date'] <= $today && $row['loan_status'] == "Active Loan" && $row['interest'] <= 5){                        
+                        array_push($matrec, $row['loan_id']);
+                        $matvalid = 1;
+                      }
+                      if($row['expiry_date'] <=  $today && $row['loan_status'] == "Active Loan"){
+                        array_push($exprec, $row['loan_id']);                        
+                        $delvalid = 1;
+                      }
+
+                      if($matvalid == 1 || $delvalid == 1){
+                        $delsql = 1;
+                        $matsql = 1;
+                        include 'loanautoupdate.php';
+                      }
+  
+
+                      
+                    }
+
+                    
+                    //CALL UPDATED RECORDS                      
+                          $query1 = "SELECT * FROM loantbl INNER JOIN customertbl ON loantbl.customer_no = customertbl.customer_no";
+                          $query_run1 = mysqli_query($con, $query1);
+                      
+                    foreach($query_run1 as $row)
+                    {
                         $firstn = $row['first_name'];
                         $middlen = $row['middle_name'];
                         $lastn = $row['last_name'];
                         $fulln = "$firstn $middlen $lastn";
+
               ?>
                         <tbody>
                             <tr>                                
                                 <td> <?php echo $row['loan_id']; ?> </td>
-                                <td> <?php echo $row['customer_no']; ?> </td>
                                 <td> <?php echo $fulln ; ?> </td>
                                 <td> <?php echo $row['item_type']; ?> </td>
                                 <td> <?php echo $row['item_desc']; ?> </td>
+                                <td> <?php echo $row['appraised_value']; ?> </td>
                                 <td> <?php echo $row['principal']; ?> </td>
                                 <td> <?php echo $row['interest'];?>%</td>
                                 <td> <?php echo $row['total_amt_paid']; ?> </td>
                                 <td> <?php echo $row['total_amt_due']; ?> </td>
                                 <td> <?php echo $row['loan_status']; ?> </td>
+                                <td> <?php echo $row['maturity_date']; ?> </td>
+                                <td> <?php echo $row['expiry_date']; ?> </td>
                                 <td>
                                     <a href="loanview.php?id=<?= $row['loan_id'];?>" class="btn btn-info viewbtn">VIEW</a>
-                                    <a href="editloan.php?id=<?= $row['loan_id']?>" class="btn btn-success editbtn"> EDIT </a>
+                                    <a href="editloan.php?id=<?= $row['loan_id'];?>" class="btn btn-success editbtn"> EDIT </a>
+                                    <a href="deleteloan.php?id=<?= $row['loan_id'];?>" name="deletedata" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this record?')">DELETE</a>
                                 </td>
                             </tr>
-                        </tbody>
+                        </tbody>                   
+            
             <?php  
                              
-                    }
-                
+                    } 
 
-          
+                    
             ?>             
                               </table>
                           </div>

@@ -8,17 +8,14 @@ if(isset($_GET['id']))
 {
     $redid = mysqli_real_escape_string ($con, $_GET['id']);
 
-    $query = "DELETE FROM pawntickettbl WHERE pawnticketno='$redid'";
+    $query = "DELETE FROM loantbl WHERE loan_id='$redid'";
     
 
     if(mysqli_query($con, $query))
     {
-        header("Location:redeem.php?del=1");
+        header("Location:loan.php?del=1");
     }
-    else
-    {
-        echo '<script> alert("Ticket not Deleted"); </script>';
-    }
+
 }
 
 ?>

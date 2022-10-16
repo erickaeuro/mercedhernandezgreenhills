@@ -43,13 +43,7 @@
       <div id="content">
 
         <!-- Topbar -->
-        <?php include '../navbar.php'; ?>
-        <!-- End of Topbar -->
-
-        <!-- Begin Page Content -->
-        <div class="container-fluid">
-
-        <?php 
+        <?php include '../navbar.php'; 
         
         if($_GET['del'] == 1){
           echo"<div class='alert alert-success' role='alert'>Successfully Deleted
@@ -68,20 +62,25 @@
                   <?php 
                   unset($_SESSION['status']);
               }
-
         ?>
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
 
 
         <div class="d-sm-flex align-items-center justify-content-between mb-4"> 
-                        <h4>
-                            <a href="stockadd.php" class="btn btn-info btn-icon-text btn-md"> <i class="fas fa-plus"></i>Add Jewelry Stocks</a>
-                        </h4>
-                    </div>
+            <h4>
+              <a href="stockadd.php" class="btn btn-info btn-icon-text btn-md">
+              <i class="fas fa-plus"></i>Add Jewelry Stocks</a>
+            </h4>
+        </div>
         
 <body>
 
-    <div class="row">
-                
+    
+        <div class="row">
+
                 <div class="col-xl-12 col-lg-12">
                   <div class="card shadow mb-4 border-left-info border-bottom-info">
                       <!-- Card Header - Dropdown -->
@@ -89,8 +88,6 @@
                           <h6 class="m-0 font-weight-bold text-info">Jewelry Stocks</h6>
                       </div>
                       <!-- Card Body -->
-
-                      <div class="card">
                         <div class="card-body">
 
                         <?php 
@@ -106,7 +103,6 @@
 
                           <div class="table-responsive">
                               <table id="datatableid" class="table table-hover display" width="100%" cellspacing="0">
-                                
                                   <thead>
                                       <tr style="font-size:13px;font-family:sans-serif;">
                                           <th>Stock No.</th>
@@ -121,20 +117,15 @@
                                           <th>Action</th>
                                       </tr>
                                   </thead>
-    
-                <form action = "stocks.php" method = "POST">
-
-                    <tbody>
 
             <?php
-                if($query_run)
-                {
                     foreach($query_run as $row)
                     {
                         $stock_no = $row['stock_no'];
                         $item_type = $row['item_type'];
 
             ?>
+                      <tbody>
                         <tr class="table-active">
                             <td> <?php echo $row['stock_no']; ?> </td>
                             <td> <?php echo $row['item_type']; ?> </td>
@@ -148,79 +139,20 @@
                             <td>
                                 <a href="stockview.php?id=<?= $row['stock_no'];?>" class="btn btn-info viewbtn">VIEW</a>
                                 <a href="stockedit.php?id=<?= $row['stock_no'];?>" class="btn btn-success editbtn">EDIT</a>
-                                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#MoveModal">MOVE</button>
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteModal">DELETE</button>
+                                <a href="movestock.php?id=<?= $row['stock_no']; ?>" name="movedata" class="btn btn-warning" onclick="return confirm('Are you sure you want to move this record?')">MOVE</a>
+                                <a href="deletecode.php?id=<?= $row['stock_no']; ?>" name="deletedata" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this record?')">DELETE</a>
                             </td> 
-
-                            <!--MODAL FOR Delete-->
-                 <div class="modal" id="DeleteModal">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <!-- Modal Header -->
-                <div class="modal-header">
-                  <h4 class="modal-title">Confirm Deletion?</h4>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal">X</button>
-                </div>
-                <!-- Modal body -->
-                <div class="modal-body">
-                  <strong>WARNING!!</strong><br/>
-                  You are about to delete the stock item that you choose
-                  are you sure you want to continue?
-                </div>
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                <a href="deletecode.php?id=<?= $row['stock_no']; ?>" name="deletedata" class="btn btn-success deletebtn">Yes</a>
-                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!--MODAL FOR MOVE-->
-          <div class="modal" id="MoveModal">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <!-- Modal Header -->
-                <div class="modal-header">
-                  <h4 class="modal-title">Confirm to Move Stock?</h4>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal">X</button>
-                </div>
-                <!-- Modal body -->
-                <div class="modal-body">
-                  Are you sure you want to move this Stock?
-                </div>
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                <a href="movestock.php?id=<?= $row['stock_no']; ?>" name="movedata" class="btn btn-success">Yes</a>
-                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
-                </div>
-              </div>
-            </div>
-          </div>
-                    </div> 
-                    
                         </tr>
-
+                      </tbody>                     
+              
                         <?php 
                         
                         
                     }
-                    
-              
-                }
-                else 
-                {
-                    echo "No Record Found";
-                }
 
                 
           ?>      
-                              </tbody>  
-                              
-                    
-                              </form>
-
-                
+                                      
                               </table>
                           </div>
                       </div>

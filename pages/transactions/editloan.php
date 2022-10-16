@@ -106,7 +106,7 @@ require '../connection.php';
 
                             <div class="form-group col-md-12">
                                 <label for="interest"><b>Interest </b></label>
-                                <input type="text" class="form-control" name="interest" value="<?= $row['interest']*100; ?>">
+                                <input type="text" class="form-control" name="interest" value="<?= $row['interest']; ?>">
                             </div>
 
                             <div class="form-group col-md-12">

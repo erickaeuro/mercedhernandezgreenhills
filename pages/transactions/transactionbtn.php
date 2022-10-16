@@ -17,10 +17,11 @@
   <link href="../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css">
   
+  
 
 <!-- Connection Database --> 
   <?php include ("../connection.php"); 
-  
+  error_reporting(0);
   session_start();
 ?>
 
@@ -104,7 +105,7 @@
 
                         <div class="form-group col-md-12">
                             <label for="loan_id"><b>Loan ID</b></label>
-                            <input type="text" class="form-control" name="loan_id" value="<?php if(isset($_GET['id'])){echo $_GET['id'];} ?>" readonly>
+                            <input type="text" class="form-control" name="loan_id" value="<?php if(isset($_GET['id'])){echo $row['loan_id'];} ?>" readonly>
                         </div>
                         
                         
