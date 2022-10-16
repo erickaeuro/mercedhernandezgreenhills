@@ -1,4 +1,6 @@
-<?php require 'connection.php'?>
+<?php require 'connection.php'
+
+?>
 <nav class="navbar navbar-expand navbar navbar-light topbar mb-4 static-top shadow"style="background-color: #ECEFF4;">
 
           <!-- Sidebar Toggle (Topbar) -->
