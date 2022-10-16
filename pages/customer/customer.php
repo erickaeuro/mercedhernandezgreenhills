@@ -19,6 +19,7 @@
   <link href="../../css/sb-admin-2.css" rel="stylesheet">
   <link href="../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
 
 <!-- Connection Database --> 
   <?php 
@@ -119,8 +120,6 @@
        
                                   <tbody>
             <?php
-                        if($query_run)
-                          {
                               foreach($query_run as $row)
                                 {
                                   $firstn = $row['first_name'];
@@ -145,16 +144,9 @@
                                         </div>  
                                       </tr>
                                           
-              <?php           
-                    }
-                  
+              <?php                          
                 }
-                else 
-                {
-                    echo "No Record Found";
-                }
-  
-         
+               
              ?>   
                               </tbody>
 
@@ -218,7 +210,10 @@
     <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
+
+    
 <?php include '../scripts.php'; ?>
 
 <script>

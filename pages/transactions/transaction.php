@@ -91,7 +91,7 @@
 
                       <div class="card-body">
                           <div class="table-responsive">
-                              <table class="table table-hover display" id="" width="100%" cellspacing="0">
+                              <table class="table table-hover display" id="dtbl" width="100%" cellspacing="0">
                                   <thead>
                                       <tr style="font-size:13px;font-family:sans-serif;">
                                           <th>Pawn Ticket No.</th>
@@ -100,21 +100,21 @@
                                           <th>Amount Paid</th>
                                           <th>Date Paid</th>
                                           <th>Transaction Type</th>
-                                          <th>action</th>
+                                          <th>Action</th>
                         
                                       </tr>
                                   </thead>
-
+                        <tbody>
+                          
           <?php
           
-                    foreach($query_run as $row)
-                    {
+          foreach($query_run as $row)
+          {
 
-                        $firstn = $row['first_name'];
-                        $lastn = $row['last_name'];
-                        $fulln = "$firstn $lastn";
-              ?>
-                        <tbody>
+              $firstn = $row['first_name'];
+              $lastn = $row['last_name'];
+              $fulln = "$firstn $lastn";
+    ?>
                             <tr>
                                 <td> <?php echo $row['pawnticketno']; ?> </td>
                                 <td> <?php echo $row['loan_id']; ?> </td>
@@ -127,15 +127,17 @@
                                     <a href="transactionedit.php?id=<?= $row['pawnticketno']?>" class="btn btn-success editbtn"> EDIT </button>
                                     
                                 </td>
+
+                                <?php  
+                             
+                            }
+                        
+        
+                  
+                    ?>   
                             </tr>
                         </tbody>
-            <?php  
-                             
-                    }
-                
-
-          
-            ?>             
+                     
                               </table>
                           </div>
                       </div>
@@ -191,9 +193,22 @@
 
 
 <script>
-    $(document).ready(function() {
-    $('table.display').DataTable();
-} );
+        $(document).ready(function () {
+
+            $('#dtbl').DataTable({
+                "pagingType": "full_numbers",
+                "lengthMenu": [
+                    [10, 25, 50, -1],
+                    [10, 25, 50, "All"]
+                ],
+                responsive: true,
+                language: {
+                    search: "_INPUT_",
+                    searchPlaceholder: "Search Data",
+                }
+            });
+
+        });
     </script>
 </body>
 

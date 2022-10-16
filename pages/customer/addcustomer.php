@@ -16,6 +16,7 @@ function encrypthis($data,$key){
     return base64_encode($encrypted. '::'. $iv);
  }
 
+ 
 if(isset($_POST['addcustomer']))
 {
     $customer_no = $_POST['customer_no'];
