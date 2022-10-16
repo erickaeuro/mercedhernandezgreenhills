@@ -133,8 +133,11 @@
                         array_push($exprec, $row['loan_id']);                        
                         $delvalid = 1;
                       }
-
                       
+                      if($row['total_amt_due'] == 0 ){
+                        $que = "UPDATE loantbl SET loan_status = 'Redeemed'";
+                        $querun = mysqli_query($con, $que);
+                      }
 
                       
                     }
@@ -177,13 +180,9 @@
                                     <a href="deleteloan.php?id=<?= $row['loan_id'];?>" name="deletedata" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this record?')">DELETE</a>
                                 </td>
                                    
-            <?php  
-                             
-                            } 
-        
-                            
-                    ?>      
+               
                             </tr>
+                            <?php } ?>   
                         </tbody>                   
               
                               </table>
