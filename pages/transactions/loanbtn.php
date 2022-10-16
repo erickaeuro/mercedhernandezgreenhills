@@ -16,6 +16,7 @@
   <link href="../../css/sb-admin-2.css" rel="stylesheet">
   <link href="../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css">
+  
   <!-- Select2 CSS --> 
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" /> 
 
@@ -73,7 +74,7 @@
                         <form action="addloan.php" method="POST">
                             
                         <div class="form-group col-md-12">
-                                <label for="CustomerNo"><b>Customer No.</b></label><br>
+                                <label for="CustomerNo"><b>Customer Name.</b></label><br>
 
                         <?php 
 

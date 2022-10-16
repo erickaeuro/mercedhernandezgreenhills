@@ -134,14 +134,15 @@
                         $delvalid = 1;
                       }
 
-                      if($matvalid == 1 || $delvalid == 1){
-                        $delsql = 1;
-                        $matsql = 1;
-                        include 'loanautoupdate.php';
-                      }
-  
+                      
 
                       
+                    }
+
+                    if($matvalid == 1 || $delvalid == 1){
+                      $delsql = 1;
+                      $matsql = 1;
+                      include 'loanautoupdate.php';
                     }
 
                     
@@ -238,12 +239,25 @@
 
 <?php include '../scripts.php'; ?>
 
-
 <script>
-    $(document).ready(function() {
-    $('table.display').DataTable();
-} );
+        $(document).ready(function () {
+
+            $('#datatableid').DataTable({
+                "pagingType": "full_numbers",
+                "lengthMenu": [
+                    [10, 25, 50, -1],
+                    [10, 25, 50, "All"]
+                ],
+                responsive: true,
+                language: {
+                    search: "_INPUT_",
+                    searchPlaceholder: "Search Data",
+                }
+            });
+
+        });
     </script>
+
 </body>
 
 </html>
