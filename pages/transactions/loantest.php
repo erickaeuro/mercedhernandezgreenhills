@@ -89,7 +89,7 @@
 
                       <div class="card-body">
                           <div class="table-responsive">
-                              <table class="table table-hover display" id="datatableid" width="100%" cellspacing="0">
+                              <table class="table table-hover display" id="datatableid4" width="100%" cellspacing="0">
                                   <thead>
                                       <tr style="font-size:13px;font-family:sans-serif;">
                                           <th>Loan ID</th>

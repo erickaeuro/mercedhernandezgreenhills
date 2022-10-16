@@ -100,21 +100,21 @@
                                           <th>Amount Paid</th>
                                           <th>Date Paid</th>
                                           <th>Transaction Type</th>
-                                          <th>action</th>
+                                          <th>Action</th>
                         
                                       </tr>
                                   </thead>
-
+                        <tbody>
+                          
           <?php
           
-                    foreach($query_run as $row)
-                    {
+          foreach($query_run as $row)
+          {
 
-                        $firstn = $row['first_name'];
-                        $lastn = $row['last_name'];
-                        $fulln = "$firstn $lastn";
-              ?>
-                        <tbody>
+              $firstn = $row['first_name'];
+              $lastn = $row['last_name'];
+              $fulln = "$firstn $lastn";
+    ?>
                             <tr>
                                 <td> <?php echo $row['pawnticketno']; ?> </td>
                                 <td> <?php echo $row['loan_id']; ?> </td>
@@ -127,15 +127,17 @@
                                     <a href="transactionedit.php?id=<?= $row['pawnticketno']?>" class="btn btn-success editbtn"> EDIT </button>
                                     
                                 </td>
+                                
+                                <?php  
+                             
+                            }
+                        
+        
+                  
+                    ?>   
                             </tr>
                         </tbody>
-            <?php  
-                             
-                    }
-                
-
-          
-            ?>             
+                     
                               </table>
                           </div>
                       </div>

@@ -90,7 +90,7 @@
 
                       <div class="card-body">
                           <div class="table-responsive">
-                              <table class="table table-hover display" id="" width="100%" cellspacing="0">
+                          <table class="table table-hover display" id="datatableid" width="100%" cellspacing="0">
                                   <thead>
                                       <tr style="font-size:13px;font-family:sans-serif;">
                                           <th>Loan ID</th>
@@ -109,8 +109,8 @@
                         
                                       </tr>
                                   </thead>
-
-          <?php
+                        <tbody>
+                        <?php
             //CALL RECORDS FOR AUTO UPDATE
             $query = "SELECT * FROM loantbl";
             $query_run = mysqli_query($con, $query);
@@ -157,7 +157,6 @@
                         $fulln = "$firstn $middlen $lastn";
 
               ?>
-                        <tbody>
                             <tr>                                
                                 <td> <?php echo $row['loan_id']; ?> </td>
                                 <td> <?php echo $fulln ; ?> </td>
@@ -176,15 +175,16 @@
                                     <a href="editloan.php?id=<?= $row['loan_id'];?>" class="btn btn-success editbtn"> EDIT </a>
                                     <a href="deleteloan.php?id=<?= $row['loan_id'];?>" name="deletedata" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this record?')">DELETE</a>
                                 </td>
-                            </tr>
-                        </tbody>                   
-            
+                                   
             <?php  
                              
-                    } 
-
-                    
-            ?>             
+                            } 
+        
+                            
+                    ?>      
+                            </tr>
+                        </tbody>                   
+              
                               </table>
                           </div>
                       </div>

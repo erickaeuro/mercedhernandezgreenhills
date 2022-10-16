@@ -102,7 +102,7 @@
                       ?> 
 
                           <div class="table-responsive">
-                              <table id="datatableid" class="table table-hover display" width="100%" cellspacing="0">
+                              <table id="dtblid" class="table table-hover display" width="100%" cellspacing="0">
                                   <thead>
                                       <tr style="font-size:13px;font-family:sans-serif;">
                                           <th>Stock No.</th>
@@ -118,14 +118,15 @@
                                       </tr>
                                   </thead>
 
-            <?php
+                      <tbody>
+
+                      <?php
                     foreach($query_run as $row)
                     {
                         $stock_no = $row['stock_no'];
                         $item_type = $row['item_type'];
 
             ?>
-                      <tbody>
                         <tr class="table-active">
                             <td> <?php echo $row['stock_no']; ?> </td>
                             <td> <?php echo $row['item_type']; ?> </td>
@@ -142,17 +143,18 @@
                                 <a href="movestock.php?id=<?= $row['stock_no']; ?>" name="movedata" class="btn btn-warning" onclick="return confirm('Are you sure you want to move this record?')">MOVE</a>
                                 <a href="deletecode.php?id=<?= $row['stock_no']; ?>" name="deletedata" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this record?')">DELETE</a>
                             </td> 
-                        </tr>
-                      </tbody>                     
-              
+                            
                         <?php 
                         
                         
-                    }
-
-                
-          ?>      
-                                      
+                      }
+  
+                  
+            ?>      
+                 
+                        </tr>
+                      </tbody>                     
+                                     
                               </table>
                           </div>
                       </div>
@@ -219,7 +221,7 @@
 <script>
         $(document).ready(function () {
 
-            $('#datatableid').DataTable({
+            $('#dtblid').DataTable({
                 "pagingType": "full_numbers",
                 "lengthMenu": [
                     [10, 25, 50, -1],
