@@ -1,37 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Example of Looping Over PHP Multidimensional Array</title>
-</head>
-<body>
+<html>
+    <body>
+<?php 
+     $con = mysqli_connect("localhost","root","","mercedhernandezgreenhills");
+     if(mysqli_connect_errno()) {echo "Error: " . mysqli_connect_errno();}
+?> 
 
 <?php
-// Multidimensional array
-$superheroes = array(
-    "spider-man" => array(
-        "name" => "Peter Parker",
-        "email" => "peterparker@mail.com",
-    ),
-    "super-man" => array(
-        "name" => "Clark Kent",
-        "email" => "clarkkent@mail.com",
-    ),
-    "iron-man" => array(
-        "name" => "Harry Potter",
-        "email" => "harrypotter@mail.com",
-    )
-);
- 
-// Printing all the keys and values one by one
-$keys = array_keys($superheroes);
-for($i = 0; $i < count($superheroes); $i++) {
-   
-    foreach($superheroes[$keys[$i]] as  $value) {
-        echo  $value . "<br>";
-    }
-    
-}
-?>
+$connect = new PDO('mysql:host=localhost;dbname=mercedhernandezgreenhills','root', '');
 
-</body>
+
+$mquery = "SELECT total_amt_due, principal FROM loantbl WHERE loan_id = '1008'";
+        $mquery_run = mysqli_query($con, $mquery);
+        foreach($mquery_run as $run){
+
+            $principal = $run['principal'];
+
+            $amtdue = $run['total_amt_due'];
+            $newdue = $amtdue + ($principal * 0.01);
+
+            echo  "$principal $amtdue $newdue";
+        }
+?>
+</body> 
+
 </html>

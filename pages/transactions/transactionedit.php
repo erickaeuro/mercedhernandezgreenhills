@@ -48,7 +48,7 @@ require '../connection.php';
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4><b>Edit Redeem Ticket</b>                      
+                        <h4><b>Edit Loan</b>                      
                     </div>
                     <div class="card-body">
 
@@ -56,86 +56,77 @@ require '../connection.php';
                         if(isset($_GET['id']))
                         {
                             $id = mysqli_real_escape_string($con, $_GET['id']);
-                            $query = "SELECT * FROM pawntickettbl WHERE pawnticketno='$id' ";
+                            $query = "SELECT * FROM pawntickettbl 
+                                INNER JOIN loantbl ON pawntickettbl.loan_id = loantbl.loan_id
+                                INNER JOIN customertbl ON loantbl.customer_no = customertbl.customer_no
+                                WHERE pawnticketno = '$id' ";
                             $query_run = mysqli_query($con, $query);
 
                             if(mysqli_num_rows($query_run) > 0)
                             {
                                 $row = mysqli_fetch_array($query_run);
-
-                                $namequery = "SELECT * FROM customertbl WHERE customerno='".$row['customerno']."'" ;
-                                $namequery_run = mysqli_query($con, $namequery);
-                                $row2 = mysqli_fetch_array($namequery_run);
-
-                                $redid = mysqli_real_escape_string($con, $_GET['redid']);
-
-                                $query2 = "SELECT * FROM redeemtbl WHERE redeemid='$redid'" ;
-                                $query_run2 = mysqli_query($con, $query2);
-                                $row3 = mysqli_fetch_array($query_run2);
-
+                                
+                                $fname = $row['first_name']; 
+                                $lname = $row['last_name'];
+                                $fulname = "$fname $lname";
                                 ?>
 
-                            <form action="editredeembtn.php" method="POST">
+                            <form action="transceditbtn.php" method="POST">
 
                             
                             <input type="hidden" name="id" value='<?= $row['id']; ?>'>
 
                             <div class="form-group col-md-12">
-                                <label for="redeemid"><b>Redeem ID</b></label>
-                                <input type="text" class="form-control" name="redeemid" value="<?= $row3['redeemid']; ?>" readonly>
+                                <label for="pawnticketno"><b>Ticket No. </b></label>
+                                <input type="text" class="form-control" name="pawnticketno" value="<?= $row['pawnticketno']; ?>" readonly>
                             </div> 
 
                             <div class="form-group col-md-12">
-                                <label for="pawnticketno"><b>Pawn Ticket Number</b></label>
-                                <input type="text" class="form-control" name="pawnticketno" value="<?= $row['pawnticketno']; ?>" readonly>
+                                <label for="loan_id"><b>Loan ID</b></label>
+                                <input type="text" class="form-control" name="loan_id" value="<?= $row['loan_id']; ?>" readonly>
                             </div>  
 
                             <div class="form-group col-md-12">
                                 <label for="customername"><b>Customer Name </b></label>
-                                <input type="text" class="form-control" name="customername" value="<?= $row2['name']; ?>" readonly>
-                            </div>  
+                                <input type="text" class="form-control" name="customername" value="<?= $fulname?>" readonly>
+                            </div>   
 
                             <div class="form-group col-md-12">
-                                <label for="Date Loan"><b>Date Loan Granted</b></label>
-                                <input type="date" class="form-control" name="dateloangranted" value="<?= $row['dateloangranted']; ?>" >
-                            </div>
+                                <label for="ItemType"><b>Item Type </b></label>
+                                <input type="text" class="form-control" name="item_type" value="<?= $row['item_type']; ?> "readonly>
+                            </div> 
 
                             <div class="form-group col-md-12">
-                                <label for="Mat Date"><b>Maturity Date </b></label>
-                                <input type="date" class="form-control" name="maturity_date" value="<?= $row['maturity_date']; ?>" >
-                            </div>
+                                <label for="ItemDesc"><b>Item Description </b></label>
+                                <textarea class="form-control" rows="3" name="item_desc" placeholder="<?= $row['item_desc']; ?>" readonly><?= $row['item_desc']; ?></textarea>
+                            </div> 
 
                             <div class="form-group col-md-12">
-                                <label for="Expire Date"><b>Expiry Date</b></label>
-                                <input type="date" class="form-control" name="expiry_date" value="<?= $row['expiry_date']; ?>" >
-                            </div>
+                                <label for="amtpay"><b>Amount Paid</b></label>
+                                <input type="text" class="form-control" name="amtpay" value="<?= $row['amount_paid']; ?> ">
+                            </div> 
 
                             <div class="form-group col-md-12">
-                                <label for="principal"><b>Principal </b></label>
-                                <input type="text" class="form-control" name="principal" value="<?= $row['principal']; ?>">
+                                <label for="Date Paid"><b>Date Paid</b></label>
+                                <input type="date" class="form-control" name="date_pay" value="<?= $row['date_paid']; ?>" >
                             </div>
 
-                            <div class="form-group col-md-12">
-                                <label for="interest"><b>Interest </b></label>
-                                <input type="text" class="form-control" name="interest" value="<?= $row['interest']; ?>">
-                            </div>
 
                             <div class="form-group col-md-12">
-                                <label for="penalty"><b>Penalty</b></label>
-                                <input type="text" class="form-control" name="penalty" value="<?= $row['penalty']; ?>">
-                            </div>
-
-                            <div class="form-group col-md-12">
-                                <label for="redemption_amnt"><b>Redemption Amount</b></label>
-                                <input type="text" class="form-control" name="redemption_amnt" value="<?= $row3['redemption_amnt']; ?>">
-                            </div>
+                                <label for="transac"><b>Transaction Type </b></label><br>
+                                <select class="custom-select" name="tranctype" style="width:410px; position: relative; left:10px; top:-1px">
+                                    <option value="<?= $row['transactiontype']; ?>" selected="selected"><?= $row['transactiontype']; ?></option>
+                                    <option value="Redeem">Redeem</option>
+                                    <option value="Renewal">Renewal</option>
+                                </select>
+                            </div> 
                         </div>
                             <div class="mb-4">
                             <center> 
-                            <a href="pawnticket.php" class="btn btn-danger float-end">Back</a>
+                            <a href="transaction.php" class="btn btn-danger float-end">Back</a>
                             <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#EditModal">Edit Ticket</button> 
                             </center>
-                            </div>   
+                            </div>  
                             
                             <!--MODAL FOR EDIT-->
                             <div class="modal" id="EditModal">
@@ -152,13 +143,12 @@ require '../connection.php';
                                         </div>
                                         <!-- Modal footer -->
                                         <div class="modal-footer">
-                                        <button type="submit" name="editredeem" class="btn btn-success">Yes</button> 
+                                        <button type="submit" name="editticket" class="btn btn-success">Yes</button> 
                                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                         </div>
                                     </div>
                                     </div>
                                 </div>
-
                         </form>
 
                         <?php

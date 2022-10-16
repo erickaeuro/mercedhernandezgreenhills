@@ -20,20 +20,34 @@
     </div>
 
 <!--SQL UPDATE & DELETE -->
+
+
 <?php
+
+
+
 if($matsql == 1 ){
     foreach($matrec as $recup){
-        $query = "UPDATE loantbl SET interest = '6.00' WHERE loan_id = '$recup'";
-        $query_run = mysqli_query($con, $query);
+        $mquery = "SELECT total_amt_due, principal FROM loantbl WHERE loan_id = '$recup'";
+        $mquery_run = mysqli_query($con, $mquery);
+        foreach($mquery_run as $run){
+
+            $principal = $run['principal'];
+
+            $amtdue = $run['total_amt_due'] + ($principal * 0.01);
+
+            $query = "UPDATE loantbl SET interest = '6.00', total_amt_due ='$amtdue' WHERE loan_id = '$recup'";
+            $query_run = mysqli_query($con, $query);
+        
+        }
     }
 }
 
 
 if($delsql == 1 ){
-    foreach($exprec as $xrecup){
+    foreach($exprec as $xrecup){        
         $xquery = "SELECT item_type, item_desc, appraised_value FROM loantbl WHERE loan_id = '$xrecup'";
         $xquery_run = mysqli_query($con, $xquery);
-
         foreach($xquery_run as $run){
             //VARIABLES FOR CHANGE
             $itype = $run['item_type'];
