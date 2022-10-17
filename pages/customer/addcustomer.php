@@ -15,10 +15,17 @@ function encrypthis($data,$key){
     $encrypted = openssl_encrypt($data, 'aes-256-cbc', $encryption_key, 0, $iv);
     return base64_encode($encrypted. '::'. $iv);
  }
-
+ function validateBirthDate($BirthDate)
+ {
+// convert user input date to string and +18 years;
+// compare user input date with current date;
+if (time() < strtotime('+18 years', strtotime($BirthDate))) {
+    return 'Not 18';
+}
+return "user is older than 18 years old";
+}
 if(isset($_POST['addcustomer']))
 {
-    $customer_no = $_POST['customer_no'];
     $first_name = $_POST['first_name'];
     $middle_name = $_POST['middle_name'];
     $last_name = $_POST['last_name'];
@@ -28,13 +35,15 @@ if(isset($_POST['addcustomer']))
     $cpnum = encrypthis($cpnum, $key);
     $BirthDate = $_POST['BirthDate'];
     $age = (date("Y-m-d") - $BirthDate);
-}  //if age if 17 or younger error msg
+}  
+
+//if age if 17 or younger error msg
 if ($age < 17) {
-    echo "Must 18 or older.";
+    echo "Must 18 or older";
 }
 else{ //if age is 120 or greather error msg
     if ($age > 120) {
-        echo "Real age please.";
+        echo "Real age please";
     }
     else{
         echo "$age";

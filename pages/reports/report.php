@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(0);
 $connect = new PDO("mysql:host=localhost;dbname=mercedhernandezgreenhills", "root", "");
 
 $start_date_error = '';

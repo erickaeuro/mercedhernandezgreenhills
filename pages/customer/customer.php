@@ -113,8 +113,6 @@
                                           <th>Contact Number</th>
                                           <th>Birthdate</th>
                                           <th>Valid ID</th>
-                                          
-                                          <th></th>
                                       </tr>
                                   </thead>
        
@@ -129,7 +127,7 @@
 
                                   
             ?>
-                                      <tr>
+                                      <tr class="table-active">
                                         <td>
                                         <a href="custview.php?id=<?= $row['customer_no'];?>" class="btn btn-info viewbtn">VIEW</a>
                                         <a href="custedit.php?id=<?= $row['customer_no'];?>" class="btn btn-success editbtn">EDIT</a>
