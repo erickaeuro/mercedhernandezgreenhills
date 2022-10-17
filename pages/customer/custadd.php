@@ -40,16 +40,7 @@
 
       <!-- Main Content -->
       <div id="content">
-<?php
-      if(isset($_SESSION['addcustomer'])){
- ?>
-        <div class="alert alert-success" role="alert" role ="alert">
-            <?= $_SESSION['addcustomer'];?>
-            <button type = "button" class="close" data-bs-dismiss="alert" aria-label="Close">x</button>
-      </div>
-      <?php
-      unset($_SESSION['addcustomer']);
-      }?>
+
       
         <!-- Topbar -->
         <?php include '../navbar.php'; ?>
@@ -61,6 +52,16 @@
                     <div class="card-header">
                         <h4><b>Add Customer</b>                      
                     </div>
+                    <?php
+                            if(isset($_SESSION['custstatus'])){
+                        ?>
+                                <div class="alert alert-warning" role="alert" role ="alert">
+                                    <?= $_SESSION['custstatus'];?>
+                                    <button type = "button" class="close" data-bs-dismiss="alert" aria-label="Close">x</button>
+                            </div>
+                            <?php
+                            unset($_SESSION['custstatus']);
+                            }?>
                     <div class="card-body">
                         <form action="addcustomer.php" method="POST">
 
