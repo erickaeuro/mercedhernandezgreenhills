@@ -71,7 +71,7 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4"> 
       <h4>
        <a href="loanbtn.php" class="btn btn-info btn-icon-text btn-md"> 
-       <i class="fas fa-plus"></i> New Transaction</a>
+       <i class="fas fa-plus"></i> New Loan</a>
     </div>
 
     <!-- Content Row -->
@@ -96,7 +96,6 @@
                                           <th>Loan ID</th>
                                           <th>Customer Name</th>
                                           <th>Item Type</th>
-                                          <th>Item Description</th>
                                           <th>Appraised Value</th>
                                           <th>Principal</th>
                                           <th>interest</th>
@@ -134,11 +133,6 @@
                         $delvalid = 1;
                       }
                       
-                      if($row['total_amt_due'] == 0 ){
-                        $que = "UPDATE loantbl SET loan_status = 'Redeemed'";
-                        $querun = mysqli_query($con, $que);
-                      }
-
                       
                     }
 
@@ -165,7 +159,6 @@
                                 <td> <?php echo $row['loan_id']; ?> </td>
                                 <td> <?php echo $fulln ; ?> </td>
                                 <td> <?php echo $row['item_type']; ?> </td>
-                                <td> <?php echo $row['item_desc']; ?> </td>
                                 <td> <?php echo $row['appraised_value']; ?> </td>
                                 <td> <?php echo $row['principal']; ?> </td>
                                 <td> <?php echo $row['interest'];?>%</td>

@@ -93,10 +93,13 @@
                         <?php 
                             $con = mysqli_connect("localhost","root","","mercedhernandezgreenhills");
                             if(mysqli_connect_errno()) {echo "Error: " . mysqli_connect_errno();}
-                 
+                        ?> 
+
+                      <?php 
+
                             $query = "SELECT * FROM inventorytbl where move='0'";
                             $query_run = mysqli_query($con, $query);
-                        ?> 
+                      ?> 
 
                           <div class="table-responsive">
                               <table id="dtblid" class="table table-hover display" width="100%" cellspacing="0">
@@ -141,8 +144,11 @@
                                 <a href="deletecode.php?id=<?= $row['stock_no']; ?>" name="deletedata" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this record?')">DELETE</a>
                             </td> 
                             
-                        <?php    }
-\?>      
+                        <?php 
+                        
+                        
+                      }
+            ?>      
                  
                         </tr>
                       </tbody>                     
@@ -206,8 +212,6 @@
     <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-
 
 
 <?php include '../scripts.php'; ?>   
