@@ -96,7 +96,6 @@
                                           <th>Loan ID</th>
                                           <th>Customer Name</th>
                                           <th>Item Type</th>
-                                          <th>Appraised Value</th>
                                           <th>Principal</th>
                                           <th>interest</th>
                                           <th>Total Amount Paid</th>
@@ -159,7 +158,6 @@
                                 <td> <?php echo $row['loan_id']; ?> </td>
                                 <td> <?php echo $fulln ; ?> </td>
                                 <td> <?php echo $row['item_type']; ?> </td>
-                                <td> <?php echo $row['appraised_value']; ?> </td>
                                 <td> <?php echo $row['principal']; ?> </td>
                                 <td> <?php echo $row['interest'];?>%</td>
                                 <td> <?php echo $row['total_amt_paid']; ?> </td>

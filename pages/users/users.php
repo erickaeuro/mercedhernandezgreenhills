@@ -71,8 +71,8 @@
 
         <div class="d-sm-flex align-items-center justify-content-between mb-4"> 
             <h4>
-              <a href="stockadd.php" class="btn btn-info btn-icon-text btn-md">
-              <i class="fas fa-plus"></i>Add Jewelry Stocks</a>
+              <a href="addinguser.php" class="btn btn-info btn-icon-text btn-md">
+              <i class="fas fa-plus"></i>Add Users</a>
             </h4>
         </div>
         
@@ -85,7 +85,7 @@
                   <div class="card shadow mb-4 border-left-info border-bottom-info">
                       <!-- Card Header - Dropdown -->
                       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                          <h6 class="m-0 font-weight-bold text-info">Jewelry Stocks</h6>
+                          <h6 class="m-0 font-weight-bold text-info">Users Table</h6>
                       </div>
                       <!-- Card Body -->
                         <div class="card-body">
