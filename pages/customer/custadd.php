@@ -40,7 +40,17 @@
 
       <!-- Main Content -->
       <div id="content">
-
+<?php
+      if(isset($_SESSION['addcustomer'])){
+ ?>
+        <div class="alert alert-success" role="alert" role ="alert">
+            <?= $_SESSION['addcustomer'];?>
+            <button type = "button" class="close" data-bs-dismiss="alert" aria-label="Close">x</button>
+      </div>
+      <?php
+      unset($_SESSION['addcustomer']);
+      }?>
+      
         <!-- Topbar -->
         <?php include '../navbar.php'; ?>
         <!-- End of Topbar -->
