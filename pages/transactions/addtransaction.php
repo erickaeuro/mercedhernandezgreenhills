@@ -21,7 +21,7 @@ if(isset($_POST['addtransc']))
       
         $transac = $row['total_amt_due'] - $amt_paid;
         $payupdate = $row['total_amt_paid'] + $amt_paid;
-            
+
 
             if($transc_type == "Redeem"){
                 //UPDATE PAYMENT

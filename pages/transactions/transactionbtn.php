@@ -112,8 +112,8 @@
 
                         <div class="form-group col-md-12">
                             <label for="loanstatus"><b>Transaction Type </b></label><br>
-                            <select class="custom-select" name="transctype" style="width:410px; position: relative; left:10px; top:-1px">
-                                <option value="" selected="selected">Select Transaction Type </option>
+                            <select class="custom-select" name="transctype" style="width:410px; position: relative; left:10px; top:-1px" required>
+                                <option value= null selected="selected">Select Transaction Type </option>
                                 <option value="Renewal">Renewal</option>
                                 <option value="Redeem">Redemption</option>                                
                             </select>
