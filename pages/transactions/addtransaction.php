@@ -11,6 +11,7 @@ if(isset($_POST['addtransc']))
         //VARIABLES
         $transc_type = $_POST['transctype'];
         $amt_paid = $_POST['amount_paid'];
+        $renewaldue = $_POST['renewaldue'];
         $loanid = $_POST['loan_id'];
         $date = date("Y-m-d");
 
@@ -45,20 +46,28 @@ if(isset($_POST['addtransc']))
             } 
 
             if($transc_type == "Renewal"){
-                $query = "INSERT INTO pawntickettbl (pawnticketno, loan_id, date_paid, amount_paid, transactiontype) VALUES (NULL, '$loanid', '$date', '$amt_paid', '$transc_type')";
-                $query_run = mysqli_query($con, $query);
+                if($renewaldue == $amt_paid){
+                    $query = "INSERT INTO pawntickettbl (pawnticketno, loan_id, date_paid, amount_paid, transactiontype) VALUES (NULL, '$loanid', '$date', '$amt_paid', '$transc_type')";
+                    $query_run = mysqli_query($con, $query);
 
-                 
-                $updateque = "UPDATE loantbl SET total_amt_paid='$payupdate', loan_status='Active Loan', total_amt_due='$transac' WHERE loan_id='$loanid'";
-                $query_run2 = mysqli_query($con, $updateque);
+                    
+                    $updateque = "UPDATE loantbl SET total_amt_paid='$payupdate', loan_status='Active Loan', total_amt_due='$transac' WHERE loan_id='$loanid'";
+                    $query_run2 = mysqli_query($con, $updateque);
 
-                if($query_run && $query_run2){
-                    $_SESSION['addstatus'] = "Ticket Added Successfully";
-                    header('Location: transaction.php');
+                    if($query_run && $query_run2){
+                        $_SESSION['addstatus'] = "Ticket Added Successfully";
+                        header('Location: transaction.php');
+                    }else{
+                        $_SESSION['addstatus'] = "DATA NOT SAVED";
+                        header('Location: transactionbtn.php');
+                    }
+                    
                 }else{
-                    $_SESSION['addstatus'] = "DATA NOT SAVED";
+                    $_SESSION['addstatus1'] = "Amount Paid is insufficient for Renewal";
                     header('Location: transactionbtn.php');
                 }
+                
+                
     
             }
             

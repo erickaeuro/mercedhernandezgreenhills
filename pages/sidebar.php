@@ -41,7 +41,7 @@
                 <a class="collapse-item" href="../transactions/renewal.php">Renewal</a>
                 <a class="collapse-item" href="../transactions/redeem.php">Redeem</a>
                 <a class="collapse-item" href="../transactions/auction.php">Auction</a>
-                
+                <a class="collapse-item" href="../transactions/soldauction.php">Auction Sold Item</a>
             </div>
         </div>
     </li>

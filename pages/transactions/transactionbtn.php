@@ -92,6 +92,8 @@
                         <?php
                         if(isset($_GET['id'])){
                             $id = $_GET['id'];
+                            $date = date("Y-m-d");
+                            date_default_timezone_set('Asia/Manila');
 
                             $query = "SELECT * FROM loantbl INNER JOIN customertbl ON loantbl.customer_no = customertbl.customer_no WHERE loantbl.loan_id='$id' AND loantbl.loan_status='Active Loan'";
                             $query_run = mysqli_query($con, $query);
@@ -101,6 +103,14 @@
                                 header('Location: transactionbtn.php');
                             }
                             $row = mysqli_fetch_array($query_run);
+
+                            $monthlydue = $row['total_amt_due']/3;
+                            if($row['interest'] == 6.00){
+                                $renewaldue =  $monthlydue + ($monthlydue*0.06);
+                            }else{
+                                $renewaldue =  $monthlydue + ($monthlydue*0.05);
+                            }
+                            
 
                         }
                         
@@ -148,8 +158,13 @@
                         </div>
 
                         <div class="form-group col-md-12">
-                            <label for="amtdue"><b>Amount Due</b></label>
+                            <label for="amtdue"><b>Total Amount Due</b></label>
                             <input type="text" class="form-control" name=" " value="<?php if(isset($_GET['id'])){ echo $row['total_amt_due'];}?>" readonly>
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <label for="renewaldue"><b>Renewal Amount Due</b></label>
+                            <input type="text" class="form-control" name="renewaldue" value="<?php if(isset($_GET['id'])){ echo $renewaldue; }?>" readonly>
                         </div>
                                                  
                         <div class="form-group col-md-12">
@@ -180,6 +195,7 @@
 </div>
 
 
+<?php include '../scripts.php'; ?>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -25,8 +25,10 @@ if(isset($_POST['addcustomer']))
     $middle_name = $_POST['middle_name'];
     $last_name = $_POST['last_name'];
     $address = $_POST['address'];
+    $addressval = $_POST['address'];
     $address = encrypthis($address, $key);
     $cpnum = $_POST['cpnum'];
+    $cpnumval = $_POST['cpnum'];
     $cpnum = encrypthis($cpnum, $key);
     $BirthDate = $_POST['BirthDate'];
     $AgeVal = strtotime($BirthDate. "+ 18 years");
@@ -37,28 +39,35 @@ if ($AgeVal > $today) {
     $_SESSION['custstatus'] = "Customer must be above 18 years old";
     header('Location: custadd.php');
 }else{
-        $valid_id = $_POST['valid_id'];
-        $valid_id = encrypthis($valid_id, $key);
+    $query = "SELECT * FROM customertbl WHERE first_name = '$first_name' AND middle_name = '$middle_name' AND last_name == '$last_name' AND address = '$address' AND cpnum = '$cpnumval' AND birthdate = '$BirthDate'";
+    $query_run = mysqli_query($con, $query);
+
+        if(mysqli_affected_rows($con) == 0 ){
+            $valid_id = $_POST['valid_id'];
+            $valid_id = encrypthis($valid_id, $key);
 
 
-        $query = "INSERT INTO customertbl (`customer_no`,`first_name`,`middle_name`,`last_name`,`address`,`cpnum`,`birthdate`,`valid_id`) VALUES ('$customer_no','$first_name','$middle_name','$last_name','$address','$cpnum','$BirthDate','$valid_id')";
-        $query_run = mysqli_query($con, $query);
+            $query = "INSERT INTO customertbl (`customer_no`,`first_name`,`middle_name`,`last_name`,`address`,`cpnum`,`birthdate`,`valid_id`) VALUES ('$customer_no','$first_name','$middle_name','$last_name','$address','$cpnum','$BirthDate','$valid_id')";
+            $query_run = mysqli_query($con, $query);
 
-        if($query_run)
-        {
-            $_SESSION['custstatus'] = "Customer Successfully Added";
-            header('Location: customer.php');
+            if($query_run)
+            {
+                $_SESSION['custstatus'] = "Customer Successfully Added";
+                header('Location: customer.php');
+            }
+            else
+            {
+                echo '<script> alert("Data Not Saved"); </script>';
+            }
+            
+        }else{
+            $_SESSION['custstatus'] = "The customer is already in the record";
+            header('Location: custadd.php');
         }
-        else
-        {
-            echo '<script> alert("Data Not Saved"); </script>';
-        }
-    }
+
 
     
-
-
         
-
+}
 
 ?>

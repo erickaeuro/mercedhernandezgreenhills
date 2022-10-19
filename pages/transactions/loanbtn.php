@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
 
   <meta charset="utf-8">
@@ -28,7 +30,8 @@
 
 <!-- Connection Database --> 
   <?php include ("../connection.php"); 
-  
+  include '../head.php';
+  error_reporting(0);
   session_start();
 ?>
 
@@ -60,6 +63,17 @@
                 </div>
             <?php 
             unset($_SESSION['addstatus']);
+        }
+
+        if(isset($_SESSION['addstatus1']))
+        {
+            ?>
+                <div class="alert alert-warning" role="alert" role="alert">
+                    <?= $_SESSION['addstatus1']; ?>
+                    <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">x</button>
+                </div>
+            <?php 
+            unset($_SESSION['addstatus1']);
         }
         ?>
         <!-- End of Topbar -->
@@ -176,7 +190,7 @@
 
 </div>
 
-
+<?php include '../scripts.php'; ?>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 

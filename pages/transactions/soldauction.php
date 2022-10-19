@@ -75,7 +75,7 @@
                       <!-- Card Body -->
                       <?php 
 
-                        $query = "SELECT * FROM auctiontbl WHERE status = 'Available'";
+                        $query = "SELECT * FROM auctiontbl WHERE status = 'Sold'";
                         $query_run = mysqli_query($con, $query);
 
                         ?> 
@@ -90,7 +90,8 @@
                                           <th>Item Type</th>
                                           <th>Item Description</th>
                                           <th>Price</th>
-                                          <th>Status</th>                                      
+                                          <th>Status</th>
+                                          <th>Date Sold</th>                                          
                                           <th>Action</th>
                                       </tr>
                                   </thead>
@@ -107,10 +108,10 @@
                                     <td> <?php echo $row['item_type']; ?> </td>
                                     <td> <?php echo $row['item_desc']; ?> </td>
                                     <td> <?php echo $row['price']; ?> </td>
-                                    <td> <?php echo $row['status']; ?> </td>                   
+                                    <td> <?php echo $row['status']; ?> </td>
+                                    <td> <?php echo $row['date_sold']; ?> </td>                                    
                                     <td>
                                     <a href="auctionview.php?id=<?= $row['auctionid'];?>" class="btn btn-info viewbtn">VIEW</a>
-                                    <a href="auctionsold.php?id=<?= $row['auctionid'];?>" class="btn btn-success" onclick="return confirm('Are you sure you want to sell this item?')">SELL</a>
                                     </td>
                                   </tr> 
                                   <?php           
