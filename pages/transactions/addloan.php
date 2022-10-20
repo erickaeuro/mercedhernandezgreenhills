@@ -43,7 +43,7 @@ if(isset($_POST['addloan']))
             header('Location: loanbtn.php');
         }
     }else{
-        $_SESSION['addstatus1'] = "Principal Should NOT be higher than the appraised Value;";
+        $_SESSION['addstatus1'] = "Principal Should NOT be higher than the appraised Value";
             header('Location: loanbtn.php');
     }
    
