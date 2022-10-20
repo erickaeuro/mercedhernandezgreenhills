@@ -106,13 +106,14 @@
                             <table id="datatbl" class="table table-hover display" width="100%" cellspacing="0">
                                   <thead>
                                       <tr style="font-size:13px;font-family:sans-serif;">
-                                          <th>Action</th>
+                                        
                                           <th>Customer No.</th>
                                           <th>Name</th>
                                           <th>Address</th>
                                           <th>Contact Number</th>
                                           <th>Birthdate</th>
                                           <th>Valid ID</th>
+                                          <th>Action</th>
                                       </tr>
                                   </thead>
        
@@ -144,17 +145,18 @@
                                   
             ?>
                                       <tr class="table-active">
-                                        <td>
-                                        <a href="custview.php?id=<?= $row['customer_no'];?>" class="btn btn-info viewbtn">VIEW</a>
-                                        <a href="custedit.php?id=<?= $row['customer_no'];?>" class="btn btn-success editbtn">EDIT</a>
-                                        <a href="custdelete.php?id=<?= $row['customer_no']; ?>" name="deletedata" class="btn btn-danger deletebtn">DELETE</a>
-                                        </td>
+                                       
                                         <td> <?php echo $row['customer_no']; ?> </td>
                                         <td> <?php echo $fulln; ?> </td>
                                         <td> <?php echo $Address; ?> </td>
                                         <td> <?php echo $cpnum; ?> </td>
                                         <td> <?php echo $row['birthdate']; ?> </td>
                                         <td> <?php echo $vad_id; ?> </td>
+                                        <td>
+                                        <a href="custview.php?id=<?= $row['customer_no'];?>" class="btn btn-info viewbtn">VIEW</a>
+                                        <a href="custedit.php?id=<?= $row['customer_no'];?>" class="btn btn-success editbtn">EDIT</a>
+                                        <a href="custdelete.php?id=<?= $row['customer_no']; ?>" name="deletedata" class="btn btn-danger deletebtn">DELETE</a>
+                                        </td>
                                         </div>  
                                       </tr>
                                           
