@@ -118,12 +118,28 @@
        
                                   <tbody>
             <?php
+
+            //PUT DECRYPTION FUNCTION HERE
+            $key = 'qkwjdiw239&&jdafweihbrhnan&^%$ggdnawhd4njshjwuuO';
+            function decryptthis($data, $key){
+              $encryption_key = base64_decode($key);
+              $iv =openssl_random_pseudo_bytes(openssl_cipher_iv_length('aes-256-cbc'));
+              $decrypted = openssl_decrypt($data, 'aes-256-cbc', $encryption_key, 0, $iv);
+              return base64_decode($decrypted);
+            }
                               foreach($query_run as $row)
                                 {
                                   $firstn = $row['first_name'];
                                   $middlen = $row['middle_name'];
                                   $lastn = $row['last_name'];
+                                  $addr = $row['address'];
+                                  $cpn = $row['cpnum'];
                                   $fulln = "$firstn $middlen $lastn";
+
+                                  //DECRYPT VARIBLES HERE WITH THE RETURN OF DECRYPTION FUNCTION
+                                  $Address = decryptthis($addr, $key);
+                                  $cpnum = decryptthis($cpn, $key);
+
 
                                   
             ?>
@@ -135,8 +151,8 @@
                                         </td>
                                         <td> <?php echo $row['customer_no']; ?> </td>
                                         <td> <?php echo $fulln; ?> </td>
-                                        <td> <?php echo $row['address']; ?> </td>
-                                        <td> <?php echo $row['cpnum']; ?> </td>
+                                        <td> <?php echo $Address; ?> </td>
+                                        <td> <?php echo $cpnum; ?> </td>
                                         <td> <?php echo $row['birthdate']; ?> </td>
                                         <td> <?php echo $row['valid_id']; ?> </td>
                                         </div>  
