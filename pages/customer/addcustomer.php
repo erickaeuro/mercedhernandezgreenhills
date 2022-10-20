@@ -39,7 +39,7 @@ if ($AgeVal > $today) {
     $_SESSION['custstatus'] = "Customer must be above 18 years old";
     header('Location: custadd.php');
 }else{
-    $query = "SELECT * FROM customertbl WHERE first_name = '$first_name' AND middle_name = '$middle_name' AND last_name == '$last_name' AND address = '$address' AND cpnum = '$cpnumval' AND birthdate = '$BirthDate'";
+    $query = "SELECT * FROM customertbl WHERE first_name = '$first_name' AND middle_name = '$middle_name' AND last_name = '$last_name' AND address = '$address' AND cpnum = '$cpnumval' AND birthdate = '$BirthDate'";
     $query_run = mysqli_query($con, $query);
 
         if(mysqli_affected_rows($con) == 0 ){
