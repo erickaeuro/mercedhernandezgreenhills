@@ -72,10 +72,10 @@
           
         <div class="d-sm-flex align-items-center justify-content-between mb-4"> 
             <h4>
-                <a href="custadd.php" class="btn btn-info btn-icon-text btn-md"> <i class="fas fa-plus"></i> Add Customer</a>
-            </h4>
+              <button type="button" class="btn btn-info btn-icon-text btn-md" data-bs-toggle="modal" 
+              data-bs-target="#AddModal"><i class="fas fa-plus"> Add Customers </i></button>
+            </h4> 
         </div>
-        
           <!-- Content Row -->
 
           <form action= "addcustomer.php" method="POST">
@@ -168,6 +168,32 @@
                           </div>
                       </div>
                   </div>
+                  <!--MODAL FOR DATA PRIVACY FOR ADDING CUSTOMERS-->
+                  <div class="modal" id="AddModal">
+                                    <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                        <h4 class="modal-title">Privacy Notice</h4>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal">X</button>
+                                        </div>
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                        
+                                        Merced-Hernandez (Greenhills) Pawnshop & Jewellery is committed to respecting and protecting the data privacy rights of 
+                                        the users and customers as a data subject in accordance with RA 10173 (“Data Privacy Law of 2012”), 
+                                        its Implementing Rules and Regulations and other applicable laws of the Republic of the Philippines.
+
+                                        <br> <br> Do you agree with the terms and conditions?
+                                        </div>
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                        <a href="custadd.php" class="btn btn-success float-end">Yes</a>
+                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
             
               </div>    
                 
