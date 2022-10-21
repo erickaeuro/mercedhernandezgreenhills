@@ -15,56 +15,144 @@
         <i class="fa fa-th" aria-hidden="true"></i>
           <span><b>Dashboard</b></span></a>
       </li>
-    <li class="nav-item">
-        <a class="nav-link" href="" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-boxes"></i>
-          <span><b>Inventory</b></span></a>
-          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="../inventory/stocks.php">Stocks</a>
-                <a class="collapse-item" href="../inventory/soldstocks.php">Sold Jewelry</a>
+
+      </li>
+           
+        <?php if ($_SESSION['username'] == "Appraiser"){
+            echo "
+            <li class='nav-item'>
+            <a class='nav-link collapsed' href='#' data-toggle='collapse' data-target='#collapseUtilities'
+                aria-expanded='true' aria-controls='collapseUtilities'>
+                <i class='fas fa-folder'></i>
+                <span><b>Transactions</b></span>
+            </a>
+            <div id='collapseUtilities' class='collapse' aria-labelledby='headingUtilities' data-parent='#accordionSidebar'>
+                <div class='bg-white py-2 collapse-inner rounded'>
+                    <a class='collapse-item' href='../transactions/pawnticket.php'>Pawn Ticket</a>
+                    <a class='collapse-item' href='../transactions/auction.php'>Auction</a>
+                    <a class='collapse-item' href='../transactions/renewal.php'>Renewal</a>
+                    <a class='collapse-item' href='../transactions/redeem.php'>Redeem</a>
+                </div>
             </div>
-        </div>
-    </li>
+        </li>
+
+        <li class='nav-item'>
+        <a class='nav-link' href='../invoice/invoice.php'>
+          <i class='fas fa-receipt'></i>
+          <span><b>Invoice</b></span></a>
+        </li>
+
+        <li class='nav-item'>
+        <a class='nav-link' href='../customer/customer.php'>
+          <i class='fas fa-users'></i>
+          <span><b>Customers</b></span></a>
+      </li>";
+          }
+            else{
+              //echo "<span></span>";
+            }
+        ?>
+
+        <?php if ($_SESSION['username'] == "Inventory Clerk"){
+            echo "   <li class='nav-item'>
+            <a class='nav-link collapsed' href='#' data-toggle='collapse' data-target='#collapseUtilities'
+                aria-expanded='true' aria-controls='collapseUtilities'>
+                <i class='fas fa-folder'></i>
+                <span><b>Transactions</b></span>
+            </a>
+            <div id='collapseUtilities' class='collapse' aria-labelledby='headingUtilities' data-parent='#accordionSidebar'>
+                <div class='bg-white py-2 collapse-inner rounded'>
+                    <a class='collapse-item' href='../transactions/pawnticket.php'>Pawn Ticket</a>
+                    <a class='collapse-item' href='../transactions/auction.php'>Auction</a>
+                    <a class='collapse-item' href='../transactions/renewal.php'>Renewal</a>
+                    <a class='collapse-item' href='../transactions/redeem.php'>Redeem</a>
+                </div>
+            </div>
+        </li>
+          
+      <li class='nav-item'>
+          <a class='nav-link' href='' data-toggle='collapse' data-target='#collapseTwo' aria-expanded='true' aria-controls='collapseTwo'>
+            <i class='fas fa-boxes'></i>
+            <span><b>Inventory</b></span></a>
+            <div id='collapseTwo' class='collapse' aria-labelledby='headingTwo' data-parent='#accordionSidebar'>
+              <div class='bg-white py-2 collapse-inner rounded'>
+                  <a class='collapse-item' href='../inventory/stocks.php'>Stocks</a>
+                  <a class='collapse-item' href='../inventory/soldstocks.php'>Sold Jewelry</a>
+              </div>
+          </div>
       </li>
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-            aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-folder"></i>
-            <span><b>Transactions</b></span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="../transactions/loan.php">Loans</a>
-                <a class="collapse-item" href="../transactions/transaction.php">Transaction</a>
-                <a class="collapse-item" href="../transactions/renewal.php">Renewal</a>
-                <a class="collapse-item" href="../transactions/redeem.php">Redeem</a>
-                <a class="collapse-item" href="../transactions/auction.php">Auction</a>
-                <a class="collapse-item" href="../transactions/soldauction.php">Auction Sold Item</a>
-            </div>
-        </div>
-    </li>
-    
-      <li class="nav-item">
-        <a class="nav-link" href="../reports/report.php">
-          <i class="fas fa-file-csv"></i>
+      <li class='nav-item'>
+        <a class='nav-link' href='../reports/report.php'>
+          <i class='fas fa-file-csv'></i>
           <span><b>Reports</b></span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="../invoice/invoice.php">
-          <i class="fas fa-receipt"></i>
+          ";
+          }
+            else{
+              //echo "<span></span>";
+            }
+        ?>
+
+<?php if ($_SESSION['username'] == "Admin"){
+            echo "
+            <li class='nav-item'>
+            <a class='nav-link collapsed' href='#' data-toggle='collapse' data-target='#collapseUtilities'
+                aria-expanded='true' aria-controls='collapseUtilities'>
+                <i class='fas fa-folder'></i>
+                <span><b>Transactions</b></span>
+            </a>
+            <div id='collapseUtilities' class='collapse' aria-labelledby='headingUtilities' data-parent='#accordionSidebar'>
+                <div class='bg-white py-2 collapse-inner rounded'>
+                    <a class='collapse-item' href='../transactions/pawnticket.php'>Pawn Ticket</a>
+                    <a class='collapse-item' href='../transactions/auction.php'>Auction</a>
+                    <a class='collapse-item' href='../transactions/renewal.php'>Renewal</a>
+                    <a class='collapse-item' href='../transactions/redeem.php'>Redeem</a>
+                </div>
+            </div>
+        </li>
+
+        <li class='nav-item'>
+        <a class='nav-link' href='../invoice/invoice.php'>
+          <i class='fas fa-receipt'></i>
           <span><b>Invoice</b></span></a>
-      </li>
-    <li class="nav-item">
-        <a class="nav-link" href="../customer/customer.php">
-          <i class="fas fa-users"></i>
+        </li>
+
+        <li class='nav-item'>
+        <a class='nav-link' href='../customer/customer.php'>
+          <i class='fas fa-users'></i>
           <span><b>Customers</b></span></a>
       </li>
-     <li class="nav-item">
-        <a class="nav-link" href="../users/users.php">
-          <i class="fas fa-user-tie"></i></i>
-          <span><b>Users</b></span></a>
+      <li class='nav-item'>
+            <a class='nav-link' href='../users/users.php'>
+              <i class='fas fa-users'></i>
+              <span><b>Users</b></span></a>
+          </li>
+          
+      <li class='nav-item'>
+          <a class='nav-link' href='' data-toggle='collapse' data-target='#collapseTwo' aria-expanded='true' aria-controls='collapseTwo'>
+            <i class='fas fa-boxes'></i>
+            <span><b>Inventory</b></span></a>
+            <div id='collapseTwo' class='collapse' aria-labelledby='headingTwo' data-parent='#accordionSidebar'>
+              <div class='bg-white py-2 collapse-inner rounded'>
+                  <a class='collapse-item' href='../inventory/stocks.php'>Stocks</a>
+                  <a class='collapse-item' href='../inventory/soldstocks.php'>Sold Jewelry</a>
+              </div>
+          </div>
+      </li>
+
+      <li class='nav-item'>
+        <a class='nav-link' href='../reports/report.php'>
+          <i class='fas fa-file-csv'></i>
+          <span><b>Reports</b></span></a>
+      </li>
+      ";
+          }
+            else{
+              //echo "<span></span>";
+            }
+        ?>
+
       </li>
 
       <!-- Divider -->
