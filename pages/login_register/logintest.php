@@ -75,16 +75,26 @@ if(isset($_POST['login_user'])){
 
 ?>
 
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Merced Hernandez Greenhills Pawnshop & Jewellery</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+    <title>Merced Hernandez Greenhills Pawnshop & Jewellery</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/affc99a8ad.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <div class="header">
-  	<h2>Merced Hernandez Greenhills Pawnshop & Jewellery Login</h2>
-  </div>
+  <?php
+    require('../connection.php');
+    error_reporting(0);
+  ?>
   <div class="container">
     <div class="row">
       <div class="col-lg-10 col-xl-10 mx-auto">
@@ -93,39 +103,26 @@ if(isset($_POST['login_user'])){
             <!-- Background image for card set in CSS! -->
           </div>
           <div class="card-body p-4 p-sm-5">
-  <form method="post" action="login.php" class="main-lead">
-	
-  	<?php include('errors.php');?>
-  	<div class="input-group">
-  		<label>Username</label>
-  		<input type="text" name="username" >
-  	</div>
-  	<div class="input-group">
-  		<label>Password</label>
-  		<input type="password" name="password">
-  	</div>
-	<div class="form-group lead">
+            <h5 class="card-title text-center mb-5 fw-light fs-5">Merced Hernandez Greenhills Pawnshop & Jewellery Login</h5>
+            <form method="post" action="login.php" class="main-lead">
 
-	<label for="authentication"><h3	>Please select authentication</h3></label>
-	<select name="authentication" id="authentication" class="authen">
-		<option disabled selected value="Select a Method">Select a Method</option>
-		<option value="MFA">MFA</option>
-		<!-- <option value="EMAIL">EMAIL</option> -->
-		<!-- <option value="SECUIRTY QUESTIONS">SECUIRTY QUESTIONS</option> -->
-	</select>
+                <?php include('errors.php');?>
 
-  	<div class="input-group">  		
-		  <input type="submit" class="btn" name="login_user" value="Login">
-  	</div> 
-	  
-	  <p>
-  		<a href="forgotpassword.php">Forgot passsword? </a>
-     </p>
-  	<p>
-  	Not yet a member? <a href="register.php">Sign up</a>
-   </p>
-  </form>
-  
+                <label for="floatingInputUsername">Username</label>
+                <input type="text"  name="username"  class="form-control" id="floatingInputUsername" placeholder="Username">
 
+                <label for="floatingPassword">Password</label>
+                <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password" >
+
+
+                <hr />
+                <input type="submit" class="btn btn-dark text-warning btn-login w-75" name="sub">
+                <button class="btn btn-outline-danger btn-login pl-4 pr-4 "> Forgot Password</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

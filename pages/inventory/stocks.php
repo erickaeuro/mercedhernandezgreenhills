@@ -14,8 +14,9 @@
 
   <!-- Custom styles for this template-->
   <link href="../../css/sb-admin-2.css" rel="stylesheet">
-  <link href="../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+<link href= "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css" rel="stylesheet"> 
+<link href= "https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" rel="stylesheet">
 
 <!-- Connection Database --> 
   <?php include ("../connection.php"); 
@@ -72,7 +73,7 @@
         <div class="d-sm-flex align-items-center justify-content-between mb-4"> 
             <h4>
               <a href="stockadd.php" class="btn btn-info btn-icon-text btn-md">
-              <i class="fas fa-plus"></i>Add Jewelry Stocks</a>
+              <i class="fas fa-plus"></i> Add Jewelry Stocks</a>
             </h4>
         </div>
         
@@ -102,7 +103,7 @@
                       ?> 
 
                           <div class="table-responsive">
-                              <table id="dtblid" class="table table-hover display" width="100%" cellspacing="0">
+                              <table id="dtblid" class="table table-striped" width="100%" cellspacing="0">
                                   <thead>
                                       <tr style="font-size:13px;font-family:sans-serif;">
                                           <th>Stock No.</th>
@@ -127,7 +128,7 @@
                         $item_type = $row['item_type'];
 
             ?>
-                        <tr class="table-active">
+                        <tr class="">
                             <td> <?php echo $row['stock_no']; ?> </td>
                             <td> <?php echo $row['item_type']; ?> </td>
                             <td> <?php echo $row['itemdescription']; ?> </td>
@@ -141,7 +142,7 @@
                                 <a href="stockview.php?id=<?= $row['stock_no'];?>" class="btn btn-info viewbtn">VIEW</a>
                                 <a href="stockedit.php?id=<?= $row['stock_no'];?>" class="btn btn-success editbtn">EDIT</a>
                                 <a href="movestock.php?id=<?= $row['stock_no']; ?>" name="movedata" class="btn btn-warning" onclick="return confirm('Are you sure you want to move this record?')">MOVE</a>
-                                <a href="deletecode.php?id=<?= $row['stock_no']; ?>" name="deletedata" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this record?')">DELETE</a>
+                                <!--- <a href="deletecode.php?id=<?= $row['stock_no']; ?>" name="deletedata" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this record?')">DELETE</a> --> 
                             </td> 
                             
                         <?php 
@@ -208,11 +209,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 
-    <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+   <!-- <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js"></script> -->
 
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script> 
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
 
 <?php include '../scripts.php'; ?>   
 

@@ -163,7 +163,7 @@
                         </div>
 
                         <div class="form-group col-md-12">
-                            <label for="renewaldue"><b>Renewal Amount Due</b></label>
+                            <label for="renewaldue"><b>Interest</b></label>
                             <input type="text" class="form-control" name="renewaldue" value="<?php if(isset($_GET['id'])){ echo $renewaldue; }?>" readonly>
                         </div>
                                                  
