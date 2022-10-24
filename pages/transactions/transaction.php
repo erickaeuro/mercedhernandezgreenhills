@@ -79,6 +79,9 @@ error_reporting(0);
                       </div>
                       <!-- Card Body -->
 
+                      <div class="card">
+                      <div class="card-body">
+
                       <?php 
 
                           $query = "SELECT * FROM ((pawntickettbl 

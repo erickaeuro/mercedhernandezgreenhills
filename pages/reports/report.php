@@ -81,8 +81,9 @@ $result = $statement->fetchAll();
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="../../css/sb-admin-2.css" rel="stylesheet">
-  <link href="../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+<link href="../../css/sb-admin-2.css" rel="stylesheet">
+<link href= "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css" rel="stylesheet"> 
+<link href= "https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" rel="stylesheet">
 
   
  </head>
@@ -110,18 +111,9 @@ $result = $statement->fetchAll();
         <div class="container-fluid">
 
         <div class="row">
-                
-                <div class="col-xl-12 col-lg-12">
-                  <div class="card shadow mb-4 border-left-info border-bottom-info">
-                      <!-- Card Header - Dropdown -->
-                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                          <h6 class="m-0 font-weight-bold text-info">Inventory Reports</h6>
-                      </div>
-                      <!-- Card Body -->
-                      <div class="card">
-                        <div class="card-body">
 
-     <form method="post">
+      <center>  
+      <form method="post">
       <div class="input-daterange">
 
       <div class="form-group col-md-4">
@@ -136,16 +128,28 @@ $result = $statement->fetchAll();
         <?php echo $end_date_error; ?>
        </div>
 
-
       </div>
+
+      
 
       <div class="form-group col-md-12">
        <input type="submit" name="export" value="Export" class="btn btn-info" />
       </div>
 
     </div>
+    </center>
+                <div class="col-xl-12 col-lg-12">
+                  <div class="card shadow mb-4 border-left-primary border-bottom-primary">
+                      <!-- Card Header - Dropdown -->
+                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                          <h6 class="m-0 font-weight-bold text-dark">Inventory Reports</h6>
+                      </div>
+                      <!-- Card Body -->
+                      <div class="card">
+                        <div class="card-body">
+
                             <div class="table-responsive">
-                                <table id="datatableid2" class="table table-hover display" width="100%" cellspacing="0">
+                                <table class="table table-stripped"  id="uuu" width="100%" cellspacing="0">
 
                             <thead>
                                 <tr style="font-size:13px;font-family:sans-serif;">
@@ -255,17 +259,29 @@ $result = $statement->fetchAll();
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
 
-
 <script>
-$(document).ready(function(){
- $('.input-daterange').datepicker({
-  todayBtn:'linked',
-  format: "yyyy-mm-dd",
-  autoclose: true
- });
-});
+        $(document).ready(function () {
 
-</script>
+            $('#uuu').DataTable({
+                "pagingType": "full_numbers",
+                "lengthMenu": [
+                    [10, 25, 50, -1],
+                    [10, 25, 50, "All"]
+                ],
+                responsive: true,
+                language: {
+                    search: "_INPUT_",
+                    searchPlaceholder: "Search Data",
+                }
+            });
+
+            $('.input-daterange').datepicker({
+            todayBtn:'linked',
+            format: "yyyy-mm-dd",
+            autoclose: true
+          });
+        });
+    </script>
 
 
 
