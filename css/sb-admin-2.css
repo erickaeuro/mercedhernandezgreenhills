@@ -64,9 +64,10 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #858796;
   text-align: left;
-  background-color: #fff;
+  background-image: url('bg1111.jpg');
+  background-repeat: no-repeat, repeat;
+  background-color: #cccccc;
 }
 
 [tabindex="-1"]:focus {
@@ -3891,7 +3892,7 @@ input[type="button"].btn-block {
 }
 
 .nav-tabs .nav-item {
-  margin-bottom: -1px;
+  margin-bottom: px;
 }
 
 .nav-tabs .nav-link {
@@ -3912,7 +3913,7 @@ input[type="button"].btn-block {
 
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
-  color: #6e707e;
+  color: #ffffff;
   background-color: #fff;
   border-color: #dddfeb #dddfeb #fff;
 }
@@ -9559,6 +9560,9 @@ html {
 
 body {
   height: 100%;
+  background-image: url('bg1111.jpg');
+  background-repeat: no-repeat, repeat;
+  background-color: #cccccc;
 }
 
 a:focus {
@@ -9688,7 +9692,7 @@ a:focus {
 
 .bg-gradient-info {
   background-color: #36cc81;
-  background-image: linear-gradient(180deg, #36cc81 10%, #258391 100%);
+  background-image: linear-gradient(180deg, #81C784 20%, #7FD2D4 100%);
   background-size: cover;
 }
 
@@ -9810,11 +9814,12 @@ a:focus {
 }
 
 .border-left-primary {
-  border-left: 0.25rem solid #4e73df !important;
+  border-left: 0.25rem solid #81C784 !important;
+  
 }
 
 .border-bottom-primary {
-  border-bottom: 0.25rem solid #4e73df !important;
+  border-bottom: 0.25rem solid #81C784 !important;
 }
 
 .border-left-secondary {
@@ -10091,12 +10096,12 @@ a:focus {
 
 .sidebar .nav-item .nav-link {
   text-align: center;
-  padding: 0.75rem 1rem;
+  padding: 0.75rem 2rem;
   width: 6.5rem;
 }
 
 .sidebar .nav-item .nav-link span {
-  font-size: 0.65rem;
+  font-size: 5rem;
   display: block;
 }
 
@@ -10136,7 +10141,7 @@ a:focus {
   padding: .5rem 1.5rem;
   text-transform: uppercase;
   font-weight: 800;
-  font-size: 0.65rem;
+  font-size: 2rem;
   color: #b7b9cc;
 }
 
@@ -10182,19 +10187,6 @@ a:focus {
   margin-right: 0.1rem;
 }
 
-.sidebar #sidebarToggle:hover {
-  text-decoration: none;
-}
-
-.sidebar #sidebarToggle:focus {
-  outline: none;
-}
-
-.sidebar.toggled {
-  width: 0 !important;
-  overflow: hidden;
-}
-
 .sidebar.toggled #sidebarToggle::after {
   content: '\f105';
   font-family: 'Font Awesome 5 Free';
@@ -10212,6 +10204,7 @@ a:focus {
   letter-spacing: 0.05rem;
   z-index: 1;
 }
+
 
 .sidebar .sidebar-brand .sidebar-brand-icon i {
   font-size: 2rem;
@@ -10256,21 +10249,25 @@ a:focus {
   .sidebar .nav-item .collapsing {
     margin: 0 1rem;
   }
-  .sidebar .nav-item .nav-link {
+
+ .sidebar .nav-item .nav-link {
     display: block;
     width: 100%;
     text-align: left;
     padding: 1rem;
     width: 14rem;
   }
+
   .sidebar .nav-item .nav-link i {
     font-size: 0.85rem;
     margin-right: 0.25rem;
   }
+
   .sidebar .nav-item .nav-link span {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     display: inline;
-  }
+  } 
+
   .sidebar .nav-item .nav-link[data-toggle="collapse"]::after {
     width: 1rem;
     text-align: center;
@@ -10348,6 +10345,21 @@ a:focus {
   .sidebar.toggled .sidebar-heading {
     text-align: center;
   }
+}
+
+
+
+.sidebar #sidebarToggle:hover {
+  text-decoration: none;
+}
+
+.sidebar #sidebarToggle:focus {
+  outline: none;
+}
+
+.sidebar.toggled {
+  width: 0 !important;
+  overflow: hidden;
 }
 
 .sidebar-light .sidebar-brand {

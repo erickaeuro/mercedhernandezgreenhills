@@ -1,5 +1,6 @@
 <?php
 error_reporting(0);
+session_start();
 $connect = new PDO("mysql:host=localhost;dbname=mercedhernandezgreenhills", "root", "");
 
 $start_date_error = '';

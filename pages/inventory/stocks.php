@@ -72,7 +72,7 @@
 
         <div class="d-sm-flex align-items-center justify-content-between mb-4"> 
             <h4>
-              <a href="stockadd.php" class="btn btn-info btn-icon-text btn-md">
+              <a href="stockadd.php" class="btn text-white btn-md" style="background-color: #DE9185;">
               <i class="fas fa-plus"></i> Add Jewelry Stocks</a>
             </h4>
         </div>
@@ -83,10 +83,10 @@
         <div class="row">
 
                 <div class="col-xl-12 col-lg-12">
-                  <div class="card shadow mb-4 border-left-info border-bottom-info">
+                  <div class="card shadow mb-4 border-left-primary border-bottom-primary">
                       <!-- Card Header - Dropdown -->
                       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                          <h6 class="m-0 font-weight-bold text-info">Jewelry Stocks</h6>
+                          <h6 class="m-0 font-weight-bold text-dark">Jewelry Stocks</h6>
                       </div>
                       <!-- Card Body -->
                         <div class="card-body">
@@ -139,9 +139,9 @@
                             <td> <?php echo $row['tagprice']; ?> </td>
                             <td> <?php echo $row['date_sold']; ?> </td>
                             <td>
-                                <a href="stockview.php?id=<?= $row['stock_no'];?>" class="btn btn-info viewbtn">VIEW</a>
-                                <a href="stockedit.php?id=<?= $row['stock_no'];?>" class="btn btn-success editbtn">EDIT</a>
-                                <a href="movestock.php?id=<?= $row['stock_no']; ?>" name="movedata" class="btn btn-warning" onclick="return confirm('Are you sure you want to move this record?')">MOVE</a>
+                                <a href="stockview.php?id=<?= $row['stock_no'];?>" class="btn text-white" style="background-color: #7FD2D4;">VIEW</a>
+                                <a href="stockedit.php?id=<?= $row['stock_no'];?>" class="btn text-white" style="background-color: #81C784 ">EDIT</a>
+                                <a href="movestock.php?id=<?= $row['stock_no']; ?>" name="movedata" class="btn text-white" style="background-color: #87578F;" onclick="return confirm('Are you sure you want to move this record?')">MOVE</a>
                                 <!--- <a href="deletecode.php?id=<?= $row['stock_no']; ?>" name="deletedata" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this record?')">DELETE</a> --> 
                             </td> 
                             

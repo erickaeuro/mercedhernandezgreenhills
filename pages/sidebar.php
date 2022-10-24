@@ -1,13 +1,20 @@
+
+
 <ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar">
 
+ <!-- Divider -->
+ <hr class="sidebar-divider d-none d-md-block">
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../dashboard/dashboard.php">
-      <img class="img-profile rounded-circle" src="../../pages/logo.png" width="30%">
+      <img class="img-profile rounded-circle" src="../../pages/logobg.png" width="130%">
       <div id="banner">
 
       </div>    
-      <div class="sidebar-brand-text mx-3"> Merced Hernandez Greenhills</div>
       </a>
+
+      <br> 
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
@@ -26,6 +33,9 @@
                 <i class='fas fa-folder'></i>
                 <span><b>Transactions</b></span>
             </a>
+
+            str_repeat('&nbsp;', 5); // adds 5 spaces
+
             <div id='collapseUtilities' class='collapse' aria-labelledby='headingUtilities' data-parent='#accordionSidebar'>
                 <div class='bg-white py-2 collapse-inner rounded'>
                 <a class='collapse-item' href='../transactions/transaction.php'>Pawn Ticket</a>
@@ -36,12 +46,6 @@
                 <a class='collapse-item' href='../transactions/soldauction.php'>Sold Auction</a>
                 </div>
             </div>
-        </li>
-
-        <li class='nav-item'>
-        <a class='nav-link' href='../invoice/invoice.php'>
-          <i class='fas fa-receipt'></i>
-          <span><b>Invoice</b></span></a>
         </li>
 
         <li class='nav-item'>
@@ -106,6 +110,7 @@
               </div>
           </div>
       </li>
+            
 
             <li class='nav-item'>
             <a class='nav-link collapsed' href='#' data-toggle='collapse' data-target='#collapseUtilities'
@@ -125,11 +130,6 @@
             </div>
         </li>
 
-        <li class='nav-item'>
-        <a class='nav-link' href='../invoice/invoice.php'>
-          <i class='fas fa-receipt'></i>
-          <span><b>Invoice</b></span></a>
-        </li>
 
         <li class='nav-item'>
         <a class='nav-link' href='../reports/report.php'>
@@ -137,11 +137,15 @@
           <span><b>Reports</b></span></a>
       </li>
 
+
         <li class='nav-item'>
         <a class='nav-link' href='../customer/customer.php'>
           <i class='fas fa-users'></i>
           <span><b>Customers</b></span></a>
       </li>
+
+
+
       <li class='nav-item'>
             <a class='nav-link' href='../users/users.php'>
               <i class='fas fa-users'></i>

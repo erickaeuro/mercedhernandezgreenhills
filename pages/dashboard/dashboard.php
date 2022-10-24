@@ -29,7 +29,7 @@
 </head>
     
 
-<body id="page-top" class=" bg-gray-800">
+<body>
 
   <!-- Page Wrapper -->
   <div id="wrapper">
@@ -193,11 +193,15 @@
                                         <div class="col-auto">
                                             <i class="fas fa-user-tie fa-2x text-gray-300"></i>
                                         </div>
+
+
+                                        
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
  
         </div>
         <!-- /.container-fluid -->
