@@ -14,8 +14,8 @@
 
   <!-- Custom styles for this template-->
   <link href="../../css/sb-admin-2.css" rel="stylesheet">
-  <link href="../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css">
+  <link href= "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css" rel="stylesheet"> 
+  <link href= "https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" rel="stylesheet">
   
 
 <!-- Connection Database --> 
@@ -69,10 +69,10 @@
     <div class="row">
                 
                 <div class="col-xl-12 col-lg-12">
-                  <div class="card shadow mb-4 border-left-info border-bottom-info">
+                  <div class="card shadow mb-4 border-left-primary border-bottom-primary">
                       <!-- Card Header - Dropdown -->
                       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                          <h6 class="m-0 font-weight-bold text-info">Sold Jewelry Stocks</h6>
+                          <h6 class="m-0 font-weight-bold text-dark">Sold Jewelry Stocks</h6>
                       </div>
                       <!-- Card Body -->
 
@@ -91,7 +91,7 @@
                       ?> 
 
                           <div class="table-responsive">
-                              <table id="dtid" class="table table-hover display" width="100%" cellspacing="0">
+                              <table id="dtid" class="table table-striped" width="100%" cellspacing="0">
                                 
                                   <thead>
                                       <tr style="font-size:13px;font-family:sans-serif;">
@@ -126,8 +126,8 @@
                                 <td> <?php echo $row['tagprice']; ?> </td>
                                 <td> <?php echo $row['date_sold']; ?> </td>
                                 <td>
-                                <a href="stockview.php?id=<?= $row['stock_no'];?>" class="btn btn-info viewbtn">VIEW</a>
-                                <a href="soldstockedit.php?id=<?= $row['stock_no'];?>" class="btn btn-success editbtn">EDIT</a>
+                                <a href="stockview.php?id=<?= $row['stock_no'];?>" class="btn text-white" style="background-color: #7FD2D4;">VIEW</a>
+                                <a href="soldstockedit.php?id=<?= $row['stock_no'];?>" class="btn text-white" style="background-color: #81C784 ">EDIT</a>
                                 </td>
                             </tr>
 
@@ -197,10 +197,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 
-    <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+    <!-- <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js"></script> -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script> 
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
 
 <?php include '../scripts.php'; ?>   
 

@@ -17,13 +17,14 @@
 
   <!-- Custom styles for this template-->
   <link href="../../css/sb-admin-2.css" rel="stylesheet">
-  <link href="../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+
+  <link href= "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css" rel="stylesheet"> 
+  <link href= "https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+
 
 <!-- Connection Database --> 
   <?php 
-  include '../head.php'; 
+  include ("../connection.php");
   error_reporting(0);
   session_start();
 ?>
@@ -72,8 +73,8 @@
           
         <div class="d-sm-flex align-items-center justify-content-between mb-4"> 
             <h4>
-              <button type="button" class="btn btn-info btn-icon-text btn-md" data-bs-toggle="modal" 
-              data-bs-target="#AddModal"><i class="fas fa-plus"> Add Customers </i></button>
+              <a href="custadd.php"  class="btn text-white btn-md" style="background-color: #DE9185;">
+              <i class="fas fa-plus"> Add Customers </i></a>
             </h4> 
         </div>
           <!-- Content Row -->
@@ -83,17 +84,14 @@
             <div class="row">
                 
                 <div class="col-xl-12 col-lg-12">
-                  <div class="card shadow mb-4 border-left-info border-bottom-info">
+                  <div class="card shadow mb-4 border-left-primary border-bottom-primary">
                       <!-- Card Header - Dropdown -->
                       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                          <h6 class="m-0 font-weight-bold text-info">Customers Table</h6>
+                          <h6 class="m-0 font-weight-bold text-dark">Customers Table</h6>
                       </div>
                       <!-- Card Body -->
 
-                      <div class="card">
                       <div class="card-body">
-
-                      <?php require '../connection.php'; ?>
 
                       <?php 
 
@@ -103,7 +101,7 @@
                       ?> 
                       
                           <div class="table-responsive">
-                            <table id="datatbl" class="table table-hover display" width="100%" cellspacing="0">
+                            <table id="datatbl" class="table table-striped" width="100%" cellspacing="0">
                                   <thead>
                                       <tr style="font-size:13px;font-family:sans-serif;">
                                         
@@ -144,7 +142,7 @@
 
                                   
             ?>
-                                      <tr class="table-active">
+                                      <tr class="">
                                        
                                         <td> <?php echo $row['customer_no']; ?> </td>
                                         <td> <?php echo $fulln; ?> </td>
@@ -153,9 +151,9 @@
                                         <td> <?php echo $row['birthdate']; ?> </td>
                                         <td> <?php echo $vad_id; ?> </td>
                                         <td>
-                                        <a href="custview.php?id=<?= $row['customer_no'];?>" class="btn btn-info viewbtn">VIEW</a>
-                                        <a href="custedit.php?id=<?= $row['customer_no'];?>" class="btn btn-success editbtn">EDIT</a>
-                                        <a href="custdelete.php?id=<?= $row['customer_no']; ?>" name="deletedata" class="btn btn-danger deletebtn">DELETE</a>
+                                        <a href="custview.php?id=<?= $row['customer_no'];?>" class="btn text-white" style="background-color: #7FD2D4;">VIEW</a>
+                                        <a href="custedit.php?id=<?= $row['customer_no'];?>" class="btn text-white" style="background-color: #81C784; ">EDIT</a>
+                                        <a href="custdelete.php?id=<?= $row['customer_no']; ?>" name="deletedata" class="btn text-white" style="background-color: #B0B0AB;">DELETE</a>
                                         </td>
                                         </div>  
                                       </tr>
@@ -248,14 +246,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 
-    <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+    <!-- <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js"></script> -->
 
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script> 
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
 
-    
 <?php include '../scripts.php'; ?>
 
 <script>

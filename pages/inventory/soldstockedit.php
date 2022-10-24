@@ -117,7 +117,7 @@ require '../connection.php';
                         </div>
                         <div class="mb-4">
                             <center> 
-                            <a href="stocks.php" class="btn btn-danger float-end">Back</a>
+                            <a href="soldstocks.php" class="btn btn-danger float-end">Back</a>
                             <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#EditModal">Edit Stocks</button> 
                             </center>
                             </div>  
