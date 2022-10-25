@@ -89,10 +89,7 @@ if(isset($_POST['login_user'])){
     <div class="row">
       <div class="col-lg-10 col-xl-10 mx-auto">
         <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
-          <div class="card-img-left d-none d-md-flex">
-		  <img class="img-profile rounded-circle" src="../../pages/logo.png" width="30%">
-		  background-image: url('../../login.jpg');
-          </div>
+        
           <div class="card-body p-4 p-sm-5">
   <form method="post" action="login.php" class="main-lead">
 	

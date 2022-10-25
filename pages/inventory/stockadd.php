@@ -45,46 +45,68 @@
         <?php include '../navbar.php'; ?>
         <!-- End of Topbar -->
 
+<style>
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 500px 550px;
+}
+
+</style> 
+
+
         <div class="row">
             <div class="col-md-12">
-                <div class="card">
+            <div class="col d-flex justify-content-center">
+                <div class="card" style="width: 1200px;">
                     <div class="card-header">
                         <h4><b>Add Jewelry Stocks</b>                      
                     </div>
                     <div class="card-body">
                         <form action="addcode.php" method="POST">
 
+                        <div class="wrapper">
+                            
                             <div class="form-group col-md-12">
+                                <label for="image"><b>Image of Jewelry</b></label>
+                                <input type="file" class="form-control" name="image" id="image" accept=".jpg, .jpeg, .png">
+                            </div>
+
+                            <div class="form-group col-md-15">
                                 <label for="itemtype"><b>Item Type</b></label>
                                 <input type="text" class="form-control" name="item_type" placeholder="Enter Item Type" required>
                             </div>
 
-                            <div class="form-group col-md-12">
+                            </div>
+                        
+                            <div class="form-group col-md-11">
                                 <label for="itemdescription"><b>Item Description</b></label>
-                                <input type="text" class="form-control" name="itemdescription" placeholder="Enter Description" required>
+                                <textarea rows="4" cols="80" class="form-control" name="itemdescription" placeholder="Enter Description" required></textarea>
                             </div>
 
+                        <div class="wrapper">
                             <div class="form-group col-md-12">
                                 <label for="Karat-gold"><b>Karat/Gold</b></label>
                                 <input type="text" class="form-control" name="karat_gold" placeholder="Karat/Gold" required>
                             </div>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-25">
                                 <label for="kindofstone"><b>Kind of Stone</b></label>
                                 <input type="text" class="form-control" name="kindofstone" placeholder="Kind of Stone" required>
                             </div>
+                        </div>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
                                 <label for="weight"><b>Weight</b></label>
                                 <input type="text" class="form-control" name="weight" placeholder="Weight" required>
                             </div>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
                                 <label for="itemqty"><b>Item Quantity</b></label>
                                 <input type="number" class="form-control" name="itemqty" placeholder="Item Quantity" required>
                             </div>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
                                 <label for="tagprice"><b>Tag Price</b></label>
                                 <input type="text" class="form-control" name="tagprice" placeholder="P 0.00" required>
                             </div>
@@ -106,7 +128,7 @@
 
 </div>
 
-
+</div>
 </div>
 
 

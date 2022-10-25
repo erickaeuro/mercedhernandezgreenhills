@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Merced Hernandez Greenhills</title>
+  <title>Dashboard | Merced Hernandez Greenhills</title>
 
   <!-- Custom fonts for this template-->
   <link href="../../vendor/fontawesome-free-5.15.4-web/css/all.min.css" rel="stylesheet" type="text/css">

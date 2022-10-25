@@ -43,10 +43,19 @@ require '../connection.php';
         <!-- Topbar -->
         <?php include '../navbar.php'; ?>
         <!-- End of Topbar -->
+<style>
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 500px 550px;
+}
+
+</style> 
 
         <div class="row">
             <div class="col-md-12">
-                <div class="card">
+            <div class="col d-flex justify-content-center">
+                <div class="card" style="width: 1200px;">
                     <div class="card-header">
                         <h4><b>Edit Jewelry Stocks</b>                      
                     </div>
@@ -69,22 +78,29 @@ require '../connection.php';
                             
                             <input type="hidden" name="id" value='<?= $row['id']; ?>'>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
                                 <label for="stock_no"><b>Stock No.</b></label>
-                                <input type="text" class="form-control" name="stock_no" value="<?= $row['stock_no']; ?>">
+                                <input type="text" class="form-control" name="stock_no" accept=".jpg, .jpeg, .png" value="<?= $row['stock_no']; ?>" readonly>
                             </div>  
 
+                        <div class="wrapper">
+                            <div class="form-group col-md-12">
+                                <label for="image"><b>Image of Jewelry</b></label>
+                                <input type="file" class="form-control" name="image" value="<?=$row['image']; ?>">
+                            </div>
 
                             <div class="form-group col-md-12">
                                 <label for="itemtype"><b>Item Type</b></label>
                                 <input type="text" class="form-control" name="item_type" value="<?= $row['item_type']; ?>">
                             </div>
+                        </div>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
                                 <label for="itemdescription"><b>Item Description</b></label>
-                                <input type="textarea" class="form-control" name="itemdescription" value="<?= $row['itemdescription']; ?>">
+                                <textarea rows="4" cols="80" class="form-control" name="itemdescription" value="<?= $row['itemdescription']; ?>" ></textarea>
                             </div>
-
+                           
+                        <div class="wrapper">
                             <div class="form-group col-md-12">
                                 <label for="Karat-gold"><b>Karat/Gold</b></label>
                                 <input type="text" class="form-control" name="karat_gold" value="<?= $row['karat_gold']; ?>" >
@@ -94,23 +110,23 @@ require '../connection.php';
                                 <label for="kindofstone"><b>Kind of Stone</b></label>
                                 <input type="text" class="form-control" name="kindofstone" value="<?= $row['kindofstone']; ?>" >
                             </div>
-
-                            <div class="form-group col-md-12">
+                        </div>
+                            <div class="form-group col-md-11">
                                 <label for="weight"><b>Weight</b></label>
                                 <input type="text" class="form-control" name="weight" value="<?= $row['weight']; ?>" >
                             </div>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
                                 <label for="itemqty"><b>Item Quantity</b></label>
                                 <input type="number" class="form-control" name="itemqty" value="<?= $row['itemqty']; ?>" >
                             </div>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
                                 <label for="tagprice"><b>Tag Price</b></label>
                                 <input type="text" class="form-control" name="tagprice" value="<?= $row['tagprice']; ?>" >
                             </div>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
                                 <label for="Date Sold"><b>Date Sold</b></label>
                                 <input type="date" class="form-control" name="date_sold" value="<?= $row['date_sold']; ?>" >
                             </div>
