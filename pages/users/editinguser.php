@@ -12,7 +12,7 @@ require '../connection.php';
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Merced Hernandez Greenhills</title>
+  <title>Edit User | Merced Hernandez Greenhills</title>
 
   <!-- Custom fonts for this template-->
   <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -44,9 +44,19 @@ require '../connection.php';
         <?php include '../navbar.php'; ?>
         <!-- End of Topbar -->
 
+<style>
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 510px 550px;
+}
+
+</style> 
+
         <div class="row">
             <div class="col-md-12">
-                <div class="card">
+            <div class="col d-flex justify-content-center">
+                <div class="card" style="width: 1200px;">
                     <div class="card-header">
                         <h4><b>Edit Users Details</b>                      
                     </div>
@@ -73,6 +83,7 @@ require '../connection.php';
                 <input type="hidden" name="id" value='<?= $row['id']; ?>'>
                 <input type="hidden" name="userstatus" value='<?= $row['userstatus']; ?>'>
 
+                <div class="wrapper">
                     <div class="form-group col-md-12">
                         <label for="userid">User ID</label>
                         <input type="text" class="form-control" name="id" value="<?= $row['id']; ?>" disable>
@@ -82,40 +93,36 @@ require '../connection.php';
                         <label for="uname">Username</label>
                         <input type="text" class="form-control" name="uname" value="<?= $row['username']; ?>">
                     </div>
-
-                    <div class="form-group col-md-12">
+                </div> 
+ 
+                    <div class="form-group col-md-11">
                         <label for="pass">Password</label>
                         <input type="password" class="form-control" name="pass" value="<?= $row['password']; ?>">
                     </div>
-
-                    <div class="form-group col-md-12">
-                        <label for="cpass">Confirm Password</label>
-                        <input type="password" class="form-control" name="cpass" value="<?= $row['password']; ?>">
-                    </div>
-
-                    <div class="form-group col-md-12">
+  
+                    <div class="form-group col-md-11">
                         <label for="emailadd">Email Address</label>
                         <input type="email" class="form-control" name="emailadd" value="<?= $row['email']; ?>">
                     </div>
 
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-11">
                         <label for="name">Complete Name</label>
                         <input type="text" class="form-control" name="cname" value="<?= $row['cname']; ?>">
                     </div>
 
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-11">
                         <label for="contactno">Contact Number</label>
                         <input type="text" class="form-control" name="contactno" value="<?= $row['contactno']; ?>">
                     </div>
 
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-11">
                         <label for="address">Address</label>
                         <input type="text" class="form-control" name="address" value="<?= $row['address']; ?>">
                     </div>
 
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-11">
                         <label for="usertype"><b>User Type </b></label><br/>
-                        <select class="custom-select" name="usertype" style="width:1162px; position: relative; left:2px; top:-1px">
+                        <select class="custom-select" name="usertype" style="width:1035px; position: relative; left:2px; top:-1px">
                             <option value=" " selected="selected">User Type</option>
                             <option value="Admin" selected="selected">Admin</option>
                             <option value="Appraiser" selected="selected">Appraiser</option>
@@ -126,8 +133,8 @@ require '../connection.php';
                         </div>
                             <div class="mb-4">
                             <center> 
-                            <a href="users.php" class="btn btn-danger float-end">Back</a>
-                            <button type="button" class="btn btn-success editbtn" data-bs-toggle="modal" data-bs-target="#EditModal"> Edit User Details </button>
+                            <a href="users.php" class="btn text-white" style="background-color: #B0B0AB;">Back</a>
+                            <button type="button" class="btn text-white" style="background-color: #81C784;" data-bs-toggle="modal" data-bs-target="#EditModal"> Edit User Details </button>
                             </center>
                             </div>
 
@@ -146,8 +153,8 @@ require '../connection.php';
                                         </div>
                                         <!-- Modal footer -->
                                         <div class="modal-footer">
-                                        <button type="submit" name="edituser" class="btn btn-success">Yes</button>
-                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" name="edituser" class="btn text-white" style="background-color: #81C784;">Yes</button>
+                                        <button type="button" class="btn text-white" style="background-color: #B0B0AB;" data-bs-dismiss="modal">Close</button>
                                         </div>
                                     </div>
                                     </div>

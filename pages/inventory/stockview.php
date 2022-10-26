@@ -130,7 +130,7 @@ require '../connection.php';
                         </div>
                             <div class="mb-4">
                             <center> 
-                            <a href="stocks.php" class="btn btn-danger float-end">Back</a>
+                            <a href="stocks.php" class="btn text-white" style="background-color: #B0B0AB;">Back</a>
                             </center>
                             </div>
                         </form>

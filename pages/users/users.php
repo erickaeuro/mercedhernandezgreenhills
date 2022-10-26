@@ -6,7 +6,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Merced Hernandez Greenhills</title>
+  <title>Users | Merced Hernandez Greenhills</title>
 
   <!-- Custom fonts for this template-->
   <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -136,6 +136,7 @@
                         <td> <?php echo $row['usertype']; ?> </td>
                         <td> <a href="users.php?id=<?= $row['id'];?>" name="userstatus" class="btn btn-success editbtn"><?php echo $row['userstatus']; ?></a> </td>
                         <td>
+                            <a href="userview.php?id=<?= $row['id'];?>" class="btn text-white" style="background-color: #7FD2D4;">VIEW</a>
                             <a href="editinguser.php?id=<?= $row['id'];?>" class="btn text-white" style="background-color: #81C784">EDIT</a>
                             <a href="deleteuser.php?id=<?= $row['id']; ?>" name="del" class="btn text-white" style="background-color: #B0B0AB" onclick="return confirm('Are you sure you want to delete this record?')">DELETE</a>
                         </td>

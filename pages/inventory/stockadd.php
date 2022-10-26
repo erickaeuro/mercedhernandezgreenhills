@@ -113,8 +113,8 @@
                         </div>
                             <div class="mb-4">
                             <center> 
-                            <a href="stocks.php" class="btn btn-danger float-end">Back</a>
-                            <button type="submit" name="addjewelry" class="btn btn-success editbtn">Add New Stock</button> 
+                            <a href="stocks.php" class="btn text-white" style="background-color: #B0B0AB;">Back</a>
+                            <button type="submit" name="addjewelry" class="btn text-white" style="background-color: #81C784;">Add New Stock</button> 
                             </center>
                             </div>
                         </form>

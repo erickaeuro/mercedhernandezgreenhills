@@ -45,10 +45,19 @@
         <!-- Topbar -->
         <?php include '../navbar.php'; ?>
         <!-- End of Topbar -->
+<style>
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 350px 350px 360px;
+}
+
+</style> 
 
         <div class="row">
             <div class="col-md-12">
-                <div class="card">
+            <div class="col d-flex justify-content-center">
+                <div class="card" style="width: 1200px;">
                     <div class="card-header">
                         <h4><b>Add Customer</b>                      
                     </div>
@@ -62,10 +71,11 @@
                             <?php
                             unset($_SESSION['custstatus']);
                             }?>
+
                     <div class="card-body">
                         <form action="addcustomer.php" method="POST">
 
-                           
+                        <div class="wrapper">
                             <div class="form-group col-md-12">
                                 <label for="first_name"><b>First Name</b></label>
                                 <input type="text" class="form-control" name="first_name" placeholder="Enter First Name" required>
@@ -80,23 +90,24 @@
                                 <label for="last_name"><b>Last Name</b></label>
                                 <input type="text" class="form-control" name="last_name" placeholder="Enter Last Name" required>
                             </div>
+                        </div>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
                                 <label for="address">Address</label>
                                 <input type="text" class="form-control" name="address" placeholder="Enter Full Address" required>
                             </div>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
                                 <label for="cpnum">Contact Number</label>
                                 <input type="text" class="form-control" name="cpnum" placeholder="Enter Contact Number" required>
                             </div>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
                                 <label for="birthdate">Birthdate</label>
                                 <input type="date" class="form-control" name="BirthDate" placeholder="Birthdate" required>
                             </div>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
                               
                                 <label for="valid_id">Valid ID</label>
                                 <input type="file" class="form-control" name="valid_id" placeholder="Select a file to upload" required>
@@ -105,8 +116,8 @@
                             </div>
                             <div class="mb-4">
                             <center> 
-                            <a href="customer.php" class="btn btn-danger float-end">Back</a>
-                            <button type="submit" name="addcustomer" class="btn btn-success editbtn">Add New Customer</button> 
+                            <a href="customer.php" class="btn text-white" style="background-color: #B0B0AB;">Back</a>
+                            <button type="submit" name="addcustomer" class="btn text-white" style="background-color: #81C784;" >Add New Customer</button> 
                             </center>
                             </div>
                         </form>

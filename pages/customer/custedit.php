@@ -46,12 +46,21 @@ require '../connection.php';
         <?php include '../navbar.php'; ?>
         <!-- End of Topbar -->
 
+<style>
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 350px 350px 360px;
+}
+
+</style> 
         <div class="row">
             <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4><b>Edit Customer Details</b>                      
-                    </div>
+                <div class="col d-flex justify-content-center">
+                        <div class="card" style="width: 1200px;">
+                            <div class="card-header">
+                                <h4><b>Edit Customer Details</b>                      
+                            </div>
                     <div class="card-body">
 
                     <?php
@@ -71,12 +80,12 @@ require '../connection.php';
                             
                             <input type="hidden" name="id" value='<?= $row['id']; ?>'>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
                                 <label for="customerno"><b>Customer No.</b></label>
                                 <input type="text" class="form-control" name="customer_no" value="<?= $row['customer_no']; ?>">
                             </div>  
 
-
+                        <div class="wrapper">
                             <div class="form-group col-md-12">
                                 <label for="first_name"><b>First Name</b></label>
                                 <input type="text" class="form-control" name="first_name" value="<?= $row['first_name']; ?>">
@@ -91,23 +100,24 @@ require '../connection.php';
                                 <label for="last_name"><b>Last Name</b></label>
                                 <input type="text" class="form-control" name="last_name" value="<?= $row['last_name']; ?>">
                             </div>
+                        </div>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
                                 <label for="Address"><b>Address</b></label>
                                 <input type="text" class="form-control" name="address" value="<?= $row['address']; ?>">
                             </div>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
                                 <label for="cpnum"><b>Contact Number</b></label>
                                 <input type="text" class="form-control" name="cpnum" value="<?= $row['cpnum']; ?>" >
                             </div>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
                                 <label for="birthdate"><b>Birthdate</b></label>
                                 <input type="date" class="form-control" name="birthdate" value="<?= $row['birthdate']; ?>" >
                             </div>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
                                 <label for="valid_id"><b>Valid ID</b></label>
                                 <input type="file" class="form-control" name="valid_id" value="<?= $row['valid_id']; ?>" >
                             </div>
@@ -115,8 +125,8 @@ require '../connection.php';
                         </div>
                             <div class="mb-4">
                             <center> 
-                            <a href="customer.php" class="btn btn-danger float-end">Back</a>
-                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#EditModal">Edit Customer Details</button> 
+                            <a href="customer.php" class="btn text-white" style="background-color: #B0B0AB;">Back</a>
+                            <button type="button" class="btn text-white" style="background-color: #81C784;"  data-bs-toggle="modal" data-bs-target="#EditModal">Edit Customer Details</button> 
                             </center>
                             </div>
 
@@ -137,8 +147,8 @@ require '../connection.php';
                                         </div>
                                         <!-- Modal footer -->
                                         <div class="modal-footer">
-                                        <button type="submit" name="editcustomer" class="btn btn-success">Yes</button>
-                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" name="editcustomer" class="btn text-white" style="background-color: #81C784;" >Yes</button>
+                                        <button type="button" class="btn text-white" style="background-color: #B0B0AB;" data-bs-dismiss="modal">Close</button>
                                         </div>
                                     </div>
                                     </div>

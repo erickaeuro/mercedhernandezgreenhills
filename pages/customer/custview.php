@@ -44,9 +44,19 @@ require '../connection.php';
         <?php include '../navbar.php'; ?>
         <!-- End of Topbar -->
 
+<style>
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 350px 350px 360px;
+}
+
+</style> 
+
         <div class="row">
             <div class="col-md-12">
-                <div class="card">
+            <div class="col d-flex justify-content-center">
+                <div class="card" style="width: 1200px;">
                     <div class="card-header">
                         <h4><b>View Customer Details</b>                      
                     </div>
@@ -65,11 +75,12 @@ require '../connection.php';
                                 ?>
 
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
                                 <label for="customer_no"><b>Customer No.</b></label>
                                 <p class="form-control"> <?= $row['customer_no']; ?> </p>
                             </div>  
 
+                        <div class="wrapper">
                             <div class="form-group col-md-12">
                                 <label for="first_name"><b>First Name</b></label>
                                 <p class="form-control"> <?= $row['first_name']; ?> </p>
@@ -84,23 +95,24 @@ require '../connection.php';
                                 <label for="last_name"><b>Last Name</b></label>
                                 <p class="form-control"> <?= $row['last_name']; ?> </p>
                             </div>
+                        </div>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
                                 <label for="address"><b>Address</b></label>
                                 <p class="form-control"> <?= $row['address']; ?> </p>
                             </div>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
                                 <label for="cpnum"><b>Contact Number</b></label>
                                 <p class="form-control"> <?= $row['cpnum']; ?> </p>
                             </div>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
                                 <label for="birthdate"><b>Birthdate</b></label>
                                 <p class="form-control"> <?= $row['birthdate']; ?> </p>
                             </div>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
                                 <label for="valid_id"><b>Valid ID</b></label>
                                 <p class="form-control"> <?= $row['valid_id']; ?> </p>
                             </div>
@@ -108,7 +120,7 @@ require '../connection.php';
                         </div>
                             <div class="mb-4">
                             <center> 
-                            <a href="customer.php" class="btn btn-danger float-end">Back</a>
+                            <a href="customer.php" class="btn text-white" style="background-color: #B0B0AB;">Back</a>
                             </center>
                             </div>
                         </form>

@@ -133,8 +133,8 @@ require '../connection.php';
                         </div>
                         <div class="mb-4">
                             <center> 
-                            <a href="stocks.php" class="btn btn-danger float-end">Back</a>
-                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#EditModal">Edit Stocks</button> 
+                            <a href="stocks.php"  class="btn text-white" style="background-color: #B0B0AB;">Back</a>
+                            <button type="button" class="btn text-white" style="background-color: #81C784;" data-bs-toggle="modal" data-bs-target="#EditModal">Edit Stocks</button> 
                             </center>
                             </div>  
                             
@@ -153,8 +153,8 @@ require '../connection.php';
                                         </div>
                                         <!-- Modal footer -->
                                         <div class="modal-footer">
-                                        <button type="submit" name="editjewelry" class="btn btn-success">Yes</button> 
-                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" name="editjewelry" class="btn text-white" style="background-color: #81C784;">Yes</button> 
+                                        <button type="button"  class="btn text-white" style="background-color: #B0B0AB;" data-bs-dismiss="modal">Close</button>
                                         </div>
                                     </div>
                                     </div>
