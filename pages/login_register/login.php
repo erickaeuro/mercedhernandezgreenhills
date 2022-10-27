@@ -90,8 +90,8 @@ if(isset($_POST['login_user'])){
       <div class="col-lg-10 col-xl-10 mx-auto">
         <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
         
-          <div class="card-body p-4 p-sm-5">
-  <form method="post" action="login.php" class="main-lead">
+          <div class="card-body p-4 p-lg-5">
+  	<form method="post" action="login.php" class="main-lead">
 	
   	<?php include('errors.php');?>
   	<div class="input-group">
@@ -119,9 +119,9 @@ if(isset($_POST['login_user'])){
 	  <p>
   		<a href="forgotpassword.php">Forgot passsword? </a>
      </p>
-  	<p>
+  <!---	<p>
   	Not yet a member? <a href="register.php">Sign up</a>
-   </p>
+   </p> -->
   </form>
   
 
