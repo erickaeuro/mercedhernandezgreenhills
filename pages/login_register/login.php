@@ -89,7 +89,8 @@ if(isset($_POST['login_user'])){
     <div class="row">
       <div class="col-lg-10 col-xl-10 mx-auto">
         <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
-        
+        <div class="col-md-12 col-lg-10">
+					
           <div class="card-body p-4 p-lg-5">
   	<form method="post" action="login.php" class="main-lead">
 	
