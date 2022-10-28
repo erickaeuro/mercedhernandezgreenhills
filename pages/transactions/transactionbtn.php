@@ -104,11 +104,11 @@
                             }
                             $row = mysqli_fetch_array($query_run);
 
-                            $monthlydue = $row['total_amt_due']/3;
-                            if($row['interest'] == 6.00){
-                                $renewaldue =  $monthlydue + ($monthlydue*0.06);
+                            $monthlydue = $row['principal'];
+                            if($row['interest'] == 5.00){
+                                $renewaldue =  $monthlydue*0.05;
                             }else{
-                                $renewaldue =  $monthlydue + ($monthlydue*0.05);
+                                $renewaldue =  $monthlydue*0.04;
                             }
                             
 
@@ -159,11 +159,11 @@
 
                         <div class="form-group col-md-12">
                             <label for="amtdue"><b>Total Amount Due</b></label>
-                            <input type="text" class="form-control" name=" " value="<?php if(isset($_GET['id'])){ echo $row['total_amt_due'];}?>" readonly>
+                            <input type="text" class="form-control" name="total" value="<?php if(isset($_GET['id'])){ echo $row['total_amt_due'];}?>" readonly>
                         </div>
 
                         <div class="form-group col-md-12">
-                            <label for="renewaldue"><b>Interest</b></label>
+                            <label for="renewaldue"><b>Renewal Due</b></label>
                             <input type="text" class="form-control" name="renewaldue" value="<?php if(isset($_GET['id'])){ echo $renewaldue; }?>" readonly>
                         </div>
                                                  

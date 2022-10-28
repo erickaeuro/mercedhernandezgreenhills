@@ -99,7 +99,8 @@
                                           <th>Principal</th>
                                           <th>interest</th>
                                           <th>Total Amount Paid</th>
-                                          <th>Total Amount Due</th>
+                                          <th>Renewal Due</th>
+                                          <th>Total Amount Due</th>                                          
                                           <th>Loan Status</th>
                                           <th>Maturity Date</th>
                                           <th>Expiration Date</th>
@@ -118,26 +119,37 @@
             //FOR MULTIPLE AUTO UPDATES
             $matrec = array();
             $exprec = array();
+            $mattrec = array();
         
             
                     foreach($query_run as $row)
                     {
+                      //VALIDATION VARIABLES
+                      $two = strtotime($row['maturity_date']. "+1 month");
+                      $twomonth = date("Y-m-d", $two);
+
+
                       //AUTO UPDATE OR DELETE RECORDS
-                      if($row['maturity_date'] <= $today && $row['loan_status'] == "Active Loan" && $row['interest'] <= 5){                        
+                      if($row['maturity_date'] <= $today && $row['loan_status'] == "Active Loan" && $row['interest'] <= 4){                        
                         array_push($matrec, $row['loan_id']);
                         $matvalid = 1;
                       }
-                      if($row['expiry_date'] <=  $today && $row['loan_status'] == "Active Loan"){
+                      if($row['expiry_date'] <=  $today && $row['loan_status'] == "Two Months Late"){
                         array_push($exprec, $row['loan_id']);                        
                         $delvalid = 1;
+                      }
+                      if($twomonth <= $today && $row['loan_status'] == "Late" && $row['interest'] <= 5){                        
+                        array_push($mattrec, $row['loan_id']);
+                        $mattvalid = 1;
                       }
                       
                       
                     }
 
-                    if($matvalid == 1 || $delvalid == 1){
+                    if($matvalid == 1 || $delvalid == 1 || $mattvalid == 1){
                       $delsql = 1;
                       $matsql = 1;
+                      $mattsql = 1;
                       include 'loanautoupdate.php';
                     }
 
@@ -161,6 +173,7 @@
                                 <td> <?php echo $row['principal']; ?> </td>
                                 <td> <?php echo $row['interest'];?>%</td>
                                 <td> <?php echo $row['total_amt_paid']; ?> </td>
+                                <td> <?php echo $row['renewal_due']; ?> </td>
                                 <td> <?php echo $row['total_amt_due']; ?> </td>
                                 <td> <?php echo $row['loan_status']; ?> </td>
                                 <td> <?php echo $row['maturity_date']; ?> </td>

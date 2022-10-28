@@ -9,7 +9,8 @@
             </div>
             <div class="modal-body">
             <p>
-                Loan IDs <?php if($matvalid==1){foreach($matrec as $recup){ echo "$recup "; } echo 'is past its Maturity date, interest rate updated!'; }?>
+                Loan IDs <?php if($matvalid==1){foreach($matrec as $recup){ echo "$recup "; } echo 'is past its Maturity date, interest rate and renewal due updated and added 2% penalty to renewal due'; }?>
+                <?php if($mattvalid == 1 && $matvalid == 1){echo 'and Loan IDs ';} if($mattvalid==1){foreach($mattrec as $recup){ echo "$recup "; } echo 'is past 2 months of its Maturity date, additional 2% penalty added to renewal due'; }?>
                 <?php if($delvalid == 1 && $matvalid == 1){echo 'and Loan IDs ';}if($delvalid==1){foreach($exprec as $drecup){ echo "$drecup "; } echo 'is expired and is now up for auction  ';}?> 
             </p>            
             </div>
@@ -28,15 +29,32 @@
 
 if($matsql == 1 ){
     foreach($matrec as $recup){
-        $mquery = "SELECT total_amt_due, principal FROM loantbl WHERE loan_id = '$recup'";
+        $mquery = "SELECT renewal_due, principal FROM loantbl WHERE loan_id = '$recup'";
         $mquery_run = mysqli_query($con, $mquery);
         foreach($mquery_run as $run){
 
             $principal = $run['principal'];
 
-            $amtdue = $run['total_amt_due'] + ($principal * 0.01);
+            $amtdue = $principal * 0.07;
 
-            $query = "UPDATE loantbl SET interest = '6.00', total_amt_due ='$amtdue' WHERE loan_id = '$recup'";
+            $query = "UPDATE loantbl SET interest = '5.00', renewal_due ='$amtdue', loan_status = 'Late' WHERE loan_id = '$recup'";
+            $query_run = mysqli_query($con, $query);
+        
+        }
+    }
+}
+
+if($mattsql == 1 ){
+    foreach($mattrec as $recup){
+        $mquery = "SELECT renewal_due, principal FROM loantbl WHERE loan_id = '$recup'";
+        $mquery_run = mysqli_query($con, $mquery);
+        foreach($mquery_run as $run){
+
+            $principal = $run['principal'];
+
+            $amtdue = $run['renewal_due'] + ($principal * 0.02);
+
+            $query = "UPDATE loantbl SET interest = '5.00', renewal_due ='$amtdue', loan_status = 'Two Months Late' WHERE loan_id = '$recup'";
             $query_run = mysqli_query($con, $query);
         
         }

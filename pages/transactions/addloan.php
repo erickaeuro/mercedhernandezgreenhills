@@ -19,17 +19,18 @@ if(isset($_POST['addloan']))
     $description = $_POST['item_desc'];
     $type = $_POST['item_type'];
     $appraised_value = $_POST['appraised_value'];
-    $principal =$_POST['principal'];
-    $interest = 5;    
+    $principal = $_POST['principal'];
+    $interest = 4;    
     $dateloangranted = date("Y-m-d");
     $maturity_date = date("Y-m-d", $one);
     $expiry_date = date("Y-m-d", $three);
+    $renewdue = $principal * 0.04;
 
 
     if($appraised_value > $principal){
         
-        $query = "INSERT INTO loantbl (loan_id, customer_no, item_type, item_desc, appraised_value, principal,  interest,  date_loan_granted, maturity_date, expiry_date, total_amt_due, loan_status ) 
-        VALUES (NULL, '$customerno','$type','$description','$appraised_value','$principal','$interest','$dateloangranted','$maturity_date','$expiry_date','$principal','Active Loan')";
+        $query = "INSERT INTO loantbl (loan_id, customer_no, item_type, item_desc, appraised_value, principal,  interest,  date_loan_granted, maturity_date, expiry_date, renewal_due,total_amt_due, loan_status ) 
+        VALUES (NULL, '$customerno','$type','$description','$appraised_value','$principal','$interest','$dateloangranted','$maturity_date','$expiry_date','$renewdue','$principal','Active Loan')";
         $query_run = mysqli_query($con, $query);
 
         if($query_run)
