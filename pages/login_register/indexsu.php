@@ -36,7 +36,7 @@ if (!isset($_SESSION['failed'])) {
 
         .bg { 
             /* The image used */
-            background-image: url("images/mfa.jpg");
+            background-image: url("bg.jpg");
             /* Full height */
             height: 100%; 
             /* Center and scale the image nicely */
@@ -67,7 +67,7 @@ if (!isset($_SESSION['failed'])) {
                             
                             <img style="text-align: center;;" class="img-fluid" src="<?php   echo $qrCodeUrl ?>" alt="Verify this Google Authenticator"><br><br>        
                             <input type="text" class="form-control" name="code" placeholder="******" style="font-size: xx-large;width: 200px;border-radius: 0px;text-align: center;display: inline;color: #0275d8;"><br> <br>    
-                            <button type="submit" class="btn btn-md btn-primary" style="width: 200px;border-radius: 0px;">Verify</button>
+                            <button type="submit" class="btn text-white" style="width: 200px;border-radius: 0px; background-color: #81C784;">Verify</button>
 
                     </div>
 

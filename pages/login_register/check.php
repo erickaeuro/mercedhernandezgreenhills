@@ -39,7 +39,7 @@ if (!$checkResult) {
 
         .bg { 
             /* The image used */
-            background-image: url("images/mfa.jpg");
+            background-image: url("bg.jpg");
             /* Full height */
             height: 100%; 
             /* Center and scale the image nicely */
@@ -56,12 +56,12 @@ if (!$checkResult) {
             <div class="col-md-6 offset-md-3"  style="background: white; padding: 20px; box-shadow: 10px 10px 5px #888888; margin-top: 100px;">
                 <hr>
                     <div style="text-align: center;">
-                           <h1>Authentication Successful</h1>
+                           <h1>Authentication Successfully!</h1>
                            <p></p>
                     </div>
                 <hr>   
                 <p>
-                     <a href="../dashboard/dashboard.php"><p style="text-align: center;;"></p>Continue</a>
+                <a href="../dashboard/dashboard.php"  class="btn text-white" style="width: 200px;border-radius: 0px; background-color: #81C784; text-align: center;;">Continue</a>
                 </p>
             </div>
     
