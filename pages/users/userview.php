@@ -1,18 +1,12 @@
-<?php
-session_start();
-require '../connection.php';
-
-?>
-
 <head>
 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="item_desc" content="">
+  <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Merced Hernandez Greenhills</title>
+  <title>Add Users | Merced Hernandez Greenhills</title>
 
   <!-- Custom fonts for this template-->
   <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -23,6 +17,13 @@ require '../connection.php';
   <link href="../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css">
   
+
+<!-- Connection Database --> 
+  <?php include ("../connection.php"); 
+  
+  session_start();
+?>
+
 </head>
 
 <body id="page-top" class=" bg-gray-800">
@@ -31,7 +32,7 @@ require '../connection.php';
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <?php include '../sidebar.php'; ?>
+    <?php require '../sidebar.php'; ?>
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -44,74 +45,88 @@ require '../connection.php';
         <?php include '../navbar.php'; ?>
         <!-- End of Topbar -->
 
-        <div clas"row">
+<style>
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 510px 510px;
+}
+
+</style> 
+
+        <div class="row">
             <div class="col-md-12">
             <div class="col d-flex justify-content-center">
                 <div class="card" style="width: 1200px;">
                     <div class="card-header">
-                        <h4><b>View Auctioned Jewelry</b>                      
+                        <h4><b>View User</b>                      
                     </div>
                     <div class="card-body">
 
-                    <?php
-                    
+
+        <form action="adduser.php" method="POST">
+
+        <div class="modal-body">
+        <form role="form">
+        <div class="card-body">
+            <div class="row">
+
+            <?php
                         if(isset($_GET['id']))
                         {
                             $id = mysqli_real_escape_string($con, $_GET['id']);
-                            $query = "SELECT * FROM auctiontbl WHERE auctionid ='$id'";
+                            $query = "SELECT * FROM users WHERE id='$id' ";
                             $query_run = mysqli_query($con, $query);
 
                             if(mysqli_num_rows($query_run) > 0)
                             {
-                                
                                 $row = mysqli_fetch_array($query_run);
                                 ?>
 
-                            <div class="form-group col-md-11">
-                                <label for="auctionid"><b>Auction ID</b></label>
-                                <p class="form-control"> <?= $row['auctionid']; ?>
+                    <div class="form-group col-md-11">
+                        <label for="uname">Username</label>
+                        <p class="form-control"> <?= $row['username']; ?> </p>
+                    </div>
+
+                    <div class="form-group col-md-11">
+                        <label for="pass">Password</label>
+                        <p class="form-control"> <?= $row['password']; ?> </p>
+                    </div>
+
+                    <div class="form-group col-md-11">
+                        <label for="emailadd">Email Address</label>
+                        <p class="form-control"> <?= $row['email']; ?> </p>
+                    </div>
+
+                    <div class="form-group col-md-11">
+                        <label for="name">Complete Name</label>
+                        <p class="form-control"> <?= $row['cname']; ?> </p>
+                    </div>
+
+                    <div class="form-group col-md-11">
+                        <label for="contactno">Contact Number</label>
+                        <p class="form-control"> <?= $row['contactno']; ?> </p>
+                    </div>
+
+
+                    <div class="form-group col-md-11">
+                        <label for="address">Address</label>
+                        <p class="form-control"> <?= $row['address']; ?> </p>
+                    </div>
+
+                    <div class="form-group col-md-11">
+                                <label for="usertype"><b>User Type </b></label><br/>
+                                <p class="form-control"> <?= $row['usertype']; ?> </p>
                             </div>  
 
-
-                            <div class="form-group col-md-11">
-                                <label for="item_type"><b>Item type</b></label>
-                                <p class="form-control"> <?= $row['item_type']; ?> </p>
-                            </div>
-
-                           
-
-                            <div class="form-group col-md-11">
-                                <label for="item_desc"><b>Description</b></label>
-                                <p class="form-control"> <?= $row['item_desc']; ?> </p>
-                            </div>
-                            
-                           
-                            <div class="form-group col-md-11">
-                                <label for="price"><b>Price</b></label>
-                                <p class="form-control"> <?= $row['price']; ?> </p>
-                            </div>
-
-
-                            <div class="form-group col-md-11">
-                                <label for="status"><b>Item Status</b></label>
-                                <p class="form-control"> <?= $row['status']; ?> </p>
-                            </div>
-
-                            <div class="form-group col-md-11">
-                                <label for="date_sold"><b>Date Sold</b></label>
-                                <p class="form-control"> <?= $row['date_sold']; ?> </p>
-                            </div>
-
-                        </div>
                             <div class="mb-4">
                             <center> 
-                            <a href="auction.php" class="btn text-white" style="background-color: #B0B0AB;">Back</a>
+                            <a href="users.php" class="btn text-white" style="background-color: #B0B0AB;">Back</a>
+                            <button type="submit" name="adduser" class="btn btn-success editbtn">Add New Users</button> 
                             </center>
                             </div>
                         </form>
-
                         <?php
-                       
                             }
                             else
                             {
@@ -119,8 +134,6 @@ require '../connection.php';
                             }
                         }
                         ?>
-                        
-                        
                     </div>
                 </div>
             </div>
@@ -130,6 +143,7 @@ require '../connection.php';
 </div>
 
 </div>
+
 
 </div>
 

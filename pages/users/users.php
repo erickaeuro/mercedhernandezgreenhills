@@ -6,7 +6,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Merced Hernandez Greenhills</title>
+  <title>Users | Merced Hernandez Greenhills</title>
 
   <!-- Custom fonts for this template-->
   <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -14,8 +14,8 @@
 
   <!-- Custom styles for this template-->
   <link href="../../css/sb-admin-2.css" rel="stylesheet">
-  <link href="../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
+  <link href= "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css" rel="stylesheet"> 
+  <link href= "https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" rel="stylesheet">
 
 <!-- Connection Database --> 
   <?php include ("../connection.php"); 
@@ -71,7 +71,7 @@
 
         <div class="d-sm-flex align-items-center justify-content-between mb-4"> 
             <h4>
-              <a href="addinguser.php" class="btn btn-primary btn-icon-text btn-md">
+              <a href="addinguser.php" class="btn text-white btn-md" style="background-color: #DE9185;">
               <i class="fas fa-plus"></i> Add Users</a>
             </h4> 
         </div>
@@ -82,10 +82,10 @@
         <div class="row">
 
                 <div class="col-xl-12 col-lg-12">
-                  <div class="card shadow mb-4 border-left-info border-bottom-info">
+                  <div class="card shadow mb-4 border-left-primary border-bottom-primary">
                       <!-- Card Header - Dropdown -->
                       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                          <h6 class="m-0 font-weight-bold text-info">Users Table</h6>
+                          <h6 class="m-0 font-weight-bold text-dark">Users Table</h6>
                       </div>
                       <!-- Card Body -->
                         <div class="card-body">
@@ -101,7 +101,7 @@
                         ?> 
 
                           <div class="table-responsive">
-                              <table id="dtbl" class="table table-hover display" width="100%" cellspacing="0">
+                              <table id="dtbl" class="table table-striped" width="100%" cellspacing="0">
                                   <thead>
                                       <tr style="font-size:13px;font-family:sans-serif;">
                                           <th>User ID</th>
@@ -136,8 +136,9 @@
                         <td> <?php echo $row['usertype']; ?> </td>
                         <td> <a href="users.php?id=<?= $row['id'];?>" name="userstatus" class="btn btn-success editbtn"><?php echo $row['userstatus']; ?></a> </td>
                         <td>
-                            <a href="editinguser.php?id=<?= $row['id'];?>" class="btn btn-success editbtn">EDIT</a>
-                            <a href="deleteuser.php?id=<?= $row['id']; ?>" name="del" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this record?')">DELETE</a>
+                            <a href="userview.php?id=<?= $row['id'];?>" class="btn text-white" style="background-color: #7FD2D4;">VIEW</a>
+                            <a href="editinguser.php?id=<?= $row['id'];?>" class="btn text-white" style="background-color: #81C784">EDIT</a>
+                            <a href="deleteuser.php?id=<?= $row['id']; ?>" name="del" class="btn text-white" style="background-color: #B0B0AB" onclick="return confirm('Are you sure you want to delete this record?')">DELETE</a>
                         </td>
                             
                         <?php    }?>      
@@ -245,11 +246,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 
-    <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+    <!-- <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js"></script> -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script> 
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+
 
 
 

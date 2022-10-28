@@ -44,9 +44,19 @@ require '../connection.php';
         <?php include '../navbar.php'; ?>
         <!-- End of Topbar -->
 
+<style>
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 500px 560px;
+}
+
+</style>
+
         <div class="row">
             <div class="col-md-12">
-                <div class="card">
+            <div class="col d-flex justify-content-center">
+                <div class="card" style="width: 1200px;">
                     <div class="card-header">
                         <h4><b>View Jewelry Stocks</b>                      
                     </div>
@@ -64,22 +74,29 @@ require '../connection.php';
                                 $row = mysqli_fetch_array($query_run);
                                 ?>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
                                 <label for="stock_no"><b>Stock No.</b></label>
                                 <p class="form-control"> <?= $row['stock_no']; ?>
                             </div>  
 
+                        <div class="wrapper">
+                            <div class="form-group col-md-12">
+                                <label for="image"><b>Image of Jewelry</b></label>
+                                <p class="form-control"> <?= $row['image']; ?> </p>
+                            </div>
 
                             <div class="form-group col-md-12">
                                 <label for="itemtype"><b>Item Type</b></label>
                                 <p class="form-control"> <?= $row['item_type']; ?> </p>
                             </div>
+                        </div>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
                                 <label for="itemdescription"><b>Item Description</b></label>
                                 <p class="form-control"> <?= $row['itemdescription']; ?> </p>
                             </div>
 
+                        <div class="wrapper">
                             <div class="form-group col-md-12">
                                 <label for="Karat-gold"><b>Karat/Gold</b></label>
                                 <p class="form-control"> <?= $row['karat_gold']; ?> </p>
@@ -89,30 +106,31 @@ require '../connection.php';
                                 <label for="kindofstone"><b>Kind of Stone</b></label>
                                 <p class="form-control"> <?= $row['kindofstone']; ?> </p>
                             </div>
+                        </div>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
                                 <label for="weight"><b>Weight</b></label>
                                 <p class="form-control"> <?= $row['weight']; ?> </p>
                             </div>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
                                 <label for="itemqty"><b>Item Quantity</b></label>
                                 <p class="form-control"> <?= $row['itemqty'];?> </p>
                             </div>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
                                 <label for="tagprice"><b>Tag Price</b></label>
                                 <p class="form-control"> <?= $row['tagprice'];?> </p>
                             </div>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
                                 <label for="Date Sold"><b>Date Sold</b></label>
                                 <p class="form-control"> <?= $row['date_sold']; ?> </p>
                             </div>
                         </div>
                             <div class="mb-4">
                             <center> 
-                            <a href="stocks.php" class="btn btn-danger float-end">Back</a>
+                            <a href="stocks.php" class="btn text-white" style="background-color: #B0B0AB;">Back</a>
                             </center>
                             </div>
                         </form>

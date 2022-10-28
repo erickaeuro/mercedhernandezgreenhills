@@ -6,7 +6,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Merced Hernandez Greenhills</title>
+  <title>Add Users | Merced Hernandez Greenhills</title>
 
   <!-- Custom fonts for this template-->
   <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -45,9 +45,19 @@
         <?php include '../navbar.php'; ?>
         <!-- End of Topbar -->
 
+<style>
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 510px 510px;
+}
+
+</style> 
+
         <div class="row">
             <div class="col-md-12">
-                <div class="card">
+            <div class="col d-flex justify-content-center">
+                <div class="card" style="width: 1200px;">
                     <div class="card-header">
                         <h4><b>Add New Users</b>                      
                     </div>
@@ -61,11 +71,12 @@
         <div class="card-body">
             <div class="row">
 
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-11">
                         <label for="uname">Username</label>
                         <input type="text" class="form-control" name="username" placeholder="Enter Username" required>
                     </div>
 
+                <div class="wrapper">
                     <div class="form-group col-md-12">
                         <label for="pass">Password</label>
                         <input type="password" class="form-control" name="password" placeholder="Enter Password" required>
@@ -75,31 +86,32 @@
                         <label for="cpass">Confirm Password</label>
                         <input type="password" class="form-control" name="cpass" placeholder="Enter Confirm Password" required>
                     </div>
+                </div>
 
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-11">
                         <label for="emailadd">Email Address</label>
                         <input type="email" class="form-control" name="email" placeholder="Enter Email Address" required>
                     </div>
 
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-11">
                         <label for="name">Complete Name</label>
                         <input type="text" class="form-control" name="name" placeholder="Enter Complete Name" required>
                     </div>
 
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-11">
                         <label for="contactno">Contact Number</label>
                         <input type="text" class="form-control" name="contactno" placeholder="Enter Contact Number" required>
                     </div>
 
 
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-11">
                         <label for="address">Address</label>
                         <input type="text" class="form-control" name="address" placeholder="Enter Address" required>
                     </div>
 
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-11">
                                 <label for="usertype"><b>User Type </b></label><br/>
-                                <select class="custom-select" name="usertype" style="width:1162px; position: relative; left:2px; top:-1px">
+                                <select class="custom-select" name="usertype" style="width:990px; position: relative; left:2px; top:-1px">
                                     <option value=" " selected="selected">User Type</option>
                                     <option value="Admin" selected="selected">Admin</option>
                                     <option value="Appraiser" selected="selected">Appraiser</option>
@@ -109,8 +121,8 @@
 
                             <div class="mb-4">
                             <center> 
-                            <a href="users.php" class="btn btn-danger float-end">Back</a>
-                            <button type="submit" name="adduser" class="btn btn-success editbtn">Add New Users</button> 
+                            <a href="users.php" class="btn text-white" style="background-color: #B0B0AB;">Back</a>
+                            <button type="submit" name="adduser" class="btn text-white" style="background-color: #81C784;" >Add New Users</button> 
                             </center>
                             </div>
                         </form>

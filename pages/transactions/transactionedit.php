@@ -43,10 +43,18 @@ require '../connection.php';
         <!-- Topbar -->
         <?php include '../navbar.php'; ?>
         <!-- End of Topbar -->
+<style>
 
+.wrapper {
+  display: grid;
+  grid-template-columns: 510px 550px;
+}
+
+</style>
         <div class="row">
             <div class="col-md-12">
-                <div class="card">
+            <div class="col d-flex justify-content-center">
+                <div class="card" style="width: 1200px;">
                     <div class="card-header">
                         <h4><b>Edit Loan</b>                      
                     </div>
@@ -76,6 +84,7 @@ require '../connection.php';
                             
                             <input type="hidden" name="id" value='<?= $row['id']; ?>'>
 
+                        <div class="wrapper">
                             <div class="form-group col-md-12">
                                 <label for="pawnticketno"><b>Ticket No. </b></label>
                                 <input type="text" class="form-control" name="pawnticketno" value="<?= $row['pawnticketno']; ?>" readonly>
@@ -85,46 +94,47 @@ require '../connection.php';
                                 <label for="loan_id"><b>Loan ID</b></label>
                                 <input type="text" class="form-control" name="loan_id" value="<?= $row['loan_id']; ?>" readonly>
                             </div>  
+                        </div>
 
-                            <div class="form-group col-md-12">
-                                <label for="customername"><b>Customer Name </b></label>
-                                <input type="text" class="form-control" name="customername" value="<?= $fulname?>" readonly>
-                            </div>   
-
-                            <div class="form-group col-md-12">
-                                <label for="ItemType"><b>Item Type </b></label>
-                                <input type="text" class="form-control" name="item_type" value="<?= $row['item_type']; ?> "readonly>
-                            </div> 
-
-                            <div class="form-group col-md-12">
-                                <label for="ItemDesc"><b>Item Description </b></label>
-                                <textarea class="form-control" rows="3" name="item_desc" placeholder="<?= $row['item_desc']; ?>" readonly><?= $row['item_desc']; ?></textarea>
-                            </div> 
-
-                            <div class="form-group col-md-12">
-                                <label for="amtpay"><b>Amount Paid</b></label>
-                                <input type="text" class="form-control" name="amtpay" value="<?= $row['amount_paid']; ?> ">
-                            </div> 
-
-                            <div class="form-group col-md-12">
-                                <label for="Date Paid"><b>Date Paid</b></label>
-                                <input type="date" class="form-control" name="date_pay" value="<?= $row['date_paid']; ?>" >
-                            </div>
-
-
-                            <div class="form-group col-md-12">
+                        <div class="form-group col-md-12">
                                 <label for="transac"><b>Transaction Type </b></label><br>
-                                <select class="custom-select" name="tranctype" style="width:410px; position: relative; left:10px; top:-1px">
+                                <select class="custom-select" name="tranctype" style="width:1030px; position: relative; left:2px; top:-1px">
                                     <option value="<?= $row['transactiontype']; ?>" selected="selected"><?= $row['transactiontype']; ?></option>
                                     <option value="Redeem">Redeem</option>
                                     <option value="Renewal">Renewal</option>
                                 </select>
                             </div> 
+                            <div class="form-group col-md-11">
+                                <label for="customername"><b>Customer Name </b></label>
+                                <input type="text" class="form-control" name="customername" value="<?= $fulname?>" readonly>
+                            </div>   
+
+                            <div class="form-group col-md-11">
+                                <label for="ItemType"><b>Item Type </b></label>
+                                <input type="text" class="form-control" name="item_type" value="<?= $row['item_type']; ?> "readonly>
+                            </div> 
+
+                            <div class="form-group col-md-11">
+                                <label for="ItemDesc"><b>Item Description </b></label>
+                                <textarea class="form-control" rows="3" name="item_desc" placeholder="<?= $row['item_desc']; ?>" readonly><?= $row['item_desc']; ?></textarea>
+                            </div> 
+
+                            <div class="form-group col-md-11">
+                                <label for="amtpay"><b>Amount Paid</b></label>
+                                <input type="text" class="form-control" name="amtpay" value="<?= $row['amount_paid']; ?> ">
+                            </div> 
+
+                            <div class="form-group col-md-11">
+                                <label for="Date Paid"><b>Date Paid</b></label>
+                                <input type="date" class="form-control" name="date_pay" value="<?= $row['date_paid']; ?>" >
+                            </div>
+
+
                         </div>
                             <div class="mb-4">
                             <center> 
-                            <a href="transaction.php" class="btn btn-danger float-end">Back</a>
-                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#EditModal">Edit Ticket</button> 
+                            <a href="transaction.php" class="btn text-white" style="background-color: #B0B0AB;">Back</a>
+                            <button type="button" class="btn text-white" style="background-color: #81C784;" data-bs-toggle="modal" data-bs-target="#EditModal">Edit Ticket</button> 
                             </center>
                             </div>  
                             
@@ -143,8 +153,8 @@ require '../connection.php';
                                         </div>
                                         <!-- Modal footer -->
                                         <div class="modal-footer">
-                                        <button type="submit" name="editticket" class="btn btn-success">Yes</button> 
-                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" name="editticket" class="btn text-white" style="background-color: #81C784;">Yes</button> 
+                                        <button type="button" class="btn text-white" style="background-color: #B0B0AB;" data-bs-dismiss="modal">Close</button>
                                         </div>
                                     </div>
                                     </div>

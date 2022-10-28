@@ -43,10 +43,18 @@ require '../connection.php';
         <!-- Topbar -->
         <?php include '../navbar.php'; ?>
         <!-- End of Topbar -->
+<style>
 
-        <div class=//"row">
+.wrapper {
+  display: grid;
+  grid-template-columns: 510px 550px;
+}
+
+</style> 
+        <div class="row">
             <div class="col-md-12">
-                <div class="card">
+            <div class="col d-flex justify-content-center">
+                <div class="card"  style="width: 1200px;">
                     <div class="card-header">
                         <h4><b>View Renewal Jewelry</b>                      
                     </div>
@@ -70,29 +78,33 @@ require '../connection.php';
                                 $fulln = "$firstn $middlen $lastn";
                                 ?>
 
-                           
-
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
+                                <label for="loan_status"><b>Loan Status</b></label>
+                                <p class="form-control"> <?= $row['loan_status']; ?> </p>
+                            </div>
+                            
+                            <div class="form-group col-md-11">
                                 <label for="loan_id"><b>Loan ID</b></label>
                                 <p class="form-control"> <?= $row['loan_id']; ?>
                             </div>  
 
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
                                 <label for="customer_no"><b>Customer No</b></label>
                                 <p class="form-control"> <?= $row['customer_no']; ?> </p>
                             </div>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
                                 <label for="item_type"><b>Item type</b></label>
                                 <p class="form-control"> <?= $row['item_type']; ?> </p>
                             </div>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
                                 <label for="item_desc"><b>Description</b></label>
                                 <p class="form-control"> <?= $row['item_desc']; ?> </p>
                             </div>
 
+                        <div class="wrapper">
                             <div class="form-group col-md-12">
                                 <label for="appraised_value"><b>Appraised Value</b></label>
                                 <p class="form-control"> <?= $row['appraised_value'];?> </p>
@@ -102,46 +114,42 @@ require '../connection.php';
                                 <label for="principal"><b>Principal</b></label>
                                 <p class="form-control"> <?= $row['principal'];?> </p>
                             </div>
+                        </div>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
                                 <label for="interest"><b>Interest</b></label>
                                 <p class="form-control"> <?= $row['interest']?>%</p>
                             </div>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
                                 <label for="date_loan_granted"><b>Date Loan Granted</b></label>
                                 <p class="form-control"> <?= $row['date_loan_granted']; ?> </p>
                             </div>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
                                 <label for="maturity_date"><b>Maturity Date</b></label>
                                 <p class="form-control"> <?= $row['maturity_date']; ?></p>
                             </div>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
                                 <label for="expiry_date"><b>Expiry Date</b></label>
                                 <p class="form-control"> <?= $row['expiry_date']; ?> </p>
                             </div>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
                                 <label for="total_amt_paid"><b>Total Amount Paid</b></label>
                                 <p class="form-control"> <?= $row['total_amt_paid']; ?> </p>
                             </div>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
                                 <label for="total_amt_due"><b>Total Amount Due</b></label>
                                 <p class="form-control"> <?= $row['total_amt_due']; ?> </p>
-                            </div>
-
-                            <div class="form-group col-md-12">
-                                <label for="loan_status"><b>Loan Status</b></label>
-                                <p class="form-control"> <?= $row['loan_status']; ?> </p>
                             </div>
 
                         </div>
                             <div class="mb-4">
                             <center> 
-                            <a href="renewal.php" class="btn btn-danger float-end">Back</a>
+                            <a href="renewal.php" class="btn text-white" style="background-color: #B0B0AB;">Back</a>
                             </center>
                             </div>        
                        

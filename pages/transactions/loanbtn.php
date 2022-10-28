@@ -77,17 +77,27 @@
         }
         ?>
         <!-- End of Topbar -->
+<style>
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 550px 560px;
+}
+
+</style> 
+
 
         <div class="row">
             <div class="col-md-12">
-                <div class="card">
+            <div class="col d-flex justify-content-center">
+                <div class="card" style="width: 1200px;">
                     <div class="card-header">
                         <h4><b>New Jewelry Loan</b>                      
                     </div>
                     <div class="card-body">
                         <form action="addloan.php" method="POST">
                             
-                        <div class="form-group col-md-12">
+                        <div class="form-group col-md-11">
                                 <label for="CustomerNo"><b>Customer Name.</b></label><br>
 
                         <?php 
@@ -121,31 +131,34 @@
                         ?> 
                         </div>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
                                 <label for="itemtype"><b>Item Type </b></label>
                                 <input type="text" class="form-control" name="item_type" placeholder="Enter Jewelry Type">
                             </div>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
                                 <label for="description"><b>Item Description </b></label>
                                 <textarea class="form-control" rows="3" name="item_desc" placeholder="Enter Jewelry description"></textarea>
                             </div>
 
-                            <div class="form-group col-md-12">
+                        <div class="wrapper">
+
+                            <div class="form-group col-md-11">
                                 <label for="appraised_value"><b>Appraised Value </b></label>
                                 <input type="text" class="form-control" name="appraised_value" placeholder="Enter Jewelry Appraised Value">
                             </div>
 
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
                                 <label for="principal"><b>Principal </b></label>
                                 <input type="text" class="form-control" name="principal" placeholder="Enter Principal">
                             </div>
+                        </div>
 
                         </div>
                             <div class="mb-4">
                             <center> 
-                            <a href="loan.php" class="btn btn-danger float-end">Back</a>
-                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#AddModal">Add Loan</button>
+                            <a href="loan.php" class="btn text-white" style="background-color: #B0B0AB;">Back</a>
+                            <button type="button" class="btn text-white" style="background-color: #81C784;" data-bs-toggle="modal" data-bs-target="#AddModal">Add Loan</button>
                             
                             </center>
                             </div>
@@ -165,8 +178,8 @@
                                         </div>
                                         <!-- Modal footer -->
                                         <div class="modal-footer">
-                                        <button type="submit" name="addloan" class="btn btn-success editbtn">Yes</button> 
-                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" name="addloan" class="btn text-white" style="background-color: #81C784;">Yes</button> 
+                                        <button type="button" class="btn text-white" style="background-color: #B0B0AB;" data-bs-dismiss="modal">Close</button>
                                         </div>
                                     </div>
                                     </div>

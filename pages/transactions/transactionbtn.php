@@ -67,23 +67,31 @@
         }
         ?>
         <!-- End of Topbar -->
+<style>
 
+.wrapper {
+  display: grid;
+  grid-template-columns: 510px 550px;
+}
+
+</style> 
         <div class="row">
             <div class="col-md-12">
-                <div class="card">
+            <div class="col d-flex justify-content-center">
+                <div class="card" style="width: 1200px;">
                     <div class="card-header">
-                        <h4><b>Generate New Pawn Ticket</b>                      
+                        <h4><b> Add Pawn Ticket</b>                      
                     </div>
                     <div class="card-body">
                     
                     <form action="" method="GET">
                     <div class="row">
-                        <div class="col-md-2"> 
+                        <div class="col-md-4" style="width:950px; position: relative; left:10px; top:-1px" >
                             <input type="text" class="form-control" name="id" value="<?php if(isset($_GET['id'])){echo $_GET['id'];} ?>" placeholder="Search for Loan ID" required>
                         </div>
                         <div class="col-md-4">
 
-                             <button type="submit" class="btn btn-primary">Search</button>
+                             <button type="submit" class="btn text-white" style="background-color: #7FD2D4;">Search</button>
                         </div>
                     </div>
                     </form>
@@ -122,14 +130,14 @@
 
                         <div class="form-group col-md-12">
                             <label for="loanstatus"><b>Transaction Type </b></label><br>
-                            <select class="custom-select" name="transctype" style="width:410px; position: relative; left:10px; top:-1px" required>
+                            <select class="custom-select" name="transctype" style="width:1035px; position: relative; left:1px; top:-1px" required>
                                 <option value= null selected="selected">Select Transaction Type </option>
                                 <option value="Renewal">Renewal</option>
                                 <option value="Redeem">Redemption</option>                                
                             </select>
                         </div>
 
-                        <div class="form-group col-md-12">
+                        <div class="form-group col-md-11">
                             <label for="loan_id"><b>Loan ID</b></label>
                             <input type="text" class="form-control" name="loan_id" value="<?php if(isset($_GET['id'])){echo $row['loan_id'];} ?>" readonly>
                         </div>
@@ -137,6 +145,7 @@
                         
 
                         <!--FOR VALIDATION PURPOSES-->
+                    <div class="wrapper">
                         <div class="form-group col-md-12">
                             <label for="custfname"><b>First Name</b></label>
                             <input type="text" class="form-control" name="cust_fname" value="<?php if(isset($_GET['id'])){ echo $row['first_name'];}?>" readonly>
@@ -146,18 +155,19 @@
                             <label for="custlname"><b>Last Name</b></label>
                             <input type="text" class="form-control" name="cust_lname" value="<?php if(isset($_GET['id'])){ echo $row['last_name'];}?>" readonly>
                         </div>
+                    </div>
 
-                        <div class="form-group col-md-12">
+                        <div class="form-group col-md-11">
                             <label for="itemtyoe"><b>Item Type</b></label>
                             <input type="text" class="form-control" name=" " value="<?php if(isset($_GET['id'])){ echo $row['item_desc'];}?>" readonly>
                         </div>
 
-                        <div class="form-group col-md-12">
+                        <div class="form-group col-md-11">
                             <label for="itemdesc"><b>Item Description</b></label>
                             <input type="text" class="form-control" name=" " value="<?php if(isset($_GET['id'])){ echo $row['item_type'];}?>" readonly>
                         </div>
 
-                        <div class="form-group col-md-12">
+                        <div class="form-group col-md-11">
                             <label for="amtdue"><b>Total Amount Due</b></label>
                             <input type="text" class="form-control" name="total" value="<?php if(isset($_GET['id'])){ echo $row['total_amt_due'];}?>" readonly>
                         </div>
@@ -167,7 +177,7 @@
                             <input type="text" class="form-control" name="renewaldue" value="<?php if(isset($_GET['id'])){ echo $renewaldue; }?>" readonly>
                         </div>
                                                  
-                        <div class="form-group col-md-12">
+                        <div class="form-group col-md-11">
                             <label for="amtpaid"><b>Amount Paid</b></label>
                             <input type="text" class="form-control" name="amount_paid" required>
                         </div>  
@@ -176,8 +186,8 @@
                         </div>
                             <div class="mb-4">
                             <center> 
-                            <a href="transaction.php" class="btn btn-danger float-end">Back</a>
-                            <button type="submit" name="addtransc" class="btn btn-success editbtn">Generate Pawn Ticket</button> 
+                            <a href="transaction.php" class="btn text-white" style="background-color: #B0B0AB;">Back</a>
+                            <button type="submit" name="addtransc" class="btn text-white" style="background-color: #81C784;">New Pawn Ticket</button> 
                             </center>
                             </div>
                         </form>
