@@ -78,7 +78,7 @@
         <div class="row">
             <div class="col-md-12">
             <div class="col d-flex justify-content-center">
-                <div class="card" style="width: 1200px;">
+                <div class="card" style="width: 1100px;">
                     <div class="card-header">
                         <h4><b> Add Pawn Ticket</b>                      
                     </div>
@@ -86,7 +86,7 @@
                     
                     <form action="" method="GET">
                     <div class="row">
-                        <div class="col-md-4" style="width:950px; position: relative; left:10px; top:-1px" >
+                        <div class="col-md-8" style="width:950px; position: relative; left:10px; top:-1px" >
                             <input type="text" class="form-control" name="id" value="<?php if(isset($_GET['id'])){echo $_GET['id'];} ?>" placeholder="Search for Loan ID" required>
                         </div>
                         <div class="col-md-4">
@@ -103,7 +103,7 @@
                             $date = date("Y-m-d");
                             date_default_timezone_set('Asia/Manila');
 
-                            $query = "SELECT * FROM loantbl INNER JOIN customertbl ON loantbl.customer_no = customertbl.customer_no WHERE loantbl.loan_id='$id' AND loantbl.loan_status='Active Loan'";
+                            $query = "SELECT * FROM loantbl INNER JOIN customertbl ON loantbl.customer_no = customertbl.customer_no WHERE loantbl.loan_id='$id' AND loantbl.loan_status IN ('Active Loan', 'Late', 'Two Months Late')";
                             $query_run = mysqli_query($con, $query);
 
                             if(mysqli_affected_rows($con) == 0){
@@ -112,13 +112,7 @@
                             }
                             $row = mysqli_fetch_array($query_run);
 
-                            $monthlydue = $row['principal'];
-                            if($row['interest'] == 5.00){
-                                $renewaldue =  $monthlydue*0.05;
-                            }else{
-                                $renewaldue =  $monthlydue*0.04;
-                            }
-                            
+                            $total = $row['principal_due'] + $row['renewal_due'];
 
                         }
                         
@@ -128,16 +122,16 @@
 
                         <form action="addtransaction.php" method="POST">
 
-                        <div class="form-group col-md-12">
+                        <div class="form-group col-md-11">
                             <label for="loanstatus"><b>Transaction Type </b></label><br>
                             <select class="custom-select" name="transctype" style="width:1035px; position: relative; left:1px; top:-1px" required>
-                                <option value= null selected="selected">Select Transaction Type </option>
+                                <option value= "null" selected="selected">Select Transaction Type </option>
                                 <option value="Renewal">Renewal</option>
                                 <option value="Redeem">Redemption</option>                                
                             </select>
                         </div>
 
-                        <div class="form-group col-md-11">
+                        <div class="form-group col-md-12">
                             <label for="loan_id"><b>Loan ID</b></label>
                             <input type="text" class="form-control" name="loan_id" value="<?php if(isset($_GET['id'])){echo $row['loan_id'];} ?>" readonly>
                         </div>
@@ -157,28 +151,33 @@
                         </div>
                     </div>
 
-                        <div class="form-group col-md-11">
+                        <div class="form-group col-md-12">
                             <label for="itemtyoe"><b>Item Type</b></label>
                             <input type="text" class="form-control" name=" " value="<?php if(isset($_GET['id'])){ echo $row['item_desc'];}?>" readonly>
                         </div>
 
-                        <div class="form-group col-md-11">
+                        <div class="form-group col-md-12">
                             <label for="itemdesc"><b>Item Description</b></label>
                             <input type="text" class="form-control" name=" " value="<?php if(isset($_GET['id'])){ echo $row['item_type'];}?>" readonly>
                         </div>
 
-                        <div class="form-group col-md-11">
-                            <label for="amtdue"><b>Total Amount Due</b></label>
-                            <input type="text" class="form-control" name="total" value="<?php if(isset($_GET['id'])){ echo $row['total_amt_due'];}?>" readonly>
+                        <div class="form-group col-md-12">
+                            <label for="amtdue"><b>Principal Due</b></label>
+                            <input type="text" class="form-control" name="total" value="<?php if(isset($_GET['id'])){ echo $row['principal_due'];}?>" readonly>
                         </div>
 
                         <div class="form-group col-md-12">
                             <label for="renewaldue"><b>Renewal Due</b></label>
-                            <input type="text" class="form-control" name="renewaldue" value="<?php if(isset($_GET['id'])){ echo $renewaldue; }?>" readonly>
+                            <input type="text" class="form-control" name="renewaldue" value="<?php if(isset($_GET['id'])){ echo $row['renewal_due']; }?>" readonly>
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <label for="amtdue"><b>Total Due</b></label>
+                            <input type="text" class="form-control" name="total" value="<?php if(isset($_GET['id'])){ echo $total;}?>" readonly>
                         </div>
                                                  
-                        <div class="form-group col-md-11">
-                            <label for="amtpaid"><b>Amount Paid</b></label>
+                        <div class="form-group col-md-12">
+                            <label for="amtpaid"><b>Amount to be Paid</b></label>
                             <input type="text" class="form-control" name="amount_paid" required>
                         </div>  
 

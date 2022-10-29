@@ -35,9 +35,9 @@ if($matsql == 1 ){
 
             $principal = $run['principal'];
 
-            $amtdue = $principal * 0.07;
+            $amtdue = $run['renewal_due'] + ($principal * 0.02);
 
-            $query = "UPDATE loantbl SET interest = '5.00', renewal_due ='$amtdue', loan_status = 'Late' WHERE loan_id = '$recup'";
+            $query = "UPDATE loantbl SET renewal_due ='$amtdue', loan_status = 'Late' WHERE loan_id = '$recup'";
             $query_run = mysqli_query($con, $query);
         
         }
@@ -52,9 +52,9 @@ if($mattsql == 1 ){
 
             $principal = $run['principal'];
 
-            $amtdue = $run['renewal_due'] + ($principal * 0.02);
+            $amtdue = $run['renewal_due'] + ($principal * 0.06);
 
-            $query = "UPDATE loantbl SET interest = '5.00', renewal_due ='$amtdue', loan_status = 'Two Months Late' WHERE loan_id = '$recup'";
+            $query = "UPDATE loantbl SET renewal_due ='$amtdue', loan_status = 'Two Months Late' WHERE loan_id = '$recup'";
             $query_run = mysqli_query($con, $query);
         
         }

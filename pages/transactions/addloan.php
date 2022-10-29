@@ -29,7 +29,7 @@ if(isset($_POST['addloan']))
 
     if($appraised_value > $principal){
         
-        $query = "INSERT INTO loantbl (loan_id, customer_no, item_type, item_desc, appraised_value, principal,  interest,  date_loan_granted, maturity_date, expiry_date, renewal_due,total_amt_due, loan_status ) 
+        $query = "INSERT INTO loantbl (loan_id, customer_no, item_type, item_desc, appraised_value, principal,  interest,  date_loan_granted, maturity_date, expiry_date, renewal_due, principal_due, loan_status ) 
         VALUES (NULL, '$customerno','$type','$description','$appraised_value','$principal','$interest','$dateloangranted','$maturity_date','$expiry_date','$renewdue','$principal','Active Loan')";
         $query_run = mysqli_query($con, $query);
 

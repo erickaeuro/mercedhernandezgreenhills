@@ -78,15 +78,7 @@ require '../connection.php';
                             
                             <input type="hidden" name="id" value='<?= $row['id']; ?>'>
 
-                            <div class="form-group col-md-11">
-                                <label for="loanstatus"><b>Loan Status </b></label><br>
-                                <select class="custom-select" name="loan_status" style="width:1030px; position: relative; left:2px; top:-1px">
-                                    <option value="<?= $row['loan_status']; ?>" selected="selected"><?= $row['loan_status']; ?></option>
-                                    <option value="Active Loan">Active Loan</option>
-                                    <option value="Redeemed">Redeemed</option>
-                                    <option value="For Auction">For Auction</option>
-                                </select>
-                            </div> 
+                            
 
                             <div class="form-group col-md-11">
                                 <label for="loan_id"><b>Loan ID</b></label>
@@ -145,11 +137,17 @@ require '../connection.php';
                                 <label for="Expire Date"><b>Expiry Date</b></label>
                                 <input type="date" class="form-control" name="date_expire" value="<?= $row['expiry_date']; ?>" >
                             </div>
-
+                            
                             <div class="form-group col-md-11">
-                                <label for="total_amt_paid"><b>Total Amount Paid</b></label>
-                                <input type="text" class="form-control" name="total_amt_paid" value="<?= $row['total_amt_paid']; ?>">
-                            </div>
+                                <label for="loanstatus"><b>Loan Status </b></label><br>
+                                <select class="custom-select" name="loan_status" style="width:1030px; position: relative; left:2px; top:-1px">
+                                    <option value="<?= $row['loan_status']; ?>" selected="selected"><?= $row['loan_status']; ?></option>
+                                    <option value="Active Loan">Active Loan</option>
+                                    <option value="Redeemed">Redeemed</option>
+                                    <option value="For Auction">For Auction</option>
+                                </select>
+                            </div> 
+
 
                         </div>
                             <div class="mb-4">

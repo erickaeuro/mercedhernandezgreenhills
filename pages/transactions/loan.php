@@ -82,7 +82,7 @@
             <div class="row">
                 
                 <div class="col-xl-12 col-lg-12">
-                  <div class="card shadow mb-4 border-left-primary border-bottom-primary">
+                  <div class="card shadow mb-2 border-left-primary border-bottom-primary">
                       <!-- Card Header - Dropdown -->
                       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                           <h6 class="m-0 font-weight-bold text-dark">Jewelry Loans Record</h6>
@@ -101,7 +101,7 @@
                                           <th>interest</th>
                                           <th>Total Amount Paid</th>
                                           <th>Renewal Due</th>
-                                          <th>Total Amount Due</th>                                          
+                                          <th>Principal Due</th>                                          
                                           <th>Loan Status</th>
                                           <th>Maturity Date</th>
                                           <th>Expiration Date</th>
@@ -175,7 +175,7 @@
                                 <td> <?php echo $row['interest'];?>%</td>
                                 <td> <?php echo $row['total_amt_paid']; ?> </td>
                                 <td> <?php echo $row['renewal_due']; ?> </td>
-                                <td> <?php echo $row['total_amt_due']; ?> </td>
+                                <td> <?php echo $row['principal_due']; ?> </td>
                                 <td> <?php echo $row['loan_status']; ?> </td>
                                 <td> <?php echo $row['maturity_date']; ?> </td>
                                 <td> <?php echo $row['expiry_date']; ?> </td>

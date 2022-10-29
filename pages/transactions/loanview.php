@@ -136,8 +136,8 @@ require '../connection.php';
                             </div>
 
                             <div class="form-group col-md-11">
-                                <label for="total_amt_due"><b>Total Amount Due</b></label>
-                                <p class="form-control"> <?= $row['total_amt_due']; ?> </p>
+                                <label for="principal_due"><b>Total Amount Due</b></label>
+                                <p class="form-control"> <?= $row['principal_due']; ?> </p>
                             </div>
 
                         </div>
