@@ -18,7 +18,7 @@ if(isset($_POST["export"]))
  }
  else
  {
-  $file_name = 'Order Data.csv';
+  $file_name = 'Inventory Report.csv';
   header("Content-Description: File Transfer");
   header("Content-Disposition: attachment; filename=$file_name");
   header("Content-Type: application/csv;");
@@ -75,7 +75,7 @@ $result = $statement->fetchAll();
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Merced Hernandez Greenhills</title>
+  <title>Inventory Report | Merced Hernandez Greenhills</title>
   <!-- Custom fonts for this template-->
   <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -84,8 +84,8 @@ $result = $statement->fetchAll();
 <link href="../../css/sb-admin-2.css" rel="stylesheet">
 <link href= "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css" rel="stylesheet"> 
 <link href= "https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" />
 
-  
  </head>
 
 <body id="page-top" class=" bg-gray-800">
@@ -130,10 +130,8 @@ $result = $statement->fetchAll();
 
       </div>
 
-      
-
       <div class="form-group col-md-12">
-       <input type="submit" name="export" value="Export" class="btn btn-info" />
+       <input type="submit" name="export" value="Export" class="btn text-white" style="background-color: #81C784;" />
       </div>
 
     </div>
@@ -149,7 +147,7 @@ $result = $statement->fetchAll();
                         <div class="card-body">
 
                             <div class="table-responsive">
-                                <table class="table table-stripped"  id="uuu" width="100%" cellspacing="0">
+                                <table class="table table-stripped" id="uuu" width="100%" cellspacing="0">
 
                             <thead>
                                 <tr style="font-size:13px;font-family:sans-serif;">
@@ -258,32 +256,35 @@ $result = $statement->fetchAll();
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script> 
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+  
+    <script>
 
-<script>
+      
         $(document).ready(function () {
-
-            $('#uuu').DataTable({
-                "pagingType": "full_numbers",
-                "lengthMenu": [
-                    [10, 25, 50, -1],
-                    [10, 25, 50, "All"]
-                ],
-                responsive: true,
-                language: {
-                    search: "_INPUT_",
-                    searchPlaceholder: "Search Data",
-                }
-            });
-
             $('.input-daterange').datepicker({
             todayBtn:'linked',
             format: "yyyy-mm-dd",
             autoclose: true
           });
-        });
+
+          var dataTable = $('#uuu').DataTable({
+            'pagingType': 'full_numbers',
+                'lengthMenu': [
+                    [10, 25, 50, -1],
+                    [10, 25, 50, 'All']
+                ],
+                responsive: true,
+                language: {
+                    search: '_INPUT_',
+                    searchPlaceholder: 'Search Data',
+                }
+                
+            });
+          });
     </script>
-
-
 
 </body>
 </html>
+
