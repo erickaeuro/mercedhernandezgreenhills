@@ -133,7 +133,7 @@ require '../connection.php';
                         </div>
                             <div class="mb-4">
                             <center> 
-                            <a href="transaction.php"  class="btn text-white" style="background-color: #B0B0AB;" >Back</a>
+                            <a href="transaction.php" class="btn text-white" style="background-color: #B0B0AB;" >Back</a>
                             </center>
                             </div>
                         </form>

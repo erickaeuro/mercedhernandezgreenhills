@@ -63,7 +63,7 @@
                         <h4><b>Add Jewelry Stocks</b>                      
                     </div>
                     <div class="card-body">
-                        <form action="addcode.php" method="POST">
+                        <form action="addcode.php" method="POST" enctype="multipart/form-data">
 
                         <div class="wrapper">
                             
