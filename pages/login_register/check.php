@@ -2,6 +2,7 @@
 session_start();
 
 
+
 require "Authenticator.php";
 if ($_SERVER['REQUEST_METHOD'] != "POST") {
     header("location: index.php");
