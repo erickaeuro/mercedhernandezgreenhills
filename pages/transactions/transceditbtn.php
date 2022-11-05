@@ -13,13 +13,13 @@
         $transac= $_POST['tranctype'];
         $amtpay= $_POST['amtpay'];
         
-        $valquery = "SELECT total_amt_paid, total_amt_due FROM loantbl WHERE loan_id = '$id'";
+        $valquery = "SELECT total_amt_paid, total_amt_due, renewal_due FROM loantbl WHERE loan_id = '$id'";
         $vquery_run = mysqli_query($con, $valquery);
         $val = mysqli_fetch_array($vquery_run);
 
 
         if($val['total_amt_paid'] > $amtpay){
-            $transact = $val['total_amt_due'] + $amtpay;
+            $transact = $val['total_amt_due'] + ($amtpay - $val['renewal_due']);
             $payupdate = $val['total_amt_paid'] - $amtpay;
         }
 
