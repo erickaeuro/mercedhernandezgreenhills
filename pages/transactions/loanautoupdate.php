@@ -29,11 +29,11 @@
 
 if($matsql == 1 ){
     foreach($matrec as $recup){
-        $mquery = "SELECT renewal_due, principal FROM loantbl WHERE loan_id = '$recup'";
+        $mquery = "SELECT renewal_due, principal_due FROM loantbl WHERE loan_id = '$recup'";
         $mquery_run = mysqli_query($con, $mquery);
         foreach($mquery_run as $run){
 
-            $principal = $run['principal'];
+            $principal = $run['principal_due'];
 
             $amtdue = $run['renewal_due'] + ($principal * 0.02);
 
@@ -46,11 +46,11 @@ if($matsql == 1 ){
 
 if($mattsql == 1 ){
     foreach($mattrec as $recup){
-        $mquery = "SELECT renewal_due, principal FROM loantbl WHERE loan_id = '$recup'";
+        $mquery = "SELECT renewal_due, principal_due FROM loantbl WHERE loan_id = '$recup'";
         $mquery_run = mysqli_query($con, $mquery);
         foreach($mquery_run as $run){
 
-            $principal = $run['principal'];
+            $principal = $run['principal_due'];
 
             $amtdue = $run['renewal_due'] + ($principal * 0.06);
 

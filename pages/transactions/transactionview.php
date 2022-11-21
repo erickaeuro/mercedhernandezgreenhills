@@ -80,6 +80,8 @@ require '../connection.php';
                                 $firstn = $row['first_name'];
                                 $lastn = $row['last_name'];
                                 $fulln = "$firstn $lastn";
+
+                                $total = $row['principal_due'] + $row['renewal_due'];
                                 ?>
                         <div class="wrapper">
 
@@ -122,7 +124,7 @@ require '../connection.php';
 
                             <div class="form-group col-md-11">
                                 <label for="total_amt_due"><b>Total Amount Due</b></label>
-                                <p class="form-control"> <?= $row['total_amt_due']; ?> </p>
+                                <p class="form-control"> <?= $total; ?> </p>
                             </div>
 
                             <div class="form-group col-md-11">

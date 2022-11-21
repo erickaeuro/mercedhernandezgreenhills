@@ -102,6 +102,7 @@ error_reporting(0);
                                           <th>Amount Paid</th>
                                           <th>Date Paid</th>
                                           <th>Transaction Type</th>
+                                          <th>Loan Status</th>
                                           <th>Action</th>
                         
                                       </tr>
@@ -124,6 +125,7 @@ error_reporting(0);
                                 <td> <?php echo $row['amount_paid']; ?> </td>
                                 <td> <?php echo $row['date_paid']; ?> </td>
                                 <td> <?php echo $row['transactiontype']; ?> </td>
+                                <td> <?php echo $row['loan_stat']; ?> </td>
                                 <td>
                                     <a href="transactionview.php?id=<?= $row['pawnticketno'];?>" class="btn text-white" style="background-color: #7FD2D4;">VIEW</a>
                                     <a href="transactionedit.php?id=<?= $row['pawnticketno']?>" class="btn text-white" style="background-color: #81C784; "> EDIT </button>

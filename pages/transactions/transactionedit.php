@@ -41,7 +41,18 @@ require '../connection.php';
       <div id="content">
 
         <!-- Topbar -->
-        <?php include '../navbar.php'; ?>
+        <?php include '../navbar.php'; 
+         if(isset($_SESSION['addstatus']))
+         {
+             ?>
+                 <div class="alert alert-warning" role="alert" role="alert">
+                     <?= $_SESSION['addstatus']; ?>
+                     <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">x</button>
+                 </div>
+             <?php 
+             unset($_SESSION['addstatus']);
+         }
+        ?>
         <!-- End of Topbar -->
 <style>
 
@@ -117,6 +128,11 @@ require '../connection.php';
                             <div class="form-group col-md-11">
                                 <label for="ItemDesc"><b>Item Description </b></label>
                                 <textarea class="form-control" rows="3" name="item_desc" placeholder="<?= $row['item_desc']; ?>" readonly><?= $row['item_desc']; ?></textarea>
+                            </div> 
+
+                            <div class="form-group col-md-11">
+                                <label for="renpay"><b>Renewal Paid</b></label>
+                                <input type="text" class="form-control" name="renpay" value="<?= $row['renewal_paid']; ?> "readonly>
                             </div> 
 
                             <div class="form-group col-md-11">

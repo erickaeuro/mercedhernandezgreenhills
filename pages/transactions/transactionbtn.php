@@ -175,6 +175,11 @@
                             <label for="amtdue"><b>Total Due</b></label>
                             <input type="text" class="form-control" name="total" value="<?php if(isset($_GET['id'])){ echo $total;}?>" readonly>
                         </div>
+
+                        <div class="form-group col-md-12">
+                            <label for="LoanStat"><b>Loan Status</b></label>
+                            <input type="text" class="form-control" name="loanstat" value="<?php if(isset($_GET['id'])){ echo $row['loan_status']; }?>" readonly>
+                        </div>
                                                  
                         <div class="form-group col-md-12">
                             <label for="amtpaid"><b>Amount to be Paid</b></label>

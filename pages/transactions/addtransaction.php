@@ -22,6 +22,7 @@ if(isset($_POST['addtransc']))
         $renewaldue = $_POST['renewaldue'];
         $loanid = $_POST['loan_id'];
         $date = date("Y-m-d");
+        $loanstat = $_POST['loanstat'];
 
         
 
@@ -40,7 +41,7 @@ if(isset($_POST['addtransc']))
             if($transc_type == "Redeem"){
                 //UPDATE PAYMENT
                 if($transac == 0){
-                    $query = "INSERT INTO pawntickettbl (pawnticketno, loan_id, date_paid, amount_paid, transactiontype) VALUES (NULL, '$loanid', '$date', '$amt_paid', '$transc_type')";
+                    $query = "INSERT INTO pawntickettbl (pawnticketno, loan_id, date_paid, amount_paid, transactiontype, loan_stat, renewal_paid) VALUES (NULL, '$loanid', '$date', '$amt_paid', '$transc_type', '$loanstat', '$renewaldue')";
                     $query_run = mysqli_query($con, $query);
 
                     $updateque = "UPDATE loantbl SET loan_status='Redeemed', total_amt_paid='$payupdate', principal_due='0', renewal_due='0',date_loan_granted ='$today', maturity_date='$maturity_date', expiry_date='$expiry_date' WHERE loan_id='$loanid'";
@@ -64,24 +65,22 @@ if(isset($_POST['addtransc']))
                     //MATH
                    
                     $amt_paid1 = $amt_paid - $renewaldue;
+                    $newprin = $row['principal_due'] - $amt_paid1;
                     
-                    if($amt_paid != 0){
-                        $transac1 = $row['principal_due'] - $amt_paid1;
-                    }
-                    
-                    $renewalreset = $transac1 * 0.04;
+                    $renewalreset = $newprin * 0.04;
 
-                    if($transac1 <= 0){                       
+
+                    if($newprin <= 0){                       
                         
                         $_SESSION['addstatus1'] = "Amount paid verified for Redemption, use Redemption Transaction type";
                         header('Location: transactionbtn.php');
 
                     }else{
 
-                        $updateque = "UPDATE loantbl SET total_amt_paid='$payupdate', loan_status='Active Loan', date_loan_granted ='$today', maturity_date='$maturity_date', expiry_date='$expiry_date', principal_due = '$transac1', renewal_due='$renewalreset' WHERE loan_id='$loanid'";
+                        $updateque = "UPDATE loantbl SET total_amt_paid='$payupdate', loan_status='Active Loan', date_loan_granted ='$today', maturity_date='$maturity_date', expiry_date='$expiry_date', principal_due = '$newprin', renewal_due='$renewalreset' WHERE loan_id='$loanid'";
                         $query_run2 = mysqli_query($con, $updateque);
 
-                        $query = "INSERT INTO pawntickettbl (pawnticketno, loan_id, date_paid, amount_paid, transactiontype) VALUES (NULL, '$loanid', '$date', '$amt_paid', '$transc_type')";
+                        $query = "INSERT INTO pawntickettbl (pawnticketno, loan_id, date_paid, amount_paid, transactiontype, loan_stat, renewal_paid) VALUES (NULL, '$loanid', '$date', '$amt_paid', '$transc_type', '$loanstat', '$renewaldue')";
                         $query_run = mysqli_query($con, $query);
 
                         if($query_run && $query_run2){
