@@ -26,13 +26,14 @@
         $oldprin = $val['principal_due'] + ($val2['amount_paid'] - $renpay);
         
         if($amtpay >= $renpay){
-            
+            /*ETO YUNG BABAGUHIN!!!!!!!
             if($val2['amount_paid'] > $amtpay){
                 $paydeduct = $val2['amount_paid'] - $amtpay;            
                 $transact = $val['principal_due'] + $paydeduct;
                 $payupdate = $val['total_amt_paid'] - ($val2['amount_paid'] - $amtpay);
                 $renew = $transact * 0.04;
             }
+            */
     
             if($val2['amount_paid'] < $amtpay){
                 $paydeduct = $amtpay - $renpay;
