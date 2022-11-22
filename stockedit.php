@@ -83,17 +83,11 @@ require 'connection.php';
                                 <input type="text" class="form-control" name="stock_no" accept=".jpg, .jpeg, .png" value="<?= $row['stock_no']; ?>" readonly>
                             </div>  
 
-                        <div class="wrapper">
-                            <div class="form-group col-md-12">
-                                <label for="image"><b>Image of Jewelry</b></label>
-                                <input type="file" class="form-control" name="image" value="<?=$row['image']; ?>">
-                            </div>
-
                             <div class="form-group col-md-12">
                                 <label for="itemtype"><b>Item Type</b></label>
                                 <input type="text" class="form-control" name="item_type" value="<?= $row['item_type']; ?>">
                             </div>
-                        </div>
+                       
 
                             <div class="form-group col-md-11">
                                 <label for="itemdescription"><b>Item Description</b></label>
@@ -130,6 +124,12 @@ require 'connection.php';
                                 <label for="Date Sold"><b>Date Sold</b></label>
                                 <input type="date" class="form-control" name="date_sold" value="<?= $row['date_sold']; ?>" >
                             </div>
+
+                            <div class="form-group col-md-11">
+                                <label for="image"><b>Image of Jewelry</b></label>
+                                <input type="file" class="form-control" name="image" value="<?=$row['image']; ?>">
+                            </div>
+
                         </div>
                         <div class="mb-4">
                             <center> 

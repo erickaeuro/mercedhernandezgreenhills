@@ -63,21 +63,19 @@
                         <h4><b>Add Jewelry Stocks</b>                      
                     </div>
                     <div class="card-body">
-                        <form action="addcode.php" method="POST" enctype="multipart/form-data">
+                        <form action="addcode.php" method="POST">
 
-                        <div class="wrapper">
                             
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
                                 <label for="image"><b>Image of Jewelry</b></label>
-                                <input type="file" class="form-control" name="image" id="image" accept=".jpg, .jpeg, .png">
+                                <input type="file" class="form-control" name="image" placeholder="Select a file to upload" required>
                             </div>
 
-                            <div class="form-group col-md-15">
+                            <div class="form-group col-md-11">
                                 <label for="itemtype"><b>Item Type</b></label>
                                 <input type="text" class="form-control" name="item_type" placeholder="Enter Item Type" required>
                             </div>
 
-                            </div>
                         
                             <div class="form-group col-md-11">
                                 <label for="itemdescription"><b>Item Description</b></label>

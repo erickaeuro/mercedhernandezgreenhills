@@ -79,25 +79,10 @@ require 'connection.php';
                                 <p class="form-control"> <?= $row['stock_no']; ?>
                             </div>  
 
-                            <div class="form-group col-md-11">
-                                <label for="image"><b>Image of Jewelry</b></label>
-                                <p class="form-control"> <?= $row['image']; ?> </p> 
-                                
-                            </div>
-
-                            <?php
-                            $stockNo = $row['stock_no'];
-                            $sql=mysqli_query($con,"select image from inventorytbl where stock_no = $stockNo");
-                                while($row=mysqli_fetch_array($sql)){
-                                    echo "<img src='".$row['image']."' width='400' height='300' />"; // the problem is here, its just displaying img icon, not actual image 
-                                }
-                            ?>
-
                             <div class="form-group col-md-12">
                                 <label for="itemtype"><b>Item Type</b></label>
                                 <p class="form-control"> <?= $row['item_type']; ?> </p>
                             </div>
-
 
                             <div class="form-group col-md-11">
                                 <label for="itemdescription"><b>Item Description</b></label>
@@ -135,6 +120,20 @@ require 'connection.php';
                                 <label for="Date Sold"><b>Date Sold</b></label>
                                 <p class="form-control"> <?= $row['date_sold']; ?> </p>
                             </div>
+
+                            <div class="form-group col-md-11">
+                                <label for="image"><b>Image of Jewelry</b></label>
+                                <p class="form-control"> <?= $row['image']; ?> </p> 
+
+                            </div>
+
+                            <?php
+                            $stockNo = $row['stock_no'];
+                            $sql=mysqli_query($con,"select image from inventorytbl where stock_no = $stockNo");
+                                while($row=mysqli_fetch_array($sql)){
+                                    echo "<img src='".$row['image']."' width='400' height='300' />"; // the problem is here, its just displaying img icon, not actual image 
+                                }
+                            ?>
                         </div>
                             <div class="mb-4">
                             <center> 

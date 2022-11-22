@@ -263,36 +263,30 @@ $result = $statement->fetchAll();
 
     <script>
 
-      
-        $(document).ready(function() {
-            $('.input-daterange').datepicker({
-            todayBtn:'linked',
-            format: "yyyy-mm-dd",
-            autoclose: true
-          });
-          fetch_data('no');
-          function fetch_data(is_date_search, start_date='', end_date='')
-          {
-            var dataTable = $('#uuu').DataTable{
-              'pagingType': 'full_numbers',
-                'lengthMenu': [
-                    [10, 25, 50, -1],
-                    [10, 25, 50, 'All']
-                ],
-                responsive: true,
-                language: {
-                    search: '_INPUT_',
-                    searchPlaceholder: 'Search Data',
-                }
-                data:{
-                      is_date_search:is_date_search, start_date:start_date, end_date:end_date
-                    }
 
+$(document).ready(function () {
+    $('.input-daterange').datepicker({
+    todayBtn:'linked',
+    format: "yyyy-mm-dd",
+    autoclose: true
+  });
 
-            }
-          }
-        });
-    </script>
+  var dataTable = $('#uuu').DataTable({
+    'pagingType': 'full_numbers',
+        'lengthMenu': [
+            [10, 25, 50, -1],
+            [10, 25, 50, 'All']
+        ],
+        responsive: true,
+        language: {
+            search: 'INPUT',
+            searchPlaceholder: 'Search Data',
+        }
+
+    });
+  });
+</script>
+
 
 </body>
 </html>

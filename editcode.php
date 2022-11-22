@@ -8,6 +8,7 @@ session_start();
     {   
         $stock_no = $_POST['stock_no'];
         $item_type = $_POST['item_type'];
+        $image = $_POST['image'];
         $itemdescription = $_POST['itemdescription'];
         $karat_gold = $_POST['karat_gold'];
         $kindofstone = $_POST['kindofstone'];
@@ -16,7 +17,7 @@ session_start();
         $tagprice = $_POST['tagprice'];
         $date_sold= $_POST['date_sold'];
 
-        $query = "UPDATE inventorytbl SET item_type='$item_type', itemdescription='$itemdescription', karat_gold='$karat_gold', kindofstone=' $kindofstone', weight='$weight', itemqty='$itemqty', tagprice='$tagprice', date_sold='$date_sold' WHERE stock_no='$stock_no'  ";
+        $query = "UPDATE inventorytbl SET item_type='$item_type', image ='$image', itemdescription='$itemdescription', karat_gold='$karat_gold', kindofstone=' $kindofstone', weight='$weight', itemqty='$itemqty', tagprice='$tagprice', date_sold='$date_sold' WHERE stock_no='$stock_no'  ";
         $query_run = mysqli_query($con, $query);
 
         if($query_run)
