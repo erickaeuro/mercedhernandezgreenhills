@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2022 at 01:07 PM
+-- Generation Time: Nov 24, 2022 at 06:09 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -87,6 +87,7 @@ INSERT INTO `customertbl` (`customer_no`, `first_name`, `middle_name`, `last_nam
 
 CREATE TABLE `inventorytbl` (
   `stock_no` int(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
   `item_type` varchar(255) NOT NULL,
   `itemdescription` text NOT NULL,
   `karat_gold` varchar(255) NOT NULL,
@@ -103,13 +104,13 @@ CREATE TABLE `inventorytbl` (
 -- Dumping data for table `inventorytbl`
 --
 
-INSERT INTO `inventorytbl` (`stock_no`, `item_type`, `itemdescription`, `karat_gold`, `kindofstone`, `weight`, `itemqty`, `tagprice`, `date_sold`, `move`, `date_created`) VALUES
-(1, 'Bracelet', 'Chain Bracelet', '18', ' Gold', '3.7', 6, '600.00', '2022-10-04', 1, '2022-10-16 15:57:34'),
-(2, 'Pendant', 'Medal Pendant', '18', 'Diamond', '3.1', 1, '500.00', '0000-00-00', 0, '2022-10-15 16:36:32'),
-(3, 'Ring', ' Heart Ring', '20', 'Red Ruby', '4', 1, '7000.00', '0000-00-00', 1, '2022-10-16 15:57:37'),
-(6, 'Bracelet', 'Chain Bracelet', '18', 'Silver', '4', 4, '1000.00', '0000-00-00', 1, '2022-10-15 16:58:30'),
-(7, 'Ring', ' Heart Ring', '24', 'Diamond', '5', 1, '7000.00', '0000-00-00', 0, '2022-10-15 16:25:00'),
-(9, 'Necklace', 'A4', '20', 'Sapphire', '176', 1, '12000.00', '2022-10-17', 1, '2022-10-21 12:18:48');
+INSERT INTO `inventorytbl` (`stock_no`, `image`, `item_type`, `itemdescription`, `karat_gold`, `kindofstone`, `weight`, `itemqty`, `tagprice`, `date_sold`, `move`, `date_created`) VALUES
+(1, '', 'Bracelet', 'Chain Bracelet', '18', ' Gold', '3.7', 6, '600.00', '2022-10-04', 1, '2022-10-16 15:57:34'),
+(2, '', 'Pendant', 'Medal Pendant', '18', 'Diamond', '3.1', 1, '500.00', '0000-00-00', 0, '2022-10-15 16:36:32'),
+(3, '', 'Ring', ' Heart Ring', '20', 'Red Ruby', '4', 1, '7000.00', '0000-00-00', 1, '2022-10-16 15:57:37'),
+(6, '', 'Bracelet', 'Chain Bracelet', '18', 'Silver', '4', 4, '1000.00', '0000-00-00', 1, '2022-10-15 16:58:30'),
+(7, '', 'Ring', ' Heart Ring', '24', 'Diamond', '5', 1, '7000.00', '0000-00-00', 0, '2022-10-15 16:25:00'),
+(9, '', 'Necklace', 'A4', '20', 'Sapphire', '176', 1, '12000.00', '2022-10-17', 1, '2022-10-21 12:18:48');
 
 -- --------------------------------------------------------
 
@@ -209,7 +210,8 @@ CREATE TABLE `loantbl` (
 INSERT INTO `loantbl` (`loan_id`, `customer_no`, `item_type`, `item_desc`, `appraised_value`, `principal`, `interest`, `date_loan_granted`, `maturity_date`, `expiry_date`, `renewal_due`, `total_amt_paid`, `principal_due`, `loan_status`) VALUES
 (1016, 6, 'Necklace', 'Ruby', 10000, 1500, '4.00', '2022-10-30', '2022-11-30', '2022-12-30', 60, 1740, 1500, 'Redeemed'),
 (1017, 4, 'Wrist Watch', 'Rolex na Leather', 5000, 800, '4.00', '2022-11-18', '2022-12-18', '2023-01-18', 29, 666, 722, 'Active Loan'),
-(1021, 1, 'Bracelet', 'hi', 10000, 1500, '4.00', '2022-11-20', '2022-12-20', '2023-01-20', 57, 60, 1420, 'Active Loan');
+(1021, 1, 'Bracelet', 'hi', 10000, 1500, '4.00', '2022-11-20', '2022-12-20', '2023-01-20', 57, 60, 1420, 'Active Loan'),
+(1023, 7, 'Bracelet', 'asdasda', 10000, 1500, '4.00', '2022-11-22', '2022-12-22', '2023-01-22', 0, 0, 0, 'Active Loan');
 
 -- --------------------------------------------------------
 
@@ -232,7 +234,8 @@ CREATE TABLE `pawntickettbl` (
 --
 
 INSERT INTO `pawntickettbl` (`pawnticketno`, `loan_id`, `date_paid`, `amount_paid`, `transactiontype`, `loan_stat`, `renewal_paid`) VALUES
-(46, 1021, '2022-11-20', 60, 'Renewal', 'Active Loan', 60);
+(46, 1021, '2022-11-20', 60, 'Renewal', 'Active Loan', 60),
+(48, 1023, '2022-11-22', 60, 'Renewal', 'Active Loan', 60);
 
 -- --------------------------------------------------------
 
@@ -251,7 +254,7 @@ CREATE TABLE `users` (
   `contactno` varchar(11) NOT NULL,
   `address` varchar(255) NOT NULL,
   `usertype` varchar(255) NOT NULL,
-  `userstatus` varchar(255) NOT NULL,
+  `status` int(1) NOT NULL,
   `cname` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -259,10 +262,10 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `email`, `password`, `security_qstn`, `security_ans`, `name`, `contactno`, `address`, `usertype`, `userstatus`, `cname`) VALUES
-(31, 'mizzy', 'mizzycapistrano@gmail.com', '0505c13e3b34381c10af15aea3afc46b', 'What is the name of your favorite pet?', 'calvin', '', '09525251515', 'General Trias Cavite', 'Inventory Clerk', 'Inactive', 'Mizzy Capistrano'),
-(33, 'senantreal', 'senantreal@gmail.com', 'd59c56b34c461e906f97917812a9155a', 'What was your favorite food as a child?', 'Adobo', '', '', '', 'Admin', 'Active', ''),
-(34, 'Admin', 'admin@gmail.com', '0192023a7bbd73250516f069df18b500', 'What is the name of your favorite pet?', 'mizzy', '', '', '', '', 'Active', '');
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `security_qstn`, `security_ans`, `name`, `contactno`, `address`, `usertype`, `status`, `cname`) VALUES
+(31, 'mizzy', 'mizzycapistrano@gmail.com', '0505c13e3b34381c10af15aea3afc46b', 'What is the name of your favorite pet?', 'calvin', '', '09525251515', 'General Trias Cavite', 'Inventory Clerk', 0, 'Mizzy Capistrano'),
+(33, 'senantreal', 'senantreal@gmail.com', 'd59c56b34c461e906f97917812a9155a', 'What was your favorite food as a child?', 'Adobo', '', '', '', 'Admin', 0, ''),
+(34, 'Admin', 'admin@gmail.com', '0192023a7bbd73250516f069df18b500', 'What is the name of your favorite pet?', 'mizzy', '', '', '', '', 0, '');
 
 --
 -- Indexes for dumped tables
@@ -356,13 +359,13 @@ ALTER TABLE `inv_order_item`
 -- AUTO_INCREMENT for table `loantbl`
 --
 ALTER TABLE `loantbl`
-  MODIFY `loan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1022;
+  MODIFY `loan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1024;
 
 --
 -- AUTO_INCREMENT for table `pawntickettbl`
 --
 ALTER TABLE `pawntickettbl`
-  MODIFY `pawnticketno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `pawnticketno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `users`
