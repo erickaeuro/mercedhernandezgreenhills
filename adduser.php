@@ -16,15 +16,15 @@ function encrypthis($data,$key){
 
 if(isset($_POST['adduser']))
 {
-        $uname = $_POST['username'];
-        $pass = $_POST['password'];
-        $pass = encrypthis($pass, $key);
-        $emailadd = $_POST['email'];
-        $name = $_POST['name'];
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $password = encrypthis($pass, $key);
+        $email = $_POST['email'];
+        $cname = $_POST['cname'];
         $contactno = $_POST['contactno'];
         $address = $_POST['address'];
         $usertype = $_POST['usertype'];
-        $userstatus = $_POST['userstatus'];
+        $status = $_POST['status'];
 
 
     $equery = "SELECT * FROM users WHERE email='$emailadd' ";
@@ -39,7 +39,7 @@ if(isset($_POST['adduser']))
     {
         if($password === $cpassword)
         {
-            $query = "INSERT INTO users (username, password, email, name, contactno, address, usertype, userstatus) VALUES ('$uname','$pass','$emailadd','$name','$contactno','$address','$usertype','Active')";
+            $query = "INSERT INTO users (username, password, email, cname, contactno, address, usertype, status) VALUES ('$uname','$pass','$emailadd','$cname','$contactno','$address','$usertype','Active')";
             $query_run = mysqli_query($con, $query);
             
 

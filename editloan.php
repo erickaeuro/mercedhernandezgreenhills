@@ -70,7 +70,11 @@ require 'connection.php';
 
                             if(mysqli_num_rows($query_run) > 0)
                             {
-                                $row = mysqli_fetch_array($query_run);                                
+                                $row = mysqli_fetch_array($query_run);           
+                                $firstn = $row['first_name'];
+                                $middlen = $row['middle_name'];
+                                $lastn = $row['last_name'];
+                                $fulln = "$firstn $middlen $lastn";                     
                                 ?>
 
                             <form action="loaneditbtn.php" method="POST">
@@ -117,11 +121,17 @@ require 'connection.php';
                                 <input type="text" class="form-control" name="principal" value="<?= $row['principal']; ?>">
                             </div>
                         </div>
+                        <div class="wrapper">
+                            <div class="form-group col-md-12">
+                                <label for="principal"><b>Principal Due </b></label>
+                                <input type="text" class="form-control" name="principaldue" value="<?= $row['principal_due']; ?>">
+                            </div>
 
-                            <div class="form-group col-md-11">
+                            <div class="form-group col-md-12">
                                 <label for="interest"><b>Interest </b></label>
                                 <input type="text" class="form-control" name="interest" value="<?= $row['interest']; ?>">
                             </div>
+                        </div>
 
                             <div class="form-group col-md-11">
                                 <label for="Date Loan"><b>Date Loan Granted</b></label>
