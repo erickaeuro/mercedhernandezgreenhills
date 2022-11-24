@@ -28,7 +28,7 @@
         if($amtpay >= $renpay){
             
             if($val2['amount_paid'] > $amtpay){
-                $paydeduct = $val2['amount_paid'] - $amtpay;            
+                $paydeduct = $amtpay - $renpay;            
                 $transact = $val['principal_due'] + $paydeduct;
                 $payupdate = $val['total_amt_paid'] - ($val2['amount_paid'] - $amtpay);
                 $renew = $transact * 0.04;
@@ -42,7 +42,7 @@
             }
             
         
-            
+             
             $updateque = "UPDATE loantbl SET total_amt_paid='$payupdate', principal_due='$transact', renewal_due='$renew' WHERE loan_id='$id'";
             $query_run2 = mysqli_query($con, $updateque);
     

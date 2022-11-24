@@ -68,7 +68,7 @@
                             
                             <div class="form-group col-md-11">
                                 <label for="image"><b>Image of Jewelry</b></label>
-                                <input type="file" class="form-control" name="image" placeholder="Select a file to upload" required>
+                                <input type="file" class="form-control" name="image" placeholder="Select a file to upload">
                             </div>
 
                             <div class="form-group col-md-11">

@@ -5,10 +5,12 @@
 <html>
 <head>
   <title>Forgot password</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="styless.css">
 </head>
 <body>
-
+<?php
+error_reporting(0);
+?>
 
   <div class="header">
   	<h2>Forgot Password</h2>

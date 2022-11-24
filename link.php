@@ -17,7 +17,7 @@ if(isset($_POST["forgotpassword"])){
     $mail->Host ='smtp.gmail.com';
     $mail->SMTPAuth = true;
     $mail->Username = 'capistranoerickaeuro@gmail.com';
-    $mail->Password = 'afnpchdzqxvwijeo';
+    $mail->Password = 'crywecyckootocfm';
     $mail->SMTPSecure = 'tls';
     $mail->SMTPOptions = array(
         'ssl' => array(
@@ -28,7 +28,7 @@ if(isset($_POST["forgotpassword"])){
     );
     $mail->Port= 587;
     
-    $mail->setFrom('mercedhernandez645@gmail.com', 'capistranoerickaeuro@gmail.com');
+    $mail->setFrom('mercedhernandez645@gmail.com');
 
     $mail->addAddress($_POST["email"]);
 
