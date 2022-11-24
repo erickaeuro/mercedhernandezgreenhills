@@ -51,8 +51,24 @@ if (isset($_GET['id'])){
      $item_desc = $row['item_desc'];
      $principal = $row ['principal'];
      $appraised_value = $row['appraised_value'];
-     $address = $row['address'];
-     $cpnum = $row['cpnum'];
+
+      //PUT DECRYPTION FUNCTION HERE
+      $key = 'qkwjdiw239&&jdafweihbrhnan&^%$ggdnawhd4njshjwuuO';
+      function decryptthis($data, $key){
+        $encryption_key = base64_decode($key);
+        list($encryption_data, $iv) = array_pad(explode('::',base64_decode($data),2),2,null);
+        return openssl_decrypt($encryption_data, 'aes-256-cbc',$encryption_key,0,$iv);
+      }
+
+      foreach($query_run as $row)
+      {
+        $addr = $row['address'];
+        $cpn = $row['cpnum'];
+
+        //DECRYPT VARIBLES HERE WITH THE RETURN OF DECRYPTION FUNCTION
+        $Address = decryptthis($addr, $key);
+        $cpnum = decryptthis($cpn, $key);
+        
 
 }
      
@@ -123,7 +139,7 @@ $pdf->Cell(51,3,'Mr./Ms./Miss: '.$fulln.'',0,1);
 $pdf->Ln(2);
 $pdf->Cell(270, 3, '(Name Of Pawner)',0,1,'C');
 $pdf->Ln(2);
-$pdf->Cell(51,3,'a resident of '.$address.'__________________________________',0,0);
+$pdf->Cell(51,3,'a resident of '.$Address.'__________________________________',0,0);
 $pdf->Ln(10);
 $pdf->Cell(51,3,'TIN: ________________________________________ Business Style _______________________________________________',0,0);
 $pdf->Ln(10);
@@ -199,3 +215,4 @@ ob_start();
 // Close and output PDF document
 $pdf->Output('pawnticket.pdf', 'I');
 
+}
