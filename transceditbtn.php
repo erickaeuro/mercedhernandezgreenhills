@@ -43,32 +43,21 @@
             }
             
         
-            
-            $updateque = "UPDATE loantbl SET total_amt_paid='$payupdate',  renewal_due='$renew' WHERE loan_id='$id'";
-            $query_run2 = mysqli_query($con, $updateque);
-    
-            $query = "UPDATE pawntickettbl SET date_paid = '$datepaid', amount_paid='$amtpay', transactiontype = '$transac' WHERE pawnticketno = '$ticketno' ";
-            $query_run = mysqli_query($con, $query);
-    
-            if($query_run && $query_run2)
-            {
-                $_SESSION['addstatus'] = "Ticket Edited Successfully!";
-                header("Location:transaction.php");
-            }
-            else
-            {
-                echo '<script> alert("Data Not Updated"); </script>';
-            }
+        $updateque = "UPDATE loantbl SET total_amt_paid='$payupdate', total_amt_due='$transact' WHERE loan_id='$id'";
+        $query_run2 = mysqli_query($con, $updateque);
 
-        /*}else{
-            $_SESSION['addstatus'] = "Amount Pay not enough for Renewal due!";
-            header("Location:transactionedit.php?id=$ticketno");
-        }*/
-    
+        $query = "UPDATE pawntickettbl SET date_paid = '$datepaid', amount_paid='$amtpay', transactiontype = '$transac' WHERE pawnticketno = '$ticketno' ";
+        $query_run = mysqli_query($con, $query);
 
-
-
-        
+        if($query_run && $query_run2)
+        {
+            $_SESSION['addstatus'] = "Ticket Edited Successfully!";
+            header("Location:transaction.php");
+        }
+        else
+        {
+            echo '<script> alert("Data Not Updated"); </script>';
+        }
     }
 
 ?>

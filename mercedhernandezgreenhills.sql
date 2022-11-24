@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2022 at 01:07 PM
--- Server version: 10.4.20-MariaDB
--- PHP Version: 8.0.9
+-- Generation Time: Nov 22, 2022 at 08:39 PM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -41,9 +41,8 @@ CREATE TABLE `auctiontbl` (
 --
 
 INSERT INTO `auctiontbl` (`auctionid`, `item_type`, `item_desc`, `price`, `date_sold`, `status`) VALUES
-(15, 'Pendant', 'Family Heirloom', 4100, '2022-10-16', 'Sold'),
-(16, 'Ring', 'Ruby Ring', 4100, '2022-10-19', 'Sold'),
-(18, 'Wrist Watch', 'Rolex na Leather', 5000, NULL, 'Available');
+(1, '', '', 0, NULL, 'Available'),
+(2, '', '', 0, NULL, 'Available');
 
 -- --------------------------------------------------------
 
@@ -67,7 +66,7 @@ CREATE TABLE `customertbl` (
 --
 
 INSERT INTO `customertbl` (`customer_no`, `first_name`, `middle_name`, `last_name`, `address`, `cpnum`, `birthdate`, `valid_id`) VALUES
-(1, 'Ericka Euro ', 'Abuan', 'Capistrano', 'Manila', '09123245566', '2004-11-30', 'capistrano.png'),
+(1, 'Ericka Euro ', 'Abuan', 'Capistrano', 'Manila', '09123245566', '2004-11-30', 'sample1.png'),
 (2, 'Jan Earl Benedict', 'DelaCruz', 'Tamayo', 'Makati', '0915245533', '2004-12-30', 'R.png'),
 (3, 'Mizzy', 'Capistrano\r\n', 'Antonio', 'General Trias Cavite', '09123245566', '2004-07-31', '306513605_622713459293437_8413018732872427529_n.jpg'),
 (4, 'Sean Raphael', 'Arellano', 'Antonio', 'Sampaloc Manila ', '09164637435', '2000-09-25', '305157510_6170927152924171_7857187867609547983_n.jpg'),
@@ -75,9 +74,7 @@ INSERT INTO `customertbl` (`customer_no`, `first_name`, `middle_name`, `last_nam
 (6, 'Analie', NULL, 'Caindoy', 'WFNTM2xHTS8xQ290cnpMMkJmeEdxUXdoeGp1RTNYdjVoVjE4Wk1KVU1lMnNMOHNndytjckw4cm1PMDBVano5YTo6szr+YcrWxLkoLOLxSt272Q==', 'THZmVUZEY2x', '1977-06-07', 'ZHczNHZMU1ZSeUw3aXdNdWtsNXB6Q0M2UDVnVUJDTnR2Z3ZCNHZZeXNpZDFzWGI2Tm1GT3BNT1FVSXZkS3dWS0VZTEdCUitwUXlTOC9haHB3aDhrVXc9PTo6OOxDia9KWgQPyXD4elQH5Q=='),
 (7, 'Nicole', 'Marie', 'Nicolas', 'VDdZQVlUQUI1NTJLWTJyOFR4NGwvR1F5bzdRWmR1MWRsMWpDR3FzWWZ5ND06OtVynsxDlIv4K8vaQbhTI1M=', 'UXhwNGJ5WTV', '2004-12-01', 'Y0hnSTJjeE1OdmdPQjMzeDJpc2h0a3pFL0pWdUF6cm43NHp0WnFhRnFraz06Or1JNexVHt4sWKqpo7sw1jg='),
 (8, 'Adrian', 'MIDDLE NAME', 'Solera', 'ZmVMVnppMVkyTEROWVUwMzd2ckgrZz09OjrZiLuyaN3fbBcLWuAaZAKw', 'MGJPb3hmbk1', '2004-12-08', 'RGsrd3k0T2dJTTA1TmcvWHdaVW1EanNkejJ4Zjl6RWVPNFgvMWxnNkhuZz06Ot06wh6VVPtJBE/i5JWhAS0='),
-(9, 'Charles', 'MIDDLE NAME', 'Abiog', 'YXVydjJWbTBoRjNhSzhnR1M2Z3NQdz09Ojo8OqAQf02EP4F8saqlEOOq', 'QmN1QjJlYUh', '2004-01-06', ''),
-(26, 'Ericka Euro', 'Abuan', 'Capistrano', 'WSt4S1lSdW5GMFJRTlptSS80ZFYvUT09Ojq4DhNMrjv6J2/vuc0Khtql', 'L2dLcVB4T1U', '2004-11-30', 'U0tqWTFST1cwTFN1Zm9RRkNTYWtYME1CU2VsVGU1OVV2T2RPcUF0RFBHc1BxNnhOSUtRRGxtenY0V21DQUlMZjo6A09Gqzjml6nBP/ejk8qxqA=='),
-(27, 'Sean', 'Raphael', 'Capistrano', 'U0ZBNUlud3h1SEVJVHd6SU41eEJyUEZvRk9FSmIxNlppNlVGdVJhaEc5RT06OghahiTIxqAjOsPdFSV6Hi4=', 'WDg0czJnL2N', '2001-10-25', 'ZEVrODU0T2JUKzAxc3M0c0xtVCtqeVl5TU5oQTlhWW1EUDI1Ym5LT0o2TTA5eEdBSXpsNjVsRmJoN3p2ZStFMTo6h+WN9WjNgNPlUn9ItNe7vw==');
+(9, 'Charles', 'MIDDLE NAME', 'Abiog', 'YXVydjJWbTBoRjNhSzhnR1M2Z3NQdz09Ojo8OqAQf02EP4F8saqlEOOq', 'QmN1QjJlYUh', '2004-01-06', '');
 
 -- --------------------------------------------------------
 
@@ -88,6 +85,7 @@ INSERT INTO `customertbl` (`customer_no`, `first_name`, `middle_name`, `last_nam
 CREATE TABLE `inventorytbl` (
   `stock_no` int(255) NOT NULL,
   `item_type` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
   `itemdescription` text NOT NULL,
   `karat_gold` varchar(255) NOT NULL,
   `kindofstone` varchar(255) NOT NULL,
@@ -103,13 +101,21 @@ CREATE TABLE `inventorytbl` (
 -- Dumping data for table `inventorytbl`
 --
 
-INSERT INTO `inventorytbl` (`stock_no`, `item_type`, `itemdescription`, `karat_gold`, `kindofstone`, `weight`, `itemqty`, `tagprice`, `date_sold`, `move`, `date_created`) VALUES
-(1, 'Bracelet', 'Chain Bracelet', '18', ' Gold', '3.7', 6, '600.00', '2022-10-04', 1, '2022-10-16 15:57:34'),
-(2, 'Pendant', 'Medal Pendant', '18', 'Diamond', '3.1', 1, '500.00', '0000-00-00', 0, '2022-10-15 16:36:32'),
-(3, 'Ring', ' Heart Ring', '20', 'Red Ruby', '4', 1, '7000.00', '0000-00-00', 1, '2022-10-16 15:57:37'),
-(6, 'Bracelet', 'Chain Bracelet', '18', 'Silver', '4', 4, '1000.00', '0000-00-00', 1, '2022-10-15 16:58:30'),
-(7, 'Ring', ' Heart Ring', '24', 'Diamond', '5', 1, '7000.00', '0000-00-00', 0, '2022-10-15 16:25:00'),
-(9, 'Necklace', 'A4', '20', 'Sapphire', '176', 1, '12000.00', '2022-10-17', 1, '2022-10-21 12:18:48');
+INSERT INTO `inventorytbl` (`stock_no`, `item_type`, `image`, `itemdescription`, `karat_gold`, `kindofstone`, `weight`, `itemqty`, `tagprice`, `date_sold`, `move`, `date_created`) VALUES
+(1, 'Bracelet', '', 'Chain Bracelet', '18', ' Gold', '3.7', 6, '600.00', '2022-10-04', 1, '2022-10-08 11:15:22'),
+(2, 'Pendant', '', 'Medal Pendant', '18', 'Diamond', '3.1', 1, '500.00', '0000-00-00', 1, '2022-10-08 11:15:22'),
+(3, 'Ring', '', ' Heart Ring', '20', 'Red Ruby', '4', 1, '7000.00', '0000-00-00', 1, '2022-10-08 11:15:22'),
+(4, 'Pendant', '', 'Medal Pendant', '18', ' Gold', '2.20', 2, '500.00', '2022-10-06', 1, '2022-10-08 11:15:22'),
+(6, 'Bracelet', '', 'Flower Bracelet', '18', '  Silver', '4', 4, '1000.00', '0000-00-00', 0, '2022-11-22 18:35:19'),
+(7, 'Ring', '', ' Heart Ring', '24', 'Diamond', '5', 1, '7000.00', '0000-00-00', 1, '2022-10-09 19:04:23'),
+(9, 'Bracelet', '', 'DSADADA', '18', 'Gold', '3.2', 1, '1000.00', '0000-00-00', 0, '0000-00-00 00:00:00'),
+(10, 'Earrings', '', 'Diamond Earrings', '24', 'Diamond', '3.30', 1, '7000.00', '0000-00-00', 0, '0000-00-00 00:00:00'),
+(11, 'Earrings', '', 'Diamond Square', '18', 'Diamond', '4', 1, '10000.00', '0000-00-00', 0, '0000-00-00 00:00:00'),
+(12, 'Earrings', 'earrings.jpg', 'DIAMOND', '18', '  Diamond', '4', 1, '10000.00', '0000-00-00', 0, '2022-11-22 18:45:46'),
+(13, 'Bracelet', '', 'gdgsg', '18', 'Gold', '5', 1, '2500.00', '0000-00-00', 0, '0000-00-00 00:00:00'),
+(14, 'dasdada', '', '24q4q', '12', 'Gold', '6', 1, '2500.00', '0000-00-00', 0, '0000-00-00 00:00:00'),
+(15, 'Bracelet', '', 'Flower Bracelet', '18', 'Gold', '7', 1, '20000.00', '0000-00-00', 0, '0000-00-00 00:00:00'),
+(16, 'Earring', '', '', '18', ' Diamond', '8', 2, '12000.00', '2022-11-29', 0, '2022-11-22 19:02:32');
 
 -- --------------------------------------------------------
 
@@ -207,9 +213,10 @@ CREATE TABLE `loantbl` (
 --
 
 INSERT INTO `loantbl` (`loan_id`, `customer_no`, `item_type`, `item_desc`, `appraised_value`, `principal`, `interest`, `date_loan_granted`, `maturity_date`, `expiry_date`, `renewal_due`, `total_amt_paid`, `principal_due`, `loan_status`) VALUES
-(1016, 6, 'Necklace', 'Ruby', 10000, 1500, '4.00', '2022-10-30', '2022-11-30', '2022-12-30', 60, 1740, 1500, 'Redeemed'),
-(1017, 4, 'Wrist Watch', 'Rolex na Leather', 5000, 800, '4.00', '2022-11-18', '2022-12-18', '2023-01-18', 29, 666, 722, 'Active Loan'),
-(1021, 1, 'Bracelet', 'hi', 10000, 1500, '4.00', '2022-11-20', '2022-12-20', '2023-01-20', 57, 60, 1420, 'Active Loan');
+(1003, 8, 'Pendant', 'Golden Pendant', 4100, 900, '5.00', '2022-10-14', '2022-11-14', '2023-01-14', 0, 315, 0, 'Active Loan'),
+(1004, 5, 'Wrist Watch', 'Rolex', 2000, 400, '5.00', '2022-10-14', '2022-11-14', '2023-01-14', 0, 0, 0, 'Active Loan'),
+(1005, 2, 'Bracelet', 'Cool Colored Bracelet', 3030, 600, '5.00', '2022-10-15', '2022-11-15', '2023-01-15', 0, 0, 0, 'Active Loan'),
+(1006, 6, 'Ring', 'Ruby Ring', 5000, 1100, '5.00', '2022-10-15', '2022-11-15', '2023-01-15', 0, 0, 0, 'Active Loan');
 
 -- --------------------------------------------------------
 
@@ -232,7 +239,8 @@ CREATE TABLE `pawntickettbl` (
 --
 
 INSERT INTO `pawntickettbl` (`pawnticketno`, `loan_id`, `date_paid`, `amount_paid`, `transactiontype`, `loan_stat`, `renewal_paid`) VALUES
-(46, 1021, '2022-11-20', 60, 'Renewal', 'Active Loan', 60);
+(10, 1003, '2022-10-14', 500, 'Renewal', '', 0),
+(12, 1003, '2022-10-14', 315, 'Renewal', '', 0);
 
 -- --------------------------------------------------------
 
@@ -245,6 +253,7 @@ CREATE TABLE `users` (
   `username` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
+  `cpassword` varchar(255) NOT NULL,
   `security_qstn` tinytext NOT NULL,
   `security_ans` tinytext NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -259,10 +268,10 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `email`, `password`, `security_qstn`, `security_ans`, `name`, `contactno`, `address`, `usertype`, `userstatus`, `cname`) VALUES
-(31, 'mizzy', 'mizzycapistrano@gmail.com', '0505c13e3b34381c10af15aea3afc46b', 'What is the name of your favorite pet?', 'calvin', '', '09525251515', 'General Trias Cavite', 'Inventory Clerk', 'Inactive', 'Mizzy Capistrano'),
-(33, 'senantreal', 'senantreal@gmail.com', 'd59c56b34c461e906f97917812a9155a', 'What was your favorite food as a child?', 'Adobo', '', '', '', 'Admin', 'Active', ''),
-(34, 'Admin', 'admin@gmail.com', '0192023a7bbd73250516f069df18b500', 'What is the name of your favorite pet?', 'mizzy', '', '', '', '', 'Active', '');
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `cpassword`, `security_qstn`, `security_ans`, `name`, `contactno`, `address`, `usertype`, `userstatus`, `cname`) VALUES
+(31, 'ericka', 'capistranoerickaeuro@gmail.com', '0505c13e3b34381c10af15aea3afc46b', '', 'What is the name of your favorite pet?', 'calvin', '', '09525251515', 'General Trias Cavite', 'Inventory Clerk', 'Inactive', 'Mizzy Capistrano'),
+(33, 'senantreal', 'senantreal@gmail.com', 'd59c56b34c461e906f97917812a9155a', '', 'What was your favorite food as a child?', 'Adobo', '', '', '', '', 'Active', ''),
+(34, 'Admin', 'admin1@gmail.com', '0192023a7bbd73250516f069df18b500', '', 'What is the name of your favorite pet?', 'calvin', '', '', '', '', 'Active', '');
 
 --
 -- Indexes for dumped tables
@@ -326,19 +335,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `auctiontbl`
 --
 ALTER TABLE `auctiontbl`
-  MODIFY `auctionid` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `auctionid` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `customertbl`
 --
 ALTER TABLE `customertbl`
-  MODIFY `customer_no` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `customer_no` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `inventorytbl`
 --
 ALTER TABLE `inventorytbl`
-  MODIFY `stock_no` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `stock_no` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `inv_order`
@@ -356,13 +365,13 @@ ALTER TABLE `inv_order_item`
 -- AUTO_INCREMENT for table `loantbl`
 --
 ALTER TABLE `loantbl`
-  MODIFY `loan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1022;
+  MODIFY `loan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1007;
 
 --
 -- AUTO_INCREMENT for table `pawntickettbl`
 --
 ALTER TABLE `pawntickettbl`
-  MODIFY `pawnticketno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `pawnticketno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `users`

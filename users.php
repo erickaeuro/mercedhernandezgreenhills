@@ -51,18 +51,17 @@
           </div>";
         }
 
-
-              if(isset($_SESSION['status']))
-              {
-                  ?>
-                      <div class="alert alert-success" role="alert" role="alert">
-                          <?= $_SESSION['status']; ?>
-                          <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">x</button>
-                      </div>
-                  <?php 
-                  unset($_SESSION['status']);
-              }
-        ?>
+ //EDIT & ADD ALERT//        
+ if(isset($_SESSION['status']))
+ {
+     ?>
+         <div class="alert alert-success" role="alert" role="alert">
+             <?= $_SESSION['status']; ?>
+             <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">x</button>
+         </div>
+     <?php 
+     unset($_SESSION['status']);
+ }?>
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
@@ -134,8 +133,18 @@
                         <td> <?php echo $row['contactno']; ?> </td>
                         <td> <?php echo $row['address']; ?> </td>
                         <td> <?php echo $row['usertype']; ?> </td>
-                        <td> <a href="users.php?id=<?= $row['id'];?>" name="userstatus" class="btn btn-success editbtn"><?php echo $row['userstatus']; ?></a> </td>
+                        <td> 
+                      <?php
+                      if($row['status']==1){
+                        echo '<p><a  href="status.php?id='.$row['id'].'&status=0 " class="btn btn-success">Enable</a></p>';
+                      }else{
+                        echo '<p><a href="status.php?id='.$row['id'].'&status=1 " class="btn btn-danger">Disable</a></p>';
+                      }
+                      ?>
+                          
+                      </td>
                         <td>
+
                             <a href="userview.php?id=<?= $row['id'];?>" class="btn text-white" style="background-color: #7FD2D4;">VIEW</a>
                             <a href="editinguser.php?id=<?= $row['id'];?>" class="btn text-white" style="background-color: #81C784">EDIT</a>
                             <a href="deleteuser.php?id=<?= $row['id']; ?>" name="del" class="btn text-white" style="background-color: #B0B0AB" onclick="return confirm('Are you sure you want to delete this record?')">DELETE</a>
@@ -153,47 +162,47 @@
                    
                   <?php
 
-                  if(isset($_GET['id']))
-                  {
-                      $redid = mysqli_real_escape_string ($con, $_GET['id']);
+               //   if(isset($_GET['id']))
+               //   {
+               //       $redid = mysqli_real_escape_string ($con, $_GET['id']);
 
                       //$query = "DELETE FROM users WHERE id='$redid'";
 
-                      $userstatus = $row['userstatus'];
+              //        $userstatus = $row['userstatus'];
 
-                      if($userstatus == "Active"){
+              //        if($userstatus == "Active"){
 
-                      $query = "UPDATE users set userstatus = 'Inactive' WHERE id='$redid'";
+              //        $query = "UPDATE users set userstatus = 'Inactive' WHERE id='$redid'";
 
-                      if(mysqli_query($con, $query))
-                      {
+              //        if(mysqli_query($con, $query))
+              //        {
                           //echo "<div class='alert alert-danger'>";
                           //header("Location:users.php");
-                          header("Refresh:0");
-                      }
-                      else
-                      {
-                          echo '<script> alert("User not Updated"); </script>';
-                      }
+            //              header("Refresh:0");
+             //         }
+             //         else
+             //         {
+             //             echo '<script> alert("User not Updated"); </script>';
+              //        }
 
-                      }
+              //        }
 
                       //ELSE
-                      else if($userstatus == "Inactive"){
-                      $query = "UPDATE users set userstatus = 'Active' WHERE id='$redid'";
+             //         else if($userstatus == "Inactive"){
+             //         $query = "UPDATE users set userstatus = 'Active' WHERE id='$redid'";
 
-                      if(mysqli_query($con, $query))
-                      {
+             //         if(mysqli_query($con, $query))
+             //         {
                           //echo "<div class='alert alert-danger'>";
                           //header("Location:users.php");
-                          header("Refresh:0");
-                      }
-                      else
-                      {
-                          echo '<script> alert("User not Updated"); </script>';
-                      }
-                      }                     
-                  }
+            //              header("Refresh:0");
+           //           }
+          //            else
+          //            {
+         //                 echo '<script> alert("User not Updated"); </script>';
+         //             }
+        //              }                     
+      //            }
 
 ?>
               </div>    

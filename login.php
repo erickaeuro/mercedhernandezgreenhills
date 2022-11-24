@@ -39,12 +39,12 @@ if(isset($_POST['login_user'])){
 	  $results = mysqli_query($db, $query);
 
 	while($row = mysqli_fetch_array($results)){
-		$user_status=$row['userstatus'];
+		$status=$row['status'];
 		$user=$row['username'];
     	$pass=$row['password'];		
 	}	
-
-	if($user_status == "Inactive"){array_push($errors, "User Deactivated");}
+	
+	if($status == "1"){array_push($errors, "User Deactivated");}
 
 	if (($user == $username) && ($pass == $enc_pass)){
 
@@ -55,12 +55,14 @@ if(isset($_POST['login_user'])){
 			$_SESSION['success'] = "Successfully Login";
 
 			if($authentication == "EMAIL"){
-				header("location:otp.php");
+				header("location:Email.php");
 			}
 
 			if($authentication == "MFA"){
 				header("location:indexsu.php");
 			}
+
+			if($status == "1"){array_push($errors, "User Deactivated");}
 
 			if($authentication == "SECURITY QUESTIONS"){
 				header("location:security_qstn.php");
@@ -118,7 +120,7 @@ if(isset($_POST['login_user'])){
 	<select name="authentication" id="authentication" class="authen">
 		<option disabled selected value="Select a Method">Select a Method</option>
 		<option value="MFA">MFA</option>
-		<!-- <option value="EMAIL">EMAIL</option> -->
+		<option value="EMAIL">EMAIL</option>
 		<!-- <option value="SECUIRTY QUESTIONS">SECUIRTY QUESTIONS</option> -->
 	</select>
 
