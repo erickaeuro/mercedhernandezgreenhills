@@ -23,7 +23,6 @@ if(isset($_POST['adduser']))
         $name = $_POST['name'];
         $contactno = $_POST['contactno'];
         $address = $_POST['address'];
-        $address = validate_street_address($address, $check_pattern);
         $usertype = $_POST['usertype'];
         $userstatus = $_POST['userstatus'];
 
