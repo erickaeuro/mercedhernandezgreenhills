@@ -17,11 +17,12 @@
         $datemat = $_POST['date_mat'];
         $dateexp = $_POST['date_expire'];        
         $status = $_POST['loan_status'];
+        $prindue = $_POST['principaldue']
         
         $renewal_due = $principal * 0.04;
         
 
-        $query = "UPDATE loantbl SET item_type='$item_type', item_desc='$item_desc', appraised_value='$appraisal', principal='$principal', renewal_due='$renewal_due', principal_due='$principal', interest='$interest', date_loan_granted='$dateloan',
+        $query = "UPDATE loantbl SET item_type='$item_type', item_desc='$item_desc', appraised_value='$appraisal', principal='$principal', renewal_due='$renewal_due', principal_due='$prindue', interest='$interest', date_loan_granted='$dateloan',
         maturity_date='$datemat', expiry_date='$dateexp',  loan_status='$status' WHERE loan_id = '$loan_id'";
         $query_run = mysqli_query($con, $query);
 
