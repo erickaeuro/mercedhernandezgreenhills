@@ -126,7 +126,7 @@
                                 <td> <?php echo $row['tagprice']; ?> </td>
                                 <td> <?php echo $row['date_sold']; ?> </td>
                                 <td>
-                                <a href="stockview.php?id=<?= $row['stock_no'];?>" class="btn text-white" style="background-color: #7FD2D4;">VIEW</a>
+                                <a href="soldstockview.php?id=<?= $row['stock_no'];?>" class="btn text-white" style="background-color: #7FD2D4;">VIEW</a>
                                 <a href="soldstockedit.php?id=<?= $row['stock_no'];?>" class="btn text-white" style="background-color: #81C784 ">EDIT</a>
                                 </td>
                             </tr>

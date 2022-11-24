@@ -119,7 +119,8 @@
                                                     ?>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-file-csv fa-2x text-gray-300"></i>
+                                           
+                                            <i class="fas fa-folder fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -152,13 +153,7 @@
                                                     ?>
                                                 </div>
                                                 </div>
-                                                <div class="col">
-                                                    <div class="progress progress-sm mr-2">
-                                                        <div class="progress-bar bg-info" role="progressbar"
-                                                            style="width: 100%" aria-valuenow="100" aria-valuemin="0"
-                                                            aria-valuemax="100"></div>
-                                                    </div>
-                                                </div>
+                                              
                                             </div>
                                         </div>
                                         <div class="col-auto">

@@ -2,7 +2,7 @@
 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
   <meta name="author" content="">
 
@@ -72,13 +72,13 @@
             <div class="row">
 
                     <div class="form-group col-md-11">
-                        <label for="uname">Username</label>
+                        <label for="username">Username</label>
                         <input type="text" class="form-control" name="username" placeholder="Enter Username" required>
                     </div>
 
                 <div class="wrapper">
                     <div class="form-group col-md-12">
-                        <label for="pass">Password</label>
+                        <label for="password">Password</label>
                         <input type="password" class="form-control" name="password" placeholder="Enter Password" required>
                     </div>
 
@@ -95,7 +95,7 @@
 
                     <div class="form-group col-md-11">
                         <label for="name">Complete Name</label>
-                        <input type="text" class="form-control" name="name" placeholder="Enter Complete Name" required>
+                        <input type="text" class="form-control" name="cname" placeholder="Enter Complete Name" required>
                     </div>
 
                     <div class="form-group col-md-11">
@@ -117,7 +117,7 @@
                                     <option value="Appraiser" selected="selected">Appraiser</option>
                                     <option value="Inventory Clerk" selected="selected">Inventory Clerk</option>
                                 </select>
-                            </div>  
+                    </div>  
 
                             <div class="mb-4">
                             <center> 

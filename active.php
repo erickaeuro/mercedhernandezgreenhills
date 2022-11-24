@@ -11,11 +11,11 @@ if(isset($_GET['id']))
 
     //$query = "DELETE FROM users WHERE id='$redid'";
  
-    $userstatus = $_POST['userstatus'];
+    $status = $_POST['status'];
 
-    if($userstatus == "Active"){
+    if($status == "Active"){
 
-    $query = "UPDATE users set userstatus = 'Inactive' WHERE id='$redid'";
+    $query = "UPDATE users set status = 'Inactive' WHERE id='$redid'";
 
     if(mysqli_query($con, $query))
     {
@@ -30,8 +30,8 @@ if(isset($_GET['id']))
     }
 
     //ELSE
-    else if($userstatus == "Inactive"){
-    $query = "UPDATE users set userstatus = 'Active' WHERE id='$redid'";
+    else if($status == "Inactive"){
+    $query = "UPDATE users set status = 'Active' WHERE id='$redid'";
 
     if(mysqli_query($con, $query))
     {
