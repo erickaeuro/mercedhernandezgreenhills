@@ -43,21 +43,22 @@ require 'connection.php';
         <!-- Topbar -->
         <?php include 'navbar.php'; ?>
         <!-- End of Topbar -->
+
 <style>
 
 .wrapper {
   display: grid;
-  grid-template-columns: 500px 550px;
+  grid-template-columns: 500px 560px;
 }
 
-</style> 
+</style>
 
         <div class="row">
             <div class="col-md-12">
             <div class="col d-flex justify-content-center">
                 <div class="card" style="width: 1200px;">
                     <div class="card-header">
-                        <h4><b>Edit Jewelry Stocks</b>                      
+                        <h4><b>View Jewelry Stocks</b>                      
                     </div>
                     <div class="card-body">
 
@@ -73,92 +74,72 @@ require 'connection.php';
                                 $row = mysqli_fetch_array($query_run);
                                 ?>
 
-                            <form action="editcode.php" method="POST">
-
-                            
-                            <input type="hidden" name="id" value='<?= $row['id']; ?>'>
-
                             <div class="form-group col-md-11">
                                 <label for="stock_no"><b>Stock No.</b></label>
-                                <input type="text" class="form-control" name="stock_no" accept=".jpg, .jpeg, .png" value="<?= $row['stock_no']; ?>" readonly>
+                                <p class="form-control"> <?= $row['stock_no']; ?>
                             </div>  
 
-                            <div class="form-group col-md-11">
+                            <div class="form-group col-md-12">
                                 <label for="itemtype"><b>Item Type</b></label>
-                                <input type="text" class="form-control" name="item_type" value="<?= $row['item_type']; ?>">
+                                <p class="form-control"> <?= $row['item_type']; ?> </p>
                             </div>
-                       
 
                             <div class="form-group col-md-11">
                                 <label for="itemdescription"><b>Item Description</b></label>
-                                <textarea rows="4" cols="80" class="form-control" name="itemdescription" value="<?= $row['itemdescription']; ?>" ></textarea>
+                                <p class="form-control"> <?= $row['itemdescription']; ?> </p>
                             </div>
-                           
+
                         <div class="wrapper">
                             <div class="form-group col-md-12">
                                 <label for="Karat-gold"><b>Karat/Gold</b></label>
-                                <input type="text" class="form-control" name="karat_gold" value="<?= $row['karat_gold']; ?>" >
+                                <p class="form-control"> <?= $row['karat_gold']; ?> </p>
                             </div>
 
                             <div class="form-group col-md-12">
                                 <label for="kindofstone"><b>Kind of Stone</b></label>
-                                <input type="text" class="form-control" name="kindofstone" value="<?= $row['kindofstone']; ?>" >
+                                <p class="form-control"> <?= $row['kindofstone']; ?> </p>
                             </div>
                         </div>
+
                             <div class="form-group col-md-11">
                                 <label for="weight"><b>Weight</b></label>
-                                <input type="text" class="form-control" name="weight" value="<?= $row['weight']; ?>" >
+                                <p class="form-control"> <?= $row['weight']; ?> </p>
                             </div>
 
                             <div class="form-group col-md-11">
                                 <label for="itemqty"><b>Item Quantity</b></label>
-                                <input type="number" class="form-control" name="itemqty" value="<?= $row['itemqty']; ?>" >
+                                <p class="form-control"> <?= $row['itemqty'];?> </p>
                             </div>
 
                             <div class="form-group col-md-11">
                                 <label for="tagprice"><b>Tag Price</b></label>
-                                <input type="text" class="form-control" name="tagprice" value="<?= $row['tagprice']; ?>" >
+                                <p class="form-control"> <?= $row['tagprice'];?> </p>
                             </div>
 
                             <div class="form-group col-md-11">
                                 <label for="Date Sold"><b>Date Sold</b></label>
-                                <input type="date" class="form-control" name="date_sold" value="<?= $row['date_sold']; ?>" >
+                                <p class="form-control"> <?= $row['date_sold']; ?> </p>
                             </div>
 
                             <div class="form-group col-md-11">
                                 <label for="image"><b>Image of Jewelry</b></label>
-                                <input type="file" class="form-control" name="image" value="<?=$row['image']; ?>">
+                                <p class="form-control"> <?= $row['image']; ?> </p> 
+
                             </div>
 
+                            <?php
+                            $stockNo = $row['stock_no'];
+                            $sql=mysqli_query($con,"select image from inventorytbl where stock_no = $stockNo");
+                                while($row=mysqli_fetch_array($sql)){
+                                    echo "<img src='".$row['image']."' width='400' height='300' />"; // the problem is here, its just displaying img icon, not actual image 
+                                }
+                            ?>
                         </div>
-                        <div class="mb-4">
+                            <div class="mb-4">
                             <center> 
-                            <a href="stocks.php"  class="btn text-white" style="background-color: #B0B0AB;">Back</a>
-                            <button type="button" class="btn text-white" style="background-color: #81C784;" data-bs-toggle="modal" data-bs-target="#EditModal">Edit Stocks</button> 
+                            <a href="soldstocks.php" class="btn text-white" style="background-color: #B0B0AB;">Back</a>
                             </center>
-                            </div>  
-                            
-                            <!--MODAL FOR EDIT-->
-                            <div class="modal" id="EditModal">
-                                    <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <!-- Modal Header -->
-                                        <div class="modal-header">
-                                        <h4 class="modal-title">Confirm Edit?</h4>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal">X</button>
-                                        </div>
-                                        <!-- Modal body -->
-                                        <div class="modal-body">
-                                        Do you want to save the changes?
-                                        </div>
-                                        <!-- Modal footer -->
-                                        <div class="modal-footer">
-                                        <button type="submit" name="editjewelry" class="btn text-white" style="background-color: #81C784;">Yes</button> 
-                                        <button type="button"  class="btn text-white" style="background-color: #B0B0AB;" data-bs-dismiss="modal">Close</button>
-                                        </div>
-                                    </div>
-                                    </div>
-                                </div>
+                            </div>
                         </form>
 
                         <?php

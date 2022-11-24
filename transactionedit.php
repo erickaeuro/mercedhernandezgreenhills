@@ -41,7 +41,7 @@ require 'connection.php';
       <div id="content">
 
         <!-- Topbar -->
-        <?php include '../navbar.php'; 
+        <?php include 'navbar.php'; 
          if(isset($_SESSION['addstatus']))
          {
              ?>

@@ -70,7 +70,11 @@ require 'connection.php';
 
                             if(mysqli_num_rows($query_run) > 0)
                             {
-                                $row = mysqli_fetch_array($query_run);                                
+                                $row = mysqli_fetch_array($query_run);           
+                                $firstn = $row['first_name'];
+                                $middlen = $row['middle_name'];
+                                $lastn = $row['last_name'];
+                                $fulln = "$firstn $middlen $lastn";                     
                                 ?>
 
                             <form action="loaneditbtn.php" method="POST">

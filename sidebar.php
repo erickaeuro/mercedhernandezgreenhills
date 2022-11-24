@@ -25,7 +25,7 @@
 
       </li>
            
-        <?php if ($_SESSION['username'] == "Appraiser"){
+        <?php if ($_SESSION['username'] == "Appraiser, appraiser, appraiser1, appraiser2022"){
             echo "
             <li class='nav-item'>
             <a class='nav-link collapsed' href='#' data-toggle='collapse' data-target='#collapseUtilities'
@@ -59,9 +59,9 @@
             }
         ?>
 
-        <?php if ($_SESSION['username'] == "Inventory Clerk"){
+        <?php if ($_SESSION['username'] == "InventoryClerk"){
         echo " <li class='nav-item'>
-        <a class='nav-link' href='' data-toggle='collapse' data-target='#collapseTwo' aria-expanded='true' aria-controls='collapseTwo'>
+        <a class='nav-link' href='#' data-toggle='collapse' data-target='#collapseTwo' aria-expanded='true' aria-controls='collapseTwo'>
           <i class='fas fa-boxes'></i>
           <span><b>Inventory</b></span></a>
           <div id='collapseTwo' class='collapse' aria-labelledby='headingTwo' data-parent='#accordionSidebar'>

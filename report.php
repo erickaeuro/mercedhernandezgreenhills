@@ -114,6 +114,8 @@ $result = $statement->fetchAll();
 
       <center>  
       <form method="post">
+
+      <div class="card-body">
       <div class="input-daterange">
 
       <div class="form-group col-md-4">
@@ -135,6 +137,7 @@ $result = $statement->fetchAll();
       </div>
 
     </div>
+</div>
     </center>
                 <div class="col-xl-12 col-lg-12">
                   <div class="card shadow mb-4 border-left-primary border-bottom-primary">

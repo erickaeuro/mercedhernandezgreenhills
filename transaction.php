@@ -127,11 +127,9 @@ error_reporting(0);
                                 <td> <?php echo $row['transactiontype']; ?> </td>
                                 <td> <?php echo $row['loan_stat']; ?> </td>
                                 <td>
-                                    <a href="transactionview.php?id=<?= $row['pawnticketno'];?>" class="btn text-white" style="background-color: #7FD2D4;">VIEW</a>
-                                    <a href="transactionedit.php?id=<?= $row['pawnticketno']?>" class="btn text-white" style="background-color: #81C784; "> EDIT </button>
-                                    <a href="generatepdf.php?id=<?= $row['loan_id']?>" class="btn text-white" style="background-color: #81C784;"> PRINT </button>
-                                    
-                                    
+                                    <a href="transactionview.php?id=<?= $row['pawnticketno'];?>" class="btn text-white" style="background-color: #7FD2D4;"> VIEW</a>
+                                    <a href="transactionedit.php?id=<?= $row['pawnticketno']?>" class="btn text-white" style="background-color: #81C784; "> EDIT </a>
+                                    <a href="generatepdf.php?id=<?= $row['loan_id']?>" class="btn text-white" style="background-color: #87578F;"> PRINT </a>  
                                 </td>
 
                                 <?php  

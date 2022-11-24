@@ -129,7 +129,7 @@
 
             ?>
                         <tr class="">
-                            <td> <?php echo $row['stock_no']; ?> </td>
+                            <td> <?php echo $row['stock_no']; ?> </td> 
                             <td> <?php echo $row['item_type']; ?> </td>
                             <td> <?php echo $row['itemdescription']; ?> </td>
                             <td> <?php echo $row['karat_gold']; ?> </td>
