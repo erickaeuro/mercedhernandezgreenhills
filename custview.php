@@ -63,6 +63,27 @@ require 'connection.php';
                     <div class="card-body">
 
                     <?php
+                     $key = 'qkwjdiw239&&jdafweihbrhnan&^%$ggdnawhd4njshjwuuO';
+                     function decryptthis($data, $key){
+                       $encryption_key = base64_decode($key);
+                       list($encryption_data, $iv) = array_pad(explode('::',base64_decode($data),2),2,null);
+                       return openssl_decrypt($encryption_data, 'aes-256-cbc',$encryption_key,0,$iv);
+                       
+                       foreach($query_run as $row)
+                       {
+                        
+                         $addr = $row['address'];
+                         $cpn = $row['cpnum'];
+                         $validID = $row['valid_id'];
+
+                         //DECRYPT VARIBLES HERE WITH THE RETURN OF DECRYPTION FUNCTION
+                         $Address = decryptthis($addr, $key);
+                         $contact = decryptthis($cpn, $key);
+                         $vad_id = decryptthis($validID, $key);
+
+
+                     }
+                    }
                         if(isset($_GET['id']))
                         {
                             $id = mysqli_real_escape_string($con, $_GET['id']);
@@ -99,12 +120,12 @@ require 'connection.php';
 
                             <div class="form-group col-md-11">
                                 <label for="address"><b>Address</b></label>
-                                <p class="form-control"> <?= $row['address']; ?> </p>
+                                <p class="form-control"> <?= decryptthis($row['address'], $key) ?> </p>
                             </div>
 
                             <div class="form-group col-md-11">
                                 <label for="cpnum"><b>Contact Number</b></label>
-                                <p class="form-control"> <?= $row['cpnum']; ?> </p>
+                                <p class="form-control"> <?= decryptthis($row['cpnum'], $key) ?> </p>
                             </div>
 
                             <div class="form-group col-md-11">
@@ -114,7 +135,7 @@ require 'connection.php';
 
                             <div class="form-group col-md-11">
                                 <label for="valid_id"><b>Valid ID</b></label>
-                                <p class="form-control"> <?= $row['valid_id']; ?> </p> 
+                                <p class="form-control"> <?= decryptthis($row['valid_id'], $key) ?> </p> 
                             </div>
 
                             <?php
