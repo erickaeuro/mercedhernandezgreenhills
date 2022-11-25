@@ -3,6 +3,15 @@
 error_reporting(0);
 session_start();
 
+$key = 'qkwjdiw239&&jdafweihbrhnan&^%$ggdnawhd4njshjwuuO';
+
+function encrypthis($data,$key){
+    $encryption_key = base64_decode($key);
+    $iv =openssl_random_pseudo_bytes(openssl_cipher_iv_length('aes-256-cbc'));
+    $encrypted = openssl_encrypt($data, 'aes-256-cbc', $encryption_key, 0, $iv);
+    return base64_encode($encrypted. '::'. $iv);
+ }
+
 //$conn = new mysqli("localhost","u228255941_root","Mhgpjdb123","u228255941_mhgpjdb");
 $conn = new mysqli("localhost","root","","mercedhernandezgreenhills");
 // $conn = new mysqli("localhost","root","","mercedhernandezgreenhills");
@@ -33,7 +42,7 @@ if(isset($_POST['login_user'])){
 		array_push($errors, "Authentication is required");
 	}
 
-	$enc_pass = md5($password);
+	$enc_pass = encrypthis($password, $key);
 
 	$query = "SELECT * FROM users WHERE username='$username' AND password='$enc_pass'";
 	  $results = mysqli_query($db, $query);
@@ -83,7 +92,7 @@ if(isset($_POST['login_user'])){
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
   <meta name="author" content="">
 
@@ -94,8 +103,9 @@ if(isset($_POST['login_user'])){
 </head>
 <body>
   <div class="header">
-  	<h2>Merced Hernandez Greenhills Pawnshop & Jewellery Login</h2>
+  	<h2>Merced Hernandez Greenhills Pawnshop & Jewellery Login</h2> 
   </div>
+
   <div class="container">
     <div class="row">
       <div class="col-lg-10 col-xl-10 mx-auto">
@@ -110,10 +120,12 @@ if(isset($_POST['login_user'])){
   		<label>Username</label>
   		<input type="text" name="username" >
   	</div>
+	
   	<div class="input-group">
   		<label>Password</label>
   		<input type="password" name="password">
   	</div>
+	
 	<div class="form-group lead">
 
 	<label for="authentication"><h3	>Please select authentication</h3></label>
@@ -131,9 +143,9 @@ if(isset($_POST['login_user'])){
 	  <p>
   		<a href="forgotpassword.php">Forgot passsword? </a>
      </p>
-  <!---	<p>
+  <p>
   	Not yet a member? <a href="register.php">Sign up</a>
-   </p> -->
+   </p> 
   </form>
   
 

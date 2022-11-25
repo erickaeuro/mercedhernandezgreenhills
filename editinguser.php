@@ -81,7 +81,7 @@ require 'connection.php';
             <form action="edituser.php" method="POST">
         
                 <input type="hidden" name="id" value='<?= $row['id']; ?>'>
-                <input type="hidden" name="userstatus" value='<?= $row['userstatus']; ?>'>
+                <input type="hidden" name="status" value='<?= $row['status']; ?>'>
 
                 <div class="wrapper">
                     <div class="form-group col-md-12">

@@ -12,11 +12,11 @@ session_start();
         $contactno = $_POST['contactno'];
         $address = $_POST['address'];
         $usertype = $_POST['usertype'];
-        $fullname = $_POST['cname'];
-        $userstatus = $_POST['userstatus'];
+        $cname = $_POST['cname'];
+        $status = $_POST['status'];
         //$name = $_POST['name'];
    
-        $query = "UPDATE users SET username='$uname', password='$pass', email='$emailadd', name='$name', contactno='$contactno', address='$address', usertype='$usertype', cname = '$fullname', userstatus = '$userstatus' WHERE id='$userid'";
+        $query = "UPDATE users SET username='$uname', password='$pass', email='$emailadd', contactno='$contactno', address='$address', usertype='$usertype', cname = '$fullname', status = '$status' WHERE id='$userid'";
         $query_run = mysqli_query($con, $query);
 
         if($query_run)
