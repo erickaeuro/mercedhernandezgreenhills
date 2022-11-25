@@ -131,7 +131,7 @@ require 'connection.php';
                             $stockNo = $row['stock_no'];
                             $sql=mysqli_query($con,"select image from inventorytbl where stock_no = $stockNo");
                                 while($row=mysqli_fetch_array($sql)){
-                                    echo "<img src='".$row['image']."' width='400' height='300' />"; // the problem is here, its just displaying img icon, not actual image 
+                                    echo "<img src='".$row['image']."' width='450' height='350' />"; // the problem is here, its just displaying img icon, not actual image 
                                 }
                             ?>
                         </div>

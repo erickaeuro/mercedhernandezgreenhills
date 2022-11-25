@@ -25,7 +25,7 @@
 
       </li>
            
-        <?php if ($_SESSION['username'] == "Appraiser, appraiser, appraiser1, appraiser2022"){
+        <?php if ($_SESSION['username'] == "Appraiser"){
             echo "
             <li class='nav-item'>
             <a class='nav-link collapsed' href='#' data-toggle='collapse' data-target='#collapseUtilities'
@@ -34,7 +34,6 @@
                 <span><b>Transactions</b></span>
             </a>
 
-            str_repeat('&nbsp;', 5); // adds 5 spaces
 
             <div id='collapseUtilities' class='collapse' aria-labelledby='headingUtilities' data-parent='#accordionSidebar'>
                 <div class='bg-white py-2 collapse-inner rounded'>

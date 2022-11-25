@@ -32,6 +32,7 @@ if(isset($_POST['addcustomer']))
     $cpnum = encrypthis($cpnum, $key);
     $BirthDate = $_POST['BirthDate'];
     $AgeVal = strtotime($BirthDate. "+ 18 years");
+    $valid_id = $_POST['valid_id'];
 }  
 
 //if age if 17 or younger error msg
@@ -39,7 +40,7 @@ if ($AgeVal > $today) {
     $_SESSION['custstatus'] = "Customer must be above 18 years old";
     header('Location: custadd.php');
 }else{
-    $query = "SELECT * FROM customertbl WHERE first_name = '$first_name' AND middle_name = '$middle_name' AND last_name = '$last_name' AND address = '$address' AND cpnum = '$cpnum' AND birthdate = '$BirthDate'";
+    $query = "SELECT * FROM customertbl WHERE first_name = '$first_name' AND middle_name = '$middle_name' AND last_name = '$last_name' AND address = '$address' AND cpnum = '$cpnum' AND birthdate = '$BirthDate' AND valid_id = '$valid_id'";
     $query_run = mysqli_query($con, $query);
 
         if(mysqli_affected_rows($con) == 0 ){

@@ -51,7 +51,7 @@ if (isset($_POST['reg_user'])) {
 
   // Finally, register user if there are no errors in the form
   if (count($errors) == 0) {
-  	$password = md5($password_1);//encrypt the password before saving in the database
+  	$password = md5(md5($password_1));//encrypt the password before saving in the database
   
   	$query = "INSERT INTO users (username, email, password, security_qstn, security_ans, status) 
   			  VALUES('$username', '$email', '$password', '$security_qstn', '$security_ans', 'Active')";

@@ -1,22 +1,26 @@
-<?php include('server.php') ?>
+<?php
+
+// if (isset($_SESSION['username'])) {
+//     header("location:dashboard.php");
+// } else {
+// 	if (isset($_SESSION['username'])) 
+// 		header("location:login.php");
+// }
+?>
+
+<?php include('server.php')
+?>
+
+
 <?php 
 error_reporting(0);
 session_start();
-
-$key = 'qkwjdiw239&&jdafweihbrhnan&^%$ggdnawhd4njshjwuuO';
-
-function encrypthis($data,$key){
-    $encryption_key = base64_decode($key);
-    $iv =openssl_random_pseudo_bytes(openssl_cipher_iv_length('aes-256-cbc'));
-    $encrypted = openssl_encrypt($data, 'aes-256-cbc', $encryption_key, 0, $iv);
-    return base64_encode($encrypted. '::'. $iv);
- }
-
-//$conn = new mysqli("localhost","u228255941_root","Mhgpjdb123","u228255941_mhgpjdb");
 $conn = new mysqli("localhost","root","","mercedhernandezgreenhills");
+include('server.php');
 // $conn = new mysqli("localhost","root","","mercedhernandezgreenhills");
 // error_reporting(0);
 // $conn = new mysqli("localhost","root","","mercedhernandezgreenhills");
+
 
 $msg="";
 
@@ -41,8 +45,9 @@ if(isset($_POST['login_user'])){
 	if (empty($authentication)) {
 		array_push($errors, "Authentication is required");
 	}
+	
 
-	$enc_pass = encrypthis($password, $key);
+	$enc_pass = md5(md5($password));
 
 	$query = "SELECT * FROM users WHERE username='$username' AND password='$enc_pass'";
 	  $results = mysqli_query($db, $query);
@@ -50,18 +55,21 @@ if(isset($_POST['login_user'])){
 	while($row = mysqli_fetch_array($results)){
 		$status=$row['status'];
 		$user=$row['username'];
-    	$pass=$row['password'];		
+    	$pass=$row['password'];
+		
+		// $enc2_pass = md5(md5($pass));
 	}	
-	
-	if($status == "1"){array_push($errors, "User Deactivated");}
+
+	 if($status == "1"){array_push($errors, "User Deactivated");}
 
 	if (($user == $username) && ($pass == $enc_pass)){
 
 	if (count($errors) == 0) {
 
 		if (mysqli_num_rows($results) == 1) {
+			
 			$_SESSION['username'] = $username;
-			$_SESSION['success'] = "Successfully Login";
+			$_SESSION['success'] = "Successfuly Login";
 
 			if($authentication == "EMAIL"){
 				header("location:Email.php");
@@ -71,8 +79,6 @@ if(isset($_POST['login_user'])){
 				header("location:indexsu.php");
 			}
 
-			if($status == "1"){array_push($errors, "User Deactivated");}
-
 			if($authentication == "SECURITY QUESTIONS"){
 				header("location:security_qstn.php");
 			}
@@ -80,59 +86,114 @@ if(isset($_POST['login_user'])){
 	}
 }
 
-	else {
-		array_push($errors, "Wrong Username / Password Combination");
-	}
+
+
+	 else {
+	 	array_push($errors, "Wrong Username / Password Combination");
+	 }
 }
+
+// if($_SERVER["REQUEST_METHOD"]=="POST")
+// {
+// 	$username=$_POST["username"];
+// 	$passwordd=$_POST["password"];
+// 	$usertype=$_POST["usertype"];
+
+// 	$sql="select * from users where username='".$username."' AND password='".$passwordd."' AND  usertype'".$usertype."'";
+
+// 	$result=mysqli_query($conn,$sql);
+
+// 	$row=mysqli_fetch_array($result);
+
+// 	if($row["usertype"]=="Admin")
+// 	{
+// 		header("location:Email.php");
+// 	}
+// 	elseif($row["usertype"]=="Appraiser")
+// 	{
+// 		echo "Appraiser";
+// 	}
+// 	elseif($row["usertype"]=="Inventory Clerk")
+// 	{
+// 		echo "Inventory Clerk";
+// 	}
+// 	else
+// 	{
+// 		echo "username or password incorrect";
+// 	}
+// }
+
+
+// $query = "SELECT * FROM users WHERE username='$username' AND usertype='$usertype'";
+// 	  $results = mysqli_query($db, $query);
+	
+// 	  $usertype = $_POST['usertype'];
+
+//   if($row["usertype"]=="Admin")
+//   {
+//     header("location:Admin.php");
+//   }
+//   elseif($row["usertype"]=="Appraiser")
+//   {
+//     header("location:Appraiser.php");
+//   }
+//   elseif($row["usertype"]=="Inventory Clerk")
+//   {
+//     header("location:Inventory Clerk.php");
+//   }
+//   else
+//   {
+//     echo "username or password incorrect";
+//   }
+
+
+// $row=mysqli_fetch_array($result);
+
+// if($row["usertype"]="Admin")
+// {
+// 	echo "admin";
+// }
+// elseif($row["usertype"]="Appraiser")
+// {
+// 	echo "admin";
+// }
+// elseif($row["usertype"]="Inventory Clerk")
+// {
+// 	echo "admin";
+// }
 
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>Merced Hernandez Greenhills Pawnshop & Jewellery</title>
-  <link rel="stylesheet" type="text/css" href="styless.css">
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <title>Log in</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+ 
 </head>
 <body>
   <div class="header">
-  	<h2>Merced Hernandez Greenhills Pawnshop & Jewellery Login</h2> 
+  	<h2>Login</h2>
   </div>
-
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-10 col-xl-10 mx-auto">
-        <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
-        <div class="col-md-12 col-lg-10">
-					
-          <div class="card-body p-4 p-lg-5">
-  	<form method="post" action="login.php" class="main-lead">
+	 
+  <form method="post" action="login.php" class="main-lead">
 	
   	<?php include('errors.php');?>
   	<div class="input-group">
   		<label>Username</label>
   		<input type="text" name="username" >
   	</div>
-	
   	<div class="input-group">
   		<label>Password</label>
   		<input type="password" name="password">
   	</div>
-	
 	<div class="form-group lead">
 
 	<label for="authentication"><h3	>Please select authentication</h3></label>
 	<select name="authentication" id="authentication" class="authen">
 		<option disabled selected value="Select a Method">Select a Method</option>
 		<option value="MFA">MFA</option>
-		<option value="EMAIL">EMAIL</option>
+		 <option value="EMAIL">EMAIL</option>
 		<!-- <option value="SECUIRTY QUESTIONS">SECUIRTY QUESTIONS</option> -->
 	</select>
 
@@ -143,9 +204,9 @@ if(isset($_POST['login_user'])){
 	  <p>
   		<a href="forgotpassword.php">Forgot passsword? </a>
      </p>
-  <p>
+  	<p>
   	Not yet a member? <a href="register.php">Sign up</a>
-   </p> 
+   </p>
   </form>
   
 

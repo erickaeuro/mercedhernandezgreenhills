@@ -18,7 +18,9 @@ if(isset($_POST['adduser']))
 {
         $username = $_POST['username'];
         $password = $_POST['password'];
-        $password = encrypthis($pass, $key);
+       // $password = encrypthis($password, $key);
+         $cpass = $_POST['cpass'];
+       // $cpass = encrypthis($cpass, $key);
         $email = $_POST['email'];
         $cname = $_POST['cname'];
         $contactno = $_POST['contactno'];
@@ -27,7 +29,7 @@ if(isset($_POST['adduser']))
         $status = $_POST['status'];
 
 
-    $equery = "SELECT * FROM users WHERE email='$emailadd' ";
+    $equery = "SELECT * FROM users WHERE email='$email' ";
     $equery_run = mysqli_query($con, $equery);
     if(mysqli_num_rows($equery_run) > 0)
     {
@@ -37,9 +39,10 @@ if(isset($_POST['adduser']))
     }
     else
     {
-        if($password === $cpassword)
+        if($password == $cpass)
         {
-            $query = "INSERT INTO users (username, password, email, cname, contactno, address, usertype, status) VALUES ('$uname','$pass','$emailadd','$cname','$contactno','$address','$usertype','Active')";
+            $enc_pass = md5(md5($password));
+            $query = "INSERT INTO users (username, password, email, cname, contactno, address, usertype, status) VALUES ('$username','$enc_pass','$email','$cname','$contactno','$address','$usertype','Active')";
             $query_run = mysqli_query($con, $query);
             
 
