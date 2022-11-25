@@ -76,6 +76,7 @@ if(isset($_POST['login_user'])){
 			}
 
 			if($authentication == "MFA"){
+				$_SESSION['username'] = $username;
 				header("location:indexsu.php");
 			}
 

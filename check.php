@@ -1,7 +1,11 @@
+
+
 <?php
 session_start();
 
+ include('session.php');
 
+$username = $_SESSION['username'];
 
 require "Authenticator.php";
 if ($_SERVER['REQUEST_METHOD'] != "POST") {
@@ -20,6 +24,10 @@ if (!$checkResult) {
     header("location: indexsu.php");
     die();
 } 
+// else {
+//     $_SESSION['username'] = $username;
+//     header("location: dashboard.php");
+// }
 
 ?>
 <!DOCTYPE html>
@@ -62,7 +70,18 @@ if (!$checkResult) {
                     </div>
                 <hr>   
                 <p>
-                <a href="dashboard.php"  class="btn text-white" style="width: 200px;border-radius: 0px; background-color: #81C784; text-align: center;;">Continue</a>
+                <?php
+                // if(isset($_GET['sub'])) {
+                //     $_SESSION['username'] = $username;
+                //     header("Location: dashboard.php");
+                // }
+
+                ?> 
+                    <!-- <form action="<?php // $_SERVER['PHP_SELF'] ?>" method="get"> -->
+                <?php echo "<a href='dashboard.php?username=$username'  class='btn text-white' style='width: 200px;border-radius: 0px; background-color: #81C784; text-align: center;;'>Continue</a>" ?>
+                </form>
+
+               
                 </p>
             </div>
     
