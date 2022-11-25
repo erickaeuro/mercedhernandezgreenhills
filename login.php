@@ -15,6 +15,17 @@
 <?php 
 error_reporting(0);
 session_start();
+
+$key = 'qkwjdiw239&&jdafweihbrhnan&^%$ggdnawhd4njshjwuuO';
+
+function encrypthis($data,$key){
+    $encryption_key = base64_decode($key);
+    $iv =openssl_random_pseudo_bytes(openssl_cipher_iv_length('aes-256-cbc'));
+    $encrypted = openssl_encrypt($data, 'aes-256-cbc', $encryption_key, 0, $iv);
+    return base64_encode($encrypted. '::'. $iv);
+ }
+
+//$conn = new mysqli("localhost","u228255941_root","Mhgpjdb123","u228255941_mhgpjdb");
 $conn = new mysqli("localhost","root","","mercedhernandezgreenhills");
 include('server.php');
 // $conn = new mysqli("localhost","root","","mercedhernandezgreenhills");
@@ -45,9 +56,8 @@ if(isset($_POST['login_user'])){
 	if (empty($authentication)) {
 		array_push($errors, "Authentication is required");
 	}
-	
 
-	$enc_pass = md5(md5($password));
+	$enc_pass = encrypthis($password, $key);
 
 	$query = "SELECT * FROM users WHERE username='$username' AND password='$enc_pass'";
 	  $results = mysqli_query($db, $query);
