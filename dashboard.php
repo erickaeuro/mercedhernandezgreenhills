@@ -1,6 +1,5 @@
 <?php
 session_start();
-$username = $_GET['username'];
 include('session.php');
 ?>
 <!DOCTYPE html>
