@@ -123,15 +123,15 @@ require 'connection.php';
 
                             <div class="form-group col-md-11">
                                 <label for="image"><b>Image of Jewelry</b></label>
-                                <p class="form-control"> <?= $row['image']; ?> </p> 
+                                <p class="form-control"> <?= $row['file_name']; ?> </p> 
 
                             </div>
 
                             <?php
                             $stockNo = $row['stock_no'];
-                            $sql=mysqli_query($con,"select image from inventorytbl where stock_no = $stockNo");
+                            $sql=mysqli_query($con,"select file_name from inventorytbl where stock_no = $stockNo");
                                 while($row=mysqli_fetch_array($sql)){
-                                    echo "<img src='".$row['image']."' width='450' height='350' />"; // the problem is here, its just displaying img icon, not actual image 
+                                    echo "<img src='".$row['file_name']."' width='450' height='350' />"; // the problem is here, its just displaying img icon, not actual image 
                                 }
                             ?>
                         </div>
