@@ -17,7 +17,7 @@
         $datemat = $_POST['date_mat'];
         $dateexp = $_POST['date_expire'];        
         $status = $_POST['loan_status'];
-        $prindue = $_POST['principaldue']
+        $prindue = $_POST['principaldue'];
         
         $renewal_due = $principal * 0.04;
         
