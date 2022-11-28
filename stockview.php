@@ -142,7 +142,6 @@ require 'connection.php';
                                         }else{ ?>
                                             <p>No image(s) found...</p>
                                         <?php } ?>
-                          
                         </div>
                             <div class="mb-4">
                             <center> 

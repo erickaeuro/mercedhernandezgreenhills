@@ -73,7 +73,7 @@
                             }?>
 
                     <div class="card-body">
-                        <form action="addcustomer.php" method="POST">
+                        <form action="addcustomer.php" method="POST" enctype="multipart/form-data">
 
                         <div class="wrapper">
                             <div class="form-group col-md-12">
@@ -110,7 +110,7 @@
                             <div class="form-group col-md-11">
                               
                                 <label for="valid_id">Valid ID</label>
-                                <input type="file" class="form-control" name="valid_id" placeholder="Select a file to upload" required>
+                                <input type="file" class="form-control" name="file" required>
                             </div>
 
                             </div>

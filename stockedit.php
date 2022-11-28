@@ -92,7 +92,7 @@ require 'connection.php';
 
                             <div class="form-group col-md-11">
                                 <label for="itemdescription"><b>Item Description</b></label>
-                                <textarea rows="4" cols="80" class="form-control" name="itemdescription" value="<?= $row['itemdescription']; ?>" ></textarea>
+                                <textarea class="form-control" rows="3"  name="itemdescription" placeholder="<?= $row['itemdescription']; ?>"><?= $row['itemdescription']; ?></textarea>
                             </div>
                            
                         <div class="wrapper">

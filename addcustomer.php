@@ -47,7 +47,7 @@ if ($AgeVal > $today) {
             $valid_id = encrypthis($valid_id, $key);
 
 
-            $query = "INSERT INTO customertbl (`customer_no`,`first_name`,`middle_name`,`last_name`,`address`,`cpnum`,`birthdate`,`valid_id`) VALUES ('$customer_no','$first_name','$middle_name','$last_name','$address','$encpnum','$BirthDate','$valid_id')";
+            $query = "INSERT INTO customertbl (customer_no,`first_name`,`middle_name`,`last_name`,`address`,`cpnum`,`birthdate`,`valid_id`) VALUES ('$customer_no','$first_name','$middle_name','$last_name','$address','$encpnum','$BirthDate','$valid_id')";
             $query_run = mysqli_query($con, $query);
 
             if($query_run)

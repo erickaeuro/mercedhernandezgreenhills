@@ -12,7 +12,7 @@ if(isset($_POST['changepassword'])){
     if($password !== $cpassword){
         $errors['password'] = "Confirm password not matched!";
     }else{
-        $encpass = md5($password);
+        $encpass = md5(md5($password));
         $update_pass = "UPDATE users SET password='$encpass' WHERE email ='$email'";
         $run_query = mysqli_query($con, $update_pass);
         if($run_query){

@@ -78,8 +78,8 @@
 
                         
                             <div class="form-group col-md-11">
-                                <label for="itemdescription"><b>Item Description</b></label>
-                                <textarea rows="4" cols="80" class="form-control" name="itemdescription" placeholder="Enter Description" required></textarea>
+                                <label for="description"><b>Item Description</b></label>
+                                <textarea rows="3" class="form-control" name="itemdescription" placeholder="Enter Description" required></textarea>
                             </div>
 
                         <div class="wrapper">
