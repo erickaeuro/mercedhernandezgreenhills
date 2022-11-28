@@ -16,8 +16,8 @@ if(isset($_POST["forgotpassword"])){
     $mail->CharSet = "utf-8";
     $mail->Host ='smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = 'capistranoerickaeuro@gmail.com';
-    $mail->Password = 'crywecyckootocfm';
+    $mail->Username = 'mercedhernandez645@gmail.com';
+    $mail->Password = 'vkxcoabownzcvcju';
     $mail->SMTPSecure = 'tls';
     $mail->SMTPOptions = array(
         'ssl' => array(

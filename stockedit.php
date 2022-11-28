@@ -1,5 +1,6 @@
 <?php
 session_start();
+error_reporting(0);
 require 'connection.php';
 
 ?>
@@ -73,7 +74,7 @@ require 'connection.php';
                                 $row = mysqli_fetch_array($query_run);
                                 ?>
 
-                            <form action="editcode.php" method="POST">
+                            <form action="editcode.php" method="POST" enctype="multipart/form-data">
 
                             
                             <input type="hidden" name="id" value='<?= $row['id']; ?>'>
@@ -127,8 +128,23 @@ require 'connection.php';
 
                             <div class="form-group col-md-11">
                                 <label for="image"><b>Image of Jewelry</b></label>
-                                <input type="file" class="form-control" name="image" value="<?=$row['image']; ?>">
+                                <input type="file" class="form-control" name="file" value="<?=$row['file_name']; ?>">
                             </div>
+                            <?php
+
+$stockNo = $row['stock_no'];
+
+$sql=mysqli_query($con,"SELECT file_name FROM inventorytbl where stock_no = $stockNo");
+
+if($sql->num_rows > 0){
+    while($row=mysqli_fetch_array($sql)){
+        $imageURL = 'jewelry/'.$row["file_name"];
+?>
+    <img src="<?php echo $imageURL; ?>" alt="" width="450" height="350" />
+<?php }
+}else{ ?>
+    <p>No image(s) found...</p>
+<?php } ?>
 
                         </div>
                         <div class="mb-4">

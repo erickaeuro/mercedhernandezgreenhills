@@ -20,7 +20,7 @@
 
 <!-- Connection Database --> 
   <?php include ("connection.php"); 
-  
+  error_reporting(0);
   session_start();
 ?>
 
@@ -63,7 +63,7 @@
                         <h4><b>Add Jewelry Stocks</b>                      
                     </div>
                     <div class="card-body">
-                        <form action="addcode.php" method="POST" enctype="multipart/form-data">>
+                        <form action="addcode.php" method="POST" enctype="multipart/form-data">
 
                             
                             <div class="form-group col-md-10">

@@ -127,13 +127,22 @@ require 'connection.php';
 
                             </div>
 
-                            <?php
-                            $stockNo = $row['stock_no'];
-                            $sql=mysqli_query($con,"select file_name from inventorytbl where stock_no = $stockNo");
-                                while($row=mysqli_fetch_array($sql)){
-                                    echo "<img src='".$row['file_name']."' width='450' height='350' />"; // the problem is here, its just displaying img icon, not actual image 
-                                }
-                            ?>
+                                <?php
+
+                                        $stockNo = $row['stock_no'];
+
+                                        $sql=mysqli_query($con,"SELECT file_name FROM inventorytbl where stock_no = $stockNo");
+
+                                        if($sql->num_rows > 0){
+                                            while($row=mysqli_fetch_array($sql)){
+                                                $imageURL = 'jewelry/'.$row["file_name"];
+                                        ?>
+                                            <img src="<?php echo $imageURL; ?>" alt="" width="450" height="350" />
+                                        <?php }
+                                        }else{ ?>
+                                            <p>No image(s) found...</p>
+                                        <?php } ?>
+                          
                         </div>
                             <div class="mb-4">
                             <center> 
