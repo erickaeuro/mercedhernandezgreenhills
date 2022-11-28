@@ -132,7 +132,7 @@
                                   $lastn = $row['last_name'];
                                   $addr = $row['address'];
                                   $cpn = $row['cpnum'];
-                                  $vd_id = $row['valid_id'];
+                                  $vd_id = $row['filename'];
                                   $fulln = "$firstn $middlen $lastn";
 
                                   //DECRYPT VARIBLES HERE WITH THE RETURN OF DECRYPTION FUNCTION

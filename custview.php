@@ -135,24 +135,23 @@ require 'connection.php';
 
                             <div class="form-group col-md-11">
                                 <label for="valid_id"><b>Valid ID</b></label>
-                                <p class="form-control"> <?= decryptthis($row['valid_id'], $key) ?> </p> 
+                                <p class="form-control"> <?= decryptthis($row['filename'], $key) ?>
                             </div>
 
                             <?php
                                         $customerNo = $row['customer_no'];
 
-                                        $sql=mysqli_query($con,"SELECT file_name FROM inventorytbl where customer_no = $customerNo");
+                                        $sql=mysqli_query($con,"SELECT filename FROM customertbl where customer_no = $customerNo");
 
                                         if($sql->num_rows > 0){
                                             while($row=mysqli_fetch_array($sql)){
-                                                $imageURL = 'valid_ids/'.$row["file_name"];
+                                                $imageURL = 'valid_ids/'.$row["filename"];
                                         ?>
                                             <img src="<?php echo $imageURL; ?>" alt="" width="450" height="350" />
                                         <?php }
                                         }else{ ?>
                                             <p>No image(s) found...</p>
                                         <?php } ?>
-                          
 
                         </div>
                             <div class="mb-4">

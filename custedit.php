@@ -95,7 +95,7 @@ require 'connection.php';
                                 $row = mysqli_fetch_array($query_run);
                                 ?>
 
-                            <form action="editcustomer.php" method="POST">
+                            <form action="editcustomer.php" method="POST" enctype="multipart/form-data">
 
                             
                             <input type="hidden" name="id" value='<?= $row['id']; ?>'>
@@ -139,7 +139,22 @@ require 'connection.php';
 
                             <div class="form-group col-md-11">
                                 <label for="valid_id"><b>Valid ID</b></label>
-                                <input type="file" class="form-control" name="valid_id" value="<?= decryptthis($row['valid_id'], $key) ?>" >
+                                <input type="file" class="form-control" name="file" value="<?= decryptthis($row['filename'], $key) ?>" >
+                            </div>
+
+                            <div id="display-image">
+                                <?php
+                                    $customerNo = $row['customer_no'];
+
+                                    $sql=mysqli_query($con,"SELECT filename FROM customertbl where customer_no = $customerNo");
+                            
+                                    while ($data = mysqli_fetch_assoc($sql)) {
+                                ?>
+                                    <img src="valid_ids/<?php echo $data['filename']; ?> " width="450" height="350">
+                            
+                                <?php
+                                    }
+                                ?>
                             </div>
 
                         </div>

@@ -31,7 +31,7 @@ if(isset($_POST['addcustomer']))
     $encpnum = encrypthis($cpnum, $key);
     $BirthDate = $_POST['BirthDate'];
     $AgeVal = strtotime($BirthDate. "+ 18 years");
-    $valid_id = $_POST['valid_id'];
+    //$valid_id = $_POST['valid_id'];
 }  
 
 //if age if 17 or younger error msg
@@ -39,25 +39,26 @@ if ($AgeVal > $today) {
     $_SESSION['custstatus'] = "Customer must be above 18 years old";
     header('Location: custadd.php');
 }else{
-    $query = "SELECT * FROM customertbl WHERE first_name = '$first_name' AND middle_name = '$middle_name' AND last_name = '$last_name' AND address = '$address' AND cpnum = '$cpnum' AND birthdate = '$BirthDate' AND valid_id = '$valid_id'";
+    $filename = $_FILES["file"]["name"];
+    $filename = encrypthis($filename, $key);
+    $tempname = $_FILES["file"]["tmp_name"];
+    $folder = "valid_ids/" . $filename;
+    $query = "SELECT * FROM customertbl WHERE first_name = '$first_name' AND middle_name = '$middle_name' AND last_name = '$last_name' AND address = '$address' AND cpnum = '$cpnum' AND birthdate = '$BirthDate' AND filename ='$filename'";
     $query_run = mysqli_query($con, $query);
 
         if(mysqli_affected_rows($con) == 0 ){
-            $valid_id = $_POST['valid_id'];
-            $valid_id = encrypthis($valid_id, $key);
+            //$valid_id = $_POST['valid_id'];
+            //$valid_id = encrypthis($valid_id, $key);
 
 
-            $query = "INSERT INTO customertbl (customer_no,`first_name`,`middle_name`,`last_name`,`address`,`cpnum`,`birthdate`,`valid_id`) VALUES ('$customer_no','$first_name','$middle_name','$last_name','$address','$encpnum','$BirthDate','$valid_id')";
-            $query_run = mysqli_query($con, $query);
+            $query = "INSERT INTO customertbl (customer_no,`first_name`,`middle_name`,`last_name`,`address`,`cpnum`,`birthdate`,`filename`) VALUES (NULL,'$first_name','$middle_name','$last_name','$address','$encpnum','$BirthDate','$filename')";
+            mysqli_query($con, $query);
 
-            if($query_run)
-            {
-                $_SESSION['custstatus'] = "Customer Successfully Added";
+            if (move_uploaded_file($tempname, $folder)) {
+                echo "<h3>  Image uploaded successfully!</h3>";
                 header('Location: customer.php');
-            }
-            else
-            {
-                echo '<script> alert("Data Not Saved"); </script>';
+            } else {
+                echo "<h3>  Failed to upload image!</h3>";
             }
             
         }else{
