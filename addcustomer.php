@@ -18,9 +18,8 @@ function encrypthis($data,$key){
  }
 
 if(isset($_POST['addcustomer']))
-{
-    
-    $today = date("Y-m-d");
+{    
+    $today = time();
     $first_name = $_POST['first_name'];
     $middle_name = $_POST['middle_name'];
     $last_name = $_POST['last_name'];
