@@ -28,8 +28,7 @@ if(isset($_POST['addcustomer']))
     $addressval = $_POST['address'];
     $address = encrypthis($address, $key);
     $cpnum = $_POST['cpnum'];
-    $cpnumval = $_POST['cpnum'];
-    $cpnum = encrypthis($cpnum, $key);
+    $encpnum = encrypthis($cpnum, $key);
     $BirthDate = $_POST['BirthDate'];
     $AgeVal = strtotime($BirthDate. "+ 18 years");
     $valid_id = $_POST['valid_id'];
@@ -48,7 +47,7 @@ if ($AgeVal > $today) {
             $valid_id = encrypthis($valid_id, $key);
 
 
-            $query = "INSERT INTO customertbl (`customer_no`,`first_name`,`middle_name`,`last_name`,`address`,`cpnum`,`birthdate`,`valid_id`) VALUES ('$customer_no','$first_name','$middle_name','$last_name','$address','$cpnum','$BirthDate','$valid_id')";
+            $query = "INSERT INTO customertbl (`customer_no`,`first_name`,`middle_name`,`last_name`,`address`,`cpnum`,`birthdate`,`valid_id`) VALUES ('$customer_no','$first_name','$middle_name','$last_name','$address','$encpnum','$BirthDate','$valid_id')";
             $query_run = mysqli_query($con, $query);
 
             if($query_run)
