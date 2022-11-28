@@ -74,7 +74,7 @@ require 'connection.php';
                                 $row = mysqli_fetch_array($query_run);
                                 ?>
 
-                            <form action="editsoldstock.php" method="POST">
+                            <form action="editsoldstock.php" method="POST" enctype="multipart/form-data">
 
                             
                             <input type="hidden" name="id" value='<?= $row['id']; ?>'>
@@ -85,9 +85,9 @@ require 'connection.php';
                             </div>  
                         
                         <div class="wrapper">
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-11">
                                 <label for="image"><b>Image of Jewelry</b></label>
-                                <input type="file" class="form-control" name="image" id="image" accept=".jpg, .jpeg, .png" value="<?= $row['image']; ?>">
+                                <input type="file" class="form-control" name="file" value="<?=$row['file_name']; ?>">
                             </div>
 
                             <div class="form-group col-md-12">

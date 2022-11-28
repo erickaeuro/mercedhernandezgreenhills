@@ -120,20 +120,27 @@ require 'connection.php';
                                 <label for="Date Sold"><b>Date Sold</b></label>
                                 <p class="form-control"> <?= $row['date_sold']; ?> </p>
                             </div>
-
                             <div class="form-group col-md-11">
                                 <label for="image"><b>Image of Jewelry</b></label>
-                                <p class="form-control"> <?= $row['image']; ?> </p> 
+                                <p class="form-control"> <?= $row['file_name']; ?> </p> 
 
                             </div>
 
-                            <?php
-                            $stockNo = $row['stock_no'];
-                            $sql=mysqli_query($con,"select image from inventorytbl where stock_no = $stockNo");
-                                while($row=mysqli_fetch_array($sql)){
-                                    echo "<img src='".$row['image']."' width='400' height='300' />"; // the problem is here, its just displaying img icon, not actual image 
-                                }
-                            ?>
+                                <?php
+
+                                        $stockNo = $row['stock_no'];
+
+                                        $sql=mysqli_query($con,"SELECT file_name FROM inventorytbl where stock_no = $stockNo");
+
+                                        if($sql->num_rows > 0){
+                                            while($row=mysqli_fetch_array($sql)){
+                                                $imageURL = 'jewelry/'.$row["file_name"];
+                                        ?>
+                                            <img src="<?php echo $imageURL; ?>" alt="" width="450" height="350" />
+                                        <?php }
+                                        }else{ ?>
+                                            <p>No image(s) found...</p>
+                                        <?php } ?>
                         </div>
                             <div class="mb-4">
                             <center> 
