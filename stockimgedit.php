@@ -74,69 +74,43 @@ require 'connection.php';
                                 $row = mysqli_fetch_array($query_run);
                                 ?>
 
-                            <form action="editcode.php" method="POST" enctype="multipart/form-data">
+                            <form action="editimgstock.php" method="POST" enctype="multipart/form-data">
 
                             
                             <input type="hidden" name="id" value='<?= $row['id']; ?>'>
-
                             <div class="form-group col-md-11">
                                 <label for="stock_no"><b>Stock No.</b></label>
                                 <input type="text" class="form-control" name="stock_no" accept=".jpg, .jpeg, .png" value="<?= $row['stock_no']; ?>" readonly>
                             </div>  
 
                             <div class="form-group col-md-11">
-                                <label for="itemtype"><b>Item Type</b></label>
-                                <input type="text" class="form-control" name="item_type" value="<?= $row['item_type']; ?>">
+                                <label for="image"><b>Image of Jewelry</b></label>
+                                <input type="file" class="form-control" name="file" value="<?=$row['file_name']; ?>">
                             </div>
-                       
 
-                            <div class="form-group col-md-11">
-                                <label for="itemdescription"><b>Item Description</b></label>
-                                <textarea class="form-control" rows="3"  name="itemdescription" placeholder="<?= $row['itemdescription']; ?>"><?= $row['itemdescription']; ?></textarea>
-                            </div>
+                            <?php
+
+                                $stockNo = $row['stock_no'];
+
+                                $sql=mysqli_query($con,"SELECT file_name FROM inventorytbl where stock_no = $stockNo");
+
+                                if($sql->num_rows > 0){
+                                    while($row=mysqli_fetch_array($sql)){
+                                        $imageURL = 'jewelry/'.$row["file_name"];
+                                ?>
+                                    <img src="<?php echo $imageURL; ?>" alt="" width="450" height="350" />
+                             <?php }
+                                }else{ ?>
+                                    <p>No image(s) found...</p>
+                            <?php } ?>
+
+
                            
-                        <div class="wrapper">
-                            <div class="form-group col-md-12">
-                                <label for="Karat-gold"><b>Karat/Gold</b></label>
-                                <input type="text" class="form-control" name="karat_gold" value="<?= $row['karat_gold']; ?>" >
-                            </div>
-
-                            <div class="form-group col-md-12">
-                                <label for="kindofstone"><b>Kind of Stone</b></label>
-                                <input type="text" class="form-control" name="kindofstone" value="<?= $row['kindofstone']; ?>" >
-                            </div>
-                        </div>
-                            <div class="form-group col-md-11">
-                                <label for="weight"><b>Weight</b></label>
-                                <input type="text" class="form-control" name="weight" value="<?= $row['weight']; ?>" >
-                            </div>
-
-                            <div class="form-group col-md-11">
-                                <label for="itemqty"><b>Item Quantity</b></label>
-                                <input type="number" class="form-control" name="itemqty" value="<?= $row['itemqty']; ?>" >
-                            </div>
-
-                            <div class="form-group col-md-11">
-                                <label for="tagprice"><b>Tag Price</b></label>
-                                <input type="text" class="form-control" name="tagprice" value="<?= $row['tagprice']; ?>" >
-                            </div>
-
-                            <div class="form-group col-md-11">
-                                <label for="Date Sold"><b>Date Sold</b></label>
-                                <input type="date" class="form-control" name="date_sold" value="<?= $row['date_sold']; ?>" >
-                            </div>
-
-                            <div class="form-group col-md-11">
-                                <label for="image"><b>Image of Jewelry</b></label><br/>
-                                <a href="stockimgedit.php?id=<?= $id?>" class="btn text-white" style="background-color: #81C784 ">EDIT IMAGE </a>
-                            </div>
-                        
-
                         </div>
                         <div class="mb-4">
                             <center> 
-                            <a href="stocks.php"  class="btn text-white" style="background-color: #B0B0AB;">Back</a>
-                            <button type="button" class="btn text-white" style="background-color: #81C784;" data-bs-toggle="modal" data-bs-target="#EditModal">Edit Stocks</button> 
+                            <a href="stockedit.php?id=<?= $id; ?>"  class="btn text-white" style="background-color: #B0B0AB;">Back</a>
+                            <button type="button" class="btn text-white" style="background-color: #81C784;" data-bs-toggle="modal" data-bs-target="#EditModal">Edit Image</button> 
                             </center>
                             </div>  
                             

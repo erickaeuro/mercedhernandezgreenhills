@@ -58,15 +58,36 @@ require 'connection.php';
             <div class="col d-flex justify-content-center">
                 <div class="card" style="width: 1200px;">
                     <div class="card-header">
-                        <h4><b>Edit Jewelry Stocks</b>                      
+                        <h4><b>Edit Customer Image</b>                      
                     </div>
                     <div class="card-body">
 
                     <?php
+                    $key = 'qkwjdiw239&&jdafweihbrhnan&^%$ggdnawhd4njshjwuuO';
+                    function decryptthis($data, $key){
+                      $encryption_key = base64_decode($key);
+                      list($encryption_data, $iv) = array_pad(explode('::',base64_decode($data),2),2,null);
+                      return openssl_decrypt($encryption_data, 'aes-256-cbc',$encryption_key,0,$iv);
+                      
+                      foreach($query_run as $row)
+                      {
+                       
+                        $addr = $row['address'];
+                        $contactNo = $row['cpnum'];
+                        $validID = $row['valid_id'];
+
+                        //DECRYPT VARIBLES HERE WITH THE RETURN OF DECRYPTION FUNCTION
+                        $Address = decryptthis($addr, $key);
+                        $contact = decryptthis($contactNo, $key);
+                        $vad_id = decryptthis($validID, $key);
+
+
+                            }
+                        }
                         if(isset($_GET['id']))
                         {
                             $id = mysqli_real_escape_string($con, $_GET['id']);
-                            $query = "SELECT * FROM inventorytbl WHERE stock_no='$id' ";
+                            $query = "SELECT * FROM customertbl WHERE customer_no='$id' ";
                             $query_run = mysqli_query($con, $query);
 
                             if(mysqli_num_rows($query_run) > 0)
@@ -74,69 +95,42 @@ require 'connection.php';
                                 $row = mysqli_fetch_array($query_run);
                                 ?>
 
-                            <form action="editcode.php" method="POST" enctype="multipart/form-data">
+                            <form action="editimgcust.php" method="POST" enctype="multipart/form-data">
 
                             
                             <input type="hidden" name="id" value='<?= $row['id']; ?>'>
+                            <div class="form-group col-md-11">
+                                <label for="customerno"><b>Customer No.</b></label>
+                                <input type="text" class="form-control" name="customer_no" value="<?= $row['customer_no']; ?>" readonly>
+                            </div> 
 
                             <div class="form-group col-md-11">
-                                <label for="stock_no"><b>Stock No.</b></label>
-                                <input type="text" class="form-control" name="stock_no" accept=".jpg, .jpeg, .png" value="<?= $row['stock_no']; ?>" readonly>
-                            </div>  
-
-                            <div class="form-group col-md-11">
-                                <label for="itemtype"><b>Item Type</b></label>
-                                <input type="text" class="form-control" name="item_type" value="<?= $row['item_type']; ?>">
+                                <label for="valid_id"><b>Valid ID</b></label>
+                                <input type="file" class="form-control" name="file" value="<?= decryptthis($row['filename'], $key) ?>" >
                             </div>
-                       
 
-                            <div class="form-group col-md-11">
-                                <label for="itemdescription"><b>Item Description</b></label>
-                                <textarea class="form-control" rows="3"  name="itemdescription" placeholder="<?= $row['itemdescription']; ?>"><?= $row['itemdescription']; ?></textarea>
+                            <div id="display-image">
+                                <?php
+                                    $customerNo = $row['customer_no'];
+
+                                    $sql=mysqli_query($con,"SELECT filename FROM customertbl where customer_no = $customerNo");
+                            
+                                    while ($data = mysqli_fetch_assoc($sql)) {
+                                ?>
+                                    <img src="valid_ids/<?php echo $data['filename']; ?> " width="450" height="350">
+                            
+                                <?php
+                                    }
+                                ?>
                             </div>
+
+
                            
-                        <div class="wrapper">
-                            <div class="form-group col-md-12">
-                                <label for="Karat-gold"><b>Karat/Gold</b></label>
-                                <input type="text" class="form-control" name="karat_gold" value="<?= $row['karat_gold']; ?>" >
-                            </div>
-
-                            <div class="form-group col-md-12">
-                                <label for="kindofstone"><b>Kind of Stone</b></label>
-                                <input type="text" class="form-control" name="kindofstone" value="<?= $row['kindofstone']; ?>" >
-                            </div>
-                        </div>
-                            <div class="form-group col-md-11">
-                                <label for="weight"><b>Weight</b></label>
-                                <input type="text" class="form-control" name="weight" value="<?= $row['weight']; ?>" >
-                            </div>
-
-                            <div class="form-group col-md-11">
-                                <label for="itemqty"><b>Item Quantity</b></label>
-                                <input type="number" class="form-control" name="itemqty" value="<?= $row['itemqty']; ?>" >
-                            </div>
-
-                            <div class="form-group col-md-11">
-                                <label for="tagprice"><b>Tag Price</b></label>
-                                <input type="text" class="form-control" name="tagprice" value="<?= $row['tagprice']; ?>" >
-                            </div>
-
-                            <div class="form-group col-md-11">
-                                <label for="Date Sold"><b>Date Sold</b></label>
-                                <input type="date" class="form-control" name="date_sold" value="<?= $row['date_sold']; ?>" >
-                            </div>
-
-                            <div class="form-group col-md-11">
-                                <label for="image"><b>Image of Jewelry</b></label><br/>
-                                <a href="stockimgedit.php?id=<?= $id?>" class="btn text-white" style="background-color: #81C784 ">EDIT IMAGE </a>
-                            </div>
-                        
-
                         </div>
                         <div class="mb-4">
                             <center> 
-                            <a href="stocks.php"  class="btn text-white" style="background-color: #B0B0AB;">Back</a>
-                            <button type="button" class="btn text-white" style="background-color: #81C784;" data-bs-toggle="modal" data-bs-target="#EditModal">Edit Stocks</button> 
+                            <a href="custedit.php?id=<?= $id; ?>"  class="btn text-white" style="background-color: #B0B0AB;">Back</a>
+                            <button type="button" class="btn text-white" style="background-color: #81C784;" data-bs-toggle="modal" data-bs-target="#EditModal">Edit Image</button> 
                             </center>
                             </div>  
                             
@@ -155,7 +149,7 @@ require 'connection.php';
                                         </div>
                                         <!-- Modal footer -->
                                         <div class="modal-footer">
-                                        <button type="submit" name="editjewelry" class="btn text-white" style="background-color: #81C784;">Yes</button> 
+                                        <button type="submit" name="editcustomer" class="btn text-white" style="background-color: #81C784;">Yes</button> 
                                         <button type="button"  class="btn text-white" style="background-color: #B0B0AB;" data-bs-dismiss="modal">Close</button>
                                         </div>
                                     </div>

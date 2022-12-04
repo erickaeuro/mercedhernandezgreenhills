@@ -138,24 +138,10 @@ require 'connection.php';
                             </div>
 
                             <div class="form-group col-md-11">
-                                <label for="valid_id"><b>Valid ID</b></label>
-                                <input type="file" class="form-control" name="file" value="<?= decryptthis($row['filename'], $key) ?>" >
+                                <label for="valid_id"><b>Valid ID</b></label> <br/>
+                               <a href="custimgedit.php?id=<?= $id?>" class="btn text-white" style="background-color: #81C784 ">EDIT IMAGE </a>
                             </div>
 
-                            <div id="display-image">
-                                <?php
-                                    $customerNo = $row['customer_no'];
-
-                                    $sql=mysqli_query($con,"SELECT filename FROM customertbl where customer_no = $customerNo");
-                            
-                                    while ($data = mysqli_fetch_assoc($sql)) {
-                                ?>
-                                    <img src="valid_ids/<?php echo $data['filename']; ?> " width="450" height="350">
-                            
-                                <?php
-                                    }
-                                ?>
-                            </div>
 
                         </div>
                             <div class="mb-4">
