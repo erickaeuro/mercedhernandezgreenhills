@@ -39,7 +39,7 @@ if(isset($_POST['addjewelry']) && !empty($_FILES["file"]["name"]))
           // Upload file to server
           if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
               // Insert image file name into database
-              $query = "INSERT into inventorytbl (stock_no, file_name, item_type, itemdescription, karat_gold, kindofstone, weight, itemqty, tagprice, date_sold, date_created) VALUES ('$stock_no', '$fileName','$item_type','$itemdescription','$karat_gold','$kindofstone','$weight','$itemqty','$tagprice','$date_sold','$date_created')";
+              $query = "INSERT into inventorytbl (stock_no, file_name, item_type, itemdescription, karat_gold, kindofstone, weight, itemqty, tagprice, date_sold, date_created) VALUES ('$stock_no', '$fileName','$item_type','$itemdescription','$karat_gold','$kindofstone','$weight','$itemqty','$tagprice','$date_sold','$date')";
               $query_run = mysqli_query($con, $query);
 
               if($query_run){
