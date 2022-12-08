@@ -32,7 +32,12 @@ $date_created = $_POST['date_created'];
 
 if(isset($_POST['addjewelry']) && !empty($_FILES["file"]["name"]))
 {
-      // Allow certain file formats
+    if ($_FILES["file"]["size"] >= 10485760){
+        echo "<h3>File size must be less than 10mb</h3>";
+        header('Location: stockadd.php');
+            }
+      else {
+        // Allow certain file formats
       $allowTypes = array('jpg','png','jpeg','gif','pdf', 'jfif');
       if(in_array($fileType, $allowTypes)){
           // Upload file to server
@@ -61,10 +66,7 @@ if(isset($_POST['addjewelry']) && !empty($_FILES["file"]["name"]))
           $_SESSION['status'] = "Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.";
           header('Location: stocks.php');
       }
-  }else{
-      //$statusMsg = 'Please select a file to upload.';
-      $_SESSION['status'] = "Please select a file to upload.";
-      header('Location: stocks.php');
+  }
 
   }
     
