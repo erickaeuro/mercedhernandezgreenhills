@@ -205,6 +205,18 @@ $result = $statement->fetchAll();
 
  </head>
 
+ <style>
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 350px 350px 360px;
+  width: 1050px;
+  margin: 0 auto;
+}
+
+
+</style> 
+
 <body id="page-top" class=" bg-gray-800">
   
   <!-- Page Wrapper -->
@@ -246,18 +258,31 @@ $result = $statement->fetchAll();
         End Date: <input type="text" name="end_date" class="form-control" placeholder = "End Date"readonly />
         <?php echo $end_date_error; ?>
        </div>
+       
 
       </div>
       <div class="form-group col-md-12">
       <input type="submit" name="export" value="Export" class="btn text-white" style="background-color: #81C784;" />
       </div>
-      <div class="form-group col-md-12">
-       
-       <input type="submit" name="daily" value="Daily" class="btn text-white w-100 mt-3" style="background-color: #81C784;" />
-       <input type="submit" name="weekly" value="Weekly" class="btn text-white w-100 mt-3" style="background-color: #81C784;" />
-       <input type="submit" name="monthly" value="Monthly" class="btn text-white w-100 mt-3" style="background-color: #81C784;" />
-      </div>
 
+       
+       <div class="wrapper">
+
+       <div class="form-group col-md-12">
+       <input type="submit" name="daily" value="Daily" class="btn text-white w-100 mt-3" style="background-color: #81C784;" />
+       </div>
+
+       <div class="form-group col-md-12">
+       <input type="submit" name="weekly" value="Weekly" class="btn text-white w-100 mt-3" style="background-color: #81C784;" />
+       </div>
+
+       <div class="form-group col-md-12">
+       <input type="submit" name="monthly" value="Monthly" class="btn text-white w-100 mt-3" style="background-color: #81C784;" />
+       </div>
+
+       </div>
+       
+      
     </div>
 </div>
     </center>
@@ -390,18 +415,20 @@ $result = $statement->fetchAll();
 
 
 $(document).ready(function () {
+  
     $('.input-daterange').datepicker({
     todayBtn:'linked',
     format: "yyyy-mm-dd",
     autoclose: true
   });
 
-  var dataTable = $('#uuu').DataTable({
+  var table = $('#uuu').dataTable({
     'pagingType': 'full_numbers',
         'lengthMenu': [
             [10, 25, 50, -1],
             [10, 25, 50, 'All']
         ],
+        order: [[0, 'desc']],
         responsive: true,
         language: {
             search: 'INPUT',
@@ -409,7 +436,11 @@ $(document).ready(function () {
         }
 
     });
+
   });
+
+
+  
 </script>
 
 
