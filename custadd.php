@@ -104,7 +104,7 @@
 
                             <div class="form-group col-md-11">
                                 <label for="birthdate">Birthdate</label>
-                                <input type="date" class="form-control" name="BirthDate" placeholder="Birthdate" required>
+                                <input type="date" class="form-control" name="BirthDate" placeholder="Birthdate" required onchange="validateBday(this)">
                             </div>
 
                             <div class="form-group col-md-11">
@@ -117,7 +117,7 @@
                             <div class="mb-4">
                             <center> 
                             <a href="customer.php" class="btn text-white" style="background-color: #B0B0AB;">Back</a>
-                            <button type="submit" name="addcustomer" class="btn text-white" style="background-color: #81C784;" >Add New Customer</button> 
+                            <button type="submit" id="submitbtn" name="addcustomer" disabled class="btn text-white" style="background-color: #81C784;" >Add New Customer</button> 
                             </center>
                             </div>
                         </form>
@@ -133,7 +133,20 @@
 
 
 </div>
-
+<script>
+    function validateBday(bday){
+        console.log(bday.value)
+        var bday=new Date(bday.value);
+        var tday=new Date();
+        var submitBtn=document.getElementById('submitbtn')
+        if(tday.getFullYear()-bday.getFullYear()>=18){
+            submitBtn.disabled=false;
+        }
+        else {
+            submitBtn.disabled=true;
+        }
+    }
+</script>
 
 <?php include 'scripts.php'; ?>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

@@ -144,12 +144,12 @@
 
                             <div class="form-group col-md-11">
                                 <label for="appraised_value"><b>Appraised Value </b></label>
-                                <input type="text" class="form-control" name="appraised_value" placeholder="Enter Jewelry Appraised Value" value="<?php echo isset($_POST['appraised_value']) ?>">
+                                <input id="avalue" onchange="validateValues()" type="text" class="form-control" name="appraised_value" placeholder="Enter Jewelry Appraised Value" value="<?php echo isset($_POST['appraised_value']) ?>">
                             </div>
 
                             <div class="form-group col-md-11">
                                 <label for="principal"><b>Principal </b></label>
-                                <input type="text" class="form-control" name="principal" placeholder="Enter Principal">
+                                <input id="pvalue" onchange="validateValues()" type="text" class="form-control" name="principal" placeholder="Enter Principal">
                             </div>
                         </div>
 
@@ -157,7 +157,7 @@
                             <div class="mb-4">
                             <center> 
                             <a href="loan.php" class="btn text-white" style="background-color: #B0B0AB;">Back</a>
-                            <button type="button" class="btn text-white" style="background-color: #81C784;" data-bs-toggle="modal" data-bs-target="#AddModal">Add Loan</button>
+                            <button disabled type="button" id="addloanbtn" class="btn text-white" style="background-color: #81C784;" data-bs-toggle="modal" data-bs-target="#AddModal">Add Loan</button>
                             
                             </center>
                             </div>
@@ -177,7 +177,7 @@
                                         </div>
                                         <!-- Modal footer -->
                                         <div class="modal-footer">
-                                        <button type="submit" name="addloan" class="btn text-white" style="background-color: #81C784;">Yes</button> 
+                                        <button type="submit"  name="addloan" class="btn text-white" style="background-color: #81C784;">Yes</button> 
                                         <button type="button" class="btn text-white" style="background-color: #B0B0AB;" data-bs-dismiss="modal">Close</button>
                                         </div>
                                     </div>
@@ -201,7 +201,25 @@
 
 
 </div>
-
+<script>
+    function validateValues(){
+        
+        var avalue=document.getElementById('avalue')
+        var pvalue=document.getElementById('pvalue')
+        var addloanbtn=document.getElementById('addloanbtn')
+       if(pvalue.value==''||avalue.value==''){
+        addloanbtn.disabled=true;
+        return;
+       }
+       
+        if(pvalue.value<avalue.value){
+            addloanbtn.disabled=false;
+        }
+        else{
+            addloanbtn.disabled=true;
+        }
+    }
+</script>
 <?php include 'scripts.php'; ?>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
