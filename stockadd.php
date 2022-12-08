@@ -66,47 +66,47 @@
                         <form action="addcode.php" method="POST" enctype="multipart/form-data">
                             
                             <div class="form-group col-md-11">
-                                <label for="image"><b>Image of Jewelry</b></label>
+                                <label for="image"><b>Image of Jewelry *</b></label>
                                 <input type="file" class="form-control" name="file" required>
                             </div>
                            
                         
 
                             <div class="form-group col-md-11">
-                                <label for="itemtype"><b>Item Type</b></label>
+                                <label for="itemtype"><b>Item Type *</b></label>
                                 <input type="text" class="form-control" name="item_type" placeholder="Enter Item Type" required>
                             </div>
 
                         
                             <div class="form-group col-md-11">
-                                <label for="description"><b>Item Description</b></label>
+                                <label for="description"><b>Item Description *</b></label>
                                 <textarea rows="3" class="form-control" name="itemdescription" placeholder="Enter Description" required></textarea>
                             </div>
 
                         <div class="wrapper">
                             <div class="form-group col-md-12">
-                                <label for="Karat-gold"><b>Karat/Gold</b></label>
+                                <label for="Karat-gold"><b>Karat/Gold *</b></label>
                                 <input type="text" class="form-control" name="karat_gold" placeholder="Karat/Gold" required>
                             </div>
 
                             <div class="form-group col-md-25">
-                                <label for="kindofstone"><b>Kind of Stone</b></label>
+                                <label for="kindofstone"><b>Kind of Stone </b></label>
                                 <input type="text" class="form-control" name="kindofstone" placeholder="Kind of Stone" required>
                             </div>
                         </div>
 
                             <div class="form-group col-md-11">
-                                <label for="weight"><b>Weight</b></label>
+                                <label for="weight"><b>Weight *</b></label>
                                 <input type="text" class="form-control" name="weight" placeholder="Weight" required>
                             </div>
 
                             <div class="form-group col-md-11">
-                                <label for="itemqty"><b>Item Quantity</b></label>
+                                <label for="itemqty"><b>Item Quantity *</b></label>
                                 <input type="number" class="form-control" name="itemqty" placeholder="Item Quantity" required>
                             </div>
 
                             <div class="form-group col-md-11">
-                                <label for="tagprice"><b>Tag Price</b></label>
+                                <label for="tagprice"><b>Tag Price *</b></label>
                                 <input type="text" class="form-control" name="tagprice" placeholder="P 0.00" required>
                             </div>
                         </div>
