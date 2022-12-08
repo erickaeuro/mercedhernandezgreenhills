@@ -124,8 +124,14 @@
                       <?php
                     foreach($query_run as $row)
                     {
-                        $stock_no = $row['stock_no'];
-                        $item_type = $row['item_type'];
+                        date_default_timezone_set('Asia/Manila');
+                        $today = date("Y-m-d");
+                    
+                        if($row['date_sold'] <= $today){                      
+                          $soldvalid = 1;
+                          $sold = $row['stock_no'];
+                          include 'stockupdate.php';
+                        }
 
             ?>
                         <tr class="">
@@ -141,7 +147,7 @@
                             <td>
                                 <a href="stockview.php?id=<?= $row['stock_no'];?>" class="btn text-white" style="background-color: #7FD2D4;">VIEW</a>
                                 <a href="stockedit.php?id=<?= $row['stock_no'];?>" class="btn text-white" style="background-color: #81C784 ">EDIT</a>
-                                <a href="movestock.php?id=<?= $row['stock_no']; ?>" name="movedata" class="btn text-white" style="background-color: #87578F;" onclick="return confirm('Are you sure you want to move this record?')">MOVE</a>
+                                <!--<a href="movestock.php?id=<?= $row['stock_no']; ?>" name="movedata" class="btn text-white" style="background-color: #87578F;" onclick="return confirm('Are you sure you want to move this record?')">MOVE</a> -->
                                 <!--- <a href="deletecode.php?id=<?= $row['stock_no']; ?>" name="deletedata" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this record?')">DELETE</a> --> 
                             </td> 
                             
