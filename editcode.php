@@ -25,7 +25,7 @@ $date_sold = $_POST['date_sold'];
 
               if($query_run){
                   $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
-                  $_SESSION['status'] = "Stock Added Successfully!";
+                  $_SESSION['status'] = "Stock Edited Successfully!";
                   
                   header('Location: stocks.php');
               }

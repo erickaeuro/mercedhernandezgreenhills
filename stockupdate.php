@@ -8,7 +8,7 @@
             </div>
             <div class="modal-body">
             <p>
-                <b>Stock Number <?= $sold?> has been sold!!</b>
+                Stock Number <?= $sold?> has been sold!!
             </p>            
             </div>
             <div class="modal-footer">
@@ -27,3 +27,22 @@
                     
                 }
               ?>
+
+<script>
+   var modal = document.getElementById("myModal");
+   var del = document.getElementById("close");
+   var del1 = document.getElementById("close2");
+
+   modal.style.display = "block";
+
+   
+
+   del.onclick = function(){
+    modal.style.display = "none";
+   }
+
+   del1.onclick = function(){
+    modal.style.display = "none";
+   }
+
+</script>
