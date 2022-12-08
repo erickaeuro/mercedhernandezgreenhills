@@ -20,8 +20,6 @@
 
 <!-- Connection Database --> 
   <?php include ("connection.php"); 
-  
-  session_start();
 ?>
 
 </head>
