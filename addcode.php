@@ -30,7 +30,6 @@ date_default_timezone_set('Asia/Manila');
 $date = date('y-m-d h:i:s');
 $date_created = $_POST['date_created'];
 
-
 if(isset($_POST['addjewelry']) && !empty($_FILES["file"]["name"]))
 {
       // Allow certain file formats
@@ -43,24 +42,32 @@ if(isset($_POST['addjewelry']) && !empty($_FILES["file"]["name"]))
               $query_run = mysqli_query($con, $query);
 
               if($query_run){
-                  $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
+                  //$statusMsg = "The file ".$fileName. " has been uploaded successfully.";
                   $_SESSION['status'] = "Stock Added Successfully!";
                   
                   header('Location: stocks.php');
               }else{
-                  $statusMsg = "File upload failed, please try again.";
+                  //$statusMsg = "File upload failed, please try again.";
+                  $_SESSION['status'] = "File upload failed, please try again.";
+                  header('Location: stocks.php');
               } 
           }else{
-              $statusMsg = "Sorry, there was an error uploading your file.";
+              //$statusMsg = "Sorry, there was an error uploading your file.";
+              $_SESSION['status'] = "File must be less than 2mb file size.";
+              header('Location: stocks.php');
           }
       }else{
-          $statusMsg = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
+          //$statusMsg = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
+          $_SESSION['status'] = "Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.";
+          header('Location: stocks.php');
       }
   }else{
-      $statusMsg = 'Please select a file to upload.';
+      //$statusMsg = 'Please select a file to upload.';
+      $_SESSION['status'] = "Please select a file to upload.";
+      header('Location: stocks.php');
+
   }
     
 // Display status message
 echo $statusMsg;
 ?>
-

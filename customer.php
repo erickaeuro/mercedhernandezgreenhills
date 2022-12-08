@@ -24,9 +24,9 @@
 
 <!-- Connection Database --> 
   <?php 
-  include ("connection.php");
   error_reporting(0);
-  session_start();
+
+  include ("connection.php");
 ?>
 
 </head>
@@ -241,6 +241,7 @@
                     [10, 25, 50, -1],
                     [10, 25, 50, "All"]
                 ],
+                order: [[0, 'desc']],
                 responsive: true,
                 language: {
                     search: "_INPUT_",

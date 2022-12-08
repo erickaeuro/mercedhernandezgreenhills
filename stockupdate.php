@@ -12,7 +12,7 @@
             </p>            
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-bs-dismiss="modal" id="close2">Okay</button>
+                <a href="stocks.php" class="btn text-white btn-md" style="background-color: #DE9185;"> Okay </a>
             </div>
         </div>
     </div>
@@ -31,7 +31,7 @@
 <script>
    var modal = document.getElementById("myModal");
    var del = document.getElementById("close");
-   var del1 = document.getElementById("close2");
+   //var del1 = document.getElementById("close2");
 
    modal.style.display = "block";
 

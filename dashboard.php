@@ -25,12 +25,9 @@ include('session.php');
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- Connection Database --> 
-  <?php include ("connection.php"); 
+  <?php 
   error_reporting(0);
-  session_start();
-  if ($_SESSION['logged'] == 1){
-    header("Location:dashboard.php");
-}
+  include ("connection.php");
 ?>
 
 </head>
@@ -77,8 +74,8 @@ include('session.php');
                                                 Stocks (Available)</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                             <?php 
-                                             $cser=mysqli_connect("localhost","root","","mercedhernandezgreenhills") or die("connection failed:".mysqli_error());
-                                             $result = mysqli_query($cser,"SELECT * FROM inventorytbl") or die(mysql_error());
+                                             $cser=mysqli_connect("localhost","root","","mercedhernandezgreenhills");
+                                             $result = mysqli_query($cser,"SELECT * FROM inventorytbl");
 
                                              if($stockstotal = mysqli_num_rows($result))
                                              {
@@ -109,8 +106,8 @@ include('session.php');
                                                 Redeem Loans</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                                             <?php 
-                                                        $cser=mysqli_connect("localhost","root","","mercedhernandezgreenhills") or die("connection failed:".mysqli_error());
-                                                        $result = mysqli_query($cser,"SELECT * FROM loantbl WHERE loan_status='Redeemed'") or die(mysql_error());
+                                                        $cser=mysqli_connect("localhost","root","","mercedhernandezgreenhills");
+                                                        $result = mysqli_query($cser,"SELECT * FROM loantbl WHERE loan_status='Redeemed'");
 
                                                         if($redeemtotal = mysqli_num_rows($result))
                                                         {
@@ -143,8 +140,8 @@ include('session.php');
                                                 <div class="col-auto">
                                                     <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
                                                     <?php 
-                                                        $cser=mysqli_connect("localhost","root","","mercedhernandezgreenhills") or die("connection failed:".mysqli_error());
-                                                        $result = mysqli_query($cser,"SELECT * FROM customertbl") or die(mysql_error());
+                                                        $cser=mysqli_connect("localhost","root","","mercedhernandezgreenhills");
+                                                        $result = mysqli_query($cser,"SELECT * FROM customertbl");
 
                                                         if($customertotal = mysqli_num_rows($result))
                                                         {
@@ -178,8 +175,8 @@ include('session.php');
                                                 Employees </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                             <?php 
-                                                        $cser=mysqli_connect("localhost","root","","mercedhernandezgreenhills") or die("connection failed:".mysqli_error());
-                                                        $result = mysqli_query($cser,"SELECT * FROM users") or die(mysql_error());
+                                                        $cser=mysqli_connect("localhost","root","","mercedhernandezgreenhills");
+                                                        $result = mysqli_query($cser,"SELECT * FROM users");
 
                                                         if($userstotal = mysqli_num_rows($result))
                                                         {

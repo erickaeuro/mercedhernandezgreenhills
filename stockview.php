@@ -75,8 +75,8 @@ require 'connection.php';
                                 ?>
 
                             <div class="form-group col-md-11">
-                                <label for="stock_no"><b>Stock No.</b></label>
-                                <p class="form-control"> <?= $row['stock_no']; ?>
+                                <label for="stock_no"><b>Stock No.</b> </label>
+                                <p class="form-control" > <?= $row['stock_no'];?> 
                             </div>  
 
                             <div class="form-group col-md-12">

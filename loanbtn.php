@@ -105,8 +105,8 @@
 
                         echo '<select class="js-example-basic-single" name="customerno" id="select_box" style="width: 1039px">';
 
-                        $cser=mysqli_connect("localhost","root","","mercedhernandezgreenhills") or die("connection failed:".mysqli_error());
-                        $result = mysqli_query($cser,"SELECT customer_no, first_name, last_name FROM customertbl") or die(mysql_error());
+                        $cser=mysqli_connect("localhost","root","","mercedhernandezgreenhills");
+                        $result = mysqli_query($cser,"SELECT customer_no, first_name, last_name FROM customertbl");
 
 
                         if (mysqli_num_rows($result)!=0)

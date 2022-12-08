@@ -20,8 +20,6 @@
 
 <!-- Connection Database --> 
   <?php include ("connection.php"); 
-  
-  session_start();
   error_reporting(0);
 ?>
 
@@ -103,7 +101,7 @@
                       ?> 
 
                           <div class="table-responsive">
-                              <table id="dtblid" class="table table-striped" width="100%" cellspacing="0">
+                              <table id= "dtblid" class="table table-striped" width="100%" cellspacing="0">
                                   <thead>
                                       <tr style="font-size:13px;font-family:sans-serif;">
                                           <th>Stock No.</th>
@@ -236,7 +234,8 @@
                 "lengthMenu": [
                     [10, 25, 50, -1],
                     [10, 25, 50, "All"]
-                ],
+                ], 
+                order: [[0, 'desc']],
                 responsive: true,
                 language: {
                     search: "_INPUT_",
