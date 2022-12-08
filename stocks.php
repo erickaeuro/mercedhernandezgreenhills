@@ -103,7 +103,7 @@
                       ?> 
 
                           <div class="table-responsive">
-                              <table id="dtblid" class="table table-striped" width="100%" cellspacing="0">
+                              <table class="table table-striped" width="100%" cellspacing="0">
                                   <thead>
                                       <tr style="font-size:13px;font-family:sans-serif;">
                                           <th>Stock No.</th>

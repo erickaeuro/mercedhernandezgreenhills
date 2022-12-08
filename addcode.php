@@ -71,4 +71,3 @@ if(isset($_POST['addjewelry']) && !empty($_FILES["file"]["name"]))
 // Display status message
 echo $statusMsg;
 ?>
-
