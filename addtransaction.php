@@ -85,6 +85,18 @@ if(isset($_POST['addtransc']))
 
                         if($query_run && $query_run2){
                             $_SESSION['addstatus'] = "Ticket Added Successfully";
+
+                             //Time input
+                            date_default_timezone_set('Asia/Manila');
+                            $date = date('y-m-d h:i:s');
+
+                            //ID
+                            $id = $_SESSION['id'];
+
+                            //INSERT
+                            $query = "INSERT into logs (user_id, action_made, date_created) VALUES('$id','added a pawn ticket', '$date')"; 
+                            $query_run = mysqli_query($con, $query);
+
                             header('Location: transaction.php');
                         }else{
                             $_SESSION['addstatus'] = "DATA NOT SAVED";

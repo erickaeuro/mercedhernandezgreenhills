@@ -60,7 +60,7 @@
                   <div class="card shadow mb-4 border-left-primary border-bottom-primary">
                       <!-- Card Header - Dropdown -->
                       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                          <h6 class="m-0 font-weight-bold text-dark">Audit Logs</h6>
+                          <h6 class="m-0 font-weight-bold text-dark">Audit Trail & Logs</h6>
                       </div>
                       <!-- Card Body -->
                         <div class="card-body">
@@ -72,7 +72,7 @@
 
                       <?php 
 
-                            $query = "SELECT * FROM logs";
+                            $query = "SELECT * FROM logs inner join users on logs.user_id = users.id";
                             //$qry = $conn->query("SELECT l.*,u.username FROM `logs` l inner join users u on l.user_id = u.id order by  unix_timestamp(l.`date_created`) asc");
                             //$i = 1;
                             $query_run = mysqli_query($con, $query);
@@ -80,13 +80,13 @@
                       ?> 
 
                           <div class="table-responsive">
-                              <table id="dtblid" class="table table-striped" width="100%" cellspacing="0">
+                              <table id="uuuu" class="table table-striped" width="100%" cellspacing="0">
                                   <thead>
                                       <tr style="font-size:13px;font-family:sans-serif;">
                                           <th>User ID</th>
                                           <th>Username</th>
                                           <th>Date Time</th>
-                                          <th>Logs Made</th>
+                                          <th>Action Made</th>
                                       </tr>
                                   </thead>
 
@@ -180,12 +180,13 @@
 <script>
         $(document).ready(function () {
 
-            $('#dtblid').DataTable({
+            $('#uuuu').DataTable({
                 "pagingType": "full_numbers",
                 "lengthMenu": [
                     [10, 25, 50, -1],
                     [10, 25, 50, "All"]
                 ],
+                order: [[0, 'desc']],
                 responsive: true,
                 language: {
                     search: "_INPUT_",

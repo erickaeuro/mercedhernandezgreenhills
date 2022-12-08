@@ -37,7 +37,20 @@ function encrypthis($data,$key){
             $query_run = mysqli_query($con, $query);
 
             if ($query_run) {
-                echo "<h3>  Image uploaded successfully!</h3>";
+
+                $_SESSION['status'] = "Customer Updated Sucessfully!";
+
+                //Time input
+                date_default_timezone_set('Asia/Manila');
+                $date = date('y-m-d h:i:s');
+
+                //ID
+                $id = $_SESSION['id'];
+
+                //INSERT
+                $query = "INSERT into logs (user_id, action_made, date_created) VALUES('$id','Updated a Customer', '$date')"; 
+                $query_run = mysqli_query($con, $query);
+      
                 header('Location: customer.php');
             } else {
                 echo "<h3>  Failed to upload image!</h3>";

@@ -14,7 +14,7 @@
         $query_run = mysqli_query($con, $query);
         if($query_run)
         {
-            $_SESSION['addstatus'] = "Item Sold!!";
+            $_SESSION['addstatus'] = "Jewelry Sold!";
             header('Location: auction.php');
            
         }

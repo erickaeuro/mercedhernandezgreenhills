@@ -52,6 +52,16 @@ if(isset($_POST['adduser']))
                 // echo "Saved";
                 $_SESSION['status'] = "User Added Successfully";
                 $_SESSION['status_code'] = "success";
+                 //Time input
+                 date_default_timezone_set('Asia/Manila');
+                 $date = date('y-m-d h:i:s');
+
+                 //ID
+                 $id = $_SESSION['id'];
+
+                 //INSERT
+                 $query = "INSERT into logs (user_id, action_made, date_created) VALUES('$id','added a new user', '$date')"; 
+                 $query_run = mysqli_query($con, $query);
                 header('Location: users.php');
             }
             else 

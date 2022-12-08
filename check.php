@@ -1,9 +1,11 @@
 
 
 <?php
+
 session_start();
 
  include('session.php');
+
 
 $username = $_SESSION['username'];
 
@@ -24,10 +26,6 @@ if (!$checkResult) {
     header("location: indexsu.php");
     die();
 } 
-// else {
-//     $_SESSION['username'] = $username;
-//     header("location: dashboard.php");
-// }
 
 ?>
 <!DOCTYPE html>
@@ -65,22 +63,33 @@ if (!$checkResult) {
             <div class="col-md-6 offset-md-3"  style="background: white; padding: 20px; box-shadow: 10px 10px 5px #888888; margin-top: 100px;">
                 <hr>
                     <div style="text-align: center;">
-                           <h1>Authentication Successfully!</h1>
+                           <h1>Authentication Successful!</h1>
                            <p></p>
                     </div>
-                <hr>   
+                <hr>  
                 <p>
+                <a href='dashboard.php?username=<?=$username?>'  class='btn text-white' style='width: 200px;border-radius: 0px; background-color: #81C784; text-align: center;;'>Continue?</a>
+
                 <?php
-                // if(isset($_GET['sub'])) {
-                //     $_SESSION['username'] = $username;
-                //     header("Location: dashboard.php");
-                // }
 
-                ?> 
-                    <!-- <form action="<?php // $_SERVER['PHP_SELF'] ?>" method="get"> -->
-                <?php echo "<a href='dashboard.php?username=$username'  class='btn text-white' style='width: 200px;border-radius: 0px; background-color: #81C784; text-align: center;;'>Continue</a>" ?>
-                </form>
+                    $con = mysqli_connect("localhost","root","","mercedhernandezgreenhills");
+                    if(mysqli_connect_errno()) {echo "Error: " . mysqli_connect_errno();}
+                    
+                    date_default_timezone_set('Asia/Manila');
+                    $date = date('y-m-d h:i:s');
 
+                    $valquery = "SELECT id from users where username = '$username'";
+                    $valquery_run = mysqli_query($con, $valquery);
+                    $val = mysqli_fetch_array($valquery_run);
+
+                    $uid = $val['id'];
+                    $_SESSION['id'] = $uid;
+
+
+                    $query = "INSERT into logs (user_id, action_made, date_created) VALUES('$uid','user logged in', '$date')"; 
+                    $query_run = mysqli_query($con, $query);
+
+                ?>
                
                 </p>
             </div>

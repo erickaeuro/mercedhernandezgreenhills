@@ -49,6 +49,17 @@ if(isset($_POST['addjewelry']) && !empty($_FILES["file"]["name"]))
               if($query_run){
                   //$statusMsg = "The file ".$fileName. " has been uploaded successfully.";
                   $_SESSION['status'] = "Stock Added Successfully!";
+
+                    //Time input
+                    date_default_timezone_set('Asia/Manila');
+                    $date = date('y-m-d h:i:s');
+
+                    //ID
+                    $id = $_SESSION['id'];
+
+                    //INSERT
+                    $query = "INSERT into logs (user_id, action_made, date_created) VALUES('$id','added a stock', '$date')"; 
+                    $query_run = mysqli_query($con, $query);
                   
                   header('Location: stocks.php');
               }else{

@@ -58,10 +58,23 @@ header('Location: customer.php');
             mysqli_query($con, $query);
 
             if (move_uploaded_file($tempname, $folder)) {
-                echo "<h3>  Image uploaded successfully!</h3>";
+                $_SESSION['status'] = "Customer added successfully!";
+
+                  //Time input
+                  date_default_timezone_set('Asia/Manila');
+                  $date = date('y-m-d h:i:s');
+
+                  //ID
+                  $id = $_SESSION['id'];
+
+                  //INSERT
+                  $query1 = "INSERT into logs (user_id, action_made, date_created) VALUES('$id','added a customer', '$date')"; 
+                  $query_run1 = mysqli_query($con, $query1);
+                
                 header('Location: customer.php');
             } else {
-                echo "<h3>  Failed to upload image!</h3>";
+                $_SESSION['status'] = "Customer not added!";
+                header('Location: customer.php');
             }
             
         }else{

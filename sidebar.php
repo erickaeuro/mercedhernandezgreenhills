@@ -152,20 +152,10 @@
           </li>
 
           <li class='nav-item'>
-          <a class='nav-link collapsed' href='#' data-toggle='collapse' data-target='#collapseUtilities'
-              aria-expanded='true' aria-controls='collapseUtilities'>
-              <i class='fas fa-users-cog'></i>
-              <span><b>Audit</b></span>
-          </a>
-          <div id='collapseUtilities' class='collapse' aria-labelledby='headingUtilities' data-parent='#accordionSidebar'>
-              <div class='bg-white py-2 collapse-inner rounded'>
-                  <a class='collapse-item' href='auditlog.php'>Audit Logs</a>
-                  <a class='collapse-item' href='audittrail.php'>Audit Trail</a>
-              </div>
-          </div>
-      </li>
-
-  
+          <a class='nav-link' href='auditlogtrail.php'>
+          <i class='fas fa-users-cog'></i>
+            <span><b>Audit Trail & Logs</b></span></a>
+        </li>
           
       ";
           }

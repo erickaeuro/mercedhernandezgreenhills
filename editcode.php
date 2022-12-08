@@ -24,10 +24,22 @@ $date_sold = $_POST['date_sold'];
               $query_run = mysqli_query($con, $query);
 
               if($query_run){
-                  $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
+
                   $_SESSION['status'] = "Stock Edited Successfully!";
+
+                    //Time input
+                    date_default_timezone_set('Asia/Manila');
+                    $date = date('y-m-d h:i:s');
+
+                    //ID
+                    $id = $_SESSION['id'];
+
+                    //INSERT
+                    $query = "INSERT into logs (user_id, action_made, date_created) VALUES('$id','updated a stock', '$date')"; 
+                    $query_run = mysqli_query($con, $query);
+            
                   
-                  header('Location: stocks.php');
+                    header('Location: stocks.php');
               }
         }
 ?>

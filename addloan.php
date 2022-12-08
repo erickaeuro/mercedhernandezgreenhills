@@ -36,6 +36,16 @@ if(isset($_POST['addloan']))
         if($query_run)
         {
             $_SESSION['addstatus'] = "Transaction Successful";
+             //Time input
+             date_default_timezone_set('Asia/Manila');
+             $date = date('y-m-d h:i:s');
+
+             //ID
+             $id = $_SESSION['id'];
+
+             //INSERT
+             $query = "INSERT into logs (user_id, action_made, date_created) VALUES('$id','added a loan', '$date')"; 
+             $query_run = mysqli_query($con, $query);
             header('Location: loan.php');
         }
         else
