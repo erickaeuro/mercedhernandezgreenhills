@@ -24,6 +24,12 @@
   session_start();
 ?>
 
+<style type="text/css">
+		.error {
+			color:red;
+		}
+	</style>
+
 </head>
 
 <body id="page-top" class=" bg-gray-800">
@@ -85,13 +91,13 @@
 
                         <div class="wrapper">
                             <div class="form-group col-md-12">
-                                <label for="Karat-gold"><b>Karat/Gold *</b></label>
-                                <input type="text" class="form-control" name="karat_gold" placeholder="Karat/Gold" required>
+                                <label for="Karat-gold"><b>Karat/Gold</b></label>
+                                <input type="text" class="form-control" name="karat_gold" placeholder="Karat/Gold">
                             </div>
 
                             <div class="form-group col-md-25">
                                 <label for="kindofstone"><b>Kind of Stone </b></label>
-                                <input type="text" class="form-control" name="kindofstone" placeholder="Kind of Stone" required>
+                                <input type="text" class="form-control" name="kindofstone" placeholder="Kind of Stone">
                             </div>
                         </div>
 
@@ -106,8 +112,8 @@
                             </div>
 
                             <div class="form-group col-md-11">
-                                <label for="tagprice"><b>Tag Price *</b></label>
-                                <input type="text" class="form-control" name="tagprice" placeholder="P 0.00" required>
+                                <label for="tagprice" ><b>Tag Price * </b></label>
+                                <input type="text" class="form-control" name="tagprice" placeholder="P 0.00" required >
                             </div>
                         </div>
                             <div class="mb-4">
