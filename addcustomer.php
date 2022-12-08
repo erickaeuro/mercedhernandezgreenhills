@@ -8,8 +8,6 @@
 
 <?php
 
-
-
 $key = 'qkwjdiw239&&jdafweihbrhnan&^%$ggdnawhd4njshjwuuO';
 function encrypthis($data,$key){
     $encryption_key = base64_decode($key);
@@ -39,6 +37,11 @@ if ($AgeVal > $today) {
     $_SESSION['custstatus'] = "Customer must be above 18 years old";
     header('Location: custadd.php');
 }else{
+    if ($_FILES["file"]["size"] >= 10485760){
+echo "<h3>File size must be less than 10mb</h3>";
+header('Location: customer.php');
+    }
+   else {
     $filename = $_FILES["file"]["name"];
     $filename = encrypthis($filename, $key);
     $tempname = $_FILES["file"]["tmp_name"];
@@ -65,10 +68,7 @@ if ($AgeVal > $today) {
             $_SESSION['custstatus'] = "The customer is already in the record";
             header('Location: custadd.php');
         }
-
-
-    
-        
+   }
 }
 
  
