@@ -18,7 +18,7 @@
   <link href="css/sb-admin-2.css" rel="stylesheet">
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css">
-  
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
   <!-- Select2 CSS --> 
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" /> 
 
@@ -97,13 +97,13 @@
                         <form action="addloan.php" method="POST">
                             
                         <div class="form-group col-md-11">
-                                <label for="CustomerNo"><b>Customer Name.</b></label><br>
+                                <label for="CustomerNo"><b>Customer Name</b></label><br>
 
                         <?php 
 
                         
 
-                        echo '<select class="custom-select" name="customerno" id="select_box">';
+                        echo '<select class="js-example-basic-single" name="customerno" id="select_box" style="width: 1039px">';
 
                         $cser=mysqli_connect("localhost","root","","mercedhernandezgreenhills") or die("connection failed:".mysqli_error());
                         $result = mysqli_query($cser,"SELECT customer_no, first_name, last_name FROM customertbl") or die(mysql_error());
@@ -132,19 +132,19 @@
 
                             <div class="form-group col-md-11">
                                 <label for="itemtype"><b>Item Type </b></label>
-                                <input type="text" class="form-control" name="item_type" placeholder="Enter Jewelry Type">
+                                <input type="text" class="form-control" name="item_type" placeholder="Enter Jewelry Type" value="<?php if (isset($_POST['item_type'])) echo $_POST['item_type']; ?>">
                             </div>
 
                             <div class="form-group col-md-11">
                                 <label for="description"><b>Item Description </b></label>
-                                <textarea class="form-control" rows="3" name="item_desc" placeholder="Enter Jewelry description"></textarea>
+                                <textarea class="form-control" rows="3" name="item_desc" placeholder="Enter Jewelry description" value="<?php echo isset($_POST['item_desc']) ?>"></textarea>
                             </div>
 
                         <div class="wrapper">
 
                             <div class="form-group col-md-11">
                                 <label for="appraised_value"><b>Appraised Value </b></label>
-                                <input type="text" class="form-control" name="appraised_value" placeholder="Enter Jewelry Appraised Value">
+                                <input type="text" class="form-control" name="appraised_value" placeholder="Enter Jewelry Appraised Value" value="<?php echo isset($_POST['appraised_value']) ?>">
                             </div>
 
                             <div class="form-group col-md-11">
@@ -204,6 +204,8 @@
 
 <?php include 'scripts.php'; ?>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
 
 $(document).ready(function(){

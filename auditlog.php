@@ -6,7 +6,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Merced Hernandez Greenhills</title>
+  <title>Audit Trail | Merced Hernandez Greenhills</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -45,37 +45,11 @@
 
         <!-- Topbar -->
         <?php include 'navbar.php'; 
-        
-        if($_GET['del'] == 1){
-          echo"<div class='alert alert-success' role='alert'>Successfully Deleted
-          <button type='button' class='close' data-dismiss='alert'>x</button>
-          </div>";
-        }
-
-
-              if(isset($_SESSION['status']))
-              {
-                  ?>
-                      <div class="alert alert-success" role="alert" role="alert">
-                          <?= $_SESSION['status']; ?>
-                          <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">x</button>
-                      </div>
-                  <?php 
-                  unset($_SESSION['status']);
-              }
         ?>
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-
-
-        <div class="d-sm-flex align-items-center justify-content-between mb-4"> 
-            <h4>
-              <a href="stockadd.php" class="btn text-white btn-md" style="background-color: #DE9185;">
-              <i class="fas fa-plus"></i> Add Jewelry Stocks</a>
-            </h4>
-        </div>
         
 <body>
 
@@ -86,7 +60,7 @@
                   <div class="card shadow mb-4 border-left-primary border-bottom-primary">
                       <!-- Card Header - Dropdown -->
                       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                          <h6 class="m-0 font-weight-bold text-dark">Jewelry Stocks</h6>
+                          <h6 class="m-0 font-weight-bold text-dark">Audit Logs</h6>
                       </div>
                       <!-- Card Body -->
                         <div class="card-body">
@@ -98,25 +72,21 @@
 
                       <?php 
 
-                            $query = "SELECT * FROM inventorytbl where move='0' order by date_created DESC";
+                            $query = "SELECT * FROM logs";
+                            //$qry = $conn->query("SELECT l.*,u.username FROM `logs` l inner join users u on l.user_id = u.id order by  unix_timestamp(l.`date_created`) asc");
+                            //$i = 1;
                             $query_run = mysqli_query($con, $query);
+
                       ?> 
 
                           <div class="table-responsive">
                               <table id="dtblid" class="table table-striped" width="100%" cellspacing="0">
                                   <thead>
                                       <tr style="font-size:13px;font-family:sans-serif;">
-                                          <th>Stock No.</th>
-                                          <th>Item Type</th>
-                                          <th>Item Description</th>
-                                          <th>Karat/Gold</th>
-                                          <th>Kind of Stone</th>
-                                          <th>Weight</th>
-                                          <th>Item Quantity</th>
-                                          <th>Tag Price</th>
-                                          <th>Date Sold</th>
-                                          <th>Date Created</th>
-                                          <th>Action</th>
+                                          <th>User ID</th>
+                                          <th>Username</th>
+                                          <th>Date Time</th>
+                                          <th>Logs Made</th>
                                       </tr>
                                   </thead>
 
@@ -125,33 +95,12 @@
                       <?php
                     foreach($query_run as $row)
                     {
-                        date_default_timezone_set('Asia/Manila');
-                        $today = date("Y-m-d");
-                    
-                        if($row['date_sold'] <= $today){                      
-                          $soldvalid = 1;
-                          $sold = $row['stock_no'];
-                          include 'stockupdate.php';
-                        }
-
             ?>
                         <tr class="">
-                            <td> <?php echo $row['stock_no']; ?> </td> 
-                            <td> <?php echo $row['item_type']; ?> </td>
-                            <td> <?php echo $row['itemdescription']; ?> </td>
-                            <td> <?php echo $row['karat_gold']; ?> </td>
-                            <td> <?php echo $row['kindofstone']; ?> </td>
-                            <td> <?php echo $row['weight']; ?> </td>
-                            <td> <?php echo $row['itemqty']; ?> </td>
-                            <td> <?php echo $row['tagprice']; ?> </td>
-                            <td> <?php echo $row['date_sold']; ?> </td>
+                            <td> <?php echo $row['user_id']; ?> </td> 
+                            <td> <?php echo $row['username']; ?> </td>
                             <td> <?php echo $row['date_created']; ?> </td>
-                            <td>
-                                <a href="stockview.php?id=<?= $row['stock_no'];?>" class="btn text-white" style="background-color: #7FD2D4;">VIEW</a>
-                                <a href="stockedit.php?id=<?= $row['stock_no'];?>" class="btn text-white" style="background-color: #81C784 ">EDIT</a>
-                                <!--<a href="movestock.php?id=<?= $row['stock_no']; ?>" name="movedata" class="btn text-white" style="background-color: #87578F;" onclick="return confirm('Are you sure you want to move this record?')">MOVE</a> -->
-                                <!--- <a href="deletecode.php?id=<?= $row['stock_no']; ?>" name="deletedata" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this record?')">DELETE</a> --> 
-                            </td> 
+                            <td> <?php echo $row['action_made']; ?> </td>
                             
                         <?php 
                         
