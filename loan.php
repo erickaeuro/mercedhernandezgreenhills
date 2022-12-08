@@ -98,10 +98,11 @@
                                           <th>Customer Name</th>
                                           <th>Item Type</th>
                                           <th>Principal</th>
-                                          <th>Interest</th>
+                                          <th>interest</th>
                                           <th>Total Amount Paid</th>
                                           <th>Renewal Due</th>
-                                          <th>Principal Due</th>                                          
+                                          <th>Principal Due</th>   
+                                          <th>Late Charges</th>                                         
                                           <th>Loan Status</th>
                                           <th>Maturity Date</th>
                                           <th>Expiration Date</th>
@@ -139,7 +140,7 @@
                         array_push($exprec, $row['loan_id']);                        
                         $delvalid = 1;
                       }
-                      if($twomonth <= $today && $row['loan_status'] == "Late" && $row['interest'] <= 5){                        
+                      if($twomonth <= $today && $row['loan_status'] == "Late" && $row['interest'] <= 6){                        
                         array_push($mattrec, $row['loan_id']);
                         $mattvalid = 1;
                       }
@@ -165,6 +166,8 @@
                         $middlen = $row['middle_name'];
                         $lastn = $row['last_name'];
                         $fulln = "$firstn $middlen $lastn";
+                        $late = $row['principal'] * 0.02;
+                        $latetwo = $row['principal'] * 0.06;
 
               ?>
                             <tr>                                
@@ -176,9 +179,12 @@
                                 <td> <?php echo $row['total_amt_paid']; ?> </td>
                                 <td> <?php echo $row['renewal_due']; ?> </td>
                                 <td> <?php echo $row['principal_due']; ?> </td>
+                                <td> <?php if($row['loan_status'] == 'Active Loan'){ echo "<i>No late charges!</i>";} if($row['loan_status'] == 'Late'){ echo $late;} 
+                                if($row['loan_status'] == 'Two Months Late'){echo $latetwo;} if($row['loan_status'] == '<i>Auctioned</i>'){echo "Auctioned";} 
+                                if($row['loan_status'] == 'Redeemed'){echo "<i>Redeemed</i>";}?> </td>
                                 <td> <?php echo $row['loan_status']; ?> </td>
-                                <td> <?php echo $row['maturity_date']; ?> </td>
-                                <td> <?php echo $row['expiry_date']; ?> </td>
+                                <td> <?php echo $row['maturity_date'];  if($row['loan_status'] == "Redeemed"){echo "<i>Redeemed</i>";}?> </td>
+                                <td> <?php echo $row['expiry_date']; if($row['loan_status'] == "Redeemed"){echo "<i>Redeemed</i>";}?> </td>
                                 <td>
                                     <a href="loanview.php?id=<?= $row['loan_id'];?>" class="btn text-white" style="background-color: #7FD2D4;">VIEW</a>
                                     <a href="editloan.php?id=<?= $row['loan_id'];?>" class="btn text-white" style="background-color: #81C784; "> EDIT </a>
