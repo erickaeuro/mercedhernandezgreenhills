@@ -98,7 +98,7 @@
                                           <th>Customer Name</th>
                                           <th>Item Type</th>
                                           <th>Principal</th>
-                                          <th>interest</th>
+                                          <th>Interest</th>
                                           <th>Total Amount Paid</th>
                                           <th>Renewal Due</th>
                                           <th>Principal Due</th>                                          

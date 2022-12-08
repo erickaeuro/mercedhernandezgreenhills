@@ -8,17 +8,11 @@
 
 
 <?php
+if(isset($_POST['addjewelry']))
+{   
 
-$statusMsg = '';
-
-// File upload path
-$targetDir = "jewelry/";
-$fileName = basename($_FILES["file"]["name"]);
-$targetFilePath = $targetDir . $fileName;
-$fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
 $stock_no = $_POST['stock_no'];
 $item_type = $_POST['item_type'];
-//$file_name = $_POST['file_name'];
 $itemdescription = $_POST['itemdescription'];
 $karat_gold = $_POST['karat_gold'];
 $kindofstone = $_POST['kindofstone'];
@@ -30,37 +24,38 @@ date_default_timezone_set('Asia/Manila');
 $date = date('y-m-d h:i:s');
 $date_created = $_POST['date_created'];
 
-
-if(isset($_POST['addjewelry']) && !empty($_FILES["file"]["name"]))
-{
-      // Allow certain file formats
-      $allowTypes = array('jpg','png','jpeg','gif','pdf');
-      if(in_array($fileType, $allowTypes)){
-          // Upload file to server
-          if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
-              // Insert image file name into database
-              $query = "INSERT into inventorytbl (stock_no, file_name, item_type, itemdescription, karat_gold, kindofstone, weight, itemqty, tagprice, date_sold, date_created) VALUES ('$stock_no', '$fileName','$item_type','$itemdescription','$karat_gold','$kindofstone','$weight','$itemqty','$tagprice','$date_sold','$date')";
-              $query_run = mysqli_query($con, $query);
-
-              if($query_run){
-                  $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
-                  $_SESSION['status'] = "Stock Added Successfully!";
-                  
-                  header('Location: stocks.php');
-              }else{
-                  $statusMsg = "File upload failed, please try again.";
-              } 
-          }else{
-              $statusMsg = "Sorry, there was an error uploading your file.";
-          }
-      }else{
-          $statusMsg = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
-      }
-  }else{
-      $statusMsg = 'Please select a file to upload.';
-  }
-    
-// Display status message
-echo $statusMsg;
+ $fileName = rand(1000,100000)."-".$_FILES['file']['name'];
+ $file_loc = $_FILES['file']['tmp_name'];
+ $file_size= $_FILES['file']['size'];
+ $file_type = $_FILES['file']['type'];
+ $folder="jewelry/";
+ 
+ /* new file size in KB */
+ $new_size = $file_size/1024;  
+ /* new file size in KB */
+ 
+ /* make file name in lower case */
+ $new_file_name = strtolower($file);
+ /* make file name in lower case */
+ 
+ $final_file=str_replace(' ','-',$new_file_name);
+ 
+ if(move_uploaded_file($file_loc,$folder.$final_file))
+ {
+$query = "INSERT into inventorytbl (stock_no, file_name, type, size, item_type, itemdescription, karat_gold, kindofstone, weight, itemqty, tagprice, date_sold, date_created) VALUES ('$stock_no', '$fileName', '$final_file','$file_type','$new_size','$item_type','$itemdescription','$karat_gold','$kindofstone','$weight','$itemqty','$tagprice','$date_sold','$date')";
+ mysqli_query($con,$query);
+  
+ 
+  echo "File sucessfully upload";
+        
+  
+ }
+ else
+ {
+  
+  echo "Error.Please try again";
+		
+		}
+	}
 ?>
 

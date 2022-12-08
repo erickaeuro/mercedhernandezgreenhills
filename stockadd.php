@@ -64,12 +64,13 @@
                     </div>
                     <div class="card-body">
                         <form action="addcode.php" method="POST" enctype="multipart/form-data">
-
                             
-                            <div class="form-group col-md-10">
+                            <div class="form-group col-md-11">
                                 <label for="image"><b>Image of Jewelry</b></label>
-                                <input type="file" class="form-control" name="file">
+                                <input type="file" class="form-control" name="file" required>
                             </div>
+                           
+                        
 
                             <div class="form-group col-md-11">
                                 <label for="itemtype"><b>Item Type</b></label>

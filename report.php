@@ -10,7 +10,7 @@ if(isset($_POST["export"]))
 {
  if(empty($_POST["start_date"]))
  {
-  $start_date_error = '<label class="text-danger">Start Date is required</label>';
+  $start_date_error = '<label class="text-dark">Please select a starting date</label>';
  }
  else if(empty($_POST["end_date"]))
  {
@@ -31,10 +31,10 @@ if(isset($_POST["export"]))
 
   $query = "
   SELECT * FROM inventorytbl
-  WHERE date_created >= '".$_POST["start_date"]."' 
-  AND date_created <= '".$_POST["end_date"]."' 
-  ORDER BY date_created ASC
-  ";
+  WHERE date_created>= '".$_POST["start_date"]." 00:00:00' 
+  AND date_created <= '".$_POST["end_date"]." 23:59:59' 
+  ORDER BY date_created ASC";
+
   $statement = $connect->prepare($query);
   $statement->execute();
   $result = $statement->fetchAll();
@@ -57,7 +57,124 @@ if(isset($_POST["export"]))
   exit;
  }
 }
+if(isset($_POST["daily"]))
+{
+  $file_name = 'Inventory Report.csv';
+  header("Content-Description: File Transfer");
+  header("Content-Disposition: attachment; filename=$file_name");
+  header("Content-Type: application/csv;");
 
+  $file = fopen('php://output', 'w');
+
+  $header = array("stock_no", "item_type", "itemdescription", "karat_gold", "kindofstone", "weight", "itemqty", "tagprice","date_sold", "date_created");
+
+  fputcsv($file, $header);
+
+  $query = "
+  SELECT * FROM inventorytbl
+  WHERE date_created>= '".date("Y-m-d")." 00:00:00' 
+  AND date_created <= '".date("Y-m-d")." 23:59:59' 
+  ORDER BY date_created ASC";
+
+  $statement = $connect->prepare($query);
+  $statement->execute();
+  $result = $statement->fetchAll();
+  foreach($result as $row)
+  {
+   $data = array();
+   $data[] = $row["stock_no"];
+   $data[] = $row["item_type"];
+   $data[] = $row["itemdescription"];
+   $data[] = $row["karat_gold"];
+   $data[] = $row["kindofstone"];
+   $data[] = $row["weight"];
+   $data[] = $row["itemqty"];
+   $data[] = $row["tagprice"];
+   $data[] = $row["date_sold"];
+   $data[] = $row["date_created"];
+   fputcsv($file, $data);
+ }
+ fclose($file);
+ exit;
+}
+
+if(isset($_POST["weekly"]))
+{
+  $file_name = 'Inventory Report.csv';
+  header("Content-Description: File Transfer");
+  header("Content-Disposition: attachment; filename=$file_name");
+  header("Content-Type: application/csv;");
+
+  $file = fopen('php://output', 'w');
+
+  $header = array("stock_no", "item_type", "itemdescription", "karat_gold", "kindofstone", "weight", "itemqty", "tagprice","date_sold", "date_created");
+
+  fputcsv($file, $header);
+
+  $query = "
+  
+  SELECT * FROM inventorytbl WHERE date_created > DATE_SUB(NOW(), INTERVAL 1 WEEK) ORDER BY date_created DESC "; 
+  $statement = $connect->prepare($query);
+  $statement->execute();
+  $result = $statement->fetchAll();
+  foreach($result as $row)
+  {
+   $data = array();
+   $data[] = $row["stock_no"];
+   $data[] = $row["item_type"];
+   $data[] = $row["itemdescription"];
+   $data[] = $row["karat_gold"];
+   $data[] = $row["kindofstone"];
+   $data[] = $row["weight"];
+   $data[] = $row["itemqty"];
+   $data[] = $row["tagprice"];
+   $data[] = $row["date_sold"];
+   $data[] = $row["date_created"];
+   fputcsv($file, $data);
+  
+ }
+ fclose($file);
+  exit;
+}
+
+if(isset($_POST["monthly"]))
+{
+  $file_name = 'Inventory Report.csv';
+  header("Content-Description: File Transfer");
+  header("Content-Disposition: attachment; filename=$file_name");
+  header("Content-Type: application/csv;");
+
+  $file = fopen('php://output', 'w');
+
+  $header = array("stock_no", "item_type", "itemdescription", "karat_gold", "kindofstone", "weight", "itemqty", "tagprice","date_sold", "date_created");
+
+  fputcsv($file, $header);
+
+  $query = "
+  
+  SELECT * FROM inventorytbl WHERE date_created > DATE_SUB(NOW(),INTERVAL 1 MONTH) ORDER BY date_created DESC "; 
+  $statement = $connect->prepare($query);
+  $statement->execute();
+  $result = $statement->fetchAll();
+  foreach($result as $row)
+  {
+   $data = array();
+   $data[] = $row["stock_no"];
+   $data[] = $row["item_type"];
+   $data[] = $row["itemdescription"];
+   $data[] = $row["karat_gold"];
+   $data[] = $row["kindofstone"];
+   $data[] = $row["weight"];
+   $data[] = $row["itemqty"];
+   $data[] = $row["tagprice"];
+   $data[] = $row["date_sold"];
+   $data[] = $row["date_created"];
+   fputcsv($file, $data);
+  
+ }
+ fclose($file);
+  exit;
+}
 $query = "
 SELECT * FROM inventorytbl 
 ORDER BY stock_no ASC;
@@ -131,9 +248,14 @@ $result = $statement->fetchAll();
        </div>
 
       </div>
-
       <div class="form-group col-md-12">
-       <input type="submit" name="export" value="Export" class="btn text-white" style="background-color: #81C784;" />
+      <input type="submit" name="export" value="Export" class="btn text-white" style="background-color: #81C784;" />
+      </div>
+      <div class="form-group col-md-12">
+       
+       <input type="submit" name="daily" value="Daily" class="btn text-white w-100 mt-3" style="background-color: #81C784;" />
+       <input type="submit" name="weekly" value="Weekly" class="btn text-white w-100 mt-3" style="background-color: #81C784;" />
+       <input type="submit" name="monthly" value="Monthly" class="btn text-white w-100 mt-3" style="background-color: #81C784;" />
       </div>
 
     </div>
