@@ -18,7 +18,7 @@ if(mysqli_connect_errno()) {echo "Error: " . mysqli_connect_errno();}
 	unset($_SESSION["id"]);
 	unset($_SESSION["username"]);
 	session_destroy();
-	header("Location: login.php");
+	header("Location: index.php");
 
 
 ?>
