@@ -15,6 +15,16 @@
         if($query_run)
         {
             $_SESSION['addstatus'] = "Jewelry Sold!";
+            //Time input
+            date_default_timezone_set('Asia/Manila');
+            $date = date('y-m-d h:i:s');
+
+            //ID
+            $id = $_SESSION['id'];
+
+            //INSERT
+            $query1 = "INSERT into logs (user_id, action_made, date_created) VALUES('$id','Sold the Auctioned Jewelry', '$date')"; 
+            $query_run1 = mysqli_query($con, $query1);
             header('Location: auction.php');
            
         }
