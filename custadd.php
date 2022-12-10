@@ -77,39 +77,39 @@
 
                         <div class="wrapper">
                             <div class="form-group col-md-12">
-                                <label for="first_name"><b>First Name</b></label>
-                                <input type="text" class="form-control" name="first_name" placeholder="Enter First Name" required>
+                                <label for="first_name"><b>First Name *</b></label>
+                                <input type="text" class="form-control" name="first_name" placeholder="Enter First Name" required pattern="[a-zA-Z][a-zA-Z ]{2,}">
                             </div>
 
                             <div class="form-group col-md-12">
                                 <label for="middle_name"><b>Middle Name</b></label>
-                                <input type="text" class="form-control" name="middle_name" placeholder="Enter Middle Name">
+                                <input type="text" class="form-control" name="middle_name" placeholder="Enter Middle Name" pattern="[a-zA-Z][a-zA-Z ]{2,}">
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label for="last_name"><b>Last Name</b></label>
-                                <input type="text" class="form-control" name="last_name" placeholder="Enter Last Name" required>
+                                <label for="last_name"><b>Last Name *</b></label>
+                                <input type="text" class="form-control" name="last_name" placeholder="Enter Last Name" required required pattern="[a-zA-Z][a-zA-Z ]{2,}">
                             </div>
                         </div>
 
                             <div class="form-group col-md-11">
-                                <label for="address">Address</label>
+                                <label for="address">Address *</label>
                                 <input type="text" class="form-control" name="address" placeholder="Enter Full Address" required>
                             </div>
 
                             <div class="form-group col-md-11">
-                                <label for="cpnum">Contact Number</label>
-                                <input type="text" class="form-control" name="cpnum" placeholder="Enter Contact Number" required>
+                                <label for="cpnum">Contact Number *</label>
+                                <input type="text" class="form-control" name="cpnum" placeholder="Enter Contact Number" required pattern="((^(\+)(\d){12}$)|(^\d{11}$))">
                             </div>
 
                             <div class="form-group col-md-11">
                                 <label for="birthdate">Birthdate</label>
-                                <input type="date" class="form-control" name="BirthDate" placeholder="Birthdate" required onchange="validateBday(this)">
+                                <input type="date" class="form-control" name="BirthDate" placeholder="Birthdate" onchange="validateBday(this)">
                             </div>
 
                             <div class="form-group col-md-11">
                               
-                                <label for="valid_id">Valid ID</label>
+                                <label for="valid_id">Valid ID *</label>
                                 <input type="file" class="form-control" name="file" required>
                             </div>
 

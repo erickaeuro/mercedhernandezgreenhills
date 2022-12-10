@@ -248,14 +248,14 @@ $result = $statement->fetchAll();
       <div class="input-daterange">
 
       <div class="form-group col-md-4">
-       Start Date: <input type="text" name="start_date" class="form-control" placeholder = "Start Date"readonly />
+       Start Date: * <input type="text" name="start_date" class="form-control" placeholder = "Start Date"readonly />
         <?php echo $start_date_error; ?>
       </div>
 
       
   
        <div class="form-group col-md-4">
-        End Date: <input type="text" name="end_date" class="form-control" placeholder = "End Date"readonly />
+        End Date: *<input type="text" name="end_date" class="form-control" placeholder = "End Date"readonly />
         <?php echo $end_date_error; ?>
        </div>
        

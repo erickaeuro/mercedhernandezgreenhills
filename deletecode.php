@@ -25,7 +25,8 @@ if(isset($_GET['id']))
          //INSERT
          $query = "INSERT into logs (user_id, action_made, date_created) VALUES('$id','added a stock', '$date')"; 
          $query_run = mysqli_query($con, $query);
-        echo '<script> alert("Stock Deleted") </script>';
+        
+         $_SESSION['status'] = "Stock Deleted Successfully!";
         header("Location:stocks.php?del=1");
     }
     else

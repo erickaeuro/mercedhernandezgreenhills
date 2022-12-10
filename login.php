@@ -185,9 +185,10 @@ if(isset($_POST['login_user'])){
   		<input type="text" name="username" >
   	</div>
   	<div class="input-group">
-  		<label>Password</label>
+  		<label>Password</label> 
   		<input type="password" name="password">
   	</div>
+
 	<div class="form-group lead">
 
 	<label for="authentication"><h3	>Please select authentication</h3></label>
@@ -209,7 +210,5 @@ if(isset($_POST['login_user'])){
   	Not yet a member? <a href="register.php">Sign up</a>
    </p>
   </form>
-  
-
 </body>
 </html>
