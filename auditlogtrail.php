@@ -72,7 +72,7 @@
 
                       <?php 
 
-                            $query = "SELECT * FROM logs inner join users on logs.user_id = users.id";
+                            $query = "SELECT * FROM logs inner join users on logs.user_id = users.id order by date_created DESC";
                             //$qry = $conn->query("SELECT l.*,u.username FROM `logs` l inner join users u on l.user_id = u.id order by  unix_timestamp(l.`date_created`) asc");
                             //$i = 1;
                             $query_run = mysqli_query($con, $query);
