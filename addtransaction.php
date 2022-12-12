@@ -94,8 +94,8 @@ if(isset($_POST['addtransc']))
                             $id = $_SESSION['id'];
 
                             //INSERT
-                            $query = "INSERT into logs (user_id, action_made, date_created) VALUES('$id','added a pawn ticket', '$date')"; 
-                            $query_run = mysqli_query($con, $query);
+                            $query4 = "INSERT into logs (user_id, action_made, date_created) VALUES('$id','added a pawn ticket', '$date')"; 
+                            $query_run4 = mysqli_query($con, $query4);
 
                             header('Location: transaction.php');
                         }else{

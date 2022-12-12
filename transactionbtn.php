@@ -85,12 +85,15 @@
                     <div class="card-body">
                     
                     <form action="" method="GET">
+
+                    <label for="custfname" style="text-indent: 10px;"><b>Search Loan ID *</b></label>
                     <div class="row">
                         <div class="col-md-8" style="width:950px; position: relative; left:10px; top:-1px" >
+
                             <input type="text" class="form-control" name="id" value="<?php if(isset($_GET['id'])){echo $_GET['id'];} ?>" placeholder="Search for Loan ID" required>
                         </div>
-                        <div class="col-md-4">
-
+                        <div class="col-md-4" >
+                            
                              <button type="submit" class="btn text-white" style="background-color: #7FD2D4;">Search</button>
                         </div>
                     </div>
@@ -123,7 +126,7 @@
                         <form action="addtransaction.php" method="POST">
 
                         <div class="form-group col-md-11">
-                            <label for="loanstatus"><b>Transaction Type </b></label><br>
+                            <label for="loanstatus"><b>Transaction Type * </b></label><br>
                             <select class="custom-select" name="transctype" style="width:1035px; position: relative; left:1px; top:-1px" required>
                                 <option value= "null" selected="selected">Select Transaction Type </option>
                                 <option value="Renewal">Renewal</option>
@@ -182,7 +185,7 @@
                         </div>
                                                  
                         <div class="form-group col-md-12">
-                            <label for="amtpaid"><b>Amount to be Paid</b></label>
+                            <label for="amtpaid"><b>Amount to be Paid *</b></label>
                             <input type="text" class="form-control" name="amount_paid" required>
                         </div>  
 

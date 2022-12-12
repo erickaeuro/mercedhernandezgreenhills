@@ -248,14 +248,14 @@ $result = $statement->fetchAll();
       <div class="input-daterange">
 
       <div class="form-group col-md-4">
-       Start Date: <input type="text" name="start_date" class="form-control" placeholder = "Start Date"readonly />
+       Start Date: * <input type="text" name="start_date" class="form-control" placeholder = "Start Date"readonly />
         <?php echo $start_date_error; ?>
       </div>
 
       
   
        <div class="form-group col-md-4">
-        End Date: <input type="text" name="end_date" class="form-control" placeholder = "End Date"readonly />
+        End Date: *<input type="text" name="end_date" class="form-control" placeholder = "End Date"readonly />
         <?php echo $end_date_error; ?>
        </div>
        
@@ -385,7 +385,7 @@ $result = $statement->fetchAll();
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="../login_register/login.php">Logout</a>
+          <a class="btn btn-primary" href="logout.php">Logout</a>
         </div>
       </div>
     </div>

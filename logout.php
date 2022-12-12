@@ -12,13 +12,13 @@ if(mysqli_connect_errno()) {echo "Error: " . mysqli_connect_errno();}
 	$id = $_SESSION['id'];
 
 	//INSERT
-	$query = "INSERT into logs (user_id, action_made, date_created) VALUES('$id','user logged out', '$date')"; 
-	$query_run = mysqli_query($con, $query);
+	//$query = "INSERT into logs (user_id, action_made, date_created) VALUES('$id','user logged out', '$date')"; 
+	//$query_run = mysqli_query($con, $query);
 	
 	unset($_SESSION["id"]);
 	unset($_SESSION["username"]);
 	session_destroy();
-	header("Location: login.php");
+	header("Location: index.php");
 
 
 ?>

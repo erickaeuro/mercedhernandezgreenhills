@@ -72,45 +72,45 @@
             <div class="row">
 
                     <div class="form-group col-md-11">
-                        <label for="username">Username</label>
+                        <label for="username">Username *</label>
                         <input type="text" class="form-control" name="username" placeholder="Enter Username" required>
                     </div>
 
                 <div class="wrapper">
                     <div class="form-group col-md-12">
-                        <label for="password">Password</label>
+                        <label for="password">Password *</label>
                         <input type="password" class="form-control" name="password" placeholder="Enter Password" required>
                     </div>
 
                     <div class="form-group col-md-12">
-                        <label for="cpass">Confirm Password</label>
+                        <label for="cpass">Confirm Password *</label>
                         <input type="password" class="form-control" name="cpass" placeholder="Enter Confirm Password" required>
                     </div>
                 </div>
 
                     <div class="form-group col-md-11">
-                        <label for="emailadd">Email Address</label>
+                        <label for="emailadd">Email Address *</label>
                         <input type="email" class="form-control" name="email" placeholder="Enter Email Address" required>
                     </div>
 
                     <div class="form-group col-md-11">
-                        <label for="name">Complete Name</label>
-                        <input type="text" class="form-control" name="cname" placeholder="Enter Complete Name" required>
+                        <label for="name">Complete Name *</label>
+                        <input type="text" class="form-control" name="cname" placeholder="Enter Complete Name" pattern="[a-zA-Z][a-zA-Z ]{2,}" required>
                     </div>
 
                     <div class="form-group col-md-11">
-                        <label for="contactno">Contact Number</label>
-                        <input type="text" class="form-control" name="contactno" placeholder="Enter Contact Number" required>
+                        <label for="contactno">Contact Number *</label>
+                        <input type="text" class="form-control" name="contactno" placeholder="Enter Contact Number" required pattern="((^(\+)(\d){12}$)|(^\d{11}$))">
                     </div>
 
 
                     <div class="form-group col-md-11">
-                        <label for="address">Address</label>
+                        <label for="address">Address *</label>
                         <input type="text" class="form-control" name="address" placeholder="Enter Address" required>
                     </div>
 
                     <div class="form-group col-md-11">
-                                <label for="usertype"><b>User Type </b></label><br/>
+                                <label for="usertype"><b>User Type * </b></label><br/>
                                 <select class="custom-select" name="usertype" style="width:990px; position: relative; left:2px; top:-1px">
                                     <option value=" " selected="selected">User Type</option>
                                     <option value="Admin" selected="selected">Admin</option>

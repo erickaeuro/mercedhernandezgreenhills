@@ -18,7 +18,7 @@ if(isset($_POST['changepassword'])){
         if($run_query){
             echo "<script> alert('Changed Successfully'); 
             </script>";
-            header('Location: login.php');
+            header('Location: index.php');
         }else{
             echo '<script> alert("Password not Changed!"); </script>';
         }

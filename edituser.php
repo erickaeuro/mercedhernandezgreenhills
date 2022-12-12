@@ -30,8 +30,8 @@ session_start();
             $id = $_SESSION['id'];
 
             //INSERT
-            $query = "INSERT into logs (user_id, action_made, date_created) VALUES('$id','Updated a user', '$date')"; 
-            $query_run = mysqli_query($con, $query);
+            $query1 = "INSERT into logs (user_id, action_made, date_created) VALUES('$id','Updated a user', '$date')"; 
+            $query_run1 = mysqli_query($con, $query1);
             header("Location:users.php");
         }
         else

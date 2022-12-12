@@ -97,7 +97,7 @@
                         <form action="addloan.php" method="POST">
                             
                         <div class="form-group col-md-11">
-                                <label for="CustomerNo"><b>Customer Name</b></label><br>
+                                <label for="CustomerNo"><b>Customer Name *</b></label><br>
 
                         <?php 
 
@@ -117,7 +117,7 @@
                         while($drop_2 = mysqli_fetch_array( $result ))
                         {
                             if(in_array($drop_2['transactiontype'] , array(''))){
-                                echo '<option value="'.$drop_2['customer_no'].'">'.$drop_2['first_name'].' '.$drop_2['last_name'].'</option>';
+                                echo '<option value="'.$drop_2['customer_no'].'">'.$drop_2['first_name'].' '.$drop_2['last_name'].'</option>' ;
                                 }
 
                         }
@@ -131,25 +131,25 @@
                         </div>
 
                             <div class="form-group col-md-11">
-                                <label for="itemtype"><b>Item Type </b></label>
-                                <input type="text" class="form-control" name="item_type" placeholder="Enter Jewelry Type" value="<?php if (isset($_POST['item_type'])) echo $_POST['item_type']; ?>">
+                                <label for="itemtype"><b>Item Type *</b></label>
+                                <input type="text" class="form-control" name="item_type" placeholder="Enter Jewelry Type" value="<?php if (isset($_POST['item_type'])) echo $_POST['item_type']; ?>" required>
                             </div>
 
                             <div class="form-group col-md-11">
-                                <label for="description"><b>Item Description </b></label>
-                                <textarea class="form-control" rows="3" name="item_desc" placeholder="Enter Jewelry description" value="<?php echo isset($_POST['item_desc']) ?>"></textarea>
+                                <label for="description"><b>Item Description * </b></label>
+                                <textarea class="form-control" rows="3" name="item_desc" placeholder="Enter Jewelry description" value="<?php echo isset($_POST['item_desc']) ?>" required></textarea>
                             </div>
 
                         <div class="wrapper">
 
                             <div class="form-group col-md-11">
-                                <label for="appraised_value"><b>Appraised Value </b></label>
-                                <input id="avalue" onchange="validateValues()" type="text" class="form-control" name="appraised_value" placeholder="Enter Jewelry Appraised Value" value="<?php echo isset($_POST['appraised_value']) ?>">
+                                <label for="appraised_value"><b>Appraised Value * </b></label>
+                                <input id="avalue" onchange="validateValues()" type="text" class="form-control" name="appraised_value" placeholder="Enter Jewelry Appraised Value" value="<?php echo isset($_POST['appraised_value']) ?>" required>
                             </div>
 
                             <div class="form-group col-md-11">
-                                <label for="principal"><b>Principal </b></label>
-                                <input id="pvalue" onchange="validateValues()" type="text" class="form-control" name="principal" placeholder="Enter Principal">
+                                <label for="principal"><b>Principal * </b></label>
+                                <input id="pvalue" onchange="validateValues()" type="text" class="form-control" name="principal" placeholder="Enter Principal" required>
                             </div>
                         </div>
 

@@ -72,9 +72,13 @@
 
                       <?php 
 
+<<<<<<< HEAD
                             $query = "SELECT * FROM logs inner join users on logs.user_id = users.id order by date_created DESC";
                             //$qry = $conn->query("SELECT l.*,u.username FROM `logs` l inner join users u on l.user_id = u.id order by  unix_timestamp(l.`date_created`) asc");
                             //$i = 1;
+=======
+                            $query = "SELECT * FROM logs inner join users on logs.user_id = users.id";
+>>>>>>> 3574fc6ac72ba45b1c4f19a056cbbe8be6019350
                             $query_run = mysqli_query($con, $query);
 
                       ?> 
@@ -153,7 +157,7 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="../login_register/login.php">Logout</a>
+          <a class="btn btn-primary" href="logout.php">Logout</a>
         </div>
       </div>
     </div>

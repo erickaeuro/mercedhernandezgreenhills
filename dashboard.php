@@ -24,6 +24,8 @@ include('session.php');
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
 
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <!-- Connection Database --> 
   <?php 
   error_reporting(0);
@@ -201,6 +203,12 @@ include('session.php');
                         </div>
                     </div>
 
+                    <div id="piechart"></div>
+
+                    <div id="columnchart_material" style="width: auto; height: 500px;"></div>
+
+                    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+
  
         </div>
         <!-- /.container-fluid -->
@@ -229,6 +237,64 @@ include('session.php');
     $('table.display').DataTable();
 } );
     </script>
+
+<script type="text/javascript">
+// Load google charts
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+// Draw the chart and set the chart values
+function drawChart() {
+  var data = google.visualization.arrayToDataTable([
+  ['Task', 'Hours per Day'],
+  ['Work', 8],
+  ['Friends', 2],
+  ['Eat', 2],
+  ['TV', 2],
+  ['Gym', 2],
+  ['Sleep', 8]
+]);
+
+  // Optional; add a title and set the width and height of the chart
+  var options = {'title':'My Average Day', 'width':550, 'height':400};
+
+  // Display the chart inside the <div> element with id="piechart"
+  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+  chart.draw(data, options);
+}
+</script>
+
+<script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['',''],
+          <?php
+            $text = ['Stocks (Available)','Redeem Loans','Customers','Employees'];
+            $value = [$stockstotal,$loantbl,$customertotal,$userstotal];
+            for($i=0;$i<4;$i++){
+                echo "['".$text[$i]."','".$value[$i]."'],";
+            }
+            ?>
+          
+          
+          
+        ]);
+
+        var options = {
+          chart: {
+            title: 'Totals',
+            subtitle: '',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+</script>
 </body>
 
 </html>
