@@ -17,7 +17,7 @@
         $query = "UPDATE pawntickettbl SET date_paid = '$datepaid', amount_paid='$amtpay', transactiontype = '$transac' WHERE pawnticketno = '$ticketno' ";
         $query_run = mysqli_query($con, $query);
 
-        if($query_run && $query_run2)
+        if($query_run)
         {
             $_SESSION['addstatus'] = "Ticket Edited Successfully!";
             //Time input
