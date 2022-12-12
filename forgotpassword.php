@@ -20,7 +20,7 @@ error_reporting(0);
   	 <?//php include('errors.php');?> 
 	   <div class="input-group">
 	   <p class="text-center">Enter your email address</p>
-  		<input type="email" name="email" placeholder="Email Address" >
+  		<input type="email" name="email" placeholder="Email Address" class="one-input" >
 </div>
 
   	<div class="input-group">

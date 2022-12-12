@@ -73,11 +73,11 @@ include('session.php');
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Stocks (Available)</div>
+                                                Sold Jewelry</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                             <?php 
                                              $cser=mysqli_connect("localhost","root","","mercedhernandezgreenhills");
-                                             $result = mysqli_query($cser,"SELECT * FROM inventorytbl");
+                                             $result = mysqli_query($cser,"SELECT * FROM inventorytbl where move=1");
 
                                              if($stockstotal = mysqli_num_rows($result))
                                              {
@@ -202,22 +202,201 @@ include('session.php');
                             </div>
                         </div>
                     </div>
-
-                    <div id="piechart"></div>
-
-                    <div id="columnchart_material" style="width: auto; height: 500px;"></div>
-
-                    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
-
  
         </div>
         <!-- /.container-fluid -->
 
+      
+        
+        
+        <html>
+  <head>
+        
+<?php 
+
+     $con = mysqli_connect("localhost","root","","mercedhernandezgreenhills");
+     if(mysqli_connect_errno()) {echo "Error: " . mysqli_connect_errno();}
+?> 
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['date_loan_granted','maturity_date','expiry_date'],
+
+          <?php
+          $query="select * from loantbl";
+          $res=mysqli_query($con,$query);
+          while($data=mysqli_fetch_array($res)){
+            $date_loan_grated=$data['date_loan_granted'];
+            $maturity_date =$data['maturity_date'];
+            $expiry_date=$data['expiry_date'];
+
+           
+            ?>
+          ['<?php echo $date_loan_granted;?>', <?php echo $maturity_date;?>, <?php echo $expiry_date;?>],
+          <?php
+          }
+          ?>
+          
+        ]); 
+
+        var options = {
+          title: 'Loans',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+<div class="col-xl-7 col-md-8 mb-8">
+<div class="card border-left-info shadow h-100 py-2">
+<div class="card-body">
+    <div id="curve_chart" style="width: auto; height: 500px"></div>
+    </div>
+    </div>
+    </div>
+  </body>
+</html>
+
+
+<?php 
+       $con = mysqli_connect("localhost","root","","mercedhernandezgreenhills");
+          if($con){
+              echo "";
+          }
+          ?>
+        <html>
+  <head>
+ 
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['item_type', 'itemqty'],
+          
+
+          <?php
+         
+          $sql = "SELECT * FROM inventorytbl where move=0";
+          $fire = mysqli_query($con,$sql);
+          while ($result = mysqli_fetch_assoc($fire)){
+
+            echo"['".$result['item_type']."',".$result['itemqty']."],";
+          }
+          
+          ?>
+         
+        ]);
+
+        var options = {
+          title: 'Stocks (Available)'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+  <div class="col-xl-7 col-md-8 mb-8">
+<div class="card border-left-info shadow h-100 py-2">
+<div class="card-body">
+    <div id="piechart" style="width: auto; height: 500px;"></div>
+    </div>
+    </div>
+    </div>
+  </body>
+</html>
+
+        
+        <html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+
+          <?php
+         
+          $sql = "SELECT * FROM loanstbl where loan_status = Redeemed, Active loan, Auctioned";
+          $fire = mysqli_query($con,$sql);
+          while ($result = mysqli_fetch_assoc($fire)){
+
+            echo"['".$result['item_type']."',".$result['itemqty']."],";
+          }
+          
+          ?>
+         
+        var data = google.visualization.arrayToDataTable([
+          ['loan_status',''],
+
+          <?php
+            $text = ['Renewal Loan','Redeem Loans','Auction','Active Loan'];
+            $value = [$stockstotal,$redeemtotal,$customertotal,$userstotal];
+            for($i=0;$i<4;$i++){
+                echo "['".$text[$i]."','".$value[$i]."'],";
+            }
+            ?>
+          
+          
+          
+        ]);
+
+        var options = {
+          chart: {
+            title: '',
+            subtitle: 'LOANS',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+  </head>
+  <body>
+    <div id="columnchart_material" style="width: auto; height: 500px;"></div>
+  </body>
+</html>
+ </head>
+ <body>
+ <div class="col-xl-7 col-md-8 mb-8">
+<div class="card border-left-info shadow h-100 py-2">
+<div class="card-body">
+ <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+    </div>
+    </div>
+    </div>
+ <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+ </body>
+ </html>   
+
+
+ 
+ 
       </div>
       <!-- End of Main Content -->
 
       <!-- Footer -->
-        <?php include 'footer.php'; ?>
+        <?php include '../footer.php'; ?>
       <!-- End of Footer -->
 
     </div>
@@ -231,70 +410,31 @@ include('session.php');
     <i class="fas fa-angle-up"></i>
   </a>
 
-<?php include 'scripts.php'; ?>
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="logout.php">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<?php include '../scripts.php'; ?>
 <script>
     $(document).ready(function() {
     $('table.display').DataTable();
 } );
     </script>
-
-<script type="text/javascript">
-// Load google charts
-google.charts.load('current', {'packages':['corechart']});
-google.charts.setOnLoadCallback(drawChart);
-
-// Draw the chart and set the chart values
-function drawChart() {
-  var data = google.visualization.arrayToDataTable([
-  ['Task', 'Hours per Day'],
-  ['Work', 8],
-  ['Friends', 2],
-  ['Eat', 2],
-  ['TV', 2],
-  ['Gym', 2],
-  ['Sleep', 8]
-]);
-
-  // Optional; add a title and set the width and height of the chart
-  var options = {'title':'My Average Day', 'width':550, 'height':400};
-
-  // Display the chart inside the <div> element with id="piechart"
-  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-  chart.draw(data, options);
-}
-</script>
-
-<script type="text/javascript">
-      google.charts.load('current', {'packages':['bar']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['',''],
-          <?php
-            $text = ['Stocks (Available)','Redeem Loans','Customers','Employees'];
-            $value = [$stockstotal,$loantbl,$customertotal,$userstotal];
-            for($i=0;$i<4;$i++){
-                echo "['".$text[$i]."','".$value[$i]."'],";
-            }
-            ?>
-          
-          
-          
-        ]);
-
-        var options = {
-          chart: {
-            title: 'Totals',
-            subtitle: '',
-          }
-        };
-
-        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
-
-        chart.draw(data, google.charts.Bar.convertOptions(options));
-      }
-</script>
 </body>
 
 </html>

@@ -23,7 +23,7 @@ include('session.php');
   	
 	   <div class="input-group">
   		<label>Enter Email</label>
-  		<input type="email" name="email" required >
+  		<input type="email" name="email" class = "one-input" required >
 
 		  
   	

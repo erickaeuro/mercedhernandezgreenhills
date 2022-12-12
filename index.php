@@ -1,3 +1,13 @@
+<?php
+
+// if (isset($_SESSION['username'])) {
+//     header("location:dashboard.php");
+// } else {
+// 	if (isset($_SESSION['username'])) 
+// 		header("location:login.php");
+// }
+?>
+
 <?php include('server.php')
 ?>
 
@@ -6,8 +16,9 @@
 error_reporting(0);
 session_start();
 $conn = new mysqli("localhost","root","","mercedhernandezgreenhills");
-include('server.php');
-
+// $conn = new mysqli("localhost","root","","mercedhernandezgreenhills");
+// error_reporting(0);
+// $conn = new mysqli("localhost","root","","mercedhernandezgreenhills");
 
 
 $msg="";
@@ -16,7 +27,8 @@ if(isset($_POST['login_user'])){
 
 	$username = $_POST['username'];
 	$password = $_POST['password'];
-
+	
+	//$passwordd = sha1($password);
 	$authentication = $_POST['authentication'];
 
 	$username = mysqli_real_escape_string($db, $_POST['username']);
@@ -42,8 +54,7 @@ if(isset($_POST['login_user'])){
 	while($row = mysqli_fetch_array($results)){
 		$status=$row['status'];
 		$user=$row['username'];
-    	$pass=$row['password'];
-		
+    	$pass=$row['password'];		
 	}	
 
 	 if($status == "1"){array_push($errors, "User Deactivated");}
@@ -62,7 +73,6 @@ if(isset($_POST['login_user'])){
 			}
 
 			if($authentication == "MFA"){
-				$_SESSION['username'] = $username;
 				header("location:indexsu.php");
 			}
 
@@ -80,6 +90,75 @@ if(isset($_POST['login_user'])){
 	 }
 }
 
+// if($_SERVER["REQUEST_METHOD"]=="POST")
+// {
+// 	$username=$_POST["username"];
+// 	$passwordd=$_POST["password"];
+// 	$usertype=$_POST["usertype"];
+
+// 	$sql="select * from users where username='".$username."' AND password='".$passwordd."' AND  usertype'".$usertype."'";
+
+// 	$result=mysqli_query($conn,$sql);
+
+// 	$row=mysqli_fetch_array($result);
+
+// 	if($row["usertype"]=="Admin")
+// 	{
+// 		header("location:Email.php");
+// 	}
+// 	elseif($row["usertype"]=="Appraiser")
+// 	{
+// 		echo "Appraiser";
+// 	}
+// 	elseif($row["usertype"]=="Inventory Clerk")
+// 	{
+// 		echo "Inventory Clerk";
+// 	}
+// 	else
+// 	{
+// 		echo "username or password incorrect";
+// 	}
+// }
+
+
+// $query = "SELECT * FROM users WHERE username='$username' AND usertype='$usertype'";
+// 	  $results = mysqli_query($db, $query);
+	
+// 	  $usertype = $_POST['usertype'];
+
+//   if($row["usertype"]=="Admin")
+//   {
+//     header("location:Admin.php");
+//   }
+//   elseif($row["usertype"]=="Appraiser")
+//   {
+//     header("location:Appraiser.php");
+//   }
+//   elseif($row["usertype"]=="Inventory Clerk")
+//   {
+//     header("location:Inventory Clerk.php");
+//   }
+//   else
+//   {
+//     echo "username or password incorrect";
+//   }
+
+
+// $row=mysqli_fetch_array($result);
+
+// if($row["usertype"]="Admin")
+// {
+// 	echo "admin";
+// }
+// elseif($row["usertype"]="Appraiser")
+// {
+// 	echo "admin";
+// }
+// elseif($row["usertype"]="Inventory Clerk")
+// {
+// 	echo "admin";
+// }
+
 ?>
 
 <!DOCTYPE html>
@@ -87,25 +166,47 @@ if(isset($_POST['login_user'])){
 <head>
   <title>Log in</title>
   <link rel="stylesheet" type="text/css" href="styless.css">
- 
+<script src="https://kit.fontawesome.com/dc534e1376.js" crossorigin="anonymous"></script>
 </head>
 <body>
+
   <div class="header">
   	<h2>Login</h2>
   </div>
 	 
   <form method="post" action="index.php" class="main-lead">
-	
+
   	<?php include('errors.php');?>
+	
   	<div class="input-group">
   		<label>Username</label>
-  		<input type="text" name="username" >
-  	</div>
-  	<div class="input-group">
-  		<label>Password</label> 
-  		<input type="password" name="password">
-  	</div>
+  		<input type="text" name="username" class="one-input">
+  	
+	  	<label>Password</label>
+		<input type="password" id="password" name="password" class="one-input">
 
+		<div class= "pass-holder">
+			<label>Show Password</label>
+			<input type="checkbox" name="" onclick="myFunction()" class="checkbox">			
+		</div>
+		<!-- <span>
+				<i class="fa-regular fa-eye" id="eye"></i>
+		</span> -->
+	</div>
+
+	<script type="text/javascript">
+function myFunction() {
+var show = document.getElementById('password')
+	if (show.type=='password'){
+		show.type='text';
+	}else{
+		show.type='password';
+	}
+
+}
+
+		</script>
+	
 	<div class="form-group lead">
 
 	<label for="authentication"><h3	>Please select authentication</h3></label>
@@ -113,6 +214,7 @@ if(isset($_POST['login_user'])){
 		<option disabled selected value="Select a Method">Select a Method</option>
 		<option value="MFA">MFA</option>
 		 <option value="EMAIL">EMAIL</option>
+		<!-- <option value="SECUIRTY QUESTIONS">SECUIRTY QUESTIONS</option> -->
 	</select>
 
   	<div class="input-group">  		
@@ -122,9 +224,10 @@ if(isset($_POST['login_user'])){
 	  <p>
   		<a href="forgotpassword.php">Forgot passsword? </a>
      </p>
-  	<p>
-  	Not yet a member? <a href="register.php">Sign up</a>
-   </p>
   </form>
+  
+  <script>
+	const toggle
+
 </body>
 </html>
