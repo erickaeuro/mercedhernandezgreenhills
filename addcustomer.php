@@ -38,7 +38,7 @@ if ($AgeVal > $today) {
     header('Location: custadd.php');
 }else{
     if ($_FILES["file"]["size"] >= 10485760){
-echo "<h3>File size must be less than 10mb</h3>";
+        $_SESSION['status'] = "File size must be less than 10mb!";
 header('Location: customer.php');
     }
    else {
