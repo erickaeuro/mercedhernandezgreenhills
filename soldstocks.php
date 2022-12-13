@@ -84,7 +84,7 @@
 
                       <?php 
 
-                            $query = "SELECT * FROM inventorytbl where move='1'";
+                            $query = "SELECT * FROM inventorytbl where move='1' order by date_created DESC";
                             $query_run = mysqli_query($con, $query);
                       ?> 
 
