@@ -211,6 +211,16 @@ include('session.php');
         
         <html>
   <head>
+
+<style>
+
+.div{
+display:flex;
+position:relative;
+left: 50px;
+}
+
+</style>
         
 <?php 
 
@@ -231,7 +241,8 @@ include('session.php');
           $query="select * from loantbl";
           $res=mysqli_query($con,$query);
           while($data=mysqli_fetch_array($res)){
-            $date_loan_grated=$data['date_loan_granted'];
+            $item_type = $data['item_type'];
+            
             $maturity_date =$data['maturity_date'];
             $expiry_date=$data['expiry_date'];
 
@@ -257,6 +268,7 @@ include('session.php');
     </script>
   </head>
   <body>
+<div>
 <div class="col-xl-7 col-md-8 mb-8">
 <div class="card border-left-info shadow h-100 py-2">
 <div class="card-body">
@@ -312,83 +324,17 @@ include('session.php');
     </script>
   </head>
   <body>
-  <div class="col-xl-7 col-md-8 mb-8">
-<div class="card border-left-info shadow h-100 py-2">
+    <?php echo str_repeat('&nbsp;', 5);  ?>
+  <div class="col-xl-5 col-md-6 mb-8" position="left">
+<div class="card border-right-info shadow h-100 py-2">
 <div class="card-body">
     <div id="piechart" style="width: auto; height: 500px;"></div>
     </div>
     </div>
     </div>
+    </div>
   </body>
 </html>
-
-        
-        <html>
-  <head>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['bar']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-
-
-          <?php
-         
-          $sql = "SELECT * FROM loanstbl where loan_status = Redeemed, Active loan, Auctioned";
-          $fire = mysqli_query($con,$sql);
-          while ($result = mysqli_fetch_assoc($fire)){
-
-            echo"['".$result['item_type']."',".$result['itemqty']."],";
-          }
-          
-          ?>
-         
-        var data = google.visualization.arrayToDataTable([
-          ['loan_status',''],
-
-          <?php
-            $text = ['Renewal Loan','Redeem Loans','Auction','Active Loan'];
-            $value = [$stockstotal,$redeemtotal,$customertotal,$userstotal];
-            for($i=0;$i<4;$i++){
-                echo "['".$text[$i]."','".$value[$i]."'],";
-            }
-            ?>
-          
-          
-          
-        ]);
-
-        var options = {
-          chart: {
-            title: '',
-            subtitle: 'LOANS',
-          }
-        };
-
-        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
-
-        chart.draw(data, google.charts.Bar.convertOptions(options));
-      }
-    </script>
-  </head>
-  <body>
-    <div id="columnchart_material" style="width: auto; height: 500px;"></div>
-  </body>
-</html>
- </head>
- <body>
- <div class="col-xl-7 col-md-8 mb-8">
-<div class="card border-left-info shadow h-100 py-2">
-<div class="card-body">
- <div id="chartContainer" style="height: 370px; width: 100%;"></div>
-    </div>
-    </div>
-    </div>
- <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
- </body>
- </html>   
-
 
  
  
@@ -396,7 +342,7 @@ include('session.php');
       <!-- End of Main Content -->
 
       <!-- Footer -->
-        <?php include '../footer.php'; ?>
+        <?php include 'footer.php'; ?>
       <!-- End of Footer -->
 
     </div>
@@ -436,5 +382,19 @@ include('session.php');
 } );
     </script>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+
+    <!-- <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js"></script> -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script> 
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
 </html>
