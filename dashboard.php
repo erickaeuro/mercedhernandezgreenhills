@@ -220,7 +220,7 @@ include('session.php');
      if(mysqli_connect_errno()) {echo "Error: " . mysqli_connect_errno();}
 ?> 
 
-
+<link href="style.css" rel="stylesheet">
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
