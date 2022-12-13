@@ -33,7 +33,7 @@ $date_created = $_POST['date_created'];
 if(isset($_POST['addjewelry']) && !empty($_FILES["file"]["name"]))
 {
     if ($_FILES["file"]["size"] >=  2097152){
-        $_SESSION['status'] = "File must be less than 2mb file size.";
+        $_SESSION['status3'] = "File must be less than 2mb file size.";
         header('Location: stockadd.php');
             }
       else {
@@ -48,7 +48,7 @@ if(isset($_POST['addjewelry']) && !empty($_FILES["file"]["name"]))
 
               if($query_run){
                   //$statusMsg = "The file ".$fileName. " has been uploaded successfully.";
-                  $_SESSION['status'] = "Stock Added Successfully!";
+                  $_SESSION['status3'] = "Stock Added Successfully!";
 
                     //ID
                     $id = $_SESSION['id'];
@@ -60,17 +60,17 @@ if(isset($_POST['addjewelry']) && !empty($_FILES["file"]["name"]))
                   header('Location: stocks.php');
               }else{
                   //$statusMsg = "File upload failed, please try again.";
-                  $_SESSION['status'] = "File upload failed, please try again.";
+                  $_SESSION['status3'] = "File upload failed, please try again.";
                   header('Location: stocks.php');
               } 
           }else{
               //$statusMsg = "Sorry, there was an error uploading your file.";
-              $_SESSION['status'] = "File must be less than 2mb file size.";
+              $_SESSION['status3'] = "File must be less than 2mb file size.";
               header('Location: stocks.php');
           }
       }else{
           //$statusMsg = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
-          $_SESSION['status'] = "Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.";
+          $_SESSION['status3'] = "Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.";
           header('Location: stocks.php');
       }
   }

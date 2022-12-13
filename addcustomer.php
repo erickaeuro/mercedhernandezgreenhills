@@ -58,7 +58,7 @@ header('Location: customer.php');
             mysqli_query($con, $query);
 
             if (move_uploaded_file($tempname, $folder)) {
-                $_SESSION['status'] = "Customer added successfully!";
+                $_SESSION['custstatus'] = "Customer added successfully!";
 
                   //Time input
                   date_default_timezone_set('Asia/Manila');
@@ -73,7 +73,7 @@ header('Location: customer.php');
                 
                 header('Location: customer.php');
             } else {
-                $_SESSION['status'] = "Customer not added!";
+                $_SESSION['custstatus'] = "Customer not added!";
                 header('Location: customer.php');
             }
             

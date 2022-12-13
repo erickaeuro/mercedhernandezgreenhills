@@ -51,15 +51,15 @@
         }
 
 
-              if(isset($_SESSION['status']))
+              if(isset($_SESSION['status3']))
               {
                   ?>
                       <div class="alert alert-success" role="alert" role="alert">
-                          <?= $_SESSION['status']; ?>
+                          <?= $_SESSION['status3']; ?>
                           <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">x</button>
                       </div>
                   <?php 
-                  unset($_SESSION['status']);
+                  unset($_SESSION['status3']);
               }
         ?>
         <!-- End of Topbar -->
