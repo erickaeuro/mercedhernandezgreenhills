@@ -37,8 +37,8 @@ if ($AgeVal > $today) {
     $_SESSION['custstatus'] = "Customer must be above 18 years old";
     header('Location: custadd.php');
 }else{
-    if ($_FILES["file"]["size"] >= 10485760){
-        $_SESSION['status'] = "File size must be less than 10mb!";
+    if ($_FILES["file"]["size"] >= 2097152){
+        $_SESSION['status'] = "File size must be less than 2mb!";
 header('Location: customer.php');
     }
    else {

@@ -83,7 +83,7 @@ if(isset($_SESSION['status']))
                             
                             <div class="form-group col-md-11">
                                 <label for="image"><b>Image of Jewelry *</b></label>
-                                <input type="file" class="form-control" name="file" required>
+                                <input type="file" accept="image/*" class="form-control" name="file" required>
                             </div>
                            
                         

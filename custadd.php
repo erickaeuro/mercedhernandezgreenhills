@@ -110,7 +110,7 @@
                             <div class="form-group col-md-11">
                               
                                 <label for="valid_id">Valid ID *</label>
-                                <input type="file" class="form-control" name="file" required>
+                                <input type="file" accept="image/*" class="form-control" name="file" required>
                             </div>
 
                             </div>

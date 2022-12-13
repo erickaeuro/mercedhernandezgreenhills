@@ -32,8 +32,8 @@ $date_created = $_POST['date_created'];
 
 if(isset($_POST['addjewelry']) && !empty($_FILES["file"]["name"]))
 {
-    if ($_FILES["file"]["size"] >=  1048576){
-        $_SESSION['status'] = "File must be less than 10mb file size.";
+    if ($_FILES["file"]["size"] >=  2097152){
+        $_SESSION['status'] = "File must be less than 2mb file size.";
         header('Location: stockadd.php');
             }
       else {
