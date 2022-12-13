@@ -193,18 +193,22 @@ $result = $statement->fetchAll();
   <meta name="description" content="">
   <meta name="author" content="">
   <title>Inventory Report | Merced Hernandez Greenhills</title>
-  <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-<link href="css/sb-admin-2.css" rel="stylesheet">
-<link href= "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css" rel="stylesheet"> 
+  <link href="css/sb-admin-2.css" rel="stylesheet">
+  <link href="style.css" rel="styleshet">
+
+  <link href= "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css" rel="stylesheet"> 
+  <link href= "https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" rel="stylesheet">
 <link href= "https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" />
 
  </head>
-
+ <?php include 'tblscript.php'; ?>
  <style>
 
 .wrapper {
@@ -237,14 +241,10 @@ $result = $statement->fetchAll();
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        <div class="container-fluid">
-
-        <div class="row">
 
       <center>  
       <form method="post">
 
-      <div class="card-body">
       <div class="input-daterange">
 
       <div class="form-group col-md-4">
@@ -286,6 +286,9 @@ $result = $statement->fetchAll();
     </div>
 </div>
     </center>
+    <div class="container-fluid">
+
+    <div class="row">
                 <div class="col-xl-12 col-lg-12">
                   <div class="card shadow mb-4 border-left-primary border-bottom-primary">
                       <!-- Card Header - Dropdown -->
@@ -293,11 +296,10 @@ $result = $statement->fetchAll();
                           <h6 class="m-0 font-weight-bold text-dark">Inventory Reports</h6>
                       </div>
                       <!-- Card Body -->
-                      <div class="card">
                         <div class="card-body">
 
                             <div class="table-responsive">
-                                <table class="table table-stripped" id="uuu" width="100%" cellspacing="0">
+                            <table id= "dtblid" class="table table-striped" width="100%" cellspacing="0">
 
                             <thead>
                                 <tr style="font-size:13px;font-family:sans-serif;">
@@ -350,18 +352,16 @@ $result = $statement->fetchAll();
      </tbody>
      </form>
     </table>
-   </div>
-  </div>
-
-  </div>
-      <!-- End of Main Content -->
-
-
     </div>
-    <!-- End of Content Wrapper -->
-        
-  </div>
-  <!-- End of Page Wrapper -->
+                      </div>
+                  </div>
+            
+              </div>    
+            
+            </div>
+        </div>
+             
+      </div>
   
   <!-- Footer -->
   <?php include 'footer.php'; ?>
@@ -391,14 +391,14 @@ $result = $statement->fetchAll();
     </div>
   </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 
-    <!-- <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+   <!-- <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js"></script> -->
@@ -422,27 +422,11 @@ $(document).ready(function () {
     autoclose: true
   });
 
-  var table = $('#uuu').dataTable({
-    'pagingType': 'full_numbers',
-        'lengthMenu': [
-            [10, 25, 50, -1],
-            [10, 25, 50, 'All']
-        ],
-        order: [[0, 'desc']],
-        responsive: true,
-        language: {
-            search: 'INPUT',
-            searchPlaceholder: 'Search Data',
-        }
-
-    });
-
   });
 
 
   
 </script>
-
 
 </body>
 </html>
