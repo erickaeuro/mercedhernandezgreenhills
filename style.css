@@ -109,3 +109,15 @@ form, .content {
   border: 1px solid #3c763d;
   margin-bottom: 20px;
 }
+
+.chart {
+  text-align: center;
+}
+
+.divider{
+  display: flex;
+}
+
+
+
+

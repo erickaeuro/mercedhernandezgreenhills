@@ -21,6 +21,8 @@
   transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
 }
+
+
 </style>
 
 <ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar">

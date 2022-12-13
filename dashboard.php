@@ -206,27 +206,21 @@ include('session.php');
         </div>
         <!-- /.container-fluid -->
 
-      
-        
-        
-        <html>
-  <head>
+     
+       
 
-<style>
+     
+       
 
-.div{
-display:flex;
-position:relative;
-left: 50px;
-}
 
-</style>
         
 <?php 
 
      $con = mysqli_connect("localhost","root","","mercedhernandezgreenhills");
      if(mysqli_connect_errno()) {echo "Error: " . mysqli_connect_errno();}
 ?> 
+
+
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
@@ -235,20 +229,20 @@ left: 50px;
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['date_loan_granted','maturity_date','expiry_date'],
+          ['item_type','appraised_value','principal','interest'],
 
           <?php
           $query="select * from loantbl";
           $res=mysqli_query($con,$query);
           while($data=mysqli_fetch_array($res)){
             $item_type = $data['item_type'];
-            
-            $maturity_date =$data['maturity_date'];
-            $expiry_date=$data['expiry_date'];
+            $appraised_value = $data['appraised_value'];
+            $principal = $data['principal'];
+            $interest = $data['interest'];
 
            
             ?>
-          ['<?php echo $date_loan_granted;?>', <?php echo $maturity_date;?>, <?php echo $expiry_date;?>],
+          ['<?php echo $item_type;?>', <?php echo $appraised_value;?>,<?php echo $principal;?>,<?php echo $interest;?>],
           <?php
           }
           ?>
@@ -268,14 +262,8 @@ left: 50px;
     </script>
   </head>
   <body>
-<div>
-<div class="col-xl-7 col-md-8 mb-8">
-<div class="card border-left-info shadow h-100 py-2">
-<div class="card-body">
-    <div id="curve_chart" style="width: auto; height: 500px"></div>
-    </div>
-    </div>
-    </div>
+
+
   </body>
 </html>
 
@@ -324,15 +312,19 @@ left: 50px;
     </script>
   </head>
   <body>
-    <?php echo str_repeat('&nbsp;', 5);  ?>
-  <div class="col-xl-5 col-md-6 mb-8" position="left">
-<div class="card border-right-info shadow h-100 py-2">
-<div class="card-body">
-    <div id="piechart" style="width: auto; height: 500px;"></div>
+ 
+
+    <div class="divider">
+      <div class="card-body">
+        <div id="piechart" style="width: 800px; height: 500px;"></div>
+      </div>   
+  
+      <div class="card-body">
+          <div id="curve_chart" style="width: 800px; height: 500px"></div>
+      </div>
     </div>
-    </div>
-    </div>
-    </div>
+
+
   </body>
 </html>
 
