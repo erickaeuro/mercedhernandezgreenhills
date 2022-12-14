@@ -17,6 +17,9 @@ $tagprice = $_POST['tagprice'];
 $date_sold = $_POST['date_sold'];
 
 
+
+
+
     if(isset($_POST['editjewelry']))
     {   
     

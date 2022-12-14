@@ -123,7 +123,7 @@ require 'connection.php';
 
                             <div class="form-group col-md-11">
                                 <label for="Date Sold"><b>Date Sold</b></label>
-                                <input type="date" class="form-control" name="date_sold" value="<?= $row['date_sold']; ?>" >
+                                <input type="date" class="form-control" name="date_sold" >
                             </div>
 
                             <div class="form-group col-md-11">
