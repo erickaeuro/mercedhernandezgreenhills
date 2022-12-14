@@ -126,13 +126,14 @@
                         date_default_timezone_set('Asia/Manila');
                         $today = date("Y-m-d");
                     
-                        if($row['date_sold'] != NULL && $row['date_sold'] <= $today){                      
+                        if($row['date_sold'] != NULL && $row['date_sold'] <= $today && $row['date_sold'] != "0000-00-00"){                      
                           $soldvalid = 1;
                           $sold = $row['stock_no'];
                           include 'stockupdate.php';
                         }
 
             ?>
+                        
                         <tr class="">
                             <td> <?php echo $row['stock_no']; ?> </td> 
                             <td> <?php echo $row['item_type']; ?> </td>
