@@ -49,22 +49,17 @@ include('session.php');
         <!-- Topbar -->
         <?php include 'navbar.php'; 
         
-        if($_GET['del'] == 1){
-          echo"<div class='alert alert-success' role='alert'>Successfully Deleted
-          <button type='button' class='close' data-dismiss='alert'>x</button>
-          </div>";
-        }
 
  //EDIT & ADD ALERT//        
- if(isset($_SESSION['status']))
+ if(isset($_SESSION['userstatus1']))
  {
      ?>
          <div class="alert alert-success" role="alert" role="alert">
-             <?= $_SESSION['status']; ?>
+             <?= $_SESSION['userstatus1']; ?>
              <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">x</button>
          </div>
      <?php 
-     unset($_SESSION['status']);
+     unset($_SESSION['userstatus1']);
  }?>
         <!-- End of Topbar -->
 

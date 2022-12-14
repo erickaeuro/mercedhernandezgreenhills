@@ -237,6 +237,7 @@
                     [10, 25, 50, "All"]
                 ], 
                 order: [[0, 'desc']],
+                columnDefs: [ { type: 'date', 'targets': [4] } ],
                 responsive: true,
                 language: {
                     search: "_INPUT_",

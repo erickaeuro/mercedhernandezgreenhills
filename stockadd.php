@@ -67,7 +67,9 @@ if(isset($_SESSION['status']))
                           <?= $_SESSION['status']; ?>
                           <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">x</button>
                       </div>
+                      
                   <?php 
+                  $_SESSION['edit'] = 10;
                   unset($_SESSION['status']);
               }
 ?>
@@ -78,6 +80,16 @@ if(isset($_SESSION['status']))
                     <div class="card-header">
                         <h4><b>Add Jewelry Stocks</b>                      
                     </div>
+                    <?php
+                     if(isset($_GET['edit'])){
+                            $id = mysqli_real_escape_string($con, $_GET['id']);
+                            $query = "SELECT * FROM stockssample WHERE edit_no='$id' ";
+                            $query_run = mysqli_query($con, $query);
+                            $row = mysqli_fetch_array($query_run);
+
+                     }
+
+                    ?>
                     <div class="card-body">
                         <form action="addcode.php" method="POST" enctype="multipart/form-data">
                             
@@ -90,40 +102,40 @@ if(isset($_SESSION['status']))
 
                             <div class="form-group col-md-11">
                                 <label for="itemtype"><b>Item Type *</b></label>
-                                <input type="text" class="form-control" name="item_type" placeholder="Enter Item Type" required>
+                                <input type="text" class="form-control" name="item_type" placeholder="Enter Item Type" value="<?=$row['item_type'];?>" required>
                             </div>
 
                         
                             <div class="form-group col-md-11">
                                 <label for="description"><b>Item Description *</b></label>
-                                <textarea rows="3" class="form-control" name="itemdescription" placeholder="Enter Description" required></textarea>
+                                <textarea rows="3" class="form-control" name="itemdescription" placeholder="Enter Description" value="<?=$row['itemdescription'];?>"required></textarea>
                             </div>
 
                         <div class="wrapper">
                             <div class="form-group col-md-12">
                                 <label for="Karat-gold"><b>Karat/Gold</b></label>
-                                <input type="text" class="form-control" name="karat_gold" placeholder="Karat/Gold">
+                                <input type="text" class="form-control" name="karat_gold" placeholder="Karat/Gold" value="<?=$row['karat_gold'];?>">
                             </div>
 
                             <div class="form-group col-md-25">
                                 <label for="kindofstone"><b>Kind of Stone </b></label>
-                                <input type="text" class="form-control" name="kindofstone" placeholder="Kind of Stone">
+                                <input type="text" class="form-control" name="kindofstone" placeholder="Kind of Stone" value="<?=$row['kindofstone'];?>">
                             </div>
                         </div>
 
                             <div class="form-group col-md-11">
                                 <label for="weight"><b>Weight *</b></label>
-                                <input type="text" class="form-control" name="weight" placeholder="Weight" required>
+                                <input type="text" class="form-control" name="weight" placeholder="Weight" value="<?=$row['weight'];?>" required>
                             </div>
 
                             <div class="form-group col-md-11">
                                 <label for="itemqty"><b>Item Quantity *</b></label>
-                                <input type="number" class="form-control" name="itemqty" placeholder="Item Quantity" required>
+                                <input type="number" class="form-control" name="itemqty" placeholder="Item Quantity" value="<?=$row['itemqty'];?>" required>
                             </div>
 
                             <div class="form-group col-md-11">
                                 <label for="tagprice" ><b>Tag Price * </b></label>
-                                <input type="text" class="form-control" name="tagprice" placeholder="P 0.00" required >
+                                <input type="text" class="form-control" name="tagprice" placeholder="P 0.00" value="<?=$row['tagprice'];?>" required >
                             </div>
                         </div>
                             <div class="mb-4">

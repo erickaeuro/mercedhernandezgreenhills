@@ -50,8 +50,7 @@ if(isset($_POST['adduser']))
             if($query_run)
             {
                 // echo "Saved";
-                $_SESSION['status'] = "User Added Successfully";
-                $_SESSION['status_code'] = "success";
+                $_SESSION['userstatus1'] = "User Added Successfully";
                  //Time input
                  date_default_timezone_set('Asia/Manila');
                  $date = date('y-m-d h:i:s');
@@ -66,15 +65,13 @@ if(isset($_POST['adduser']))
             }
             else 
             {
-                $_SESSION['status'] = "User Not Added";
-                $_SESSION['status_code'] = "error";
+                $_SESSION['userstatus1'] = "User Not Added";
                 header('Location: users.php');  
             }
         }
         else 
         {
-            $_SESSION['status'] = "Password and Confirm Password Does Not Match";
-            $_SESSION['status_code'] = "warning";
+            $_SESSION['userstatus1'] = "Password and Confirm Password Does Not Match";
             header('Location: users.php');  
         }
     }

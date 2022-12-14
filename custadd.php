@@ -6,7 +6,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Merced Hernandez Greenhills</title>
+  <title>Add Customer | Merced Hernandez Greenhills</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -77,47 +77,47 @@
 
                         <div class="wrapper">
                             <div class="form-group col-md-12">
-                                <label for="first_name"><b>First Name *</b></label>
-                                <input type="text" class="form-control" name="first_name" placeholder="Enter First Name" required pattern="[a-zA-Z][a-zA-Z ]{2,}">
+                                <label for="first_name"><b>First Name</b></label>
+                                <input type="text" class="form-control" name="first_name" placeholder="Enter First Name" required>
                             </div>
 
                             <div class="form-group col-md-12">
                                 <label for="middle_name"><b>Middle Name</b></label>
-                                <input type="text" class="form-control" name="middle_name" placeholder="Enter Middle Name" pattern="[a-zA-Z][a-zA-Z ]{2,}">
+                                <input type="text" class="form-control" name="middle_name" placeholder="Enter Middle Name">
                             </div>
 
                             <div class="form-group col-md-12">
-                                <label for="last_name"><b>Last Name *</b></label>
-                                <input type="text" class="form-control" name="last_name" placeholder="Enter Last Name" required required pattern="[a-zA-Z][a-zA-Z ]{2,}">
+                                <label for="last_name"><b>Last Name</b></label>
+                                <input type="text" class="form-control" name="last_name" placeholder="Enter Last Name" required>
                             </div>
                         </div>
 
                             <div class="form-group col-md-11">
-                                <label for="address">Address *</label>
+                                <label for="address">Address</label>
                                 <input type="text" class="form-control" name="address" placeholder="Enter Full Address" required>
                             </div>
 
                             <div class="form-group col-md-11">
-                                <label for="cpnum">Contact Number *</label>
-                                <input type="text" class="form-control" name="cpnum" placeholder="Enter Contact Number" required pattern="((^(\+)(\d){12}$)|(^\d{11}$))">
+                                <label for="cpnum">Contact Number</label>
+                                <input type="text" class="form-control" name="cpnum" placeholder="Enter Contact Number" required>
                             </div>
 
                             <div class="form-group col-md-11">
                                 <label for="birthdate">Birthdate</label>
-                                <input type="date" class="form-control" name="BirthDate" placeholder="Birthdate" onchange="validateBday(this)">
+                                <input type="date" class="form-control" name="BirthDate" placeholder="Birthdate" required>
                             </div>
 
                             <div class="form-group col-md-11">
                               
-                                <label for="valid_id">Valid ID *</label>
-                                <input type="file" accept="image/*" class="form-control" name="file" required>
+                                <label for="valid_id">Valid ID</label>
+                                <input type="file" class="form-control" name="file" required>
                             </div>
 
                             </div>
                             <div class="mb-4">
                             <center> 
                             <a href="customer.php" class="btn text-white" style="background-color: #B0B0AB;">Back</a>
-                            <button type="submit" id="submitbtn" name="addcustomer" disabled class="btn text-white" style="background-color: #81C784;" >Add New Customer</button> 
+                            <button type="submit" name="addcustomer" class="btn text-white" style="background-color: #81C784;" >Add New Customer</button> 
                             </center>
                             </div>
                         </form>
@@ -133,20 +133,7 @@
 
 
 </div>
-<script>
-    function validateBday(bday){
-        console.log(bday.value)
-        var bday=new Date(bday.value);
-        var tday=new Date();
-        var submitBtn=document.getElementById('submitbtn')
-        if(tday.getFullYear()-bday.getFullYear()>=18){
-            submitBtn.disabled=false;
-        }
-        else {
-            submitBtn.disabled=true;
-        }
-    }
-</script>
+
 
 <?php include 'scripts.php'; ?>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

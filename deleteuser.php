@@ -15,7 +15,7 @@ if(isset($_GET['id']))
     if(mysqli_query($con, $query))
     {
 
-         $_SESSION['status'] = "User Deleted!";
+         $_SESSION['userstatus1'] = "User Deleted!";
 
          //Time input
          date_default_timezone_set('Asia/Manila');
@@ -33,7 +33,8 @@ if(isset($_GET['id']))
     }
     else
     {
-        echo '<script> alert("User not Deleted"); </script>';
+        $_SESSION['userstatus1'] = "User not Deleted!";
+        header("Location:users.php");
     }
 
     
