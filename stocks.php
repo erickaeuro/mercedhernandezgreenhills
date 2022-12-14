@@ -51,15 +51,15 @@
         }
 
 
-              if(isset($_SESSION['status']))
+              if(isset($_SESSION['status3']))
               {
                   ?>
                       <div class="alert alert-success" role="alert" role="alert">
-                          <?= $_SESSION['status']; ?>
+                          <?= $_SESSION['status3']; ?>
                           <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">x</button>
                       </div>
                   <?php 
-                  unset($_SESSION['status']);
+                  unset($_SESSION['status3']);
               }
         ?>
         <!-- End of Topbar -->
@@ -134,6 +134,7 @@
                         }
 
             ?>
+                        
                         <tr class="">
                             <td> <?php echo $row['stock_no']; ?> </td> 
                             <td> <?php echo $row['item_type']; ?> </td>
@@ -237,6 +238,7 @@
                     [10, 25, 50, "All"]
                 ], 
                 order: [[0, 'desc']],
+                columnDefs: [ { type: 'date', 'targets': [4] } ],
                 responsive: true,
                 language: {
                     search: "_INPUT_",

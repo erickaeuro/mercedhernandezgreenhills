@@ -243,6 +243,9 @@ $result = $statement->fetchAll();
         <!-- Begin Page Content -->
 
       <center>  
+      <div class="container-fluid">
+
+<div class="row">
       <form method="post">
 
       <div class="input-daterange">

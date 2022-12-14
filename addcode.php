@@ -32,8 +32,8 @@ $date_created = $_POST['date_created'];
 
 if(isset($_POST['addjewelry']) && !empty($_FILES["file"]["name"]))
 {
-    if ($_FILES["file"]["size"] >=  1048576){
-        $_SESSION['status'] = "File must be less than 10mb file size.";
+    if ($_FILES["file"]["size"] >=  2097152){
+        $_SESSION['status3'] = "File must be less than 2mb file size.";
         header('Location: stockadd.php');
             }
       else {
@@ -43,12 +43,12 @@ if(isset($_POST['addjewelry']) && !empty($_FILES["file"]["name"]))
           // Upload file to server
           if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
               // Insert image file name into database
-              $query = "INSERT into inventorytbl (stock_no, file_name, item_type, itemdescription, karat_gold, kindofstone, weight, itemqty, tagprice,  date_created) VALUES ('$stock_no', '$fileName','$item_type','$itemdescription','$karat_gold','$kindofstone','$weight','$itemqty','$tagprice','$date')";
+              $query = "INSERT into inventorytbl (stock_no, "/*.file_name,*/ ."item_type, itemdescription, karat_gold, kindofstone, weight, itemqty, tagprice,  date_created) VALUES ('$stock_no', '$fileName','$item_type','$itemdescription','$karat_gold','$kindofstone','$weight','$itemqty','$tagprice','$date')";
               $query_run = mysqli_query($con, $query);
 
               if($query_run){
                   //$statusMsg = "The file ".$fileName. " has been uploaded successfully.";
-                  $_SESSION['status'] = "Stock Added Successfully!";
+                  $_SESSION['status3'] = "Stock Added Successfully!";
 
                     //ID
                     $id = $_SESSION['id'];
@@ -56,21 +56,39 @@ if(isset($_POST['addjewelry']) && !empty($_FILES["file"]["name"]))
                     //INSERT
                     $query1 = "INSERT INTO logs (user_id, action_made, date_created) VALUES('$id','added a stock', '$date')"; 
                     $query_run1 = mysqli_query($con, $query1);
+
+                    if(isset($_SESSION['edit'])){
+                        $edit_no = $_SESSION['edit'];
+                        $delquery = "DELETE FROM stockssample WHERE edit_no = '$edit_no'"; 
+                        $query_run1 = mysqli_query($con, $query1);
+                        unset($_SESSION['edit']);
+                    }
                   
                   header('Location: stocks.php');
               }else{
                   //$statusMsg = "File upload failed, please try again.";
+                    $query2 = "INSERT INTO stockssample (stock_no, edit_no, item_type, itemdescription, karat_gold, kindofstone, weight, itemqty, tagprice, ) VALUES (NULL, '10','$item_type','$itemdescription','$karat_gold','$kindofstone','$weight','$itemqty','$tagprice')"; 
+                    $query_run2 = mysqli_query($con, $query2);
+
+
                   $_SESSION['status'] = "File upload failed, please try again.";
-                  header('Location: stocks.php');
+                  header('Location: stockadd.php?edit=10');
               } 
           }else{
+            $query2 = "INSERT INTO stockssample (stock_no, edit_no, item_type, itemdescription, karat_gold, kindofstone, weight, itemqty, tagprice,  date_created) VALUES (NULL, '10','$item_type','$itemdescription','$karat_gold','$kindofstone','$weight','$itemqty','$tagprice')"; 
+            $query_run2 = mysqli_query($con, $query2);
+
+
               //$statusMsg = "Sorry, there was an error uploading your file.";
-              $_SESSION['status'] = "File must be less than 2mb file size.";
+              $_SESSION['status3'] = "File must be less than 2mb file size.";
               header('Location: stocks.php');
           }
       }else{
+        $query2 = "INSERT INTO stockssample (stock_no, edit_no, item_type, itemdescription, karat_gold, kindofstone, weight, itemqty, tagprice,  date_created) VALUES (NULL, '10','$item_type','$itemdescription','$karat_gold','$kindofstone','$weight','$itemqty','$tagprice','$date')"; 
+        $query_run2 = mysqli_query($con, $query2);
+
           //$statusMsg = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
-          $_SESSION['status'] = "Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.";
+          $_SESSION['status3'] = "Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.";
           header('Location: stocks.php');
       }
   }

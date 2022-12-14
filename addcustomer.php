@@ -37,8 +37,8 @@ if ($AgeVal > $today) {
     $_SESSION['custstatus'] = "Customer must be above 18 years old";
     header('Location: custadd.php');
 }else{
-    if ($_FILES["file"]["size"] >= 10485760){
-        $_SESSION['status'] = "File size must be less than 10mb!";
+    if ($_FILES["file"]["size"] >= 2097152){
+        $_SESSION['custstatus'] = "File size must be less than 2mb!";
 header('Location: customer.php');
     }
    else {
@@ -58,7 +58,7 @@ header('Location: customer.php');
             mysqli_query($con, $query);
 
             if (move_uploaded_file($tempname, $folder)) {
-                $_SESSION['status'] = "Customer added successfully!";
+                $_SESSION['custstatus'] = "Customer added successfully!";
 
                   //Time input
                   date_default_timezone_set('Asia/Manila');
@@ -73,7 +73,7 @@ header('Location: customer.php');
                 
                 header('Location: customer.php');
             } else {
-                $_SESSION['status'] = "Customer not added!";
+                $_SESSION['custstatus'] = "Customer not added!";
                 header('Location: customer.php');
             }
             

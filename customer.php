@@ -48,11 +48,6 @@
 
         <!-- Topbar -->
         <?php include 'navbar.php'; 
-        if($_GET['del'] == 1){
-          echo"<div class='alert alert-success' role='alert'>Successfully Deleted
-          <button type='button' class='close' data-dismiss='alert'>x</button>
-          </div>";
-        }
 
         if(isset($_SESSION['custstatus']))
         {
@@ -79,7 +74,7 @@
         </div>
           <!-- Content Row -->
 
-          <form action= "addcustomer.php" method="POST">
+          <form action= "addcustomer.php" method="POST"> 
 
             <div class="row">
                 
@@ -95,7 +90,7 @@
 
                       <?php 
 
-                            $query = "SELECT * FROM customertbl";
+                            $query = "SELECT * FROM customertbl order by date_updated DESC";
                             $query_run = mysqli_query($con, $query);
 
                       ?> 
@@ -229,6 +224,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script> 
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/colreorder/1.6.1/js/dataTables.colReorder.min.js"> </script>
 
 <?php include 'scripts.php'; ?>
 
@@ -241,7 +237,7 @@
                     [10, 25, 50, -1],
                     [10, 25, 50, "All"]
                 ],
-                order: [[0, 'desc']],
+              
                 responsive: true,
                 language: {
                     search: "_INPUT_",
