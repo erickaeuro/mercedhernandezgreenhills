@@ -39,7 +39,7 @@ if ($AgeVal > $today) {
 }else{
     if ($_FILES["file"]["size"] >= 2097152){
         $_SESSION['custstatus'] = "File size must be less than 2mb!";
-header('Location: customer.php');
+header('Location: custadd.php');
     }
    else {
     $filename = $_FILES["file"]["name"];
@@ -78,8 +78,13 @@ header('Location: customer.php');
             }
             
         }else{
+
+
+
             $_SESSION['custstatus'] = "The customer is already in the record";
             header('Location: custadd.php');
+
+
         }
    }
 }
