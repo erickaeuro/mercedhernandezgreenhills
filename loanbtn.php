@@ -61,6 +61,7 @@
                     <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">x</button>
                 </div>
             <?php 
+            $_SESSION['edit'] = 10;
             unset($_SESSION['addstatus']);
         }
 
@@ -72,6 +73,7 @@
                     <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">x</button>
                 </div>
             <?php 
+            $_SESSION['edit'] = 10;
             unset($_SESSION['addstatus1']);
         }
         ?>
@@ -107,16 +109,38 @@
 
                         $cser=mysqli_connect("localhost","root","","mercedhernandezgreenhills");
                         $result = mysqli_query($cser,"SELECT customer_no, first_name, last_name FROM customertbl");
+                        
+
+                        if(isset($_GET['edit'])){
+                            $query = "SELECT * FROM loansample WHERE edit_no='10' ";
+                            $query_run = mysqli_query($cser, $query);
+                           
+                            if(mysqli_num_rows($query_run) > 0)
+                            {
+                                $row = mysqli_fetch_array($query_run);  
+                                $custno = $row['custno'];
+                                $result2 = mysqli_query($cser,"SELECT customer_no, first_name, last_name FROM customertbl WHERE customer_no = $custno");
+                                $dropedit = mysqli_fetch_array( $result2 );
+
+
+                                echo'<option value="'.$row['custno'].'">'.$dropedit['first_name'].' '.$dropedit['last_name'].'</option>' ;
+                            } else{
+                                
+                            }
+                               }else{
+                                echo'<option value=" " selected="selected">Customer</option>';
+                               }
 
 
                         if (mysqli_num_rows($result)!=0)
                         {
 
-                        echo'<option value=" " selected="selected">Customer</option>';
+                        
 
                         while($drop_2 = mysqli_fetch_array( $result ))
                         {
-                            if(in_array($drop_2['transactiontype'] , array(''))){
+                            if(in_array($drop_2['transactiontype'] , array(''))){                      
+                                
                                 echo '<option value="'.$drop_2['customer_no'].'">'.$drop_2['first_name'].' '.$drop_2['last_name'].'</option>' ;
                                 }
 
@@ -132,24 +156,24 @@
 
                             <div class="form-group col-md-11">
                                 <label for="itemtype"><b>Item Type *</b></label>
-                                <input type="text" class="form-control" name="item_type" placeholder="Enter Jewelry Type" value="<?php if (isset($_POST['item_type'])) echo $_POST['item_type']; ?>" required>
+                                <input type="text" class="form-control" name="item_type" placeholder="Enter Jewelry Type" value="<?= $row['item_type']; ?>" required>
                             </div>
 
                             <div class="form-group col-md-11">
                                 <label for="description"><b>Item Description * </b></label>
-                                <textarea class="form-control" rows="3" name="item_desc" placeholder="Enter Jewelry description" value="<?php echo isset($_POST['item_desc']) ?>" required></textarea>
+                                <textarea class="form-control" rows="3" name="item_desc" placeholder="<?= $row['item_desc'] ?>" value="<?= $row['item_desc'] ?>" required></textarea>
                             </div>
 
                         <div class="wrapper">
 
                             <div class="form-group col-md-11">
                                 <label for="appraised_value"><b>Appraised Value * </b></label>
-                                <input id="avalue" onchange="validateValues()" type="text" class="form-control" name="appraised_value" placeholder="Enter Jewelry Appraised Value" value="<?php echo isset($_POST['appraised_value']) ?>" required>
+                                <input id="avalue" onchange="validateValues()" type="text" class="form-control" name="appraised_value" placeholder="Enter Jewelry Appraised Value" value="<?= $row['appraised_value'] ?>" required>
                             </div>
 
                             <div class="form-group col-md-11">
                                 <label for="principal"><b>Principal * </b></label>
-                                <input id="pvalue" onchange="validateValues()" type="text" class="form-control" name="principal" placeholder="Enter Principal" required>
+                                <input id="pvalue" onchange="validateValues()" type="text" class="form-control" name="principal" placeholder="Enter Principal" value="<?=$row['principal'] ?>"required>
                             </div>
                         </div>
 
@@ -157,7 +181,7 @@
                             <div class="mb-4">
                             <center> 
                             <a href="loan.php" class="btn text-white" style="background-color: #B0B0AB;">Back</a>
-                            <button disabled type="button" id="addloanbtn" class="btn text-white" style="background-color: #81C784;" data-bs-toggle="modal" data-bs-target="#AddModal">Add Loan</button>
+                            <button  type="button" id="addloanbtn" class="btn text-white" style="background-color: #81C784;" data-bs-toggle="modal" data-bs-target="#AddModal">Add Loan</button>
                             
                             </center>
                             </div>
@@ -204,10 +228,10 @@
 <script>
     function validateValues(){
         
-        var avalue=document.getElementById('avalue')
-        var pvalue=document.getElementById('pvalue')
-        var addloanbtn=document.getElementById('addloanbtn')
-       if(pvalue.value==''||avalue.value==''){
+        var avalue=document.getElementById('avalue');
+        var pvalue=document.getElementById('pvalue');
+        var addloanbtn=document.getElementById('addloanbtn');
+       /*if(pvalue.value==''||avalue.value==''){
         addloanbtn.disabled=true;
         return;
        }
@@ -217,7 +241,7 @@
         }
         else{
             addloanbtn.disabled=true;
-        }
+        }*/
     }
 </script>
 <?php include 'scripts.php'; ?>

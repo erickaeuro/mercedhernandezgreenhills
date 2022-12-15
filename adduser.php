@@ -33,9 +33,12 @@ if(isset($_POST['adduser']))
     $equery_run = mysqli_query($con, $equery);
     if(mysqli_num_rows($equery_run) > 0)
     {
-        $_SESSION['status'] = "Email Already Taken. Please Try Another one.";
-        $_SESSION['status_code'] = "error";
-        header('Location: users.php');  
+
+        $query2 = "INSERT INTO usersample (id, edit_no, username, email, name, contactno, address, user_type) VALUES (NULL, '10', '$username', '$email', '$cname', '$contactno', '$address', '$usertype')"; 
+        $query_run2 = mysqli_query($con, $query2);
+        
+        $_SESSION['userstatus1'] = "Email Already Taken. Please Try Another one.";
+        header('Location: addinguser.php?edit=10');  
     }
     else
     {
@@ -50,7 +53,7 @@ if(isset($_POST['adduser']))
             if($query_run)
             {
                 // echo "Saved";
-                $_SESSION['userstatus1'] = "User Added Successfully";
+               
                  //Time input
                  date_default_timezone_set('Asia/Manila');
                  $date = date('y-m-d h:i:s');
@@ -61,18 +64,36 @@ if(isset($_POST['adduser']))
                  //INSERT
                  $query1 = "INSERT into logs (user_id, action_made, date_created) VALUES('$id','added a new user', '$date')"; 
                  $query_run1 = mysqli_query($con, $query1);
+
+                 //deletetempdb
+                 if(isset($_SESSION['edit'])){
+                    $edit_no = $_SESSION['edit'];
+                    $delquery = "DELETE FROM usersample WHERE edit_no = '$edit_no'"; 
+                    $delqueryrun = mysqli_query($con, $delquery);
+                    unset($_SESSION['edit']);
+                }   
+
+
+                 
+                $_SESSION['userstatus1'] = "User Added Successfully";
                 header('Location: users.php');
             }
             else 
             {
+                $query2 = "INSERT INTO usersample (id, edit_no, username, email, name, contactno, address, user_type) VALUES (NULL, '10', '$username', '$email', '$cname', '$contactno', '$address', '$usertype')"; 
+                $query_run2 = mysqli_query($con, $query2);
+
                 $_SESSION['userstatus1'] = "User Not Added";
-                header('Location: users.php');  
+                header('Location: addinguser.php?edit=10');  
             }
         }
         else 
         {
+            $query2 = "INSERT INTO usersample (id, edit_no, username, email, name, contactno, address, user_type) VALUES (NULL, '10', '$username', '$email', '$cname', '$contactno', '$address', '$usertype')"; 
+            $query_run2 = mysqli_query($con, $query2);
+
             $_SESSION['userstatus1'] = "Password and Confirm Password Does Not Match";
-            header('Location: users.php');  
+            header('Location: addinguser.php?edit=10');  
         }
     }
 

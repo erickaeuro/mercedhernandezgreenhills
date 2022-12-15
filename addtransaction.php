@@ -47,11 +47,33 @@ if(isset($_POST['addtransc']))
                     $updateque = "UPDATE loantbl SET loan_status='Redeemed', total_amt_paid='$payupdate', principal_due='0', renewal_due='0',date_loan_granted ='$today', maturity_date='$maturity_date', expiry_date='$expiry_date' WHERE loan_id='$loanid'";
                     $query_run2 = mysqli_query($con, $updateque);
                 }if($transac > 0){
+                    $editquery = "INSERT INTO pawnticketsample (pawntixno, loan_id, edit_no, amount_paid, transactiontype) VALUES (NULL, '$loanid', '10',  '$amt_paid', '$transc_type')";
+                    $editquery_run = mysqli_query($con, $editquery);
+
                     $_SESSION['addstatus1'] = "Payment Insufficient for Redemption";
-                    header('Location: transactionbtn.php');
+                    header('Location: transactionbtn.php?edit=10');
                 }
                 
                 if($query_run && $query_run2){
+                    //Time input
+                    date_default_timezone_set('Asia/Manila');
+                    $date = date('y-m-d h:i:s');
+
+                    //ID
+                    $id = $_SESSION['id'];
+
+                    //INSERT
+                    $query4 = "INSERT into logs (user_id, action_made, date_created) VALUES('$id','added a pawn ticket', '$date')"; 
+                    $query_run4 = mysqli_query($con, $query4);
+
+
+                    if(isset($_SESSION['edit'])){
+                        $edit_no = $_SESSION['edit'];
+                        $delquery = "DELETE FROM pawnticketsample WHERE edit_no = '$edit_no'"; 
+                        $delqueryrun = mysqli_query($con, $delquery);
+                        unset($_SESSION['edit']);
+                    }
+
                     $_SESSION['addstatus'] = "Ticket Added Successfully";
                     header('Location: transaction.php');
                 }
@@ -71,9 +93,11 @@ if(isset($_POST['addtransc']))
 
 
                     if($newprin <= 0){                       
-                        
+                        $editquery = "INSERT INTO pawnticketsample (pawntixno, loan_id, edit_no, amount_paid, transactiontype) VALUES (NULL, '$loanid', '10',  '$amt_paid', '$transc_type')";
+                        $editquery_run = mysqli_query($con, $editquery);
+                    
                         $_SESSION['addstatus1'] = "Amount paid verified for Redemption, use Redemption Transaction type";
-                        header('Location: transactionbtn.php');
+                        header('Location: transactionbtn.php?edit=10');
 
                     }else{
 
@@ -84,6 +108,7 @@ if(isset($_POST['addtransc']))
                         $query_run = mysqli_query($con, $query);
 
                         if($query_run && $query_run2){
+                            
                             $_SESSION['addstatus'] = "Ticket Added Successfully";
 
                              //Time input
@@ -97,10 +122,21 @@ if(isset($_POST['addtransc']))
                             $query4 = "INSERT into logs (user_id, action_made, date_created) VALUES('$id','added a pawn ticket', '$date')"; 
                             $query_run4 = mysqli_query($con, $query4);
 
+                            //delete tempdb
+                            if(isset($_SESSION['edit'])){
+                                $edit_no = $_SESSION['edit'];
+                                $delquery = "DELETE FROM pawnticketsample WHERE edit_no = '$edit_no'"; 
+                                $delqueryrun = mysqli_query($con, $delquery);
+                                unset($_SESSION['edit']);
+                            }   
+
                             header('Location: transaction.php');
                         }else{
+                            $editquery = "INSERT INTO pawnticketsample (pawntixno, loan_id, edit_no, amount_paid, transactiontype) VALUES (NULL, '$loanid', '10',  '$amt_paid', '$transc_type')";
+                            $editquery_run = mysqli_query($con, $editquery);
+
                             $_SESSION['addstatus'] = "DATA NOT SAVED";
-                            header('Location: transactionbtn.php');
+                            header('Location: transactionbtn.php?edit=10');
                         }
     
 
@@ -110,8 +146,10 @@ if(isset($_POST['addtransc']))
                    
 
                 }else{
+                    $editquery = "INSERT INTO pawnticketsample (pawntixno, loan_id, edit_no, amount_paid, transactiontype) VALUES (NULL, '$loanid', '10',  '$amt_paid', '$transc_type')";
+                    $editquery_run = mysqli_query($con, $editquery);
                     $_SESSION['addstatus1'] = "Amount Paid is insufficient for Renewal";
-                    header('Location: transactionbtn.php');
+                    header('Location: transactionbtn.php?edit=10');
                 }
                 
                 

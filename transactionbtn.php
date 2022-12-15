@@ -52,6 +52,7 @@
                     <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">x</button>
                 </div>
             <?php 
+            $_SESSION['edit'] = 10;
             unset($_SESSION['addstatus']);
         }
 
@@ -63,9 +64,57 @@
                     <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">x</button>
                 </div>
             <?php 
+             $_SESSION['edit'] = 10;
             unset($_SESSION['addstatus1']);
         }
         ?>
+
+
+        <!--FETCH NAME-->
+        <?php
+                        if(isset($_GET['id'])){
+                            $id = $_GET['id'];
+                            $date = date("Y-m-d");
+                            date_default_timezone_set('Asia/Manila');
+
+                            $query = "SELECT * FROM loantbl INNER JOIN customertbl ON loantbl.customer_no = customertbl.customer_no WHERE loantbl.loan_id='$id' AND loantbl.loan_status IN ('Active Loan', 'Late', 'Two Months Late')";
+                            $query_run = mysqli_query($con, $query);
+
+                            if(mysqli_affected_rows($con) == 0){
+                                $_SESSION['addstatus1'] = "Loan already Redeemed";
+                                header('Location: transactionbtn.php');
+                            }
+                            $row = mysqli_fetch_array($query_run);
+
+                            $total = $row['principal_due'] + $row['renewal_due'];
+
+                        }
+                        
+                        if(isset($_GET['edit'])){
+                          
+                            $query1 = "SELECT * FROM pawnticketsample WHERE edit_no='10' ";
+                            $query_run1 = mysqli_query($con, $query1);
+
+                            
+                       
+                        if(mysqli_num_rows($query_run1) > 0){
+                            $row1 = mysqli_fetch_array($query_run1);
+                            $id = $row1['loan_id'];
+
+                            $query = "SELECT * FROM loantbl INNER JOIN customertbl ON loantbl.customer_no = customertbl.customer_no WHERE loantbl.loan_id='$id' AND loantbl.loan_status IN ('Active Loan', 'Late', 'Two Months Late')";
+                            $query_run = mysqli_query($con, $query);
+
+                            $row = mysqli_fetch_array($query_run);
+                            $total = $row['principal_due'] + $row['renewal_due'];
+                        }
+                        else{
+                            
+                        }
+                    }else{
+
+                    }
+            
+                        ?>
         <!-- End of Topbar -->
 <style>
 
@@ -90,7 +139,7 @@
                     <div class="row">
                         <div class="col-md-8" style="width:950px; position: relative; left:10px; top:-1px" >
 
-                            <input type="text" class="form-control" name="id" value="<?php if(isset($_GET['id'])){echo $_GET['id'];} ?>" placeholder="Search for Loan ID" required>
+                            <input type="text" class="form-control" name="id" value="<?php if(isset($_GET['id'])){echo $_GET['id'];} if(isset($_GET['edit'] )){echo $row['loan_id'];} ?>" placeholder="Search for Loan ID" required>
                         </div>
                         <div class="col-md-4" >
                             
@@ -99,28 +148,7 @@
                     </div>
                     </form>
 
-                        <!--FETCH NAME-->
-                        <?php
-                        if(isset($_GET['id'])){
-                            $id = $_GET['id'];
-                            $date = date("Y-m-d");
-                            date_default_timezone_set('Asia/Manila');
-
-                            $query = "SELECT * FROM loantbl INNER JOIN customertbl ON loantbl.customer_no = customertbl.customer_no WHERE loantbl.loan_id='$id' AND loantbl.loan_status IN ('Active Loan', 'Late', 'Two Months Late')";
-                            $query_run = mysqli_query($con, $query);
-
-                            if(mysqli_affected_rows($con) == 0){
-                                $_SESSION['addstatus1'] = "Loan already Redeemed";
-                                header('Location: transactionbtn.php');
-                            }
-                            $row = mysqli_fetch_array($query_run);
-
-                            $total = $row['principal_due'] + $row['renewal_due'];
-
-                        }
-                        
-            
-                        ?>
+                       
 
 
                         <form action="addtransaction.php" method="POST">
@@ -128,7 +156,8 @@
                         <div class="form-group col-md-11">
                             <label for="loanstatus"><b>Transaction Type * </b></label><br>
                             <select class="custom-select" name="transctype" style="width:1035px; position: relative; left:1px; top:-1px" required>
-                                <option value= "null" selected="selected">Select Transaction Type </option>
+                                <?php if(isset($_GET['edit'])){echo '<option value= "'.$row1['transactiontype'].'" selected="selected">'.$row1['transactiontype'].' </option>';}
+                                else{echo '<option value= "null" selected="selected">Select Transaction Type </option>';}?>                                
                                 <option value="Renewal">Renewal</option>
                                 <option value="Redeem">Redemption</option>                                
                             </select>
@@ -136,7 +165,7 @@
 
                         <div class="form-group col-md-12">
                             <label for="loan_id"><b>Loan ID</b></label>
-                            <input type="text" class="form-control" name="loan_id" value="<?php if(isset($_GET['id'])){echo $row['loan_id'];} ?>" readonly>
+                            <input type="text" class="form-control" name="loan_id" value="<?php if(isset($_GET['id'])){echo $row['loan_id'];} if(isset($_GET['edit'] )){echo $row1['loan_id'];} ?>" readonly>
                         </div>
                         
                         
@@ -145,48 +174,48 @@
                     <div class="wrapper">
                         <div class="form-group col-md-12">
                             <label for="custfname"><b>First Name</b></label>
-                            <input type="text" class="form-control" name="cust_fname" value="<?php if(isset($_GET['id'])){ echo $row['first_name'];}?>" readonly>
+                            <input type="text" class="form-control" name="cust_fname" value="<?php if(isset($_GET['id'])){ echo $row['first_name'];} if(isset($_GET['edit'] )){echo $row['first_name'];}?>" readonly>
                         </div>
 
                         <div class="form-group col-md-12">
                             <label for="custlname"><b>Last Name</b></label>
-                            <input type="text" class="form-control" name="cust_lname" value="<?php if(isset($_GET['id'])){ echo $row['last_name'];}?>" readonly>
+                            <input type="text" class="form-control" name="cust_lname" value="<?php if(isset($_GET['id'])){ echo $row['last_name'];} if(isset($_GET['edit'] )){echo $row['last_name'];}?>" readonly>
                         </div>
                     </div>
 
                         <div class="form-group col-md-12">
                             <label for="itemtyoe"><b>Item Type</b></label>
-                            <input type="text" class="form-control" name=" " value="<?php if(isset($_GET['id'])){ echo $row['item_desc'];}?>" readonly>
+                            <input type="text" class="form-control" name=" " value="<?php if(isset($_GET['id'])){ echo $row['item_desc'];} if(isset($_GET['edit'] )){echo $row['item_desc'];}?>" readonly>
                         </div>
 
                         <div class="form-group col-md-12">
                             <label for="itemdesc"><b>Item Description</b></label>
-                            <input type="text" class="form-control" name=" " value="<?php if(isset($_GET['id'])){ echo $row['item_type'];}?>" readonly>
+                            <input type="text" class="form-control" name=" " value="<?php if(isset($_GET['id'])){ echo $row['item_type'];} if(isset($_GET['edit'] )){echo $row['item_type'];}?>" readonly>
                         </div>
 
                         <div class="form-group col-md-12">
                             <label for="amtdue"><b>Principal Due</b></label>
-                            <input type="text" class="form-control" name="total" value="<?php if(isset($_GET['id'])){ echo $row['principal_due'];}?>" readonly>
+                            <input type="text" class="form-control" name="total" value="<?php if(isset($_GET['id'])){ echo $row['principal_due'];} if(isset($_GET['edit'] )){echo $row['principal_due'];}?>" readonly>
                         </div>
 
                         <div class="form-group col-md-12">
                             <label for="renewaldue"><b>Renewal Due</b></label>
-                            <input type="text" class="form-control" name="renewaldue" value="<?php if(isset($_GET['id'])){ echo $row['renewal_due']; }?>" readonly>
+                            <input type="text" class="form-control" name="renewaldue" value="<?php if(isset($_GET['id'])){ echo $row['renewal_due']; } if(isset($_GET['edit'] )){echo $row['renewal_due'];}?>" readonly>
                         </div>
 
                         <div class="form-group col-md-12">
                             <label for="amtdue"><b>Total Due</b></label>
-                            <input type="text" class="form-control" name="total" value="<?php if(isset($_GET['id'])){ echo $total;}?>" readonly>
+                            <input type="text" class="form-control" name="total" value="<?php if(isset($_GET['id'])){ echo $total;} if(isset($_GET['edit'] )){echo $total;}?> " readonly>
                         </div>
 
                         <div class="form-group col-md-12">
                             <label for="LoanStat"><b>Loan Status</b></label>
-                            <input type="text" class="form-control" name="loanstat" value="<?php if(isset($_GET['id'])){ echo $row['loan_status']; }?>" readonly>
+                            <input type="text" class="form-control" name="loanstat" value="<?php if(isset($_GET['id'])){ echo $row['loan_status']; } if(isset($_GET['edit'] )){echo $row['loan_status'];}?>" readonly>
                         </div>
                                                  
                         <div class="form-group col-md-12">
                             <label for="amtpaid"><b>Amount to be Paid *</b></label>
-                            <input type="text" class="form-control" name="amount_paid" required>
+                            <input type="text" class="form-control" name="amount_paid" <?= $row['amount_paid'] ?>required>
                         </div>  
 
 

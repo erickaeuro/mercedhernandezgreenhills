@@ -42,7 +42,34 @@
       <div id="content">
 
         <!-- Topbar -->
-        <?php include 'navbar.php'; ?>
+        <?php include 'navbar.php'; 
+        if(isset($_SESSION['userstatus1']))
+        {
+            ?>
+                <div class="alert alert-warning" role="alert" role="alert">
+                    <?= $_SESSION['userstatus1']; ?>
+                    <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">x</button>
+                </div>
+            <?php
+            $_SESSION['edit'] = 10;
+            unset($_SESSION['userstatus1']);
+        }
+
+        if(isset($_GET['edit'])){                           
+            $query = "SELECT * FROM usersample WHERE edit_no='10' ";
+            $query_run = mysqli_query($con, $query);
+           
+            if(mysqli_num_rows($query_run) > 0)
+            {
+                $row = mysqli_fetch_array($query_run);  
+            } else{
+
+            }
+               }
+        
+        ?>
+
+        
         <!-- End of Topbar -->
 
 <style>
@@ -73,7 +100,7 @@
 
                     <div class="form-group col-md-11">
                         <label for="username">Username *</label>
-                        <input type="text" class="form-control" name="username" placeholder="Enter Username" required>
+                        <input type="text" class="form-control" name="username" placeholder="Enter Username" value="<?=$row['username']?>" required>
                     </div>
 
                 <div class="wrapper">
@@ -90,29 +117,30 @@
 
                     <div class="form-group col-md-11">
                         <label for="emailadd">Email Address *</label>
-                        <input type="email" class="form-control" name="email" placeholder="Enter Email Address" required>
+                        <input type="email" class="form-control" name="email" placeholder="Enter Email Address" value="<?=$row['email']?>" required>
                     </div>
 
                     <div class="form-group col-md-11">
                         <label for="name">Complete Name *</label>
-                        <input type="text" class="form-control" name="cname" placeholder="Enter Complete Name" pattern="[a-zA-Z][a-zA-Z ]{2,}" required>
+                        <input type="text" class="form-control" name="cname" placeholder="Enter Complete Name" pattern="[a-zA-Z][a-zA-Z ]{2,}" value="<?=$row['name']?>" required>
                     </div>
 
                     <div class="form-group col-md-11">
                         <label for="contactno">Contact Number *</label>
-                        <input type="text" class="form-control" name="contactno" placeholder="Enter Contact Number" required pattern="((^(\+)(\d){12}$)|(^\d{11}$))">
+                        <input type="text" class="form-control" name="contactno" placeholder="Enter Contact Number" required pattern="((^(\+)(\d){12}$)|(^\d{11}$))" value="<?=$row['contactno']?>" >
                     </div>
 
 
                     <div class="form-group col-md-11">
                         <label for="address">Address *</label>
-                        <input type="text" class="form-control" name="address" placeholder="Enter Address" required>
+                        <input type="text" class="form-control" name="address" placeholder="Enter Address" value="<?=$row['address']?>"  required>
                     </div>
 
                     <div class="form-group col-md-11">
                                 <label for="usertype"><b>User Type * </b></label><br/>
                                 <select class="custom-select" name="usertype" style="width:990px; position: relative; left:2px; top:-1px">
-                                    <option value=" " selected="selected">User Type</option>
+                                    <?php if(isset($_GET['edit'])){echo '<option value="'.$row['user_type'].' " selected="selected">'.$row['user_type'].'</option>';}
+                                    else{echo '<option value=" " selected="selected">User Type</option>';}?>                                    
                                     <option value="Admin" selected="selected">Admin</option>
                                     <option value="Appraiser" selected="selected">Appraiser</option>
                                     <option value="Inventory Clerk" selected="selected">Inventory Clerk</option>

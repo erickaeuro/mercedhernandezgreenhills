@@ -81,13 +81,19 @@ if(isset($_SESSION['status']))
                         <h4><b>Add Jewelry Stocks</b>                      
                     </div>
                     <?php
-                     if(isset($_GET['edit'])){
-                            $id = mysqli_real_escape_string($con, $_GET['id']);
-                            $query = "SELECT * FROM stockssample WHERE edit_no='$id' ";
+                     if(isset($_GET['edit'])){                           
+                            $query = "SELECT * FROM stockssample WHERE edit_no='10' ";
                             $query_run = mysqli_query($con, $query);
-                            $row = mysqli_fetch_array($query_run);
+                           
+                            if(mysqli_num_rows($query_run) > 0)
+                            {
+                                $row = mysqli_fetch_array($query_run);  
+                            } else{
 
-                     }
+                            }
+                               }
+
+                     
 
                     ?>
                     <div class="card-body">
@@ -108,7 +114,7 @@ if(isset($_SESSION['status']))
                         
                             <div class="form-group col-md-11">
                                 <label for="description"><b>Item Description *</b></label>
-                                <textarea rows="3" class="form-control" name="itemdescription" placeholder="Enter Description" value="<?=$row['itemdescription'];?>"required></textarea>
+                                <textarea rows="3" class="form-control" name="itemdescription" placeholder="<?=$row['itemdescription'];?>" value="<?=$row['itemdescription'];?>" required></textarea>
                             </div>
 
                         <div class="wrapper">
@@ -145,6 +151,11 @@ if(isset($_SESSION['status']))
                             </center>
                             </div>
                         </form>
+
+                        <?php
+                     
+                        
+                        ?>
                     </div>
                 </div>
             </div>

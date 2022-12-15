@@ -34,12 +34,19 @@ if(isset($_POST['addcustomer']))
 
 //if age if 17 or younger error msg
 if ($AgeVal > $today) {
+    $query2 = "INSERT INTO custsample (custno, edit_no, first_name, middle_name, last_name, cpnum, address, birthdate) VALUES (NULL, '10', '$first_name', '$middle_name', '$last_name', '$cpnum', '$addressval', '$BirthDate')"; 
+     $query_run2 = mysqli_query($con, $query2);
+
+
     $_SESSION['custstatus'] = "Customer must be above 18 years old";
-    header('Location: custadd.php');
+    header('Location: custadd.php?edit=10');
 }else{
     if ($_FILES["file"]["size"] >= 2097152){
+        $query2 = "INSERT INTO custsample (custno, edit_no, first_name, middle_name, last_name, cpnum, address, birthdate) VALUES (NULL, '10', '$first_name', '$middle_name', '$last_name', '$cpnum', '$addressval', '$BirthDate')"; 
+        $query_run2 = mysqli_query($con, $query2);
+
         $_SESSION['custstatus'] = "File size must be less than 2mb!";
-header('Location: customer.php');
+        header('Location: custadd.php?edit=10');
     }
    else {
     $filename = $_FILES["file"]["name"];
@@ -70,16 +77,31 @@ header('Location: customer.php');
                   //INSERT
                   $query1 = "INSERT into logs (user_id, action_made, date_created) VALUES('$id','added a customer', '$date')"; 
                   $query_run1 = mysqli_query($con, $query1);
+
+                  //deletetempdb
+                 if(isset($_SESSION['edit'])){
+                    $edit_no = $_SESSION['edit'];
+                    $delquery = "DELETE FROM custsample WHERE edit_no = '$edit_no'"; 
+                    $delqueryrun = mysqli_query($con, $delquery);
+                    unset($_SESSION['edit']);
+                }   
+
                 
                 header('Location: customer.php');
             } else {
+                $query2 = "INSERT INTO custsample (custno, edit_no, first_name, middle_name, last_name, cpnum, address, birthdate) VALUES (NULL, '10', '$first_name', '$middle_name', '$last_name', '$cpnum', '$addressval', '$BirthDate')"; 
+                $query_run2 = mysqli_query($con, $query2);
+
                 $_SESSION['custstatus'] = "Customer not added!";
-                header('Location: customer.php');
+                header('Location: custadd.php?edit=10');
             }
             
         }else{
+            $query2 = "INSERT INTO custsample (custno, edit_no, first_name, middle_name, last_name, cpnum, address, birthdate) VALUES (NULL, '10', '$first_name', '$middle_name', '$last_name', '$cpnum', '$addressval', '$BirthDate')"; 
+            $query_run2 = mysqli_query($con, $query2);
+
             $_SESSION['custstatus'] = "The customer is already in the record";
-            header('Location: custadd.php');
+            header('Location: custadd.php?edit=10');
         }
    }
 }

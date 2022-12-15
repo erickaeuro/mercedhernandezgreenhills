@@ -47,15 +47,29 @@ if(isset($_POST['addloan']))
              $query1 = "INSERT into logs (user_id, action_made, date_created) VALUES('$id','added a loan', '$date')"; 
              $query_run1 = mysqli_query($con, $query1);
             header('Location: loan.php');
+
+            if(isset($_SESSION['edit'])){
+                $edit_no = $_SESSION['edit'];
+                $delquery = "DELETE FROM loansample WHERE edit_no = '$edit_no'"; 
+                $delqueryrun = mysqli_query($con, $delquery);
+                unset($_SESSION['edit']);
+            }
         }
         else
         {
+            $query2 = "INSERT INTO loansample (loanid, edit_no, custno, item_type, item_desc, appraised_value, principal) VALUES (NULL, '10', '$customerno', '$type', '$description', '$appraised_value', '$principal')"; 
+            $query_run2 = mysqli_query($con, $query2);
+
+
             $_SESSION['addstatus'] = "Transaction Failed";
-            header('Location: loanbtn.php');
+            header('Location: loanbtn.php?edit=10');
         }
     }else{
+        $query2 = "INSERT INTO loansample (loanid, edit_no, custno, item_type, item_desc, appraised_value, principal) VALUES (NULL, '10', '$customerno', '$type', '$description', '$appraised_value', '$principal')"; 
+        $query_run2 = mysqli_query($con, $query2);
+
         $_SESSION['addstatus1'] = "Principal Should NOT be higher than the appraised Value";
-            header('Location: loanbtn.php');
+            header('Location: loanbtn.php?edit=10');
     }
    
 }
