@@ -23,6 +23,11 @@ $conn = new mysqli("localhost","root","","mercedhernandezgreenhills");
 
 $msg="";
 
+session_start();
+if(($_SESSION['username'])){
+	header("Location: dashboard.php");
+  }
+
 if(isset($_POST['login_user'])){
 
 	$username = $_POST['username'];
@@ -54,7 +59,8 @@ if(isset($_POST['login_user'])){
 	while($row = mysqli_fetch_array($results)){
 		$status=$row['status'];
 		$user=$row['username'];
-    	$pass=$row['password'];		
+    	$pass=$row['password'];	
+		
 	}	
 
 	 if($status == "1"){array_push($errors, "User Deactivated");}
@@ -67,6 +73,7 @@ if(isset($_POST['login_user'])){
 			
 			$_SESSION['username'] = $username;
 			$_SESSION['success'] = "Successfuly Login";
+			
 
 			if($authentication == "EMAIL"){
 				header("location:Email.php");
@@ -167,6 +174,7 @@ if(isset($_POST['login_user'])){
   <title>Log in</title>
   <link rel="stylesheet" type="text/css" href="styless.css">
 <script src="https://kit.fontawesome.com/dc534e1376.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
 
@@ -185,10 +193,11 @@ if(isset($_POST['login_user'])){
 	  	<label>Password</label>
 		<input type="password" id="password" name="password" class="one-input">
 
-		<div class= "pass-holder">
+	  <div class= "pass-holder">
 			<label>Show Password</label>
 			<input type="checkbox" name="" onclick="myFunction()" class="checkbox">			
 		</div>
+
 		<!-- <span>
 				<i class="fa-regular fa-eye" id="eye"></i>
 		</span> -->
@@ -226,6 +235,7 @@ var show = document.getElementById('password')
      </p>
   </form>
   
+
   <script>
 	const toggle
 
