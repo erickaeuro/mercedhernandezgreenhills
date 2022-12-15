@@ -61,7 +61,24 @@
                   <?php 
                   unset($_SESSION['status3']);
               }
+
+              
         ?>
+
+<?php 
+if(isset($_SESSION['status4']))
+              {
+                  ?>
+                      <div class="alert alert-success" role="alert" role="alert">
+                          <?= $_SESSION['status4']; ?>
+                          <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">x</button>
+                      </div>
+                      
+                  <?php 
+                  unset($_SESSION['status4']);
+              }
+?>
+
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
@@ -228,7 +245,7 @@
 
 <?php include 'scripts.php'; ?>   
 
-<!-- <script>
+<script>
         $(document).ready(function () {
 
             $('#dtblid').DataTable({
@@ -238,7 +255,6 @@
                     [10, 25, 50, "All"]
                 ], 
                 order: [[0, 'desc']],
-                columnDefs: [ { type: 'date', 'targets': [4] } ],
                 responsive: true,
                 language: {
                     search: "_INPUT_",
@@ -247,7 +263,7 @@
             });
 
         });
-    </script> -->
+    </script>
  
 
 

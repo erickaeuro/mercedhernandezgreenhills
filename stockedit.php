@@ -53,6 +53,19 @@ require 'connection.php';
 
 </style> 
 
+<?php 
+if(isset($_SESSION['status4']))
+              {
+                  ?>
+                      <div class="alert alert-success" role="alert" role="alert">
+                          <?= $_SESSION['status4']; ?>
+                          <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">x</button>
+                      </div>
+                      
+                  <?php 
+                  unset($_SESSION['status4']);
+              }
+?>
         <div class="row">
             <div class="col-md-12">
             <div class="col d-flex justify-content-center">

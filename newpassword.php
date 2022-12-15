@@ -15,15 +15,15 @@
   <form method="post" action="changepassword.php">
   	 <?//php include('errors.php');?> 
 	<div class="input-group">
-  		<input type="email" name="email" placeholder="Email Address">
+  		<input type="email" name="email" placeholder="Email Address" class="one-input">
     </div>
 
     <div class="input-group">
-        <input class="form-control" type="password" name="password" placeholder="Create new password" required>
+        <input class="one-input" type="password" name="password" placeholder="Create new password" required>
     </div>   
 
     <div class="input-group">     
-        <input class="form-control" type="password" name="cpassword" placeholder="Confirm your password" required>
+        <input class="one-input" type="password" name="cpassword" placeholder="Confirm your password" required>
     </div>
 
   	<div class="input-group">

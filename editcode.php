@@ -26,10 +26,11 @@ $date = date('y-m-d h:i:s');
     
               $query = "UPDATE inventorytbl SET item_type='$item_type',  itemdescription='$itemdescription', karat_gold='$karat_gold', kindofstone='$kindofstone', weight='$weight', itemqty='$itemqty', tagprice='$tagprice', date_sold='$date_sold' ,date_created='$date' WHERE stock_no='$stock_no' ";
               $query_run = mysqli_query($con, $query);
+              
 
               if($query_run){
 
-                  $_SESSION['status'] = "Stock Edited Successfully!";
+                  $_SESSION['status4'] = "Stock Edited Successfully!";
 
                     //Time input
                     date_default_timezone_set('Asia/Manila');

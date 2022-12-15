@@ -28,9 +28,10 @@
 </div>
 
   	<div class="input-group">
-  		<input type="text" name="otp" required></button>
+  		<input type="text" name="otp" required class="one-input"></button>
           <br>
-          <br> <a href="dashboard.php" class="btn text-white btn-md" style="background-color: #DE9185;">
+          <br> 
+          <a href="dashboard.php" class="btn text-white btn-md">
                Enter</a>
                <?php
 
