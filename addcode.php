@@ -27,7 +27,7 @@ $itemqty = $_POST['itemqty'];
 $tagprice = $_POST['tagprice'];
 
 date_default_timezone_set('Asia/Manila');
-$date = date('y-m-d h:i:s');
+$date = date('y-m-d H:i:s');
 $date_created = $_POST['date_created'];
 
 if(isset($_POST['addjewelry']) && !empty($_FILES["file"]["name"]))

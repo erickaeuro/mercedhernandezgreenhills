@@ -90,7 +90,7 @@
 
                       <?php 
 
-                            $query = "SELECT * FROM customertbl order by date_updated DESC";
+                            $query = "SELECT * FROM customertbl";
                             $query_run = mysqli_query($con, $query);
 
                       ?> 
@@ -237,7 +237,7 @@
                     [10, 25, 50, -1],
                     [10, 25, 50, "All"]
                 ],
-                order: [[0, 'asc']],
+                order: [[0, 'desc']],
                 responsive: true,
                 language: {
                     search: "_INPUT_",

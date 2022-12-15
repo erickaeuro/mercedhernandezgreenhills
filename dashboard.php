@@ -232,7 +232,7 @@ include('session.php');
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['item_type','appraised_value','principal','interest'],
+          ['item_type','appraised_value','principal'],
 
           <?php
           $query="select * from loantbl";
@@ -241,11 +241,10 @@ include('session.php');
             $item_type = $data['item_type'];
             $appraised_value = $data['appraised_value'];
             $principal = $data['principal'];
-            $interest = $data['interest'];
 
            
             ?>
-          ['<?php echo $item_type;?>', <?php echo $appraised_value;?>,<?php echo $principal;?>,<?php echo $interest;?>],
+          ['<?php echo $item_type;?>', <?php echo $appraised_value;?>,<?php echo $principal;?>],
           <?php
           }
           ?>
@@ -370,14 +369,14 @@ include('session.php');
     </div>
   </div>
 
-<?php include '../scripts.php'; ?>
+<?php include 'scripts.php'; ?>
 <script>
     $(document).ready(function() {
     $('table.display').DataTable();
 } );
     </script>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+`<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -392,5 +391,6 @@ include('session.php');
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script> 
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    
 
 </html>

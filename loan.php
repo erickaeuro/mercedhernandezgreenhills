@@ -113,7 +113,7 @@
                         <tbody>
                         <?php
             //CALL RECORDS FOR AUTO UPDATE
-            $query = "SELECT * FROM loantbl";
+            $query = "SELECT * FROM loantbl ORDER BY date_created DESC";
             $query_run = mysqli_query($con, $query);
             date_default_timezone_set('Asia/Manila');
             $today = date("Y-m-d");
@@ -157,7 +157,7 @@
 
                     
                     //CALL UPDATED RECORDS                      
-                          $query1 = "SELECT * FROM loantbl INNER JOIN customertbl ON loantbl.customer_no = customertbl.customer_no";
+                          $query1 = "SELECT * FROM loantbl INNER JOIN customertbl ON loantbl.customer_no = customertbl.customer_no ORDER BY date_created DESC ";
                           $query_run1 = mysqli_query($con, $query1);
                       
                     foreach($query_run1 as $row)
@@ -268,7 +268,7 @@
 
 <?php include 'scripts.php'; ?>
 
-<script>
+<!-- <script>
         $(document).ready(function () {
 
             $('#datatableid').DataTable({
@@ -286,7 +286,7 @@
             });
 
         });
-    </script>
+    </script> -->
 
 </body>
 

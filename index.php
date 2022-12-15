@@ -221,7 +221,7 @@ var show = document.getElementById('password')
 	<label for="authentication"><h3	>Please select authentication</h3></label>
 	<select name="authentication" id="authentication" class="authen">
 		<option disabled selected value="Select a Method">Select a Method</option>
-		<option value="MFA">MFA</option>
+		<option value="MFA">Google Authenticator</option>
 		 <option value="EMAIL">EMAIL</option>
 		<!-- <option value="SECUIRTY QUESTIONS">SECUIRTY QUESTIONS</option> -->
 	</select>

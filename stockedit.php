@@ -66,7 +66,7 @@ require 'connection.php';
                         if(isset($_GET['id']))
                         {
                             $id = mysqli_real_escape_string($con, $_GET['id']);
-                            $query = "SELECT * FROM inventorytbl WHERE stock_no='$id' ";
+                            $query = "SELECT * FROM  inventorytbl WHERE stock_no='$id' ORDER BY date_created" ;
                             $query_run = mysqli_query($con, $query);
 
                             if(mysqli_num_rows($query_run) > 0)

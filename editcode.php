@@ -17,13 +17,14 @@ $tagprice = $_POST['tagprice'];
 $date_sold = $_POST['date_sold'];
 
 
-
+date_default_timezone_set('Asia/Manila');
+$date = date('y-m-d h:i:s');
 
 
     if(isset($_POST['editjewelry']))
     {   
     
-              $query = "UPDATE inventorytbl SET item_type='$item_type',  itemdescription='$itemdescription', karat_gold='$karat_gold', kindofstone='$kindofstone', weight='$weight', itemqty='$itemqty', tagprice='$tagprice', date_sold='$date_sold' WHERE stock_no='$stock_no' ";
+              $query = "UPDATE inventorytbl SET item_type='$item_type',  itemdescription='$itemdescription', karat_gold='$karat_gold', kindofstone='$kindofstone', weight='$weight', itemqty='$itemqty', tagprice='$tagprice', date_sold='$date_sold' ,date_created='$date' WHERE stock_no='$stock_no' ";
               $query_run = mysqli_query($con, $query);
 
               if($query_run){

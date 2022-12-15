@@ -52,7 +52,7 @@ if (!isset($_SESSION['failed'])) {
     <div class="container">
         <div class="row">
             <div class="col-md-6 offset-md-3"  style="background: white; padding: 20px; box-shadow: 10px 10px 5px #888888; margin-top: 100px;">
-                <h1> Multi-Factor Authentication</h1>
+                <h1> Google Authenticator </h1>
                 <p style="font-style: italic;">Please Enter the given code</p>
                 <hr>
                 <form action="check.php" method="post">

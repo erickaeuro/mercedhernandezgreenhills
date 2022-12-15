@@ -228,7 +228,7 @@
 
 <?php include 'scripts.php'; ?>   
 
-<script>
+<!-- <script>
         $(document).ready(function () {
 
             $('#dtblid').DataTable({
@@ -247,7 +247,7 @@
             });
 
         });
-    </script>
+    </script> -->
  
 
 

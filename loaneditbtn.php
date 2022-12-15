@@ -21,9 +21,11 @@
         
         $renewal_due = $principal * 0.04;
         
+        date_default_timezone_set('Asia/Manila');
+        $date = date('y-m-d h:i:s');
 
         $query = "UPDATE loantbl SET item_type='$item_type', item_desc='$item_desc', appraised_value='$appraisal', principal='$principal', renewal_due='$renewal_due', principal_due='$prindue', interest='$interest', date_loan_granted='$dateloan',
-        maturity_date='$datemat', expiry_date='$dateexp',  loan_status='$status' WHERE loan_id = '$loan_id'";
+        maturity_date='$datemat', expiry_date='$dateexp',  loan_status='$status',date_created='$date' WHERE loan_id = '$loan_id'";
         $query_run = mysqli_query($con, $query);
 
         if($query_run)

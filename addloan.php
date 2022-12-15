@@ -38,7 +38,7 @@ if(isset($_POST['addloan']))
             $_SESSION['addstatus'] = "Transaction Successful";
              //Time input
              date_default_timezone_set('Asia/Manila');
-             $date = date('y-m-d h:i:s');
+             $date = date('y-m-d H:i:s');
 
              //ID
              $id = $_SESSION['id'];
