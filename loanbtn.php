@@ -161,7 +161,7 @@
 
                             <div class="form-group col-md-11">
                                 <label for="description"><b>Item Description * </b></label>
-                                <textarea class="form-control" rows="3" name="item_desc" placeholder="<?= $row['item_desc'] ?>" value="<?= $row['item_desc'] ?>" required></textarea>
+                                <input type="text" class="form-control" name="item_desc" placeholder="<?=$row['item_desc'];?>" value="<?=$row['item_desc'];?>" required>
                             </div>
 
                         <div class="wrapper">

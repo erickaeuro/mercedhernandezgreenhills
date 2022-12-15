@@ -128,7 +128,8 @@ if(isset($_SESSION['status3']))
                         
                             <div class="form-group col-md-11">
                                 <label for="description"><b>Item Description *</b></label>
-                                <textarea rows="3" class="form-control" name="itemdescription" placeholder="<?=$row['itemdescription'];?>" value="<?=$row['itemdescription'];?>" required></textarea>
+                                <input type="text" class="form-control" name="itemdescription" placeholder="<?=$row['itemdescription'];?>" value="<?=$row['itemdescription'];?>" required>
+                                <!-- <textarea rows="3" class="form-control" name="itemdescription" placeholder="" value="" required></textarea> -->
                             </div>
 
                         <div class="wrapper">
