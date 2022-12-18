@@ -119,11 +119,16 @@
                                 <p class="form-control"> <?= $row['usertype']; ?> </p>
                             </div>  
 
-                            <div class="mb-4">
+                            <div class="mb-2" text-align=center  >
                             <center> 
-                            <a href="users.php" class="btn text-white" style="background-color: #B0B0AB;">Back</a>
-                            <button type="submit" name="adduser" class="btn btn-success editbtn">Add New Users</button> 
-                            </center>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                    <a href="users.php" class="btn text-white" style="background-color: #B0B0AB;">Back</a>
+                           
+                            
                             </div>
                         </form>
                         <?php

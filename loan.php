@@ -268,7 +268,7 @@
 
 <?php include 'scripts.php'; ?>
 
-<!-- <script>
+<script>
         $(document).ready(function () {
 
             $('#datatableid').DataTable({
@@ -286,7 +286,7 @@
             });
 
         });
-    </script> -->
+    </script>
 
 </body>
 
