@@ -13,7 +13,7 @@ error_reporting(0);
 ?>
 
   <div class="header">
-  	<h2>Forgot Password</h2>
+  	<h2>Forgot Password | Merced Hernandez Greenhills</h2>
   </div>
 	 
   <form method="post" action="link.php">

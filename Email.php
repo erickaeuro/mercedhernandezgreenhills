@@ -16,7 +16,7 @@ include('session.php');
 
 
   <div class="header">
-  	<h2>Email</h2>
+  	<h2>Email Authentication | Merced Hernandez Greenhills</h2>
   </div>
 	 
   <form method="post" action="send.php">

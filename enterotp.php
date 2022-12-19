@@ -14,7 +14,7 @@
 
 
   <div class="header">
-  	<h2>Enter OTP</h2>
+  	<h2>Enter OTP | Merced Hernandez Greenhills</h2>
   </div>
 	 
   <form method="post" action="send.php">

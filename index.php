@@ -171,7 +171,7 @@ if(isset($_POST['login_user'])){
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Log in</title>
+  <title>Login | Merced Hernandez Greenhills</title>
   <link rel="stylesheet" type="text/css" href="styless.css">
 <script src="https://kit.fontawesome.com/dc534e1376.js" crossorigin="anonymous"></script>
 

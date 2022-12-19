@@ -23,7 +23,7 @@ if (!isset($_SESSION['failed'])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Merced Hernandez Greenhills</title>
+    <title>Google Authenticatin | Merced Hernandez Greenhills</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <meta name="description" content="Implement Google like Time-Based Authentication into your existing PHP application. And learn How to Build it? How it Works? and Why is it Necessary these days."/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">

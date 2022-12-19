@@ -2,14 +2,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Forgot password</title>
+  <title>New Password | Merced Hernandez Greenhills</title>
   <link rel="stylesheet" type="text/css" href="styless.css">
 </head>
 <body>
 
 
   <div class="header">
-  	<h2>Forgot Password</h2>
+  	<h2>New Password</h2>
   </div>
 	 
   <form method="post" action="changepassword.php">
